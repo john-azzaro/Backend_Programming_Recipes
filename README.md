@@ -1,2 +1,8 @@
 # Backend_Programming_Recipes
-A handy repository of backend programming concepts/examples from research, tutorials, mentor sessions, peer discussions, workshops, etc.
+
+### What are Backend Programming Recipes?
+JavaScript Recipes interesting problems/concepts from research, tutorials, mentor sessions, peer discussions, requested problem explainations, etc.
+
+### Why Backend Programming Recipes?
+
+
