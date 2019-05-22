@@ -9,3 +9,20 @@
 //        and Answer format for improved readability.
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* 
+Preliminary outline
+
+•	Introduction to Server side programming
+    o	What is a server side programming?
+    o	What is a web app?
+    o	What is a web server?
+    o	What are resources and how to web apps expose them?
+    o	How do web servers and clients communicate?
+    o	How do Web servers route requests to the right handlers?
+    o	Do web servers house the data base layer?
+    o	What is the importance of business logic to web applications?
+    o	What is software testing?
+
+
+*/
