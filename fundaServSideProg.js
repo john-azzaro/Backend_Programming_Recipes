@@ -25,4 +25,12 @@ Preliminary outline
     o	What is software testing?
 
 
+•	Introduction to Node and Express
+    o	What is node?
+    o	What is express?
+    o	What is Glitch and how do we utilize it in server side programming?
+    o	How does a basic application using node and express work?
+    o	Basic application example using node and express: counter app 
+
+
 */
