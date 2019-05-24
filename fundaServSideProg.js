@@ -2,7 +2,11 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Fundamentals of Server Side Programming
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//     1. 
+//     1. What is a server-side web app?
+//     2. What is a client application?
+//     3. What are resources?
+//     4. What kind of resources can server-side apps expose?
+// 
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Server side programming (in JavaScript) from study, research, tutorials, 
 //        mentor meetings, peer discussions, and good ole' fashioned curiosity.  I've put the document in Question
@@ -22,7 +26,6 @@
     ==================================
     •	A single web server can support many CLIENTS.
     •	Clients on a web server can be: WEB BROWSERS, MOBILE APPS, OTHER SERVERS, etc.	
-
 */
 
 
@@ -47,5 +50,15 @@
     o   index.html page
     o   data represesnting customers
     o   main.css page
+*/
 
+/* 
+4. What kind of resources can server-side apps expose?
+///////////////////////////////////////////////////////
+    1. Files
+        o   Files include: HTML, CSS, JavaScript, JPEG's, MP3's, etc.
+    2. Paramaterized data through an API layer
+        o   For example, a web page for a shoe store might request data from an endpoint (i.e. URL) for shoes 
+            that are for sale THEN a seperate request to a different endpoint would retrieve data about the
+            customers shoe size or color preference.
 */
