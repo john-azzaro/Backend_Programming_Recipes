@@ -35,6 +35,15 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
         the HTTP server which understands URL (web addresses) and HTTP (protocol the browser uses to view web pages) 
         which then access domain names (www.google.com) where the website is stored and delivers the content back to
         the client(you).	
+
+==EXAMPLE==
+
+                   
+                <======(HTTP request)======|
+    [Web Server]                       [Browser]  
+         |======(HTTP request)========>
+
+
 */
 
 
