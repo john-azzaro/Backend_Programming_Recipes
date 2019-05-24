@@ -17,8 +17,11 @@
 1. What is a server-side web app?
 //////////////////////////////////
 •	A server-side web app is a program whose purpose is to EXPOSE RESOURCES to other applications.
-•	A single web server can support many CLIENTS.
-•	Clients on a web server can be: WEB BROWSERS, MOBILE APPS, OTHER SERVERS, etc.	
+
+    What can a server-side web app do?
+    ==================================
+    •	A single web server can support many CLIENTS.
+    •	Clients on a web server can be: WEB BROWSERS, MOBILE APPS, OTHER SERVERS, etc.	
 
 */
 
@@ -30,16 +33,19 @@
 
     EXAMPLE: WikiPedia API
     =======================
-        o	For example, if you build an application that searches Wikipedia via an API, the application you
-            have built is a client application.
-            o   The CLIENT APPLICATION requests data from a server (i.e. the API).
-            o   The SERVER responds with the requested data.
-
-        o   Client applications can also SEND data to a server so it can be stored or processed.
+    o	For example, if you build an application that searches Wikipedia via an API, the application you
+        have built is a client application.
+        o   The CLIENT APPLICATION requests data from a server (i.e. the API).                          [CA]===> [Server]
+        o   The SERVER responds with the requested data.                                                [CA] <===[Server]
+        o   Client applications can also SEND data to a server so it can be stored or processed.        [CS]==(Data)=> [Server]
 */
 
 /*
 3. What are resources?
 //////////////////////
-•   	   
+•   Resources are things such as:
+    o   index.html page
+    o   data represesnting customers
+    o   main.css page
+
 */
