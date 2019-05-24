@@ -47,9 +47,9 @@
 3. What are resources?
 //////////////////////
 •   Resources are things such as:
-    o   index.html page
-    o   data represesnting customers
-    o   main.css page
+    o   index.html page                  [.html]
+    o   data represesnting customers     {name:"joe"}
+    o   main.css page                    [.css]
 */
 
 /* 
@@ -57,6 +57,7 @@
 ///////////////////////////////////////////////////////
     1. Files
         o   Files include: HTML, CSS, JavaScript, JPEG's, MP3's, etc.
+
     2. Paramaterized data through an API layer
         o   For example, a web page for a shoe store might request data from an endpoint (i.e. URL) for shoes 
             that are for sale THEN a seperate request to a different endpoint would retrieve data about the
