@@ -24,5 +24,22 @@
 
 
 /* 
-2. What is a client application
+2. What is a client application?
+/////////////////////////////////
+•	A client application REQUESTS RESOURCES from a server.
+
+    EXAMPLE: WikiPedia API
+    =======================
+        o	For example, if you build an application that searches Wikipedia via an API, the application you
+            have built is a client application.
+            o   The CLIENT APPLICATION requests data from a server (i.e. the API).
+            o   The SERVER responds with the requested data.
+
+        o   Client applications can also SEND data to a server so it can be stored or processed.
+*/
+
+/*
+3. What are resources?
+//////////////////////
+•   	   
 */
