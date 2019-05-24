@@ -2,10 +2,12 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Fundamentals of Server Side Programming
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//     1. What is a server-side web app?
-//     2. What is a client application?
-//     3. What are resources?
-//     4. What kind of resources can server-side apps expose?
+//     1. What is a web server?
+//     2. What is a server-side web app?
+//     3. What is a server-side client?
+//     4. What is a client application?
+//     5. What are server-side resources?
+//     6. What kind of resources can server-side apps expose?
 // 
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Server side programming (in JavaScript) from study, research, tutorials, 
@@ -26,15 +28,18 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 1. What is a web server?
 /////////////////////////
 ==SHORT ANSWER==
-    •	
+    •	A WEB SERVER refers to either the hardware, software, or both working together.
 
 ==EXTENDED ANSWER==
-    •	
+    •	A "Web Server" can refer either to the hardware that stores software and components(i.e.html, css, etc.) AND 
+        the HTTP server which understands URL (web addresses) and HTTP (protocol the browser uses to view web pages) 
+        which then access domain names (www.google.com) where the website is stored and delivers the content back to
+        the client(you).	
 */
 
 
 /* 
-1. What is a server-side web app?
+2. What is a server-side web app?
 //////////////////////////////////
 ==SHORT ANSWER==
     •	A server-side web app is a PROGRAM whose PRUPOSE is to EXPOSE RESOURCES to other applications.
@@ -42,7 +47,7 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 
 
 /*
-2. What is a server-side client?
+3. What is a server-side client?
 ////////////////////////////////
 ==SHORT ANSWER==
     •   A single web server can support many CLIENTS such as WEB BROWSERS, MOBILE APPS, OTHER SERVERS, etc.	
@@ -50,7 +55,7 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 
 
 /* 
-2. What is a client application?
+4. What is a client application?
 /////////////////////////////////
 ==SHORT ANSWER==
     •	A client application REQUESTS RESOURCES from a SERVER.
@@ -66,8 +71,8 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 
 
 /*
-3. What are resources?
-//////////////////////
+5. What are server-side resources?
+//////////////////////////////////
 ==SHORT ANSWER==
     •	Resources are 
 
@@ -79,7 +84,7 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 
 
 /* 
-4. What kind of resources can server-side apps expose?
+6. What kind of resources can server-side apps expose?
 ///////////////////////////////////////////////////////
     1. Files
         o   Files include: HTML, CSS, JavaScript, JPEG's, MP3's, etc.
