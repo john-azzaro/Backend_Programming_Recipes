@@ -17,6 +17,12 @@
 1. What is a server-side web app?
 //////////////////////////////////
 •	A server-side web app is a program whose purpose is to EXPOSE RESOURCES to other applications.
-    o	
+•	A single web server can support many CLIENTS.
+•	Clients on a web server can be: WEB BROWSERS, MOBILE APPS, OTHER SERVERS, etc.	
 
+*/
+
+
+/* 
+2. What is a client application
 */
