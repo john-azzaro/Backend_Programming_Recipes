@@ -27,15 +27,23 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 /* 
 1. What is server-side programming?
 ///////////////////////////////////
+==SHORT ANSWER==
     •   Server-side programming is writing programs that create dynamic pages.
-        o   JavaScript, where the programs run in the web browser, is called "client-side" programming.  
 
-    •   Server-side programming allows us to efficiently deliver information tailored for individual users.
-        o   For example, Amazon will use server-side programming to construct search results for products
-            based on the users buying habits, preferences, etc.
+==EXAMPLE==
+    •   For example, Amazon will use server-side programming to construct search results for products
+        based on the users buying habits, preferences, etc.
+         
+==EXTENDED ANSWERS==
+    •   Server-side programming allows us to efficiently deliver information tailored for individual users.  
+        o   JavaScript, where the programs run in the web browser, is called "client-side" programming.
+*/
 
-    What is server-side programming is about?
-    =========================================
+
+/*
+2. What are important factors in server-side programming?
+/////////////////////////////////////////////////////////
+==EXTENDED ANSWER==        
         o   Web applications exposing resources
         o   Web servers and clients speaking http to each other
         o   Web servers route requests to the right request handlers
@@ -50,11 +58,9 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 2. What is a web server?
 /////////////////////////
 ==SHORT ANSWER==
-    •   A web server holds the server-side code (e.g. node.js) and controls what information is sent to the user.
-        o   Conversely, "client-side" code handles the structure and presentation of the data the user gets.
-
-    •	A WEB SERVER refers to either the hardware, software, or both working together.
-    •   The job of a WEB SERVER is simple: find the file and send it out.		
+    •   The job of a WEB SERVER is simple: find the file and send it out.  A WEB SERVER refers to either 
+        the hardware, software, or both working together and holds the server-side code (e.g. node.js) 
+        and controls what information is sent to the user.
 
 ==EXTENDED ANSWER==
     •	A "Web Server" can refer either to the hardware that stores software and components(i.e.html, css, etc.) AND 
@@ -65,30 +71,27 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 
 
 /* 
-3. What is the server-side?
-///////////////////////////
+3. What is the server-side and what is it's purpose?
+////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •	The server-side is a PROGRAM whose PRUPOSE is to EXPOSE RESOURCES to other applications.
 
-•   
-•
-•
-•
-
-    What happens when you request resources from a server-side app?
-    ===============================================================
-        o	Resources like HTML which are sent from the server to your browser are generated when you request it.
-        o	The program on the web server looks at this request and creates an HTML page specifically for that request.
-        o   The pages that come from that request are in .html files are either static (unaltered from the server) or
-            dynamic (created as they are requested).
 */
 
 
 /*
-4. What is the client-side?
-///////////////////////////
+4. What is the client-side and what is its purpose?
+//////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   Client-side code handles the STRUCTURE and PRESENTATION of the data the user gets    
+    •   The "client-side" is everything in a web application that is displayed or takes place on the client device (e.g. phone, pc, etc.).
+        o   For example, Netflix has html, css, and javascript that dictate how the site appears to the user when it is interpreted 
+            in the client-side browser
+
+==ENTENDED ANSWERS==
+    •   The client-side (i.e. user side) handles the STRUCTURE and PRESENTATION of the data the user gets.
+    •   End user devices such as laptops, smartphones, and desktop computers are considered "clients" of a server.
+    •   These devices send requests to servers for web pages or applications and the server typically serve up reponses.
+    •   Client-side code handles the STRUCTURE and PRESENTATION of the data the user gets.  
     •   A server=side client is a: Web Browser, Mobile App,
     •   A single web server can support many CLIENTS such as WEB BROWSERS, MOBILE APPS, OTHER SERVERS, etc.	
     •   
@@ -115,11 +118,20 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 
 
 /*
-6. What are server-side resources?
-//////////////////////////////////
+6. What are the server-side resources a server-side app can expose?
+///////////////////////////////////////////////////////////////////
+
+
 ==SHORT ANSWER==
-    •	Resources are either STATIC (stylesheets or javascript files that do not change) or DYNAMIC(e.g. logging into a bank account).
-    •	Resources should be reliable 
+
+
+
+    •	Server-side apps can expose two types of resources: FILES and PARAMETERIZED DATA.
+    •	Resources are either STATIC or DYNAMIC.
+
+
+
+
 */
 
 
@@ -141,6 +153,11 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 
 
 /* 
-8.
+8. What happens when you request resources from a server-side app?
+//////////////////////////////////////////////////////////////////
+        o	Resources like HTML which are sent from the server to your browser are generated when you request it.
+        o	The program on the web server looks at this request and creates an HTML page specifically for that request.
+        o   The pages that come from that request are in .html files are either static (unaltered from the server) or
+            dynamic (created as they are requested).
 */
 
