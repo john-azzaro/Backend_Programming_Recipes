@@ -26,13 +26,18 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 /* 
 1. What is server-side programming?
 ///////////////////////////////////
+    •   Server-side programming is writing programs that create dynamic pages.
+        o   JavaScript, where the programs run in the web browser, is called "client-side" programming.
+        o     	
+        
     •   Server-side programming is about:
         o   Web applications exposing resources
-        o   Web servers and clinets speaking http to each other
-        o   
-
-
-
+        o   Web servers and clients speaking http to each other
+        o   Web servers route requests to the right request handlers
+        o   Server-side programming is about data persistence
+        o   Server-side programming is about business logic
+        o   Server-side programming is software testing
+        o   Server-side programming is about devops.
 */
 
 
@@ -46,6 +51,7 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 /////////////////////////
 ==SHORT ANSWER==
     •	A WEB SERVER refers to either the hardware, software, or both working together.
+    •   The job of a WEB SERVER is simple: find the file and send it out.		
 
 ==EXTENDED ANSWER==
     •	A "Web Server" can refer either to the hardware that stores software and components(i.e.html, css, etc.) AND 
@@ -70,6 +76,10 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 //////////////////////////////////
 ==SHORT ANSWER==
     •	A server-side web app is a PROGRAM whose PRUPOSE is to EXPOSE RESOURCES to other applications.
+        o	Resources like HTML which are sent from the server to your browser are generated when you request it.
+        o	The program on the web server looks at this request and creates an HTML page specifically for that request.
+        o   The pages that come from that request are in .html files are either static (unaltered from the server) or
+            dynamic (created as they are requested).
 */
 
 
