@@ -11,6 +11,7 @@
 //      7. What is a client application?
 //      8. What kind of resources can server-side apps expose?
 //      9. What happens when you request resources from a server-side app? 
+//      10. How does the HTTP Protocol request-response cycle work?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Server side programming (in JavaScript) from study, research, tutorials, 
@@ -129,9 +130,9 @@
     ==========================================
     o	For example, if you build an application that searches Wikipedia via an API, the application you
         have built is a client application.
-        o   The CLIENT APPLICATION requests data from a server (i.e. the API).                          [CliApp]===> [Server]
-        o   The SERVER responds with the requested data.                                                [CliApp] <===[Server]
-        o   Client applications can also SEND data to a server so it can be stored or processed.        [CliApp]==(Data)=> [Server]
+        o   The CLIENT APPLICATION requests data from a server (i.e. the API).                          [CliApp]=========>  [Server]
+        o   The SERVER responds with the requested data.                                                [CliApp]  <=========[Server]
+        o   Client applications can also SEND data to a server so it can be stored or processed.        [CliApp]==(Data)==> [Server]
 */
 
 
@@ -158,12 +159,16 @@
 //////////////////////////////////////////////////////////////////
         o	Resources like HTML which are sent from the server to your browser are generated when you request it.
         o	The program on the web server looks at this request and creates an HTML page specifically for that request.
-        o   The pages that come from that request are in .html files are either static (unaltered from the server) or
-            dynamic (created as they are requested).
+        o   The pages that come from that request are in .html files that are either static (unaltered from the server) 
+            or dynamic (created as they are requested).
 */
 
 
-
+/* 
+10. How does the HTTP Protocol request-response cycle work?
+/////////////////////////////////////////////////////////////////////////////////////////
+    •   Servers and clients communicate via HTTP Protocol.
+*/
 
 
 
