@@ -19,8 +19,25 @@
 https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%20Steps.png
 
     •	
+==EXAMPLE==
+    •	
+*/
+
+/* 
+1. What is server-side programming?
+///////////////////////////////////
+    •   Server-side programming is about:
+        o   Web applications exposing resources
+        o   Web servers and clinets speaking http to each other
+        o   
+
+
 
 */
+
+
+
+
 
 
 
@@ -33,16 +50,17 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 ==EXTENDED ANSWER==
     •	A "Web Server" can refer either to the hardware that stores software and components(i.e.html, css, etc.) AND 
         the HTTP server which understands URL (web addresses) and HTTP (protocol the browser uses to view web pages) 
-        which then access domain names (www.google.com) where the website is stored and delivers the content back to
-        the client(you).	
+        which then accesses the domain name (www.google.com) where the website is stored and delivers the content back 
+        to the client(you).	
 
 ==EXAMPLE==
-
+                                                                    
+                                    <======(HTTP request)======|    
+                                                               |
+                      [WEB SERVER]                         [BROWSER]  
+                            |                                     
+                            |======(HTTP request)========>
                    
-                <======(HTTP request)======|
-    [Web Server]                       [Browser]  
-         |======(HTTP request)========>
-
 
 */
 
@@ -59,6 +77,7 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 3. What is a server-side client?
 ////////////////////////////////
 ==SHORT ANSWER==
+    •   A server=side client is a: Web Browser, Mobile App,
     •   A single web server can support many CLIENTS such as WEB BROWSERS, MOBILE APPS, OTHER SERVERS, etc.	
 */
 
@@ -67,7 +86,10 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 4. What is a client application?
 /////////////////////////////////
 ==SHORT ANSWER==
-    •	A client application REQUESTS RESOURCES from a SERVER.
+    •	A client application REQUESTS RESOURCES from a SERVER. 
+
+==EXAMPLE==
+    •   The use (you) would use a browser (client) to request resources (index.html, index.css, index.js) from a server.	
 
     How would a basic client application work?
     ==========================================
