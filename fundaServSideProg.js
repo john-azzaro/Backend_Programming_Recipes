@@ -10,12 +10,11 @@
 //      6. What is client-side vs. server-side scripting?
 //      7. What is a client application?
 //      8. What kind of resources can server-side apps expose?
-//      9. What happens when you request resources from a server-side app? 
-//      10. How does the HTTP Protocol request-response cycle work?
-//      11. Why is it important to route requests to the right request handlers?
-//      12. How is data persistence important to server-side programming?
-//      13. What is buisness logic in the context of server-side programming?
-//      14. What is software testing and what is the importance of software testing in server-side programming?
+//      9. How does the HTTP Protocol request-response cycle work?
+//      10. Why is it important to route requests to the right request handlers?
+//      11. How is data persistence important to server-side programming?
+//      12. What is buisness logic in the context of server-side programming?
+//      13. What is software testing and what is the importance of software testing in server-side programming?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Server side programming (in JavaScript) from study, research, tutorials, 
@@ -44,7 +43,7 @@
 /*
 2. What are important factors in server-side programming?
 //////////////////////////////////////////////////////////
-==EXTENDED ANSWER==        
+==BROAD ANSWER==        
     o   Web applications exposing resources
     o   Web servers and clients speaking http to each other
     o   Web servers route requests to the right request handlers
@@ -76,6 +75,7 @@
     •   The content of most web pages is encoded in HTML.
     •   Content can be static (text or images) or dynamic (items user selects for purchase),
     •   To deliver dynamic content, web servers use server-side scripting languages to encode business logic.
+    •   A web server runs a website by returning HTML files over an HTTP connection.
     
 */
 
@@ -162,8 +162,10 @@
 ==EXTENDED ANSWER==    
     1. Files
         o   Files include: HTML, CSS, JavaScript, JPEG's, MP3's, etc.
+        o   For example, when you enter a URL you request resource files like HTML and CSS. 
 
     2. Paramaterized data through an API layer
+        o   Parameterized data is when you are able to provide data in bulk using a common format.   
         o   For example, a web page for a shoe store might request data from an endpoint (i.e. URL) for shoes 
             that are for sale THEN a seperate request to a different endpoint would retrieve data about the
             customers shoe size or color preference.
@@ -171,17 +173,7 @@
 
 
 /* 
-9. What happens when you request resources from a server-side app?
-//////////////////////////////////////////////////////////////////
-        o	Resources like HTML which are sent from the server to your browser are generated when you request it.
-        o	The program on the web server looks at this request and creates an HTML page specifically for that request.
-        o   The pages that come from that request are in .html files that are either static (unaltered from the server) 
-            or dynamic (created as they are requested).
-*/
-
-
-/* 
-10. How does the HTTP Protocol request-response cycle work?
+9. How does the HTTP Protocol request-response cycle work?
 ///////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     1.   The client makes a REQUEST to an HTTP server by opening a connection to the server and sending a request message.
@@ -189,8 +181,12 @@
 
 ==EXTENDED ANSWERS==
     •   Servers and clients communicate via HTTP Protocol.
+            o   Resources like HTML which are sent from the server to your browser are generated when you request it.
     •   The client sends a REQUEST to the HTTP server.
-    •   The server RESPONDS to the request with an HTML file with headers and a body.
+            o	The program on the web server looks at this request and creates an HTML page specifically for that request.
+    •   The server RESPONDS to the request with an HTML file with headers and a body.           
+            o   The pages that come from that request are in .html files that are either static (unaltered from the server) 
+                or dynamic (created as they are requested).
  
 What does the HTTP Protocol request-reponse cycle look like
 ===========================================================
@@ -225,7 +221,7 @@ What does the HTTP Protocol request-reponse cycle look like
 
 
 /* 
-11. Why is it important to route requests to the right request handlers?
+10. Why is it important to route requests to the right request handlers?
 ////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Web servers need to have a way of ensuring that when a client requests a resource through a URL, 
@@ -233,20 +229,20 @@ What does the HTTP Protocol request-reponse cycle look like
 */
 
 /* 
-12. How is data persistence important to server-side programming?
+11. How is data persistence important to server-side programming?
 //////////////////////////////////////////////////////////////////
     •   Web servers store the common set of data that all client applications can access.
 */
 
 /* 
-13. What is buisness logic in the context of server-side programming?
+12. What is buisness logic in the context of server-side programming?
 ///////////////////////////////////////////////////////////////////// 
     •   Across the layers of a server-side web application, the overriding purpose is to implement one or
         more pieces of business logic.
 */
 
 /* 
-14. What is software testing and what is the importance of software testing in server-side programming?
+13. What is software testing and what is the importance of software testing in server-side programming?
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
     •   A software test is a peice of codesthat checks whether or not another peice of code bahves as it should.
         o   As code is written and refactored, suites of software tests can be run to let us know if any changes we
