@@ -12,6 +12,10 @@
 //      8. What kind of resources can server-side apps expose?
 //      9. What happens when you request resources from a server-side app? 
 //      10. How does the HTTP Protocol request-response cycle work?
+//      11. Why is it important to route requests to the right request handlers?
+//      12. How is data persistence important to server-side programming?
+//      13. What is buisness logic in the context of server-side programming?
+//      14. What is software testing and what is the importance of software testing in server-side programming?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Server side programming (in JavaScript) from study, research, tutorials, 
@@ -166,7 +170,7 @@
 
 /* 
 10. How does the HTTP Protocol request-response cycle work?
-/////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     1.   The client makes a REQUEST to an HTTP server by opening a connection to the server and sending a request message.
     2.   Then, the server sends a RESPONSE to the request in the form of an HTML file with headers and a body.
@@ -211,6 +215,7 @@ What does the HTTP Protocol request-reponse cycle look like
 /* 
 11. Why is it important to route requests to the right request handlers?
 ////////////////////////////////////////////////////////////////////////
+==SHORT ANSWER==
     •   Web servers need to have a way of ensuring that when a client requests a resource through a URL, 
         that request gets routed to the right code that knows how to handle it.
 */
@@ -218,22 +223,31 @@ What does the HTTP Protocol request-reponse cycle look like
 /* 
 12. How is data persistence important to server-side programming?
 //////////////////////////////////////////////////////////////////
+    •   Web servers store the common set of data that all client applications can access.
 */
 
 /* 
 13. What is buisness logic in the context of server-side programming?
 ///////////////////////////////////////////////////////////////////// 
+    •   Across the layers of a server-side web application, the overriding purpose is to implement one or
+        more pieces of business logic.
 */
 
 /* 
-14. What is the importance of software testing in server-side programming?
-//////////////////////////////////////////////////////////////////////////
+14. What is software testing and what is the importance of software testing in server-side programming?
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+    •   A software test is a peice of codesthat checks whether or not another peice of code bahves as it should.
+        o   As code is written and refactored, suites of software tests can be run to let us know if any changes we
+            made have broken any of our existing functionality.
+        o   If the test fails, we know that the changes have broken some part of our web application and we can fix
+            the broken code before it enters production.
+
+    •   Web servers support user accounts and as soon as you start storing user information like email 
+        addresses security becomes an important concern, especially with access control which is how
+        a system ensures that its resources are accessible only to the right users.
 */
 
-/* 
-15. What is DevOps and how is it important to server-side programming? 
-//////////////////////////////////////////////////////////////////////
-*/
+
 
 
 
