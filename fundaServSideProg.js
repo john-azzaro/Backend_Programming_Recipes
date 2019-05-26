@@ -188,8 +188,8 @@
             o   The pages that come from that request are in .html files that are either static (unaltered from the server) 
                 or dynamic (created as they are requested).
  
-What does the HTTP Protocol request-reponse cycle look like
-===========================================================
+Example of an HTTP Protocol request-reponse cycle 
+==================================================
 
     1. When you enter a URL in the address box of the browser, the browser will translate that into a request message.
 
@@ -228,11 +228,13 @@ What does the HTTP Protocol request-reponse cycle look like
         that request gets routed to the right code that knows how to handle it.
 */
 
+
 /* 
 11. How is data persistence important to server-side programming?
 //////////////////////////////////////////////////////////////////
     •   Web servers store the common set of data that all client applications can access.
 */
+
 
 /* 
 12. What is buisness logic in the context of server-side programming?
@@ -240,6 +242,7 @@ What does the HTTP Protocol request-reponse cycle look like
     •   Across the layers of a server-side web application, the overriding purpose is to implement one or
         more pieces of business logic.
 */
+
 
 /* 
 13. What is software testing and what is the importance of software testing in server-side programming?
