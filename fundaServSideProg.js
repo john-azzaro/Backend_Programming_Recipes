@@ -59,7 +59,7 @@
 3. What is a web server?
 /////////////////////////
 ==SHORT ANSWER==
-    •   A WEB SERVER stores and delivers content to a website.   
+    •   A WEB SERVER is a system (device and program) that stores and delivers content to a users browser over the internet.   
 
 ==EXAMPLE==
     •   For example, when a user uses a client-side browser to request information (i.e. www.amazon.com) from a website, 
@@ -67,10 +67,11 @@
         sends a request to the internet for viweing the corresponding page for that address.
 
 ==EXTENDED ANSWER==  
-   •	The job of a WEB SERVER is simple: find the file and send it out. A "Web Server" can refer either to the hardware 
-        that stores software and components(i.e.html, css, etc.) AND/OR the HTTP server which understands URL (web addresses) 
-        and HTTP (protocol the browser uses to view web pages) which then accesses the domain name (www.google.com) where 
-        the website is stored and delivers the content back to the client(you).	 
+   •	The job of a WEB SERVER is simple: find the file and send it out. 
+   •    A "Web Server" can refer either to the hardware that stores software and components(i.e.html, css, etc.) AND/OR 
+        the HTTP server which understands URL (web addresses) and HTTP (protocol the browser uses to view web pages) 
+        which then accesses the domain name (www.google.com) where the website is stored and delivers the content back 
+        to the client(you).	 
     •   A WEB SERVER commicates with a web browser using HTTP.  
     •   The content of most web pages is encoded in HTML.
     •   Content can be static (text or images) or dynamic (items user selects for purchase),
@@ -83,8 +84,12 @@
 4. What is the server-side and what is it's purpose?
 ////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •  "Server-side" refers to anything that happens on the server (back-end) instead of the client (front-end) and     
-        the purpose of the serv-side program is to EXPOSE RESOURCES to other applications.
+    •  "Server-side" refers to anything that happens on the server (back-end) instead of the client (front-end).    
+        The purpose of a server-side program is to EXPOSE RESOURCES to other applications.
+
+==EXAMPLE==
+    •   For example, when you type in a URL to go to a website, you send a request a SERVER (which is both a
+        device and computer program) that accepts and responds to requests made by your browser.
 */
 
 
@@ -114,9 +119,21 @@
 /* 
 6. What is client-side vs. server-side scripting?
 /////////////////////////////////////////////////
+==SHORT ANSWER==
+    •   Client-side scripting refers to running scripts within the front-end browser like JavaScript while 
+        server-side scripting refers to running scripts within the back-end like node.js.
+
+==EXTENDED ANSWER==
     •   Client-side scripting means running scripts on the front-end within the browser such as JavaScript.
+    •   Client-side scripting has faster response times, more interactive applications, and less overhead on the web server.
+    •   Client-side code is embedded on the clients web page and processed in the clients browser.
+    •   Client-side scripts are written in scripting language (i.e. JavaScript) and interact with the page's HTML elements.
+
     •   Server-side scripting means running scripts on the back-end on the server in order to deliver dynamic content
         to webpages in response to user actions.
+    •   Server-side processing is used to interact with permenant storage like databases or files.
+    •   Server-side processing occurs when a page is first requested and when pages are posted back to the server.
+    •   Examples of server-side processing are: user validation, saving and retrieving data, and navigating pages.
 */
 
 
@@ -124,16 +141,11 @@
 7. What is a client application?
 /////////////////////////////////
 ==SHORT ANSWER==
-    •	A client application REQUESTS RESOURCES from a SERVER. 
+    •	A client application has a UI, runs on the users machine in a web browser, and requests resources from a server. 
 
 ==EXAMPLE==
     •   The user utlizes a browser (client) to request resources (index.html, index.css, etc.) from a server.	
-
-==EXTENDED ANSWERS==
-    How would a basic client application work?
-    ==========================================
-    o	For example, if you build an application that searches Wikipedia via an API, the application you
-        have built is a client application.
+    •   For example, suppose you have an application that searches wikipedia via an API.  
         o   The CLIENT APPLICATION requests data from a server (i.e. the API).                          [CliApp]=========>  [Server]
         o   The SERVER responds with the requested data.                                                [CliApp]  <=========[Server]
         o   Client applications can also SEND data to a server so it can be stored or processed.        [CliApp]==(Data)==> [Server]
@@ -289,5 +301,6 @@ https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-si
 https://www.nginx.com/resources/glossary/web-server/
 https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html -- request/response example
 https://expressjs.com/en/advanced/best-practice-security.html -- disable x-powered-by note
+https://www.seguetech.com/client-server-side-code/ -- clinet vs server side scripting, good AJAX and jQuery summary
 
 */
