@@ -197,7 +197,14 @@ What does the HTTP Protocol request-reponse cycle look like
 
     3. Second, the server will send a response to the request consisting of headers and a body
 
+            HTTP/1.1 200 OK
+            X-Powered-By: Express                                                  // note: should be disabled for security reason.
+            Content-length: 47                                                     // size of the entity-body in bytes
+            Connection: keep-alive                                                 // determines if the connection keeps open after transaction
+            Last-Modified: Mon. 06 May 2019 00:00:01 GMT                           // last modification date of the resource
+            Content-Type: text/html: charset=UTF-8                                 // media type of resource
 
+            <html><body><header><h1>Hello world!</h1></header></body></html>
 
 
 
@@ -248,5 +255,6 @@ https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%2
 https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-side/
 https://www.nginx.com/resources/glossary/web-server/
 https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html -- request/response example
+https://expressjs.com/en/advanced/best-practice-security.html -- disable x-powered-by note
 
 */
