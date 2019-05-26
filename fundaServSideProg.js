@@ -205,16 +205,35 @@ What does the HTTP Protocol request-reponse cycle look like
             Content-Type: text/html: charset=UTF-8                                 // media type of resource
 
             <html><body><header><h1>Hello world!</h1></header></body></html>
-
-
-
-
-
-
-
-
 */
 
+
+/* 
+11. Why is it important to route requests to the right request handlers?
+////////////////////////////////////////////////////////////////////////
+    •   Web servers need to have a way of ensuring that when a client requests a resource through a URL, 
+        that request gets routed to the right code that knows how to handle it.
+*/
+
+/* 
+12. How is data persistence important to server-side programming?
+//////////////////////////////////////////////////////////////////
+*/
+
+/* 
+13. What is buisness logic in the context of server-side programming?
+///////////////////////////////////////////////////////////////////// 
+*/
+
+/* 
+14. What is the importance of software testing in server-side programming?
+//////////////////////////////////////////////////////////////////////////
+*/
+
+/* 
+15. What is DevOps and how is it important to server-side programming? 
+//////////////////////////////////////////////////////////////////////
+*/
 
 
 
