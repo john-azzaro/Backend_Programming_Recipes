@@ -167,7 +167,45 @@
 /* 
 10. How does the HTTP Protocol request-response cycle work?
 /////////////////////////////////////////////////////////////////////////////////////////
+==SHORT ANSWER==
+    1.   The client makes a REQUEST to an HTTP server by opening a connection to the server and sending a request message.
+    2.   Then, the server sends a RESPONSE to the request in the form of an HTML file with headers and a body.
+
+==EXTENDED ANSWERS==
     •   Servers and clients communicate via HTTP Protocol.
+    •   The client sends a REQUEST to the HTTP server.
+    •   The server RESPONDS to the request with an HTML file with headers and a body.
+ 
+What does the HTTP Protocol request-reponse cycle look like
+===========================================================
+
+    1. When you enter a URL in the address box of the browser, the browser will translate that into a request message.
+
+            • http://www.myWebsite.com/index.html
+        
+
+    2. First, the client sends a request to the HTTP server to open a connection to the server.
+
+            GET /docs/index.html HTTP/1.1                         // Request method using GET (retrieve data) at this endpoint
+            HOST: www.myWebsite.com                               // The domain name of the server.
+            Accept: image/gif, image/jpeg, •/•                    // Advertises which content types the client is able to understand.
+            Accept-Language: en-us                                // Advertises which language the client is able to understand.
+            Accept-Encoding: gzip, deflate                        // The encoding to be used when the resource is sent back.
+            User-Agent: Mozilla/4.0                               // Allows network protocol peers to identify the application type, OS, etc.
+            (blank line)                                          // 
+
+
+    3. Second, the server will send a response to the request consisting of headers and a body
+
+
+
+
+
+
+
+
+
+
 */
 
 
@@ -209,5 +247,6 @@
 https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%20Steps.png
 https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-side/
 https://www.nginx.com/resources/glossary/web-server/
+https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html -- request/response example
 
 */
