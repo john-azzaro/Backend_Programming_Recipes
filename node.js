@@ -97,18 +97,38 @@
 3. How does node.js work?
 //////////////////////////
 ==SHORT ANSWERS==
-    •   Since Node applications are highly scalable and data-intensive BECAUSE of the Asynchronous nature of node.
+    •   Since Node applications are highly scalable  BECAUSE of the Asynchronous nature of node.
             o   What does asynchronous mean? Suppose you had a restaurant with a kitchen, two tables, and a waiter.
                 The waiter can take an order from one table, tell the kitchen who prepares the meal, and then wait on
                 the other table while the first tables order is being prepared.
             o   This is the analogy behind non-blocking asynchronous architecture.
+    • 
 
-    •   In Node, the waiter is a thread allocated to handle a request.
+    •   In Node, the ASYNCHRONOUS waiter is a thread allocated to handle a request from MULTIPLE tables.
             o   A single thread (waiter) can be used to handle multiple requests (or in the examples case tables).
 
                             [single thread]
                            /               \
                   [Request]                 [Response]
+
+             o   The single thread (waiter) can service mulitple requests.
+                    o   Suppose that the waiter takes an order from table 1 and puts the order in to the kitchen.
+                    o   The kitchen (in this case a database) prepares that request while the waiter waits on table 2.
+                    o   When the request is ready for table 1, a message is prepared called a "Event Queue".
+                    o   Node is continually monitoring the event queue in the background.
+                    o   When data is ready, node will take it out of queue and process it.
+
+    •   Conversely, we can have blocking SYNCHRONOUS architecture.
+            o   In the case of the restaurant, the waiter takes an order from one table.
+            o   However, the waiter waits in the kitchen until the order is done before waiting on table 2.
+            o   The waiter will not take an order from another table until the order is ready.
+
+    •   In Node, the SYNCHRONOUS waiter is a thread that waits for a single order until it is finished.
+            o   If another request is made, a NEW thread needs to be created.
+            o   If you had a large number of concurrent clients (i.e. multiple tables), at some point you may
+                run out of threads to serve the clients so new clients have to wait until free threads are available 
+                OR add more hardware.
+            o   Synchronous architecture is inefficient compared to asynchronous architecture.
 
 
 ==EXTENDED ANSWERS==
