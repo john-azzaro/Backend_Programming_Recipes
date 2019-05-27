@@ -96,6 +96,22 @@
 /*
 3. How does node.js work?
 //////////////////////////
+==SHORT ANSWERS==
+    •   Since Node applications are highly scalable and data-intensive BECAUSE of the Asynchronous nature of node.
+            o   What does asynchronous mean? Suppose you had a restaurant with a kitchen, two tables, and a waiter.
+                The waiter can take an order from one table, tell the kitchen who prepares the meal, and then wait on
+                the other table while the first tables order is being prepared.
+            o   This is the analogy behind non-blocking asynchronous architecture.
+
+    •   In Node, the waiter is a thread allocated to handle a request.
+            o   A single thread (waiter) can be used to handle multiple requests (or in the examples case tables).
+
+                            [single thread]
+                           /               \
+                  [Request]                 [Response]
+
+
+==EXTENDED ANSWERS==
     •   Node.js uses V8 JavaScript engine in chrome.
     •   V8 is a "just-in-time compiler" written in C++ that takes the JavaScript you write in your web apps
         and turns it into machine-level instructions.
