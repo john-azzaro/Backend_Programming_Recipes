@@ -16,6 +16,11 @@
 ///////////////////
 ==SHORT ANSWER==
     •   Node.js is an open source and cross-platform runtime enviroment for executing JavaScript OUTSIDE of a browser.
+    •   Node is a program that includes the v8 JavaScript engine plus additional modules that give us extra capabilites
+        that are not inside browsers.
+    •   Node is NOT a programming langauge.
+    •   Node is NOT to be compared to other frameworks like ASP.NET.
+    •   Node is NOT a framework (its a runtime enviroment for executing JavaScript code).
 
 ==EXTENDED ANSWER==
     •   Node.js is a platform that allows us to write JavaScript that runs on the server.
@@ -50,6 +55,34 @@
     •   Since web and mobile apps are only the surface, they need a way to talk to some service that sit on
         the server (or cloud) to store data, send emails, etc.
 */
+
+
+/* 
+3. What is a runtime enviroment?
+////////////////////////////////
+    •   Before Node, JavaScript was primarily used to make application INSIDE a browser.
+            o   Every browser has a "JavaScript Engine" that takes JavaScript code and converts it to MACHINE CODE
+                so the computer can understand.
+                    o   For example, Microsoft Edge uses Chakra, Mozilla firefox uses SpiderMonkey, and Chrome uses v8.
+                    o   Because of this variety of browsers, JavaScript code can behave differently in these browsers. 
+    •   The browser provides the runtime enviroment for JavaScript code.
+            o   Up until 2009, JavaScript could only run in the browser.
+            o   However, in 2009 Ryan Dahl (creator of node) thought it would be great to execute JavaScript OUTSIDE the browser.
+            o   So he took googles v8 engine (fastest there is) and embedded it inside a C++ program and called it Node.
+            o   So similar to a browser, node is a runtime enviroment for JavaScript code.
+                    o   In so many words, it contains a JavaScript engine that can execute JavaScript code.
+            o   Node also has certain objects that provide an enviroment for JavaScript code.
+                    o   However, those objects are DIFFERENT from the object we have in our browsers.
+                        o   For example, node does NOT have the document object selector (i.e. document.getByElementId(''));
+                        o   Instead, we have more interesting objects thsat give us more capabilites. For example:
+                            o   fs.readFile()  -- work with the file system
+                            o   http.createServer() -- listen for requests on a given port.
+    •   Google Chrome and Node have the same engine but are different runtime enviroments for JavaScript.
+
+
+*/
+
+
 
 
 /*
