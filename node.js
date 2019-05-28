@@ -2,7 +2,14 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Node.js
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      1. 
+//      1. What is Node.js?
+//         + What is Node?
+//         + What is NOT Node?
+//      2. What is a runtime enviroment?
+//      3. Why do we use Node.js?  
+//      4. Why is Node's language in JavaScript?
+//      5. What is Asynchronous vs Synchronous architecture and which would node be?
+//      6. How do you write a basic node program?     
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node.js from study, research, tutorials, mentor meetings,
@@ -13,24 +20,30 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 /*
 1. What is Node.js?
 ///////////////////
 ==SHORT ANSWERS==
+
+    What is node?
+    ==============
+    •   Node.js is a platform that allows us to write JavaScript that runs on the server.
     •   Node.js is an open source and cross-platform runtime enviroment for server side and networking applications 
         (i.e. executing JavaScript OUTSIDE of a browser).
     •   Node is a program that includes the v8 JavaScript engine plus additional modules that give us extra capabilites
         that are not inside browsers.
+    •   Node.js is a server-side enviroment for executing JavaScript.
+    •   Applications for Node are written in JavaScript. 
+     
+    What is NOT node?
+    =================
     •   Node is NOT a programming langauge.
     •   Node is NOT to be compared to other frameworks like ASP.NET.
     •   Node is NOT a framework (its a runtime enviroment for executing JavaScript code).
     •   Node is NOT for CPU-intensive applications (since node applications are single threaded).
-    •   Applications for Node are written in JavaScript.
+    
 
-==EXTENDED ANSWER==
-    •   Node.js is a platform that allows us to write JavaScript that runs on the server.
-    •   Node.js uses the chrome V8 engine to give us a platform to execute JavaScript outside the browser. 
-    •   Node.js is a server-side enviroment for executing JavaScript.   
 */
 
 
@@ -41,8 +54,7 @@
     •   A runtime enviroment is an engine that can run a specific type of code.
 
 ==EXAMPLE==
-    •   For example, your browser has a runtime enviroment that allows it to execute JavaScript code.  Node allows
-        you to have a runtime enviroment for JavaScript OUTSIDE the browser.
+    •   For example, Node.js is a lean, fast, crossplatform JavaScript RUNTIME ENVIROMENT for servers ad .
 
 ==EXTENDED ANSWERS==
     •   Before Node, JavaScript was primarily used to make application INSIDE a browser.
@@ -67,8 +79,8 @@
 
 
 /*
-3. Why do we use Node.js?
-/////////////////////////
+3. Why would you use Node.js?
+/////////////////////////////
 ==SHORT ANSWER==
     •   Node.js is used to build back-end services such as API's that power our client applications like 
         a web or mobile app (i.e. what the user sees and interacts with).
@@ -180,8 +192,8 @@
 6. How do you write a basic node program?
 /////////////////////////////////////////
 ==SHORT ANSWER==
-    •   To write a basic node program, you simply need to write a JavaScript program in a text editor and
-        the run the program in Gitbash by running $node and calling the app as an argument.
+    •   To write a basic node program, write a JavaScript program in a text editor and then 
+         execute the program in Gitbash by running $node and calling the app as an argument.
 
 ==EXAMPLE==
     1. Create a file for your basic node application.
