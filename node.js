@@ -95,7 +95,7 @@
 */
 
 /* 
-3. Why is Node's language in JavaScript?
+4. Why is Node's language in JavaScript?
 /////////////////////////////////////////
 
     •   Front and back end share the same language, code, 
@@ -119,9 +119,19 @@
 
 
 /*
-3. How does node.js work?
-//////////////////////////
+5. What is Asynchronous vs Synchronous architecture and which would node be?
+////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWERS==
+    •   Node has an Asynchronous, "non-blocking" architecture that uses a single thread to service multiple requests.
+    •   A Synchronous "blocking" architecture must service each request before movingon to the next one making it
+        inefficient compared to asynchronous arhcitecture.
+
+==EXAMPLE==
+    •   For example, think of a restaurant.  
+    •   An Asynchronous restaurant would have a waiter (thread) that could service multiple tables (responses) while the orders 
+        are given to the kitchen (server).  When those orders are done, the finished order in the "event queue" is brought to 
+        the requesting table.
+
 
 ==EXTENDED ANSWERS==
     •   Since Node applications are highly scalable  BECAUSE of the Asynchronous nature of node.
@@ -165,7 +175,36 @@
     •   A JavaScript engine translates JavaScript into instructions that the computer can execute.
 */
 
-/* 
 
+/* 
+6. How do you write a basic node program?
+/////////////////////////////////////////
+==SHORT ANSWER==
+    •   To write a basic node program, you simply need to write a JavaScript program in a text editor and
+        the run the program in Gitbash by running $node and calling the app as an argument.
+
+==EXAMPLE==
+    1. Create a file for your basic node application.
+    2. In Gitbash, cd into the folder.
+    3. In your text editor, create a basic program and save it as app.js.  
+    
+            For example:
+
+                    function welcome(name) {
+                        console.log("Hello there " + name);
+                    }
+
+                    welcome("Joe")      //=> Hello there Joe
+
+    4. In Gitbash, run node and pass the file "app.js" as an argument:
+
+                    $node app.js
+
+            •   Note at this point that Node is a C++ program that includes chrome's v8 JavaScript engine.
+            •   When we pass app.js to Node, Node will give the program to v8 for execution.
+
+    5. Upon execution, you will get the desired program output:
+
+                    Hello there Joe
 */
 
