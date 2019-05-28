@@ -54,7 +54,7 @@
     •   A runtime enviroment is an engine that can run a specific type of code.
 
 ==EXAMPLE==
-    •   For example, Node.js is a lean, fast, crossplatform JavaScript RUNTIME ENVIROMENT for servers ad .
+    •   For example, Node.js is a lean, fast, crossplatform JavaScript RUNTIME ENVIROMENT for servers and applications.
 
 ==EXTENDED ANSWERS==
     •   Before Node, JavaScript was primarily used to make application INSIDE a browser.
