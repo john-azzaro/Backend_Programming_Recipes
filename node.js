@@ -8,6 +8,8 @@
 //     1. Useful overview of information on Node.js from study, research, tutorials, mentor meetings,
 //        peer discussions, and good ole' fashioned curiosity.  I've put the document in Question and
 //        Answer format for improved readability.
+//     3. Download node.js: https://nodejs.org/en/
+//     2. Documentation for Node.js: https://nodejs.org/en/docs/
 // 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -15,12 +17,15 @@
 1. What is Node.js?
 ///////////////////
 ==SHORT ANSWERS==
-    •   Node.js is an open source and cross-platform runtime enviroment for executing JavaScript OUTSIDE of a browser.
+    •   Node.js is an open source and cross-platform runtime enviroment for server side and networking applications 
+        (i.e. executing JavaScript OUTSIDE of a browser).
     •   Node is a program that includes the v8 JavaScript engine plus additional modules that give us extra capabilites
         that are not inside browsers.
     •   Node is NOT a programming langauge.
     •   Node is NOT to be compared to other frameworks like ASP.NET.
     •   Node is NOT a framework (its a runtime enviroment for executing JavaScript code).
+    •   Node is NOT for CPU-intensive applications (since node applications are single threaded).
+    •   Applications for Node are written in JavaScript.
 
 ==EXTENDED ANSWER==
     •   Node.js is a platform that allows us to write JavaScript that runs on the server.
@@ -69,6 +74,7 @@
         a web or mobile app (i.e. what the user sees and interacts with).
 
 ==EXTENDED ANSWERS==
+    •   Node is lightweight and you can write your front-end and back-end in the same langauge.
     •   Node is ideal for buidlign highly scalable, data-intensive, and real time back end services that power
         client applications.
     •   Node is easy to start, good for prototyping and agile development, good for building fast and highly 
@@ -88,8 +94,27 @@
         the server (or cloud) to store data, send emails, etc.
 */
 
+/* 
+3. Why is Node's language in JavaScript?
+/////////////////////////////////////////
 
+    •   Front and back end share the same language, code, 
 
+    •   Since JavaScript is a dynamic language (i.e. the meaning is determined by value not when it is declared), it
+        is loosely types rather than strongly typed.
+    •   JavaScript works very well with JSON which is ideal for web apps both on the front and back ends.
+    •   Since browsers use JavaScript for components, components are typically written in JavaScript.
+    •   Its useful to have the front-end and the back-end written in the same langauge for a few reasons:
+        o   There are no syntactical difference when you use one language like JavaScript.
+        o   Being able to share code betwen the front end and the back end.
+                o  For example: Shared libraries (like Underscore, etc.) used for both front and back ends so that
+                                if you are using user authentication on front and back end, you want to use the same
+                                library to authorize the user.
+                o  For example: Using an algorithm or function that you could use on the front and back end.
+                o  For example: Using a data model, like the definition of your user which can have many properties.
+    •   If the back end language is not the same as the front end, you will also have a lot fo maintenance overhead.
+
+*/
 
 
 
@@ -97,6 +122,8 @@
 3. How does node.js work?
 //////////////////////////
 ==SHORT ANSWERS==
+
+==EXTENDED ANSWERS==
     •   Since Node applications are highly scalable  BECAUSE of the Asynchronous nature of node.
             o   What does asynchronous mean? Suppose you had a restaurant with a kitchen, two tables, and a waiter.
                 The waiter can take an order from one table, tell the kitchen who prepares the meal, and then wait on
@@ -138,4 +165,7 @@
     •   A JavaScript engine translates JavaScript into instructions that the computer can execute.
 */
 
+/* 
+
+*/
 
