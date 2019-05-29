@@ -7,7 +7,8 @@
 //         + Are variables and functions added or accessable to the global object?
 //      3. What is a module?
 //      4. How do you create a module?
-//      5. How do you load a module?
+//      5. What is the require() function?
+//      6. How do you load a module?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Modules from study, research, tutorials, mentor meetings,
@@ -218,8 +219,21 @@
         •   You can even rename the module to something else:
                     module.export.endPointUrl = url;
 
+
+        OPTIONAL: What do you do if you just want to export a single function?
+        =====================================================================
+        •   Since using the "exports" property would be useful if you had multiple methods or properties.
+        •   If you only have a single method, you would simply need to omit the "log" so it is just a function to export.
+        •   When you do this (following the example), logger (from Question 6 in app.js) becomes a function we can access directly.
+
+                    module.exports = log;
+
+                o   and in app.js (building on Question 6 topic):
+
+                    logger('Welcome!')    ==>  Welcome!
+
                     
-        STEP 4 (OPTIONAL): Check to see if you were successful in adding your method to the exports function
+        OPTIONAL: Check to see if you were successful in adding your method to the exports function
         =====================================================================================================
 
         •   And when you console.log(module) in logger.js, you will see the "log" function in the "exports" property.
@@ -243,9 +257,10 @@
 
 
 /* 
-5. How do you load a module?
-////////////////////////////
-    •   To load a module, you need to use the "require()" function.
+5. What is the require() function?
+///////////////////////////////////
+    •   The require function returns the object that is exported from a target module
+    •   The require() function is used to load a module.
     •   The require() function is only in node, so it is not in browsers.
     •   The require() function takes only one argument, which is the name (i.e. path) of the module we want to load.
 
@@ -257,17 +272,46 @@
 
                     require('./logger.js')
 
-            o   But what if the module was in a subfolder?  We would just need to include that subfolder in the path:
 
+        OPTIONAL: What if the module is NOT in the same folder?
+        =======================================================
+            o   If the module is a subfolder, you just need to include that subfolder in the path:
+            
                             require('./subFolder/logger.js')
             
-            o   If the module is in a PARENT folder, we add another period to the path at the beginning:
+            o   If the module is in a PARENT folder, you add another period to the path at the beginning:
 
-                            require('../logger.js');
+                            require('../logger.js');   
+*/
 
-    •   And the exports
+
+/* 
+6. How to you load a module?
+////////////////////////////
+    •   To load a module, you create a "const" variable and call the require function as a value.
+        o   Note: You want to use "const" for your variable because you do not want to accidently over-ride it.
+
+                    const logger = require('./logger.js')
+    
+    •   Then, you can call logger.log in app.js with a message!
+
+                    logger.log('Welcome!');
+                     
+    •   And Finally in Gitbash, when you input node app.js you will get this:
+
+                    Welcome!
 
 
+        OPTIONAL: How to verify you loaded a module
+        ===========================================                    
+        •   In Gitbash, you will see that when you input node app.js, you get an object with a single 
+            method called log with a function:
+
+                        node app.js
+                        { log: [Function: log] }
+
+       
+    
 */
 
 
