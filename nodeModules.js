@@ -2,13 +2,25 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Node Modules
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      1. What are global objects in JavaScript?   
+//      1. What are global objects in JavaScript?
+//         + What is the difference between console.log and window.console.log?
+//         + What are some shared client and server side objects available in node?   
 //      2. What are global objects in Node?
-//         + Are variables and functions added or accessable to the global object?
+//         + Are variables and functions accessible globally?
 //      3. What is a module?
+//      4. What is a module JSON object?
+//         + What does a module JSON look like?
 //      4. How do you create a module?
+//         + Can you export a single function?
+//         + Can you check the module to verify that you added your method to the exports function?
 //      5. What is the require() function?
+//         + Can you access a module if it is NOT in the same folder?
 //      6. How do you load a module?
+//      7. What is a Module wrapper function?
+//         + What does a module wrapper function look like?
+//         + What are the arguments of a module wrapper function?
+//         + How do you check module wrapper arguments?
+//         +
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Modules from study, research, tutorials, mentor meetings,
@@ -31,9 +43,13 @@
         o   console.log() is a global object.
         o   window.console.log() is a global object.
 
-==EXTENDED ANSWER==
-    console.log and window.console.log
-    ===================================
+
+==ADDITIONAL EXAMPLES==
+
+    What is the difference between console.log and window.console.log?
+    ===================================================================
+    •   Console.log and window.console.log are virtually the same, only window is an added prefix when run.
+
     •   A global object is part of the global scope which means we can access it anywhere in our code. 
     •   "console.log" is such a global object.
     
@@ -49,8 +65,8 @@
             object is defined, 
                 
 
-    Client and Server side objects available in node
-    ================================================            
+    What are some shared client and server side objects available in node?
+    =======================================================================           
     •   As part of the window object, there are other objects that are available in node as well which can be 
         used on both client and server side, such as:
 
@@ -88,10 +104,10 @@
             setInterval()    ==>   global.setInterval()
             clearInterval()  ==>   global.clearInterval()
 
-    Are variables and functions added or accessable to the global object?
-    ====================================================================
-    •   However, variables and function defined in a .js file are NOT added to the global object but only 
-        scoped to the local file (i.e. .js file) because of Nodes modular system.  
+    Are variables and functions accessible globally?
+    ================================================
+        •   However, variables and function defined in a .js file are NOT added to the global object but only 
+            scoped to the local file (i.e. .js file) because of Nodes modular system.  
 */
 
 
@@ -126,13 +142,13 @@
 
 
 /* 
-4. What is a module JSON object and what does it look like?
-////////////////////////////////////////////////////////////
+4. What is a module JSON object?
+////////////////////////////////
     •   Since all files are modules, when you call "module" you will get a JSON object with properties with special
         signifigance, some of which will allow you to "export" parts of that module elsewhere in your code.
 
-    Calling module and observing the module JSON object
-    ===================================================
+    What does a module JSON look like?
+    ===================================
     1. In your app.js "main" module, write this simple console.log:
 
             console.log(module);
@@ -261,8 +277,8 @@
                     module.export.endPointUrl = url;
 
 
-        OPTIONAL: What do you do if you just want to export a single function
-        =======================================================================
+        OPTIONAL: Can you export a single function?
+        ===========================================
         •   Since using the "exports" property would be useful if you had multiple methods or properties.
         •   If you only have a single method, you would simply need to omit the "log" so it is just a function to export.
         •   When you do this (following the example), logger (from Question 6 in app.js) becomes a function we can access directly.
@@ -274,8 +290,8 @@
                     logger('Welcome!')    ==>  Welcome!
 
                     
-        OPTIONAL: Check to see if you were successful in adding your method to the exports function
-        =====================================================================================================
+        OPTIONAL: Can you check the module to verify that you added your method to the exports function?
+        ===============================================================================================
 
         •   And when you console.log(module) in logger.js, you will see the "log" function in the "exports" property.
 
@@ -323,8 +339,8 @@
                     require('./logger.js')
 
 
-        OPTIONAL: What if the module is NOT in the same folder?
-        =======================================================
+        OPTIONAL: Can you access a module if it is NOT in the same folder?
+        ===================================================================
             o   If the module is a subfolder, you just need to include that subfolder in the path:
             
                             require('./subFolder/logger.js')
@@ -357,15 +373,12 @@
    
                     logger.log('Welcome!');
                      
-             •   And Finally in Gitbash, when you input node app.js you will get this:
+                o   And Finally in Gitbash, when you input node app.js you will get this:
 
                     Welcome!
-
-
-    OPTIONAL: How do you verify that you loaded a module?
-    =====================================================                    
-    •   In Gitbash, you will see that when you input node app.js, you get an object with a single 
-        method called log with a function:
+                   
+    •   To verfiy that you loaded a module, in Gitbash, you will see that when you input node app.js, 
+        you get an object with a single method called log with a function:
 
                 node app.js
                 { log: [Function: log] }
@@ -374,8 +387,8 @@
 
 
 /* 
-What is a Module wrapper function?
-///////////////////////////////////
+7. What is a Module wrapper function?
+/////////////////////////////////////
 ==SHORT ANSWER==
     •   A module wrapper is a function that "wraps" around each module (i.e. file) to keep the code inside "private".
     •   Node does NOT execute code in a file directly, but rather wraps the code of each module in an IIFE (immediately
@@ -388,44 +401,7 @@ What is a Module wrapper function?
     •   Node automatically wraps the module in a "wrapper".
     •   The "module wrapper" function has serveral arguments such as "exports", "require", etc.
 
-
-    What does a module wrapper function look like?
-    ===============================================
-
-        (function (exports, require, module, __filename, __dirname) {
-            // code in the module.
-        })
-
-
-    What are the arguments of a module wrapper function?
-    =====================================================
-            • exports     = shortcut for module.exports (e.g. exports.log).
-                          = Cannot be rest because it is a short cut for module.exports.
-            • require     = local to each mdoule, require is an argument passed to the function.
-            • module      = module (i.e. module.exports.log)
-            • __filename  = name of the file.
-            • __dirname   = path of the file.
-
-
-    How do you check these arguments?
-    =================================
-        •   To check any of these arguments, simply console.log() the argument.
-            o   For example, console.log(__filename) will show the path to the specific module (i.e. file).
-            o   For example, console.log(__dirname) will show the main folder (i.e. directory) the module is found in.
-
-
-
-
-
-
-
-
-
-
-
-    How do you find evidence of the module wrapper?
-    ===============================================
-
+==EXAMPLE==
     STEP 1: Create an error in your node application, like this: 
     
                 let x =;
@@ -453,19 +429,38 @@ What is a Module wrapper function?
                                                                                 ^
         •   This function with parameters is our MODULE WRAPPER.
         •   At runtime, the code is converted to an IIFE (Immediately Invoked Function Expression):
+        •   Node does NOT execute code directly, but rather wraps the code of each module in an IIFE.
 
                     o Example of a IIFE:
 
                         (function(param1, param2) {         <== Note the parenthesis around the entire function.
                             // code executed in here
-                        })
-
-        •   Node does NOT execute code directly, but rather wraps the code of each module in an IIFE.
-        
-    
-    
+                        })      
 
 
+    What does a module wrapper function look like?
+    ===============================================
+
+        (function (exports, require, module, __filename, __dirname) {
+            // code in the module.
+        })
+
+
+    What are the arguments of a module wrapper function?
+    =====================================================
+            • exports     = shortcut for module.exports (e.g. exports.log).
+                          = Cannot be rest because it is a short cut for module.exports.
+            • require     = local to each mdoule, require is an argument passed to the function.
+            • module      = module (i.e. module.exports.log)
+            • __filename  = name of the file.
+            • __dirname   = path of the file.
+
+
+    How do you check module wrapper arguments?
+    ==========================================
+        •   To check any of these arguments, simply console.log() the argument.
+            o   For example, console.log(__filename) will show the path to the specific module (i.e. file).
+            o   For example, console.log(__dirname) will show the main folder (i.e. directory) the module is found in.
 
 */
 
