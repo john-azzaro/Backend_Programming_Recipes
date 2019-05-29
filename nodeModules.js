@@ -120,7 +120,7 @@
 
             Module {
             id: '.',                                                           // Unique identifer
-            exports: {},                                                       // 
+            exports: {},                                                       // modules in the file that can be "exported" (here empty bc no modudles to export yet)
             parent: null,                                                      //
             filename: 'C:\\Users\\Admin\\Desktop\\first-app\\app.js',          // Complete path to the file
             loaded: false,                                                     // boolean which determines if the module is loaded or not
@@ -131,10 +131,79 @@
                 'C:\\Users\\Admin\\node_modules',
                 'C:\\Users\\node_modules',
                 'C:\\node_modules' ] }
+*/
+
+
+/* 
+4. How do you create a module?
+//////////////////////////////
+
+    STEP 1: Create a new module (i.e. file) in your project folder named "logger.js."           
+        •   This module will be for log-in messages to be reused in different parts of the application
+            or even other applications.
+
+    STEP 2: In your logger.js module, write the code you want to be able to reuse.
+        •   For this part, imagine that we want to use a remote login service for logging messages.  So we 
+            are using a service that provides a URL and we can send an HTTP request to that URL to log messages
+            in the cloud.
+        
+
+                    let url = 'http://mylogger.io/log';       // sends an HTTP request to this endpoint
+
+                    function log(message) {                   // function that takes a message and send HTTP request
+                        // Send HTTP request
+                        console.log(message);
+                    }
+
+
+        •   Remember that the variable and function above are PRIVATE, and they CANNOT be accessed beyond the
+            scope of this document.
+        
+
+    STEP 3: To make the code public and visible to the outside, we need to "export" this module.
+        •   Before going any further, remember that when we typed in $node app.js in Gitbash we got a "Module "JSON
+            object in return.  It looked like this:
+        •   Look at the "exports" property and you will see an empty object.   
+            
+                    Module {
+                        id: '.',                                                           
+                        exports: {},                                // EMPTY EXPORTS OBJECT                           
+                        parent: null,                                                      
+                        filename: 'C:\\Users\\Admin\\Desktop\\first-app\\app.js',          
+                        loaded: false,                                                     
+                        children: [],                                                      
+                        paths:                                                             
+                        [ 'C:\\Users\\Admin\\Desktop\\first-app\\node_modules',
+                            'C:\\Users\\Admin\\Desktop\\node_modules',
+                            'C:\\Users\\Admin\\node_modules',
+                            'C:\\Users\\node_modules',
+                            'C:\\node_modules' ] }
+        
+
+
+
+        •   To export, we simply add it as a method to the "exports" object in the Module JSON object             
 
 
 
 
+        •   The object we are exporting (i.e. module.exports) has the singular mathod "log".
+
+
+
+
+
+
+
+                    let url = 'http://mylogger.io/log';       
+
+                    function log(message) {                  
+                        // Send HTTP request
+                        console.log(message);
+                    }
+
+                    module.exports.log  = log;                       // here we add a method "log" to the "exports" object and
+                                                                        assign it the value of the function "log" above.
 
 
 
