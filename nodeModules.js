@@ -23,13 +23,16 @@
 1. What are global objects in JavaScript?
 /////////////////////////////////////////
 ==SHORT ANSWER
-    •   A global object is part of the global scope which means we can access it anywhere in our code.  
-        In JavaScript, we can use the "window" prefix that represents global scope. 
+    •   In the client side of JavaScript that is run inside a browser, when you declare a function or a variable
+        it is added to the global scope and accessible via the "window" object (i.e. window.greeting()).
 
 ==EXAMPLE==
-        o   For example, console.log(); is a global object
+        o   console.log() is a global object.
+        o   window.console.log() is a global object.
 
 ==EXTENDED ANSWER==
+    •   A global object is part of the global scope which means we can access it anywhere in our code.  
+        In JavaScript, we can use the "window" prefix that represents global scope. 
 
     •   In browsers, there is a "window" object that represents global scope.
         o   So all the variables and functions defined globally can be accessed by the window object
@@ -61,6 +64,8 @@
             var greeting = "hello!";   ==>   window.greeting;
 */
 
+
+
 /*
 2. What are global objects in Node?
 ///////////////////////////////////
@@ -76,9 +81,36 @@
     Are variables and function added or accessable to the global object?
     ====================================================================
     •   However, variables and function defined in a .js file are NOT added to the global object but only scoped to the
-        local file (i.e. .js file) because of Nodes modular system.
-    
-  
+        local file (i.e. .js file) because of Nodes modular system.  
+*/
+
+
+
+/*
+3. What are modules?
+////////////////////
+    •   Module is a core concept of node in which 
+
+    •   Because we might have multiple files of JavaScript code, accessing function and variables across those multiple files 
+        might result in having a function or variable over-ridden on one page or another and causing bugs in our code.  So to 
+        avoid this problem with global scope, we use modules which are small building blocks where we define variables and 
+        functions so that names will not conflict.
+    •   Every file in a Node application is a "module".
+    •   The variables and function in those file "modules" are private, meaning that they are scoped to that particular file.
+    •   To use a variable or functions defined in a module that is OUTSIDE that module, then you need to explicitly export it
+        and make it public.
+
+==EXAMPLE==
+
+
+
+
+
+
+
+
+
+
 
 */
 
