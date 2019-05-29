@@ -300,6 +300,15 @@
 5. What is the require() function?
 ///////////////////////////////////
 ==SHORT ANSWER==
+    •   In order to access a module in another file, you need to use the require() function to return the object 
+        exported from that file.
+
+==EXAMPLE==
+    •   For example, suppose you created a "greeting" module in another file and you want to use it in your primary
+        module file.  You simply need to "load" that module to the current file using the require function and pass 
+        as an argument the location of that module.  
+
+==EXTENDED ANSWERS==
     •   The require function returns the object that is exported from a target module
     •   The require() function is used to load a module.
     •   The require() function is only in node, so it is not in browsers.
@@ -327,18 +336,28 @@
 
 
 /* 
-6. How to you load a module?
+6. How do you load a module?
 ////////////////////////////
+==SHORT ANSWER==
     •   To load a module, you create a "const" variable and call the require function as a value.
         o   Note: You want to use "const" for your variable because you do not want to accidently over-ride it.
 
-                    const logger = require('./logger.js')
-    
-    •   Then, you can call logger.log in app.js with a message!
 
+==PRACTICAL EXAMPLE==
+    
+    STEP 1: First, load your module using the require() function:
+                    
+                    require('./logger.js')
+
+    STEP 2: Second, assign the require function as a value to a constant variable:
+
+                    const logger = require('./logger.js')
+
+    STEP 3: Call the exported module with the module name and the property!
+   
                     logger.log('Welcome!');
                      
-    •   And Finally in Gitbash, when you input node app.js you will get this:
+             •   And Finally in Gitbash, when you input node app.js you will get this:
 
                     Welcome!
 
