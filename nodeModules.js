@@ -5,9 +5,9 @@
 //      1. What are global objects in JavaScript?   
 //      2. What are global objects in Node?
 //         + Are variables and functions added or accessable to the global object?
-//
-//
-//
+//      3. What is a module?
+//      4. How do you create a module?
+//      5. How do you load a module?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Modules from study, research, tutorials, mentor meetings,
@@ -87,8 +87,8 @@
 
 
 /*
-3. What are modules?
-////////////////////
+3. What is a module?
+/////////////////////
 ==SHORT ANSWER==
     •   In Node, every file is a "module" and variables and functions defined in each of those modules are scoped to
         those files.
@@ -138,11 +138,14 @@
 4. How do you create a module?
 //////////////////////////////
 
-    STEP 1: Create a new module (i.e. file) in your project folder named "logger.js."           
+    STEP 1: Create a new module (i.e. file) in your project folder named "logger.js." 
+    ==================================================================================          
         •   This module will be for log-in messages to be reused in different parts of the application
             or even other applications.
 
+
     STEP 2: In your logger.js module, write the code you want to be able to reuse.
+    ===============================================================================
         •   For this part, imagine that we want to use a remote login service for logging messages.  So we 
             are using a service that provides a URL and we can send an HTTP request to that URL to log messages
             in the cloud.
@@ -157,13 +160,14 @@
 
 
         •   Remember that the variable and function above are PRIVATE, and they CANNOT be accessed beyond the
-            scope of this document.
+            scope of this document. How we make them public is our next step!
         
 
     STEP 3: To make the code public and visible to the outside, we need to "export" this module.
-        •   Before going any further, remember that when we typed in $node app.js in Gitbash we got a "Module "JSON
-            object in return.  It looked like this:
-        •   Look at the "exports" property and you will see an empty object.   
+    ==============================================================================================
+        •   Before going any further, remember that when we typed in $node app.js in Gitbash we got a "Module" JSON
+            object in return.  It looks like this:
+ 
             
                     Module {
                         id: '.',                                                           
@@ -178,21 +182,23 @@
                             'C:\\Users\\Admin\\node_modules',
                             'C:\\Users\\node_modules',
                             'C:\\node_modules' ] }
+
         
+        •   Look at the "exports" property and you will see an empty object. 
+        •   Our goal is to add to this object so it can be exported from the module and available outside the module.
+
+        •   TO EXPORT, we simply add it as a method to the "exports" object in the Module JSON object with dot-notation and
+            set it to the log function above.
+
+                        
+                                    Add the log method to the exports property...    
+                                   /
+                        module.exports.log = log;
+                                               \
+                                                ... and set the value to the "log" function!
 
 
-
-        •   To export, we simply add it as a method to the "exports" object in the Module JSON object             
-
-
-
-
-        •   The object we are exporting (i.e. module.exports) has the singular mathod "log".
-
-
-
-
-
+        •   So the logger module will look something like this when it is completed:
 
 
                     let url = 'http://mylogger.io/log';       
@@ -204,7 +210,40 @@
 
                     module.exports.log  = log;                       // here we add a method "log" to the "exports" object and
                                                                         assign it the value of the function "log" above.
+        
+        •   You can apply this way of exporting a module to anything else in the module (i.e. file).
+                    
+                    module.exports.url = url;
+        
+        •   You can even rename the module to something else:
 
+                    module.export.endPointUrl = url;
+*/
+
+
+
+/* 
+5. How do you load a module?
+////////////////////////////
+    •   To load a module, you need to use the "require()" function.
+    •   The require() function is only in node, so it is not in browsers.
+    •   The require() function takes only one argument, which is the name (i.e. path) of the module we want to load.
+
+                    require('');
+
+    •   However, we need to indicate what path to take to access the module and since the app.js and logger.js are in the 
+        same folder, we use ./ and then the name of the module.  Note that "logger.js" can be simply "logger" because node
+        assumes it is a JavaScript file.
+
+                    require('./logger.js')
+
+            o   But what if the module was in a subfolder?  We would just need to include that subfolder in the path:
+
+                            require('./subFolder/logger.js')
+            
+            o   If the module is in a PARENT folder, we add another period to the path at the beginning:
+
+                            require('../logger.js');
 
 
 
