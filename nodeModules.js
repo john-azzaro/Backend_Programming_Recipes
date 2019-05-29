@@ -24,27 +24,33 @@
 1. What are global objects in JavaScript?
 /////////////////////////////////////////
 ==SHORT ANSWER
-    •   In the client side of JavaScript that is run inside a browser, when you declare a function or a variable
-        it is added to the global scope and accessible via the "window" object (i.e. window.greeting()).
+    •   On the client side of JavaScript such as the browser, when you declare a function or a variable it is
+         added to the global scope and accessible via the "window" object (i.e. window.console.log()).
 
 ==EXAMPLE==
         o   console.log() is a global object.
         o   window.console.log() is a global object.
 
 ==EXTENDED ANSWER==
-    •   A global object is part of the global scope which means we can access it anywhere in our code.  
-        In JavaScript, we can use the "window" prefix that represents global scope. 
-
-    •   In browsers, there is a "window" object that represents global scope.
-        o   So all the variables and functions defined globally can be accessed by the window object
-                    
+    console.log and window.console.log
+    ===================================
+    •   A global object is part of the global scope which means we can access it anywhere in our code. 
+    •   "console.log" is such a global object.
+    
                 console.log()  
+        
+    •   In JavaScript, we can use the "window" prefix that represents global scope. 
 
+                window.console.log().
+
+        o   In browsers, there is a "window" object that represents global scope.      
+        o   All l the variables and functions defined globally can be accessed by the window object:
         o   However, the JavaScript engine will prefix this statement with 'window' because that is where is 
             object is defined, 
                 
-                window.console.log().
 
+    Client and Server side objects available in node
+    ================================================            
     •   As part of the window object, there are other objects that are available in node as well which can be 
         used on both client and server side, such as:
 
@@ -69,9 +75,12 @@
 
 /*
 2. What are global objects in Node?
-///////////////////////////////////
-    •   A global object in node is much like the global object in JavaScript except we use "global" instead of "window".
+////////////////////////////////////
+==SHORT ANSWER==
+    •   A global object (using the "global" prefix) in node is much like the global object in JavaScript 
+        except we use "global" instead of "window".
 
+==EXTENDED ANSWER==
     •   With the "global" object, we can access the same objects in JavaScript as we can in Node.
 
             setTimeout()     ==>   global.setTimeout()
@@ -79,10 +88,10 @@
             setInterval()    ==>   global.setInterval()
             clearInterval()  ==>   global.clearInterval()
 
-    Are variables and function added or accessable to the global object?
+    Are variables and functions added or accessable to the global object?
     ====================================================================
-    •   However, variables and function defined in a .js file are NOT added to the global object but only scoped to the
-        local file (i.e. .js file) because of Nodes modular system.  
+    •   However, variables and function defined in a .js file are NOT added to the global object but only 
+        scoped to the local file (i.e. .js file) because of Nodes modular system.  
 */
 
 
@@ -91,10 +100,17 @@
 3. What is a module?
 /////////////////////
 ==SHORT ANSWER==
-    •   In Node, every file is a "module" and variables and functions defined in each of those modules are scoped to
-        those files.
+    •   In Node, every file (i.e. index.js, etc.) is a "module" and variables and functions defined in each of 
+        those modules are scoped to those files.
+
+==EXAMPLE==
+    •   Think of a book divided into chapters.  Modules are individual "chapters of a book" that can be edited without
+        having to edit other chapters when they are updated.
 
 ==EXTENDED ANSWER==
+    •   Modules are self-contained with distinct functionality which allows them to be shuffled, removed, or added when
+        necessary without disrupting the system as a whole.
+    •   Modules are self-contained, meaning that the code it can be updated
     •   Because we might have multiple files of JavaScript code, accessing function and variables across those multiple files 
         might result in having a function or variable over-ridden on one page or another and causing bugs in our code.  So to 
         avoid this problem with global scope, we use modules which are small building blocks where we define variables and 
@@ -105,9 +121,18 @@
     •   To use a variable or functions defined in a module that is OUTSIDE that module, then you need to explicitly export it
         and make it public.
     •   Every Node application has at least one file (i.e. module) which is called the "main module"
+*/
 
-==EXAMPLE==
 
+
+/* 
+4. What is a module JSON object and what does it look like?
+////////////////////////////////////////////////////////////
+    •   Since all files are modules, when you call "module" you will get a JSON object with properties with special
+        signifigance, some of which will allow you to "export" parts of that module elsewhere in your code.
+
+    Calling module and observing the module JSON object
+    ===================================================
     1. In your app.js "main" module, write this simple console.log:
 
             console.log(module);
@@ -127,18 +152,33 @@
             filename: 'C:\\Users\\Admin\\Desktop\\first-app\\app.js',          // Complete path to the file
             loaded: false,                                                     // boolean which determines if the module is loaded or not
             children: [],                                                      //
-            paths:                                                             //
+            paths:                                                             // path is the direct paths it takes to get to your module.
             [ 'C:\\Users\\Admin\\Desktop\\first-app\\node_modules',
                 'C:\\Users\\Admin\\Desktop\\node_modules',
                 'C:\\Users\\Admin\\node_modules',
                 'C:\\Users\\node_modules',
                 'C:\\node_modules' ] }
+
 */
+
 
 
 /* 
 4. How do you create a module?
 //////////////////////////////
+==SHORT ANSWER==
+    •   To create a module, you simply need to create a file, write the code you want to use, and then "export"
+        that variable or function using "module.export" with the name of the module you want to call it, 
+        and of course assigning as a value the variable or function (e.g module.exports.myMod = myMod). 
+
+                    function myMod() {
+                        // code for module              <== Function you want to export.
+                    }
+
+                    module.exports.myMod = myMod;       <== assigning the function you want to export in the module.
+
+
+==PRACTICAL EXAMPLE==
 
     STEP 1: Create a new module (i.e. file) in your project folder named "logger.js." 
     ==================================================================================          
@@ -193,11 +233,11 @@
             set it to the log function above.
 
                         
-                                    Add the log method to the exports property...    
+                                    ... add the log method to the exports property...    
                                    /
                         module.exports.log = log;
-                                               \
-                                                ... and set the value to the "log" function!
+                           /                   \
+        In the file module...                   ... and set the value to the "log" function!
 
 
         •   So the logger module will look something like this when it is completed:
@@ -221,8 +261,8 @@
                     module.export.endPointUrl = url;
 
 
-        OPTIONAL: What do you do if you just want to export a single function?
-        =====================================================================
+        OPTIONAL: What do you do if you just want to export a single function
+        =======================================================================
         •   Since using the "exports" property would be useful if you had multiple methods or properties.
         •   If you only have a single method, you would simply need to omit the "log" so it is just a function to export.
         •   When you do this (following the example), logger (from Question 6 in app.js) becomes a function we can access directly.
@@ -252,7 +292,6 @@
                             'C:\\Users\\Admin\\node_modules',
                             'C:\\Users\\node_modules',
                             'C:\\node_modules' ] }
-
 */
 
 
@@ -260,6 +299,7 @@
 /* 
 5. What is the require() function?
 ///////////////////////////////////
+==SHORT ANSWER==
     •   The require function returns the object that is exported from a target module
     •   The require() function is used to load a module.
     •   The require() function is only in node, so it is not in browsers.
@@ -348,6 +388,8 @@
 /* 
 https://medium.com/@mattburgess/beyond-console-log-2400fdf4a9d8 -- console
 https://www.geeksforgeeks.org/javascript-cleartimeout-clearinterval-method/ -- clearTimeout explaination
+https://www.freecodecamp.org/news/javascript-modules-a-beginner-s-guide-783f7d7a5fcc/ -- modules explained
+https://www.coreycleary.me/should-you-use-a-logging-framework-or-console-log-in-node/ -- 
 */
 
 
