@@ -89,8 +89,11 @@
 /*
 3. What are modules?
 ////////////////////
-    •   Module is a core concept of node in which 
+==SHORT ANSWER==
+    •   In Node, every file is a "module" and variables and functions defined in each of those modules are scoped to
+        those files.
 
+==EXTENDED ANSWER==
     •   Because we might have multiple files of JavaScript code, accessing function and variables across those multiple files 
         might result in having a function or variable over-ridden on one page or another and causing bugs in our code.  So to 
         avoid this problem with global scope, we use modules which are small building blocks where we define variables and 
@@ -99,11 +102,35 @@
     •   The variables and function in those file "modules" are private, meaning that they are scoped to that particular file.
     •   To use a variable or functions defined in a module that is OUTSIDE that module, then you need to explicitly export it
         and make it public.
+    •   Every Node application has at least one file (i.e. module) which is called the "main module"
 
 ==EXAMPLE==
 
+    1. In your app.js "main" module, write this simple console.log:
 
+            console.log(module);
 
+        •   Note that module in the example above is NOT a global object
+        
+    2. In Gitbash, open app.js using node:
+    
+            $ node app.js
+
+    3. What is returned is a JSON object with key/value pairs:
+
+            Module {
+            id: '.',                                                           // Unique identifer
+            exports: {},                                                       // 
+            parent: null,                                                      //
+            filename: 'C:\\Users\\Admin\\Desktop\\first-app\\app.js',          // Complete path to the file
+            loaded: false,                                                     // boolean which determines if the module is loaded or not
+            children: [],                                                      //
+            paths:                                                             //
+            [ 'C:\\Users\\Admin\\Desktop\\first-app\\node_modules',
+                'C:\\Users\\Admin\\Desktop\\node_modules',
+                'C:\\Users\\Admin\\node_modules',
+                'C:\\Users\\node_modules',
+                'C:\\node_modules' ] }
 
 
 
