@@ -414,8 +414,15 @@ What is a Module wrapper function?
             (function (exports, require, module, __filename, __dirname) { let x=;         
                                                                                 ^
         •   This function with parameters is our MODULE WRAPPER.
-        •   
+        •   At runtime, the code is converted to an IIFE (Immediately Invoked Function Expression):
 
+                    o Example of a IIFE:
+
+                        (function(param1, param2) {         <== Note the parenthesis around the entire function.
+                            // code executed in here
+                        })
+
+        •   
 
 
 
