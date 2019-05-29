@@ -362,16 +362,63 @@
                     Welcome!
 
 
-        OPTIONAL: How to verify you loaded a module
-        ===========================================                    
-        •   In Gitbash, you will see that when you input node app.js, you get an object with a single 
-            method called log with a function:
+    OPTIONAL: How do you verify that you loaded a module?
+    =====================================================                    
+    •   In Gitbash, you will see that when you input node app.js, you get an object with a single 
+        method called log with a function:
 
-                        node app.js
-                        { log: [Function: log] }
+                node app.js
+                { log: [Function: log] }
+*/
 
-       
+
+
+/* 
+What is a Module wrapper function?
+///////////////////////////////////
+==SHORT ANSWER==
+    •   A module wrapper is a function that "wraps" around each module (i.e. file) to keep the code inside "private".
+    •   Node does NOT execute code in a file directly, but rather 
+
+==EXTENDED ANSWER==
+    •   Since modules are "private", meaning that they are only scoped to that module and not visibile anywhere
+        else in the code.
+    •   Node is able to keep those modules private by "wrapping" those modules (i.e. files) in a function.
+
+    How do you find evidence of the module wrapper?
+    ===============================================
+
+    STEP 1: Create an error in your node application, like this: 
     
+                let x =;
+
+    STEP 2: In node, you will receive a syntax error like this:
+
+            C:\Users\Admin\Desktop\first-app\logger.js:1
+            (function (exports, require, module, __filename, __dirname) { let x=;         
+                                                                                ^
+            SyntaxError: Unexpected token ;
+                at createScript (vm.js:80:10)
+                at Object.runInThisContext (vm.js:139:10)
+                at Module._compile (module.js:616:28)
+                at Object.Module._extensions..js (module.js:663:10)
+                at Module.load (module.js:565:32)
+                at tryModuleLoad (module.js:505:12)
+                at Function.Module._load (module.js:497:3)
+                at Module.require (module.js:596:17)
+                at require (internal/module.js:11:18)
+                at Object.<anonymous> (C:\Users\Admin\Desktop\first-app\app.js:9:16)
+
+    STEP 3: Look at the second line in the error:
+
+            (function (exports, require, module, __filename, __dirname) { let x=;         
+                                                                                ^
+        •   This function with parameters is our MODULE WRAPPER.
+        •   
+
+
+
+
 */
 
 
