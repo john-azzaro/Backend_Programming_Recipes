@@ -100,6 +100,7 @@
         avoid this problem with global scope, we use modules which are small building blocks where we define variables and 
         functions so that names will not conflict.
     •   Every file in a Node application is a "module".
+    •   A module can export a single function or an object.
     •   The variables and function in those file "modules" are private, meaning that they are scoped to that particular file.
     •   To use a variable or functions defined in a module that is OUTSIDE that module, then you need to explicitly export it
         and make it public.
