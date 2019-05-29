@@ -378,12 +378,50 @@ What is a Module wrapper function?
 ///////////////////////////////////
 ==SHORT ANSWER==
     •   A module wrapper is a function that "wraps" around each module (i.e. file) to keep the code inside "private".
-    •   Node does NOT execute code in a file directly, but rather 
+    •   Node does NOT execute code in a file directly, but rather wraps the code of each module in an IIFE (immediately
+        Invoked Function Expression)
 
 ==EXTENDED ANSWER==
     •   Since modules are "private", meaning that they are only scoped to that module and not visibile anywhere
         else in the code.
     •   Node is able to keep those modules private by "wrapping" those modules (i.e. files) in a function.
+    •   Node automatically wraps the module in a "wrapper".
+    •   The "module wrapper" function has serveral arguments such as "exports", "require", etc.
+
+
+    What does a module wrapper function look like?
+    ===============================================
+
+        (function (exports, require, module, __filename, __dirname) {
+            // code in the module.
+        })
+
+
+    What are the arguments of a module wrapper function?
+    =====================================================
+            • exports     = shortcut for module.exports (e.g. exports.log).
+                          = Cannot be rest because it is a short cut for module.exports.
+            • require     = local to each mdoule, require is an argument passed to the function.
+            • module      = module (i.e. module.exports.log)
+            • __filename  = name of the file.
+            • __dirname   = path of the file.
+
+
+    How do you check these arguments?
+    =================================
+        •   To check any of these arguments, simply console.log() the argument.
+            o   For example, console.log(__filename) will show the path to the specific module (i.e. file).
+            o   For example, console.log(__dirname) will show the main folder (i.e. directory) the module is found in.
+
+
+
+
+
+
+
+
+
+
 
     How do you find evidence of the module wrapper?
     ===============================================
@@ -422,7 +460,10 @@ What is a Module wrapper function?
                             // code executed in here
                         })
 
-        •   
+        •   Node does NOT execute code directly, but rather wraps the code of each module in an IIFE.
+        
+    
+    
 
 
 
