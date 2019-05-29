@@ -163,8 +163,8 @@
             scope of this document. How we make them public is our next step!
         
 
-    STEP 3: To make the code public and visible to the outside, we need to "export" this module.
-    ==============================================================================================
+    STEP 3: Add your method using dot notation to the exports object to make the code public and visible to the outside
+    ====================================================================================================================
         •   Before going any further, remember that when we typed in $node app.js in Gitbash we got a "Module" JSON
             object in return.  It looks like this:
  
@@ -211,13 +211,33 @@
                     module.exports.log  = log;                       // here we add a method "log" to the "exports" object and
                                                                         assign it the value of the function "log" above.
         
-        •   You can apply this way of exporting a module to anything else in the module (i.e. file).
-                    
+        ADDITIONAL NOTES
+        •   You can apply this way of exporting a module to anything else in the module (i.e. file).                   
                     module.exports.url = url;
         
         •   You can even rename the module to something else:
-
                     module.export.endPointUrl = url;
+
+                    
+        STEP 4 (OPTIONAL): Check to see if you were successful in adding your method to the exports function
+        =====================================================================================================
+
+        •   And when you console.log(module) in logger.js, you will see the "log" function in the "exports" property.
+
+                    Module {
+                        id: '.',
+                        exports: { log: [Function: log] },              // Here you see it in the exports property.
+                        parent: null,
+                        filename: 'C:\\Users\\Admin\\Desktop\\first-app\\logger.js', 
+                        loaded: false,
+                        children: [],
+                        paths:
+                        [ 'C:\\Users\\Admin\\Desktop\\first-app\\node_modules',
+                            'C:\\Users\\Admin\\Desktop\\node_modules',
+                            'C:\\Users\\Admin\\node_modules',
+                            'C:\\Users\\node_modules',
+                            'C:\\node_modules' ] }
+
 */
 
 
@@ -245,6 +265,7 @@
 
                             require('../logger.js');
 
+    •   And the exports
 
 
 */
