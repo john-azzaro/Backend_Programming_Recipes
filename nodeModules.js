@@ -20,7 +20,7 @@
 //         + What does a module wrapper function look like?
 //         + What are the arguments of a module wrapper function?
 //         + How do you check module wrapper arguments?
-//         +
+//      8. What are built-in modules in Node?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Modules from study, research, tutorials, mentor meetings,
@@ -461,6 +461,63 @@
         •   To check any of these arguments, simply console.log() the argument.
             o   For example, console.log(__filename) will show the path to the specific module (i.e. file).
             o   For example, console.log(__dirname) will show the main folder (i.e. directory) the module is found in.
+*/
+
+
+/* 
+8. What are built-in modules in Node?
+///////////////////////////////////////
+==SHORT ANSWER==
+    •   Built-in modules are modules that are built into the core of node that allow you to work with files, 
+        the OS, HTTP (for creating web servers), etc.
+
+==EXTENDED ANSWER==
+    •   For a complte list of built-in modules, see Node documentation: https://nodejs.org/dist/latest-v10.x/docs/api/
+    •   For example:
+        o   File system which works with files.
+        o   HTTP, which allows us to create web servers that listen for HTTP requests.
+        o   OS, which allows us to work with the operating system.
+        o   Path, which gives us a bunch of utility function for working with paths.
+        o   Process, which gives us current information about the process.
+        o   Query Strings, which is useful in building HTTP services.
+        o   Stream, which allows us to work with streams of data.
+*/
+
+
+/* 
+9. What is a path module?
+/////////////////////////
+==SHORT ANSWER==
+    •   The path module is an object that provides useful methods and utlities for working with file and directory paths.
+
+    How do you access the path module?
+    ==================================
+        •   To access the path module, you need to load the "path" module using the "require" function, get  
+            the result (which is an object) and store it in a constant. 
+
+                    const path = require('path');
+
+                    o   Note here that Node assumes that "path" is a built-in module.
+                    o   If there is no exisitng built-in module "path", it will look for a related path to
+                        a file in this application.
+
+==PRACTICAL EXAMPLE==
+
+    • In your app.js file:
+
+            const path = require('path');              // first we load the path module with the require function and store as a constant/
+            const pathObj = path.parse(__filename);    // Then we use one of path's methods .parse, which will show info about the path.
+                    
+            console.log(pathObj);                      // And finally when pathObj is logged...
+
+    * In Gitbash:
+
+        { root: 'C:\\',
+          dir: 'C:\\Users\\Admin\\Desktop\\first-app',
+          base: 'app.js',
+          ext: '.js',
+          name: 'app' }
+
 
 */
 
