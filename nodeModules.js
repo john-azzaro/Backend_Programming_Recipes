@@ -567,7 +567,42 @@
 
     How do you access the FS module methods?
     ========================================
-        •   To access the methods avaible        
+        •   To access the methods avaible methods, you use dot notation.
+        •   However, one thing to note with FS module methods is that most of the methods available to you 
+            are either synchronous (e.g. readirSync) or asynchronous (readdir).  
+        •   Even though you could use synchronous methods, you should avoid them since they are less efficient.      
+        •   Instead, you should use asynchronous methods because they are non-blocking.
+
+    How do you use a SYNCHRONOUS file system module method?
+    =======================================================
+
+                                        first argument specifies path which in this case is the current folder. 
+                                             /
+            const files = fs.readdirSync('./')
+
+        •   This will return all the current files in a folder.
+        •   So when you console.log "files", you will get all the files that are in the folder 
+
+             [ 'app.js', 'logger.js' ]
+
+    How do you use a ASYNCHRONOUS file system module method?
+    ========================================================
+        •   All Asynchronous methods take a function as the last argument.
+            o   In the case of the example below, we have two arguments:
+                Argument 1 = function path
+                Argument 2 = 
+
+                    first argument is the path         second argument is a funct
+                               /                      /
+            const fs.readdir('./', function(err, files) {
+                if (err) {
+                    console.log('Error', err)
+                } else {
+                    console.log('Results', files)
+                }
+            })
+
+
 
 */
 
