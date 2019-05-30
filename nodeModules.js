@@ -680,19 +680,38 @@
             const EventEmitter = require('events');               // First, we load events and store as a const.  This class is a blueprint for what EventEmitter can do.
             const emitter = new EventEmitter();                   // Second, we create a new object that we can use in the application.
 
-            emitter.on('messageLogged', function(event) {         // The app listens for when messageLogges is called and when it is
-                console.log('Listener called');                       uses the callback function to return "Listener called".
+            emitter.on('messageLogged', function() {              // The app listens for when messageLogges is called and when it is
+                console.log('Listener called');                      uses the callback function to return "Listener called".
             });
 
             emitter.emit('messageLogged')                         // The event that is raised, triggering the listener above!
+*/
 
 
 
+/* 
+What are event arguments?
+/////////////////////////
+==SHORT ANSWER==
+    •   Event arguments allow us to pass data about an event that just happened.
 
+==EXTENDED ANSWER==
+    •   When an event is raised, you would often want to send some data about that event.
+    •   An event argument is simply additional arguments added to .emit() inside an object.
+    •   The object inside the .emit() method can contain multiple values about the event.
+
+==PRACTICAL EXAMPLE==
+            const EventEmitter = require('events');             
+            const emitter = new EventEmitter();                  
+
+            emitter.on('messageLogged', function(event) {                   // Then the event object is passed here as 'event'...
+                console.log('Listener called', event);                      // ... and then logged in the console.
+            });
+
+            emitter.emit('messageLogged', { id: 1, url: 'http://'})         // First, the event object here contains an id and a url.                
 
 
 */
-
 
 
 
