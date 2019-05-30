@@ -589,18 +589,21 @@
     ========================================================
         •   All Asynchronous methods take a function as the last argument.
             o   In the case of the example below, we have two arguments:
-                Argument 1 = function path
-                Argument 2 = 
+                
+                Argument 1 = file path
+                Argument 2 = function which node will call when the asynchronous operation completes (i.e. a callback function).
+                             In this case, the function will let us know if we have an error (i.e. err) or the result (i.e. files).
+                             Only one of those arguments will have a result (and the other will be null). 
+                             If we have an error, we log the error message.
+                             Else if we have a result, we log the result which is a string array of the files previously shown.
 
-                    first argument is the path         second argument is a funct
-                               /                      /
-            const fs.readdir('./', function(err, files) {
-                if (err) {
-                    console.log('Error', err)
-                } else {
-                    console.log('Results', files)
-                }
-            })
+                    const fs.readdir('./', function(err, files) {
+                        if (err) {
+                            console.log('Error', err)                 // If error, return "Error"
+                        } else {
+                            console.log('Results', files)             // If result, return [ 'app.js', 'logger.js' ]
+                        }
+                    });
 
 
 
