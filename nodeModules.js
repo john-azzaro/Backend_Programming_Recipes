@@ -27,6 +27,10 @@
 //         + How do you access the OS module?
 //         + How do you access OS module methods?
 //      11. What is a File system module?
+//         + How do you access the file system module?
+//         + How do you access the FS module methods?
+//         + How do you use a SYNCHRONOUS file system module method?
+//         + How do you use a ASYNCHRONOUS file system module method?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Modules from study, research, tutorials, mentor meetings,
@@ -509,7 +513,6 @@
                         a file in this application.
 
 ==PRACTICAL EXAMPLE==
-
     • In your app.js file:
 
             const path = require('path');              // first we load the path module with the require function and store as a constant/
@@ -530,6 +533,7 @@
 /* 
 10. What is an OS module?
 /////////////////////////
+==SHORT ANSWER==
     •   The OS module allow you to get information about the current operating system.
     •   For more info, check out https://nodejs.org/dist/latest-v10.x/docs/api/os.html
 
@@ -555,7 +559,9 @@
 /* 
 11. What is a file system module?
 /////////////////////////////////
+==SHORT ANSWER==
     •   The file system module allows you to work with files and directories.
+    •   The file system module methods come in pairs, specifically asynchronously and synchronously (but best to use async).
     •   For more information, check out https://nodejs.org/dist/latest-v10.x/docs/api/fs.html
 
     How do you access the file system module?
@@ -605,6 +611,16 @@
                         }
                     });
 
+            o   For informations sake, if we did have an error, like the path being incorrect, we would get an "Error" message
+                information about what is wrong.
+*/
+
+
+/* 
+12. What is an Events Module?
+/////////////////////////////
+    •   Events are a core concept in node it is essentially a signal that something has happened.
+    •   
 
 
 */
