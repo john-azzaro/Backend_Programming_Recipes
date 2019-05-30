@@ -489,6 +489,7 @@
 /////////////////////////
 ==SHORT ANSWER==
     •   The path module is an object that provides useful methods and utlities for working with file and directory paths.
+    •   For more info, check out https://nodejs.org/dist/latest-v10.x/docs/api/path.html
 
     How do you access the path module?
     ==================================
@@ -510,14 +511,38 @@
                     
             console.log(pathObj);                      // And finally when pathObj is logged...
 
-    * In Gitbash:
+    • In Gitbash:
 
         { root: 'C:\\',
           dir: 'C:\\Users\\Admin\\Desktop\\first-app',
           base: 'app.js',
           ext: '.js',
           name: 'app' }
+*/
 
+
+/* 
+10. What is an OS module?
+/////////////////////////
+    •   The OS module allow you to get information about the current operating system.
+    •   For more info, check out https://nodejs.org/dist/latest-v10.x/docs/api/os.html
+
+    How do you access the OS module?
+    ================================
+        •   To access the OS module, you need to load the "os" module using the require function, then get the 
+            the result and store it in a constant.
+
+            const os = require('os');
+
+    How do you access OS module methods?
+    ====================================
+        •   To access the methods available to, you simply call the os module and then the method you want (e.g. totalmem)
+            and then store it to a constant.
+
+            const os = require('os');
+            const totalmem = os.totalmem();     <== access os module.
+
+            console.log(totalmem);              //=> 17117339648
 
 */
 
