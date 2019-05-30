@@ -619,13 +619,27 @@
 /* 
 12. What is an Events Module?
 /////////////////////////////
-    •   Events are a core concept in node it is essentially a signal (especially by EventEmitter) that something has happened.
+    •   Events are a core concept in node.
+    •   Events are a signal that something has happened.
+    •   For example, EventsEmitter is a 
     •   For more information, check out https://nodejs.org/dist/latest-v10.x/docs/api/events.html
 
 ==EXAMPLE==
     •   Suppose we have a class called "HTTP" that we can use to build a web server.
+
+                         [HTTP]                
+
     •   When we listen on a given port and recieve a REQUEST, the HTTP class raises an EVENT.
+
+                    EVENT! New Request!
+                            |
+          (request)====> [HTTP]                
+
     •   The job now is to respond to that event and return the right reponse.
+
+                    EVENT! New Request!
+                            |
+                         [HTTP]  ====> (Return correct response)
 
     How do you access the EventEmitter module?
     ===========================================
