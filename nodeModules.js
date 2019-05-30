@@ -621,7 +621,7 @@
 /////////////////////////////
     •   Events are a core concept in node.
     •   Events are a signal that something has happened.
-    •   For example, EventsEmitter is a 
+    •   EventEmitter in particular has much of the same workings as the jQuery event listeners.
     •   For more information, check out https://nodejs.org/dist/latest-v10.x/docs/api/events.html
 
 ==EXAMPLE==
@@ -641,9 +641,56 @@
                             |
                          [HTTP]  ====> (Return correct response)
 
+
     How do you access the EventEmitter module?
     ===========================================
-        • To access the EventsEmitter module, you load "events" with the 
+        • To access the EventsEmitter module, you load "events" with the require function and store it in a constant. 
+        
+            const EventEmitter = require('events');
+
+                o SPECIAL NOTE: Note that the first letter is Capitalized, indicating that this is a CLASS.
+                    A Class is a container of related properties and functions (i.e. methods).
+                o SPECIAL NOTE: This is a CLASS (i.e. blueprint) of what and EventEmitter can do (i.e. everything 
+                    in "events").
+
+        •   To use the EventEmitter, we need to create an instance of that class.
+         
+            const emitter = new EventEmitter();
+
+    How do you access the EventEmitter methods?
+    ===========================================
+        •   To access the EventEmitter methods, you simply use dot notation.
+        •   Although there are over 10 methods we can use, there are two that are used the most: 
+                •   .on('arg1', [callback function] )  
+                    o   This is the same as in jquery (i.e. $('main').on('click', function(event){}) where the
+                        "on" listens for something to happen.  
+        
+        
+                •   .emit('arg')
+                    o   Signals that an event has happened with an argument that is the name of the event.
+                
+                            emitter.emit('messageLogged');
+
+                    o   What this means is that we extend our logger module and every time we log a message
+                        we raise an event called "messageLogged"
+                        
+    How does the EventEmitter work in practical application?
+    =======================================================
+
+            const EventEmitter = require('events');               // First, we load events and store as a const.  This class is a blueprint for what EventEmitter can do.
+            const emitter = new EventEmitter();                   // Second, we create a new object that we can use in the application.
+
+            emitter.on('messageLogged', function(event) {         // The app listens for when messageLogges is called and when it is
+                console.log('Listener called');                       uses the callback function to return "Listener called".
+            });
+
+            emitter.emit('messageLogged')                         // The event that is raised, triggering the listener above!
+
+
+
+
+
+
 */
 
 
