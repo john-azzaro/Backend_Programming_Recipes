@@ -21,6 +21,12 @@
 //         + What are the arguments of a module wrapper function?
 //         + How do you check module wrapper arguments?
 //      8. What are built-in modules in Node?
+//      9. What is a path module?
+//         + How do you access the path module?
+//      10. What is an OS module?
+//         + How do you access the OS module?
+//         + How do you access OS module methods?
+//      11. What is a File system module?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Modules from study, research, tutorials, mentor meetings,
@@ -536,13 +542,32 @@
 
     How do you access OS module methods?
     ====================================
-        •   To access the methods available to, you simply call the os module and then the method you want (e.g. totalmem)
-            and then store it to a constant.
+        •   To access the methods available to the OS module, you simply call the os module and then the method 
+            you want (e.g. totalmem) and then store it to a constant.
 
             const os = require('os');
             const totalmem = os.totalmem();     <== access os module.
 
-            console.log(totalmem);              //=> 17117339648
+            console.log(totalmem);              //=> 17117339648\
+*/
+
+
+/* 
+11. What is a file system module?
+/////////////////////////////////
+    •   The file system module allows you to work with files and directories.
+    •   For more information, check out https://nodejs.org/dist/latest-v10.x/docs/api/fs.html
+
+    How do you access the file system module?
+    =========================================
+        •   To access the FS module, you simply load the fs module using the require function, then get the
+            result and store it in a constant.
+
+            const fs = require('fs');
+
+    How do you access the FS module methods?
+    ========================================
+        •   To access the methods avaible        
 
 */
 
