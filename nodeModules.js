@@ -730,6 +730,49 @@
 /* 
 14. Why should you extend an EventEmitter?
 //////////////////////////////////////////
+    •   In real world application, you really wont be working with obejcts like EventEmitter directly as in the case above.
+    •   Instead, it is ideal to create a CLASS and then use that that class in your code.
+
+
+==PRACTICAL EXAMPLE==
+    •   In the example below, we have two modules: app.js and logger.js.
+            o   Remember, in logger.js we are exporting a simple function (i.e. log) with a message.
+    •   The objective is to raise an event in the logger module and then in app.js listen for that event
+        and do something in response.
+
+    STEP 1: In the app.js module, we transfer EventEmitter and emitter to the logger.js module:
+
+            const EventEmitter = require('events');
+            const emitter = new EventEmitter();
+
+    STEP 2: In the app.js module, we also transfer the lines that raise an event to the logger.js module.
+            In particular, this line will go inside the log function :
+
+            emitter.emit('messageLogged', { id:1, url:'http://'})
+
+    >>>Wht did we move these lines of code from app.js to logger.js? <<<
+    >>>  -- Because it is the logger.js module that emits an event, so it doesnt belong in app.js.<<<
+    
+    STEP 3: The logger module now has the relocated code:
+    
+            const EventEmitter = require('events');                         <== Relocated from app.js
+            const emitter = new EventEmitter();                             <== Relocated from app.js
+
+            
+
+            let url = 'http://mylogger.io/log';       
+
+            function log(message) {                  
+                // Send HTTP request
+                console.log(message);
+
+                emitter.emit('messageLogged', { id:1, url:'http://'})       <== Relocated from app.js.
+            }                                                                    
+
+            module.exports.log = log;
+
+
+
 */
 
 
