@@ -478,7 +478,7 @@
 8. What are built-in modules in Node?
 ///////////////////////////////////////
 ==SHORT ANSWER==
-    •   Built-in modules are modules that are built into the core of node that allow you to work with files, 
+    •   Built-in modules are modules that are built-into the core of node that allow you to work with files, 
         the OS, HTTP (for creating web servers), etc.
 
 ==EXTENDED ANSWER==
@@ -619,8 +619,11 @@
 /* 
 12. What is an Events Module?
 /////////////////////////////
+==SHORT ANSWER==
     •   Events are a core concept in node.
     •   Events are a signal that something has happened.
+    •   In particular, EventEmitter is one of the core classes in Node that allows you to raise (emit) and handle events.
+    •   Several built-in classes om Node derive from EmitEmitter.
     •   EventEmitter in particular has much of the same workings as the jQuery event listeners.
     •   For more information, check out https://nodejs.org/dist/latest-v10.x/docs/api/events.html
 
@@ -694,6 +697,12 @@ What are event arguments?
 /////////////////////////
 ==SHORT ANSWER==
     •   Event arguments allow us to pass data about an event that just happened.
+
+==EXAMPLE==
+
+            emitter.emit('messageLogged', { id: 1, url: 'http://'})  
+                                                \
+                                                Event arguments
 
 ==EXTENDED ANSWER==
     •   When an event is raised, you would often want to send some data about that event.
