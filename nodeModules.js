@@ -31,6 +31,12 @@
 //         + How do you access the FS module methods?
 //         + How do you use a SYNCHRONOUS file system module method?
 //         + How do you use a ASYNCHRONOUS file system module method?
+//      12. What is an Events Module and EventsEmitter?
+//         + How do you access the EventEmitter module?
+//         + How do you access the EventEmitter methods?
+//         + How does the EventEmitter work in practical application?
+//      13. What are event arguments?
+//      14. Why should you extend an EventEmitter?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Modules from study, research, tutorials, mentor meetings,
@@ -617,8 +623,8 @@
 
 
 /* 
-12. What is an Events Module?
-/////////////////////////////
+12. What is an Events Module and EventsEmitter?
+///////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Events are a core concept in node.
     •   Events are a signal that something has happened.
@@ -693,8 +699,8 @@
 
 
 /* 
-What are event arguments?
-/////////////////////////
+13. What are event arguments?
+//////////////////////////////
 ==SHORT ANSWER==
     •   Event arguments allow us to pass data about an event that just happened.
 
@@ -718,8 +724,12 @@ What are event arguments?
             });
 
             emitter.emit('messageLogged', { id: 1, url: 'http://'})         // First, the event object here contains an id and a url.                
+*/
 
 
+/* 
+14. Why should you extend an EventEmitter?
+//////////////////////////////////////////
 */
 
 
