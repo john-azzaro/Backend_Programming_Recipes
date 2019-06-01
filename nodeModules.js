@@ -35,8 +35,10 @@
 //         + How do you access the EventEmitter module?
 //         + How do you access the EventEmitter methods?
 //         + How does the EventEmitter work in practical application?
-//      13. What are event arguments?
-//      14. Why should you extend an EventEmitter?
+//      13. What are event arguments? (w/logger example)
+//      14. Why should you extend an EventEmitter? (w/logger example)
+//      15. How do you define a class? (w/logger example)
+//      16. How do you extend a class to have all the abilites of a module? (w/ logger example)
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Modules from study, research, tutorials, mentor meetings,
@@ -699,8 +701,8 @@
 
 
 /* 
-13. What are event arguments? (logger example)
-//////////////////////////////////////////////
+13. What are event arguments? (w/logger example)
+/////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Event arguments allow us to pass data about an event that just happened.
 
@@ -728,8 +730,8 @@
 
 
 /* 
-14. Why should you extend an EventEmitter? (logger example)
-///////////////////////////////////////////////////////////
+14. Why should you extend an EventEmitter? (w/logger example)
+//////////////////////////////////////////////////////////////
     •   In real world application, you really wont be working with obejcts like EventEmitter directly as in the case above.
     •   Instead, it is ideal to create a CLASS and then use that that class in your code.
 
@@ -794,8 +796,8 @@
 
 
 /* 
-15. How do you define a class? (logger example)
-///////////////////////////////////////////////
+15. How do you define a class? (w/logger example)
+//////////////////////////////////////////////////
     •   To define a class, you can use an ES6 to create a class with additional methods.
     •   Class is used to create a constructor function.
     •   Remember, the first word in a class should be capitalized.
@@ -823,8 +825,8 @@
 
 
 /* 
-16. How do you extend a class to have all the abilites of a module (e.g. 'events')?
-///////////////////////////////////////////////////////////////////////////////////
+16. How do you extend a class to have all the abilites of a module? (w/ logger example)
+////////////////////////////////////////////////////////////////////////////////////////
     •   If you want to raise events in your application to signal that something has happened, you need to create a CLASS
         that extends the parent class.
     •   When you do this, that class will have all the functionality defined in the required() function stored variable PLUS
@@ -876,6 +878,30 @@
                 });
 
                 logger.log('message');                              <== then call logger and the method "log" in the module!   
+
+*/
+
+
+
+/* 
+What is an HTTP Module?
+///////////////////////
+    •   The HTTP module is used for creating netwroking applications.
+        o   For example, we can create a web server that listend for HTTP requests on a given port.
+        o   With this, we can create a back-end service for our client applications (like a web application with React
+            or a mobile application).
+    •   For more information, check out https://nodejs.org/dist/latest-v10.x/docs/api/http.html
+
+
+    STEP 1: Create a server:
+            •  First, load the "http" built-in module with the require function and store it as a constant named "http". 
+            •  Then, create a server by callinghttp and the built-in function "createServer" and store it as a constant with the name "server". 
+                o   Note that the server we create is an EventEmitter, with all its capabilites!  
+
+                const http = require('http');                 // load http module
+                const server = http.createServer();           // create server
+
+
 
 */
 
