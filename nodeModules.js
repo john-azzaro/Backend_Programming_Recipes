@@ -898,8 +898,41 @@ What is an HTTP Module?
             •  Then, create a server by callinghttp and the built-in function "createServer" and store it as a constant with the name "server". 
                 o   Note that the server we create is an EventEmitter, with all its capabilites!  
 
+
                 const http = require('http');                 // load http module
                 const server = http.createServer();           // create server
+
+
+    STEP 2: Create a listener with a callback function. 
+            •   When a connection is established, specifically when you submit localhost:3000 in your browser, the "New connection" will be logged.
+
+
+                const http = require('http');                 
+                const server = http.createServer();          
+
+                server.on('connection', function(socket) {          <== listening on the "server", if there is a connection, then the callback will log new connection.
+                    console.log('New Connection...')
+                });         
+
+
+    STEP 3: Listen on the server (at a specific port like 3000) and log a message when it is listening.
+
+
+                const http = require('http');                 
+                const server = http.createServer();           
+
+                server.on('connection', function(socket) {         
+                    console.log('New Connection...')
+                })                                    
+
+                server.listen(3000);                          <== Third, we call the server and listen on port 3000.  
+                console.log('Listening on port 3000...')      <== ... and when we do, print this message.
+
+                
+    STEP 4: In the browser, type in localhost:3000
+
+
+
 
 
 
