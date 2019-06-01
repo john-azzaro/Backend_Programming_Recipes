@@ -699,8 +699,8 @@
 
 
 /* 
-13. What are event arguments?
-//////////////////////////////
+13. What are event arguments? (logger example)
+//////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Event arguments allow us to pass data about an event that just happened.
 
@@ -728,8 +728,8 @@
 
 
 /* 
-14. Why should you extend an EventEmitter?
-//////////////////////////////////////////
+14. Why should you extend an EventEmitter? (logger example)
+///////////////////////////////////////////////////////////
     •   In real world application, you really wont be working with obejcts like EventEmitter directly as in the case above.
     •   Instead, it is ideal to create a CLASS and then use that that class in your code.
 
@@ -757,34 +757,48 @@
     STEP 3: The logger module now has the relocated code:
     ======================================================
     
-            const EventEmitter = require('events');                         <== Relocated from app.js
-            const emitter = new EventEmitter();                             <== Relocated from app.js
-            let url = 'http://mylogger.io/log';       
+<app.js>        const EventEmitter = require('events');                         <== Relocated from app.js
+                const emitter = new EventEmitter();                             <== Relocated from app.js
+                let url = 'http://mylogger.io/log';       
 
-            function log(message) {                  
-                // Send HTTP request
-                console.log(message);
-                emitter.emit('messageLogged', { id:1, url:'http://'})       <== Relocated from app.js.
-            }                                                                    
+                function log(message) {                  
+                    // Send HTTP request
+                    console.log(message);
+                    emitter.emit('messageLogged', { id:1, url:'http://'})       <== Relocated from app.js.
+                }                                                                    
 
-            module.exports = log;
+                module.exports = log;
 
 
-    STEP 4: In app.js, you need to load the logger module:
-    ======================================================
+    STEP 4: In app.js, you need to load the logger module AND call the log function:
+    ================================================================================
 
-            const EventEmitter = require('events');
-            const emitter = new EventEmitter();
-            let url = 'http://mylogger.io/log';       
+<app.js>        const EventEmitter = require('events');
+                const emitter = new EventEmitter();
+                let url = 'http://mylogger.io/log';       
 
-            function log(message) {                  
-                // Send HTTP request
-                console.log(message);
-                emitter.emit('messageLogged', { id:1, url:'http://'})
-            }
+                function log(message) {                  
+                    // Send HTTP request
+                    console.log(message);
+                    emitter.emit('messageLogged', { id:1, url:'http://'})
+                }
 
-            const log = require('./logger');                      <== load the logger module (i.e. logger.js)
-            log('message');                                       <== Then call log with a message.
+                const log = require('./logger');                             <== load the logger module (i.e. logger.js)
+                log('hello there');                                          <== Then call the log function.
+
+
+        • At this point, if you run app.js in Gitbash, you will only see "message" because
+          the event emitter in app.js is a DIFFERENT event emitter than the one on logger.js.
+*/
+
+/* 
+How do you define a class? (logger example)
+///////////////////////////////////////////
+    •   To define a class, you can use an ES6 to create a class with additional methods.
+    •   Class is used to create a constructor function.
+    •   Remember, the first word in a class should be capitalized.
+    •   When you move define a function in a class, you need to remove the "function" keyword.
+    •   The functions inside the class are now "methods".
 
 
 */
