@@ -804,7 +804,7 @@
     •   Then you simply export the CLASS rather than the function.
 
 
-                const EventEmitter = require('events');
+<logger.js>     const EventEmitter = require('events');
                 const emitter = new EventEmitter();
 
                 let url = 'http://mylogger.io/log';       
@@ -827,27 +827,51 @@
 ///////////////////////////////////////////////////////////////////////////////////
     •   to extend a class to have all the abilities of a a module, you use the es6 "extend" keyword following
         the class name to the parent/base class (i.e. the require() function stored in a const variable).
+    •   When you use "extends", you "extend" all the same functionality you would have in the require() function.
 
 ==EXAMPLE==
 
+           keyword      name    extends to...      ...the base/parent class
+                \        |         |               /
+                class ClassName extends ParentClass {
+                    // code goes here
+                }
 
 
 ==PRACTICAL EXAMPLE==
 
-                const EventEmitter = require('events');
-                const emitter = new EventEmitter();
-
+    STEP 1: Extend abililites to a parent class
+    ===========================================
+<logger.js>     const EventEmitter = require('events');
+                ______________________________________              <== Note: we can remove the new emitter object because we dont need it anymore.        
+                
                 let url = 'http://mylogger.io/log';       
 
-                class Logger extends EventEmitter {                         <== c
+                class Logger extends EventEmitter {                  <== The "class" named "Logger" that "extends" the module abilites from "EventEmitter" class.
                     log(message) {                  
                     // Send HTTP request
                     console.log(message);
-                    emitter.emit('messageLogged', { id:1, url:'http://'})
+                    this.emit('messageLogged', { id:1, url:'http://'})      <== Changed to "this" to refer to the owner of this method.
                     }
                 }
 
                 module.exports =  Logger;
+
+    STEP 2: In app.js, we change "log" to the class "Logger" since that contains our message and emitter.
+    ====================================================================================================
+
+                const EventEmitter = require('events');
+                ______________________________________             <== Note: remove the new emitter object because we're working with the logger object. 
+
+                const Logger = require('./logger');                 <== "log" becomes "Logger" to reflect our class. 
+                const logger = new Logger();                        <== and create a new object called "logger"    
+                
+                logger.on('messageLogged', function(event) {         <== we move the emitter below the logger function and reference logger instead
+                    console.log('Listener called', event);
+                });
+
+                logger.log('message');                              <== then call logger and the method "log" in the module!   
+
 
 
 
