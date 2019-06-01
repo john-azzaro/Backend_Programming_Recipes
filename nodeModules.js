@@ -791,14 +791,44 @@
           the event emitter in app.js is a DIFFERENT event emitter than the one on logger.js.
 */
 
+
+
 /* 
-How do you define a class? (logger example)
-///////////////////////////////////////////
+15. How do you define a class? (logger example)
+///////////////////////////////////////////////
     •   To define a class, you can use an ES6 to create a class with additional methods.
     •   Class is used to create a constructor function.
     •   Remember, the first word in a class should be capitalized.
     •   When you move define a function in a class, you need to remove the "function" keyword.
     •   The functions inside the class are now "methods".
+    •   Then you simply export the CLASS rather than the function.
+
+
+                const EventEmitter = require('events');
+                const emitter = new EventEmitter();
+
+                let url = 'http://mylogger.io/log';       
+
+                class Logger {                                              <== "Logger" class is created...
+                    log(message) {                                          <== ... and the "log" function becomes a method of Logger class.
+                    console.log(message);
+                    emitter.emit('messageLogged', { id:1, url:'http://'})
+                    }
+                }
+
+                module.exports =  Logger;                                   <== ... and instead of exporting the function "log" we export
+                                                                                    the class "Logger".
+*/
+
+
+
+/* 
+16. How do you extend a class to have all the abilites of a module (e.g. 'events')?
+///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
 
 */
