@@ -825,9 +825,29 @@
 /* 
 16. How do you extend a class to have all the abilites of a module (e.g. 'events')?
 ///////////////////////////////////////////////////////////////////////////////////
+    •   to extend a class to have all the abilities of a a module, you use the es6 "extend" keyword following
+        the class name to the parent/base class (i.e. the require() function stored in a const variable).
+
+==EXAMPLE==
 
 
 
+==PRACTICAL EXAMPLE==
+
+                const EventEmitter = require('events');
+                const emitter = new EventEmitter();
+
+                let url = 'http://mylogger.io/log';       
+
+                class Logger extends EventEmitter {                         <== c
+                    log(message) {                  
+                    // Send HTTP request
+                    console.log(message);
+                    emitter.emit('messageLogged', { id:1, url:'http://'})
+                    }
+                }
+
+                module.exports =  Logger;
 
 
 
