@@ -825,6 +825,11 @@
 /* 
 16. How do you extend a class to have all the abilites of a module (e.g. 'events')?
 ///////////////////////////////////////////////////////////////////////////////////
+    •   If you want to raise events in your application to signal that something has happened, you need to create a CLASS
+        that extends the parent class.
+    •   When you do this, that class will have all the functionality defined in the required() function stored variable PLUS
+        ADDITIONAL METHODS!
+    •   And then when you want to raise an event, you use "this.emit" because this reference the encapsulating class.
     •   to extend a class to have all the abilities of a a module, you use the es6 "extend" keyword following
         the class name to the parent/base class (i.e. the require() function stored in a const variable).
     •   When you use "extends", you "extend" all the same functionality you would have in the require() function.
@@ -851,7 +856,7 @@
                     log(message) {                  
                     // Send HTTP request
                     console.log(message);
-                    this.emit('messageLogged', { id:1, url:'http://'})      <== Changed to "this" to refer to the owner of this method.
+                    this.emit('messageLogged', { id:1, url:'http://'})      <== "this" references the encapsulating class.
                     }
                 }
 
@@ -860,20 +865,17 @@
     STEP 2: In app.js, we change "log" to the class "Logger" since that contains our message and emitter.
     ====================================================================================================
 
-                const EventEmitter = require('events');
+<app.js>        const EventEmitter = require('events');
                 ______________________________________             <== Note: remove the new emitter object because we're working with the logger object. 
 
                 const Logger = require('./logger');                 <== "log" becomes "Logger" to reflect our class. 
-                const logger = new Logger();                        <== and create a new object called "logger"    
+                const logger = new Logger();                        <== and create a new object called "logger". 
                 
                 logger.on('messageLogged', function(event) {         <== we move the emitter below the logger function and reference logger instead
                     console.log('Listener called', event);
                 });
 
                 logger.log('message');                              <== then call logger and the method "log" in the module!   
-
-
-
 
 */
 
