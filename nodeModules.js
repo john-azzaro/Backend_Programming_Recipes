@@ -741,12 +741,13 @@
         and do something in response.
 
     STEP 1: In the app.js module, we transfer EventEmitter and emitter to the logger.js module:
-
+    ===========================================================================================
             const EventEmitter = require('events');
             const emitter = new EventEmitter();
 
     STEP 2: In the app.js module, we also transfer the lines that raise an event to the logger.js module.
             In particular, this line will go inside the log function :
+    =====================================================================================================
 
             emitter.emit('messageLogged', { id:1, url:'http://'})
 
@@ -754,23 +755,36 @@
     >>>  -- Because it is the logger.js module that emits an event, so it doesnt belong in app.js.<<<
     
     STEP 3: The logger module now has the relocated code:
+    ======================================================
     
             const EventEmitter = require('events');                         <== Relocated from app.js
             const emitter = new EventEmitter();                             <== Relocated from app.js
-
-            
-
             let url = 'http://mylogger.io/log';       
 
             function log(message) {                  
                 // Send HTTP request
                 console.log(message);
-
                 emitter.emit('messageLogged', { id:1, url:'http://'})       <== Relocated from app.js.
             }                                                                    
 
-            module.exports.log = log;
+            module.exports = log;
 
+
+    STEP 4: In app.js, you need to load the logger module:
+    ======================================================
+
+            const EventEmitter = require('events');
+            const emitter = new EventEmitter();
+            let url = 'http://mylogger.io/log';       
+
+            function log(message) {                  
+                // Send HTTP request
+                console.log(message);
+                emitter.emit('messageLogged', { id:1, url:'http://'})
+            }
+
+            const log = require('./logger');                      <== load the logger module (i.e. logger.js)
+            log('message');                                       <== Then call log with a message.
 
 
 */
