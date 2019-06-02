@@ -886,14 +886,21 @@
 /* 
 What is an HTTP Module?
 ///////////////////////
+==SHORT ANSWER==
     •   The HTTP module is used for creating netwroking applications.
-        o   For example, we can create a web server that listend for HTTP requests on a given port.
-        o   With this, we can create a back-end service for our client applications (like a web application with React
-            or a mobile application).
-    •   For more information, check out https://nodejs.org/dist/latest-v10.x/docs/api/http.html
+            o   For example, we can create a web server that listend for HTTP requests on a given port.
+            o   With this, we can create a back-end service for our client applications (like a web application with React
+                or a mobile application).
+            o   For more information, check out https://nodejs.org/dist/latest-v10.x/docs/api/http.html
+
+==PRACTICAL EXAMPLE 1: Building a Basic HTTP service==
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    •   The program listens and responds to a connection event, which is not needed in real-world application but
+        is helpful to show you how a basic server is setup.
 
 
     STEP 1: Create a server:
+    ========================
             •  First, load the "http" built-in module with the require function and store it as a constant named "http". 
             •  Then, create a server by callinghttp and the built-in function "createServer" and store it as a constant with the name "server". 
                 o   Note that the server we create is an EventEmitter, with all its capabilites!  
@@ -903,20 +910,21 @@ What is an HTTP Module?
                 const server = http.createServer();           // create server
 
 
-    STEP 2: Create a listener with a callback function. 
+    STEP 2: Create a listener with a callback function.
+    ==================================================== 
             •   When a connection is established, specifically when you submit localhost:3000 in your browser, the "New connection" will be logged.
 
 
                 const http = require('http');                 
                 const server = http.createServer();          
 
-                server.on('connection', function(socket) {          <== listening on the "server", if there is a connection, then the callback will log new connection.
-                    console.log('New Connection...')
+                server.on('connection', function(socket) {          <== listening on the "server", if there is a connection, then the callback will 
+                    console.log('New Connection...')                    log new connection.
                 });         
 
 
     STEP 3: Listen on the server (at a specific port like 3000) and log a message when it is listening.
-
+    ===================================================================================================
 
                 const http = require('http');                 
                 const server = http.createServer();           
@@ -928,9 +936,27 @@ What is an HTTP Module?
                 server.listen(3000);                          <== Third, we call the server and listen on port 3000.  
                 console.log('Listening on port 3000...')      <== ... and when we do, print this message.
 
-                
-    STEP 4: In the browser, type in localhost:3000
 
+    STEP 4: In Gitbash, you will see that when you type in node app.js, your server is listening on port 3000.
+    ==========================================================================================================
+
+                $ node app.js
+                Listening on port 3000...      <== So here we have confirmation that the server is indeed active and listening on port 3000.
+
+    
+    STEP 5: In the browser, navigate to localhost:3000.
+    ===================================================
+        •   In this example, you will not get anything in the browser, but in Gitbash you will see a message saying "New connection...".
+        •   What has happened here is that as the server was listening, a request was made to localhost:3000 and node picked it up
+            and returned a message in return.
+
+                $ node app.js
+                Listening on port 3000... 
+                New Connection...                 <== the request from the browser
+
+
+==PRACTICAL EXAMPLE 2: Building an HTTP service more efficiently by passing a callback function to the createServer method==
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 
 
