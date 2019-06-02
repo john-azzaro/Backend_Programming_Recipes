@@ -35,7 +35,6 @@
         and networking applications (i.e. executing JavaScript OUTSIDE of a browser).
     •   Node is a program that includes the v8 JavaScript engine plus additional modules that give us extra capabilites
         that are not inside browsers.   
-    •   Applications for Node are written in JavaScript. 
      
     What is NOT node?
     =================
@@ -55,24 +54,44 @@
         applications like web applications, chat applications and REST API servers.  
 
 ==EXTENDED ANSWERS==
-    •   Node is lightweight and you can write your front-end and back-end in the same langauge.
-    •   Node is ideal for buidlign highly scalable, data-intensive, and real time back end services that power
-        client applications.
-    •   Node is easy to start, good for prototyping and agile development, good for building fast and highly 
-        scalable services.
+    •   Node allow us to work with the back-end.
+            o   Computers execute machine code instructions, but machine code is difficult for humans to work with.
+                Thus, we use Node to abstract away from machine code to make it easier for people to use. 
+            o   Since web and mobile apps are only the surface, they need a way to talk to some service that sit on
+                the server (or cloud) to store data, send emails, etc.
+
+    •   Using Node has many positive benefits.
+            o   Node is easy to start, good for prototyping and agile development, good for building fast and highly 
+                scalable services.
+            o   Node is lightweight and you can write your front-end and back-end in the same langauge.
+            o   Node is ideal for building highly scalable, data-intensive, and real time back end services that power
+                client applications.
+
+    •   Applications for Node are written in JavaScript. 
+            o   A great reason to use node is that with node application we use JavaScript.
+            o   Because Node uses JavaScript, your source code will be cleaner and more consistent codebase  
+                for both front and back end (i.e. same naming conventions, same tools, etc).
+            o   Since browsers use JavaScript for components, components are typically written in JavaScript. 
+            o   Since JavaScript is a dynamic language (i.e. the meaning is determined by value, not when it is declared), it
+                is LOOSELY typed rather than strongly typed.
+
+    •   Having the front-end and the back-end written in the same langauge (i.e. JavaScript) is good for a few reasons:
+            o   There are no syntactical difference when you use one language like JavaScript.
+            o   Being able to share code betwen the front end and the back end.
+                o  For example: Shared libraries (like Underscore, etc.) used for both front and back ends so that
+                                if you are using user authentication on front and back end, you want to use the same
+                                library to authorize the user.
+                o  For example: Using an algorithm or function that you could use on the front and back end.
+                o  For example: Using a data model, like the definition of your user which can have many properties.
+            o   If the back end language is not the same as the front end, you will also have a lot fo maintenance overhead.
+
     •   Node is used by many large companies like paypal, NetFlix, Uber, etc.
-        o   Example of paypal who rebuilt one of thier Java and Spring based application with node resulted in 
-            an application that was twice as fast with fewer people, 33% fewer lines of code, 40% fewer files,
-            and most importantly doubles the number of requests per seconds with 35% faster average repsonse time. 
-    •   A great reason to use node is that with node application we use JavaScript.
-            o   Computers execute machine code insstructions .
-            o   HOWEVER, machine code is difficult for humans to work with.
-            o   Programming languages like Node to abstract away from machine code to make it easier for people to use.    
-    •   Additionaly because Node uses JavaScript, your source code will be cleaner and more consistent codebase  
-        for both front and back end (i.e. same naming conventions, same tools, etc).
+            o   Example of paypal who rebuilt one of thier Java and Spring based application with node resulted in 
+                an application that was twice as fast with fewer people, 33% fewer lines of code, 40% fewer files,
+                and most importantly doubles the number of requests per seconds with 35% faster average repsonse time. 
+
     •   Node has a large ecosystem of open-source libraries so you dont have to build your own building-block from scratch.
-    •   Since web and mobile apps are only the surface, they need a way to talk to some service that sit on
-        the server (or cloud) to store data, send emails, etc.
+    •   JavaScript works very well with JSON which is ideal for web apps both on the front and back ends.
 */
 
 
@@ -81,7 +100,7 @@
 3. What is a runtime enviroment?
 ////////////////////////////////
 ==SHORT ANSWER==
-    •   A runtime enviroment is an engine that can run a specific type of code.
+    •   A runtime enviroment (e.g. Node.js) is an engine that can run a specific type of code.
 
 ==EXAMPLE==
     •   For example, Node.js is a lean, fast, crossplatform JavaScript RUNTIME ENVIROMENT for servers and applications.
@@ -98,10 +117,9 @@
             o   Up until 2009, JavaScript could only run in the browser.
             o   However, in 2009 Ryan Dahl (creator of node) thought it would be great to execute JavaScript OUTSIDE the browser.
             o   So he took googles v8 engine (fastest there is) and embedded it inside a C++ program and called it Node.
-            o   So similar to a browser, node is a runtime enviroment for JavaScript code.
+            o   Similar to a browser, node is a runtime enviroment for JavaScript code.
                     o   In so many words, it contains a JavaScript engine that can execute JavaScript code.
-
-    •   Google Chrome and Node have the same engine but are different runtime enviroments for JavaScript.
+            o   Google Chrome and Node have the same engine but are different runtime enviroments for JavaScript.
 
     •   Node also has certain objects that provide an enviroment for JavaScript code.
             o   However, those objects are DIFFERENT from the object we have in our browsers.
@@ -109,30 +127,6 @@
                     o   Instead, we have more interesting objects thsat give us more capabilites. For example:
                         o   fs.readFile()  -- work with the file system
                         o   http.createServer() -- listen for requests on a given port.    
-*/
-
-
-
-/* 
-4. Why is Node's language in JavaScript?
-/////////////////////////////////////////
-
-    •   Front and back end share the same language, code, 
-
-    •   Since JavaScript is a dynamic language (i.e. the meaning is determined by value not when it is declared), it
-        is loosely types rather than strongly typed.
-    •   JavaScript works very well with JSON which is ideal for web apps both on the front and back ends.
-    •   Since browsers use JavaScript for components, components are typically written in JavaScript.
-    •   Its useful to have the front-end and the back-end written in the same langauge for a few reasons:
-        o   There are no syntactical difference when you use one language like JavaScript.
-        o   Being able to share code betwen the front end and the back end.
-                o  For example: Shared libraries (like Underscore, etc.) used for both front and back ends so that
-                                if you are using user authentication on front and back end, you want to use the same
-                                library to authorize the user.
-                o  For example: Using an algorithm or function that you could use on the front and back end.
-                o  For example: Using a data model, like the definition of your user which can have many properties.
-    •   If the back end language is not the same as the front end, you will also have a lot fo maintenance overhead.
-
 */
 
 
