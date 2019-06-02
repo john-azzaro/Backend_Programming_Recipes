@@ -220,3 +220,82 @@
                     Hello there Joe
 */
 
+/* 
+7. What are global objects in JavaScript?
+/////////////////////////////////////////
+==SHORT ANSWER==
+    •   A global object is part of the global scope which means we can access it anywhere in our code.     
+        o   When you declare a function or a variable in the client-side of JavaScript, it is added to the 
+            global scope and is accessible via the "window" object (i.e. window.console.log()).
+        o   Objects like "console.log", which as global in scope and have the "window" prefix attached at runtime
+            are shared with node, as well as other objects like setTimeout, etc.
+
+==EXAMPLE==
+    •   console.log() is a global object (note: the "window" prefix is added when run).
+    •   window.console.log() is a global object.
+
+
+==ADDITIONAL QUESTIONS==
+    What is the "window" object?
+    ============================ 
+    •   In browsers, there is a "window" object that represents global scope.
+    •   All the variables and functions defined globally can be accessed by the window object:             
+    •   However, the JavaScript engine will prefix this statement with 'window' because that is where  
+        the object is defined. 
+
+
+    What is the difference between console.log and window.console.log?
+    ===================================================================
+    •   Console.log and window.console.log are virtually the same, only window is an added prefix when run.
+        o   "console.log" is such a global object.
+    •   In JavaScript, we can use the "window" prefix that represents global scope. 
+        o   For example, console.log() becomes window.console.log(). when run.
+              
+
+    What are some shared client and server side objects available in node?
+    =======================================================================           
+    •   As part of the window object, there are other objects that are available in node as well which can be 
+        used on both client and server side, such as:
+
+    • For example:
+            o   setTimeout() -- This calls a function after a delay like 1 or 2 seconds.
+            o   clearTimeOut() -- This clears a timeout which has been set before a setTimeout function that comes before it.
+            o   setInterval() -- Same as setTImeout, but repeatedly calls a function after a given delay.
+            o   clearInterval() -- Used to stop a function from being called repeatedly.
+
+    •   And since these belong to the window object:   
+            setTimeout()     ==>   window.setTimeout()
+            clearTimeOut()   ==>   window.clearTimeout()
+            setInterval()    ==>   window.setInterval()
+            clearInterval()  ==>   window.clearInterval()
+
+    •   Variables are also available via the window object:
+            var greeting = "hello!";   ==>   window.greeting;
+*/
+
+
+
+/*
+8. What are global objects in Node?
+////////////////////////////////////
+==SHORT ANSWER==
+    •   A global object in node is much like the global object in JavaScript except we use the "global" prefix.
+
+==EXAMPLE==
+    •   In JavaScript, we use the "window" prefix.  For example: window.setTimeout();
+    •   In Node, we use the "global" prefix.  For example: global.setTimeout();
+
+==EXTENDED ANSWER==
+    •   With the "global" object, we can access the same objects in JavaScript as we can in Node.
+
+            setTimeout()     ==>   global.setTimeout()
+            clearTimeOut()   ==>   global.clearTimeout()
+            setInterval()    ==>   global.setInterval()
+            clearInterval()  ==>   global.clearInterval()
+
+==ADDITIONAL QUESTIONS==
+    Are variables and functions accessible globally?
+    ================================================
+        •   However, variables and function defined in a .js file are NOT added to the global object but only 
+            scoped to the local file (i.e. .js file) because of Nodes modular system.  
+*/
