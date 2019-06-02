@@ -957,7 +957,35 @@ What is an HTTP Module?
 
 ==PRACTICAL EXAMPLE 2: Building an HTTP service more efficiently by passing a callback function to the createServer method==
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+    •   
 
+                const http = require('http');             
+
+                const server = http.createServer(function(req, res) {    // We pass a callback to the create server method...
+                    if (req.url === '/') {                               // ... if the request url is equal to '/' we can send something to the client...
+                        res.write('Hello world!');                       // ... in this case, we write (i.e. send)
+                        res.end();                                       // ... then end the response
+                    } 
+                });                                       
+
+                server.listen(3000);                          
+                console.log('Listening on port 3000...')     
+
+
+    •   If you want to build a back-end service for a web or mobile application, then you need to handle additional routes.
+
+
+                const http = require('http');             
+
+                const server = http.createServer(function(req, res) {    
+                    if (req.url === '/') {                               
+                        res.write('Hello world!');                      
+                        res.end();                                       
+                    } 
+                });                                       
+
+                server.listen(3000);                          
+                console.log('Listening on port 3000...')      
 
 
 
