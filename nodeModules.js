@@ -54,34 +54,31 @@
 1. What are global objects in JavaScript?
 /////////////////////////////////////////
 ==SHORT ANSWER
-    •   On the client side of JavaScript such as the browser, when you declare a function or a variable it is
-         added to the global scope and accessible via the "window" object (i.e. window.console.log()).
+    •   A global object is part of the global scope which means we can access it anywhere in our code.     
+    •   When you declare a function or a variable in the client-side of JavaScript, it is added to the 
+        global scope and is accessible via the "window" object (i.e. window.console.log()).
 
 ==EXAMPLE==
-        o   console.log() is a global object.
+        o   console.log() is a global object (note: the "window" prefix is added when run).
         o   window.console.log() is a global object.
 
 
 ==ADDITIONAL EXAMPLES==
+    What is the "window" object?
+    ============================ 
+    •   In browsers, there is a "window" object that represents global scope.
+    •   All the variables and functions defined globally can be accessed by the window object:             
+    •   However, the JavaScript engine will prefix this statement with 'window' because that is where  
+        the object is defined. 
+
 
     What is the difference between console.log and window.console.log?
     ===================================================================
     •   Console.log and window.console.log are virtually the same, only window is an added prefix when run.
-
-    •   A global object is part of the global scope which means we can access it anywhere in our code. 
-    •   "console.log" is such a global object.
-    
-                console.log()  
-        
+        o   "console.log" is such a global object.
     •   In JavaScript, we can use the "window" prefix that represents global scope. 
-
-                window.console.log().
-
-        o   In browsers, there is a "window" object that represents global scope.      
-        o   All l the variables and functions defined globally can be accessed by the window object:
-        o   However, the JavaScript engine will prefix this statement with 'window' because that is where is 
-            object is defined, 
-                
+        o   For example, console.log() becomes window.console.log(). when run.
+              
 
     What are some shared client and server side objects available in node?
     =======================================================================           
@@ -912,8 +909,8 @@ What is an HTTP Module?
                 const server = http.createServer();           // create server
 
 
-    STEP 2: Create a listener with a callback function.
-    ==================================================== 
+    STEP 2: Create a listener (on socket) with a callback function.
+    =============================================================== 
             •   When a connection is established, specifically when you submit localhost:3000 in your browser, the "New connection" will be logged.
 
 
