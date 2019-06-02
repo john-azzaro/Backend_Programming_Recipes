@@ -2,43 +2,39 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Node Modules
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      1. What are global objects in JavaScript?
-//         + What is the difference between console.log and window.console.log?
-//         + What are some shared client and server side objects available in node?   
-//      2. What are global objects in Node?
-//         + Are variables and functions accessible globally?
-//      3. What is a module?
-//      4. What is a module JSON object?
-//         + What does a module JSON look like?
-//      4. How do you create a module?
-//         + Can you export a single function?
-//         + Can you check the module to verify that you added your method to the exports function?
-//      5. What is the require() function?
-//         + Can you access a module if it is NOT in the same folder?
-//      6. How do you load a module?
-//      7. What is a Module wrapper function?
-//         + What does a module wrapper function look like?
-//         + What are the arguments of a module wrapper function?
-//         + How do you check module wrapper arguments?
-//      8. What are built-in modules in Node?
-//      9. What is a path module?
-//         + How do you access the path module?
-//      10. What is an OS module?
-//         + How do you access the OS module?
-//         + How do you access OS module methods?
-//      11. What is a File system module?
-//         + How do you access the file system module?
-//         + How do you access the FS module methods?
-//         + How do you use a SYNCHRONOUS file system module method?
-//         + How do you use a ASYNCHRONOUS file system module method?
-//      12. What is an Events Module and EventsEmitter?
-//         + How do you access the EventEmitter module?
-//         + How do you access the EventEmitter methods?
-//         + How does the EventEmitter work in practical application?
-//      13. What are event arguments? (w/logger example)
-//      14. Why should you extend an EventEmitter? (w/logger example)
-//      15. How do you define a class? (w/logger example)
-//      16. How do you extend a class to have all the abilites of a module? (w/ logger example)
+//      1. What is a module?
+//      2. What is a module JSON object?
+//          + What does a module JSON look like?
+//      3. How do you create a module?
+//          + Can you export a single function?
+//          + Can you check the module to verify that you added your method to the exports function?
+//      4. What is the require() function?
+//          + Can you access a module if it is NOT in the same folder?
+//      5. How do you load a module?
+//      6. What is a Module wrapper function?
+//          + What does a module wrapper function look like?
+//          + What are the arguments of a module wrapper function?
+//          + How do you check module wrapper arguments?
+//      7. What are built-in modules in Node?
+//      8. What is a path module?
+//          + How do you access the path module?
+//      9. What is an OS module?
+//          + How do you access the OS module?
+//          + How do you access OS module methods?
+//      10. What is a File system module?
+//          + How do you access the file system module?
+//          + How do you access the FS module methods?
+//          + How do you use a SYNCHRONOUS file system module method?
+//          + How do you use a ASYNCHRONOUS file system module method?
+//      11. What is an Events Module and EventsEmitter?
+//          + How do you access the EventEmitter module?
+//          + How do you access the EventEmitter methods?
+//          + How does the EventEmitter work in practical application?
+//      12. What are event arguments? (w/logger example)
+//      13. Why should you extend an EventEmitter? (w/logger example)
+//      14. How do you define a class? (w/logger example)
+//      15. How do you extend a class to have all the abilites of a module? (w/ logger example)
+//      16. What is an HTTP Module?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Modules from study, research, tutorials, mentor meetings,
@@ -51,14 +47,11 @@
 
 
 
-
-
 /*
-3. What is a module?
+1. What is a module?
 /////////////////////
 ==SHORT ANSWER==
     •   In Node, 
-
 
     •   In Node, every file (i.e. index.js, etc.) is a "module" and variables and functions defined in each of 
         those modules are scoped to those files.
@@ -86,7 +79,7 @@
 
 
 /* 
-4. What is a module JSON object?
+2. What is a module JSON object?
 ////////////////////////////////
     •   Since all files are modules, when you call "module" you will get a JSON object with properties with special
         signifigance, some of which will allow you to "export" parts of that module elsewhere in your code.
@@ -124,7 +117,7 @@
 
 
 /* 
-4. How do you create a module?
+3. How do you create a module?
 //////////////////////////////
 ==SHORT ANSWER==
     •   To create a module, you simply need to create a file, write the code you want to use, and then "export"
@@ -257,7 +250,7 @@
 
 
 /* 
-5. What is the require() function?
+4. What is the require() function?
 ///////////////////////////////////
 ==SHORT ANSWER==
     •   In order to access a module in another file, you need to use the require() function to return the object 
@@ -296,7 +289,7 @@
 
 
 /* 
-6. How do you load a module?
+5. How do you load a module?
 ////////////////////////////
 ==SHORT ANSWER==
     •   To load a module, you create a "const" variable and call the require function as a value.
@@ -331,7 +324,7 @@
 
 
 /* 
-7. What is a Module wrapper function?
+6. What is a Module wrapper function?
 /////////////////////////////////////
 ==SHORT ANSWER==
     •   A module wrapper is a function that "wraps" around each module (i.e. file) to keep the code inside "private".
@@ -409,7 +402,7 @@
 
 
 /* 
-8. What are built-in modules in Node?
+7. What are built-in modules in Node?
 ///////////////////////////////////////
 ==SHORT ANSWER==
     •   Built-in modules are modules that are built-into the core of node that allow you to work with files, 
@@ -429,7 +422,7 @@
 
 
 /* 
-9. What is a path module?
+8. What is a path module?
 /////////////////////////
 ==SHORT ANSWER==
     •   The path module is an object that provides useful methods and utlities for working with file and directory paths.
@@ -465,7 +458,7 @@
 
 
 /* 
-10. What is an OS module?
+9. What is an OS module?
 /////////////////////////
 ==SHORT ANSWER==
     •   The OS module allow you to get information about the current operating system.
@@ -491,7 +484,7 @@
 
 
 /* 
-11. What is a file system module?
+10. What is a file system module?
 /////////////////////////////////
 ==SHORT ANSWER==
     •   The file system module allows you to work with files and directories.
@@ -551,7 +544,7 @@
 
 
 /* 
-12. What is an Events Module and EventsEmitter?
+11. What is an Events Module and EventsEmitter?
 ///////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Events are a core concept in node.
@@ -627,7 +620,7 @@
 
 
 /* 
-13. What are event arguments? (w/logger example)
+12. What are event arguments? (w/logger example)
 /////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Event arguments allow us to pass data about an event that just happened.
@@ -656,7 +649,7 @@
 
 
 /* 
-14. Why should you extend an EventEmitter? (w/logger example)
+13. Why should you extend an EventEmitter? (w/logger example)
 //////////////////////////////////////////////////////////////
     •   In real world application, you really wont be working with obejcts like EventEmitter directly as in the case above.
     •   Instead, it is ideal to create a CLASS and then use that that class in your code.
@@ -722,7 +715,7 @@
 
 
 /* 
-15. How do you define a class? (w/logger example)
+14. How do you define a class? (w/logger example)
 //////////////////////////////////////////////////
     •   To define a class, you can use an ES6 to create a class with additional methods.
     •   Class is used to create a constructor function.
@@ -751,7 +744,7 @@
 
 
 /* 
-16. How do you extend a class to have all the abilites of a module? (w/ logger example)
+15. How do you extend a class to have all the abilites of a module? (w/ logger example)
 ////////////////////////////////////////////////////////////////////////////////////////
     •   If you want to raise events in your application to signal that something has happened, you need to create a CLASS
         that extends the parent class.
@@ -810,8 +803,8 @@
 
 
 /* 
-What is an HTTP Module?
-///////////////////////
+16. What is an HTTP Module?
+////////////////////////////
 ==SHORT ANSWER==
     •   The HTTP module is used for creating networking applications.
     •   HOWEVER, in the real-world we would use express to create application which gives us a clean strucutre to handle any routes.
@@ -920,10 +913,6 @@ What is an HTTP Module?
 
                 server.listen(3000);                          
                 console.log('Listening on port 3000...')      
-
-
-
-
 */
 
 
