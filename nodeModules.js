@@ -887,7 +887,9 @@
 What is an HTTP Module?
 ///////////////////////
 ==SHORT ANSWER==
-    •   The HTTP module is used for creating netwroking applications.
+    •   The HTTP module is used for creating networking applications.
+    •   HOWEVER, in the real-world we would use express to create application which gives us a clean strucutre to handle any routes.
+    •   In fact, the express framework (internally) is built on the SAME HTTP module in node.
             o   For example, we can create a web server that listend for HTTP requests on a given port.
             o   With this, we can create a back-end service for our client applications (like a web application with React
                 or a mobile application).
@@ -943,6 +945,8 @@ What is an HTTP Module?
                 $ node app.js
                 Listening on port 3000...      <== So here we have confirmation that the server is indeed active and listening on port 3000.
 
+
+    >>>>> NOTE: To exit the server, simply press ctrl + c <<<<<           
     
     STEP 5: In the browser, navigate to localhost:3000.
     ===================================================
@@ -973,7 +977,7 @@ What is an HTTP Module?
 
 
     •   If you want to build a back-end service for a web or mobile application, then you need to handle additional routes.
-
+        o   To do this, you would simply need to add another "if" block:        
 
                 const http = require('http');             
 
@@ -982,6 +986,10 @@ What is an HTTP Module?
                         res.write('Hello world!');                      
                         res.end();                                       
                     } 
+                    if (req.url === '/api/courses') {                     // if requested url is equal to the address...
+                        res.write(JSON.stringify([1,2,3,]));               // Here we want to return an array of objects using JSON (converted into a string using JSON syntax).
+                    }                                                     // In this case, we return an array of numbers
+                    res.end();
                 });                                       
 
                 server.listen(3000);                          
