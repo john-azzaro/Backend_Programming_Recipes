@@ -65,7 +65,7 @@
     •   window.console.log() is a global object.
 
 
-==ADDITIONAL EXAMPLES==
+==ADDITIONAL QUESTIONS==
     What is the "window" object?
     ============================ 
     •   In browsers, there is a "window" object that represents global scope.
@@ -110,8 +110,11 @@
 2. What are global objects in Node?
 ////////////////////////////////////
 ==SHORT ANSWER==
-    •   A global object (using the "global" prefix) in node is much like the global object in JavaScript 
-        except we use "global" instead of "window".
+    •   A global object in node is much like the global object in JavaScript except we use the "global" prefix.
+
+==EXAMPLE==
+    •   In JavaScript, we use the "window" prefix.  For example: window.setTimeout();
+    •   In Node, we use the "global" prefix.  For example: global.setTimeout();
 
 ==EXTENDED ANSWER==
     •   With the "global" object, we can access the same objects in JavaScript as we can in Node.
@@ -121,12 +124,12 @@
             setInterval()    ==>   global.setInterval()
             clearInterval()  ==>   global.clearInterval()
 
+==ADDITIONAL QUESTIONS==
     Are variables and functions accessible globally?
     ================================================
         •   However, variables and function defined in a .js file are NOT added to the global object but only 
             scoped to the local file (i.e. .js file) because of Nodes modular system.  
 */
-
 
 
 /*
