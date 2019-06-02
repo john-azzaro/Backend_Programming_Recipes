@@ -53,14 +53,16 @@
 /* 
 1. What are global objects in JavaScript?
 /////////////////////////////////////////
-==SHORT ANSWER
+==SHORT ANSWER==
     •   A global object is part of the global scope which means we can access it anywhere in our code.     
-    •   When you declare a function or a variable in the client-side of JavaScript, it is added to the 
-        global scope and is accessible via the "window" object (i.e. window.console.log()).
+        o   When you declare a function or a variable in the client-side of JavaScript, it is added to the 
+            global scope and is accessible via the "window" object (i.e. window.console.log()).
+        o   Objects like "console.log", which as global in scope and have the "window" prefix attached at runtime
+            are shared with node, as well as other objects like setTimeout, etc.
 
 ==EXAMPLE==
-        o   console.log() is a global object (note: the "window" prefix is added when run).
-        o   window.console.log() is a global object.
+    •   console.log() is a global object (note: the "window" prefix is added when run).
+    •   window.console.log() is a global object.
 
 
 ==ADDITIONAL EXAMPLES==
@@ -85,20 +87,20 @@
     •   As part of the window object, there are other objects that are available in node as well which can be 
         used on both client and server side, such as:
 
+    • For example:
             o   setTimeout() -- This calls a function after a delay like 1 or 2 seconds.
             o   clearTimeOut() -- This clears a timeout which has been set before a setTimeout function that comes before it.
             o   setInterval() -- Same as setTImeout, but repeatedly calls a function after a given delay.
             o   clearInterval() -- Used to stop a function from being called repeatedly.
 
     •   And since these belong to the window object:
-
+    
             setTimeout()     ==>   window.setTimeout()
             clearTimeOut()   ==>   window.clearTimeout()
             setInterval()    ==>   window.setInterval()
             clearInterval()  ==>   window.clearInterval()
 
     •   Variables are also available via the window object:
-
             var greeting = "hello!";   ==>   window.greeting;
 */
 
