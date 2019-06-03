@@ -33,8 +33,12 @@
     •   Node.js is a server-side enviroment for executing JavaScript that allows us to write JavaScript that runs on the server.
     •   Node.js is an open source (MIT license) and cross-platform (PC, MAC, or Linux) runtime enviroment for server-side  
         and networking applications (i.e. executing JavaScript OUTSIDE of a browser).
-    •   Node is a program that includes the v8 JavaScript engine plus additional modules that give us extra capabilites
+    •   Node.js is a program that includes the v8 JavaScript engine plus additional modules that give us extra capabilites
         that are not inside browsers.   
+    •   Node.js uses the V8 JavaScript engine in chrome.
+            o   V8 is a "just-in-time compiler" written in C++ that takes the JavaScript you write in your web apps
+                and turns it into machine-level instructions.
+            o   A JavaScript engine translates JavaScript into instructions that the computer can execute.
      
     What is NOT node?
     =================
@@ -110,8 +114,8 @@
             o   The browser provides the runtime enviroment for JavaScript code.
             o   Every browser has a "JavaScript Engine" that takes JavaScript code and converts it to MACHINE CODE
                 so the computer can understand.
-                    o   For example, Microsoft Edge uses Chakra, Mozilla firefox uses SpiderMonkey, and Chrome uses v8.
-                    o   Because of this variety of browsers, JavaScript code can behave differently in these browsers. 
+                o   For example, Microsoft Edge uses Chakra, Mozilla firefox uses SpiderMonkey, and Chrome uses v8.
+                o   Because of this variety of browsers, JavaScript code can behave differently in these browsers. 
 
     •   With Node, we use the chrome v8 engine to run JavaScript OUTSIDE the browser
             o   Up until 2009, JavaScript could only run in the browser.
@@ -123,10 +127,10 @@
 
     •   Node also has certain objects that provide an enviroment for JavaScript code.
             o   However, those objects are DIFFERENT from the object we have in our browsers.
-                    o   For example, node does NOT have the document object selector (i.e. document.getByElementId(''));
+                o   For example, node does NOT have the document object selector (i.e. document.getByElementId(''));
                     o   Instead, we have more interesting objects thsat give us more capabilites. For example:
-                        o   fs.readFile()  -- work with the file system
-                        o   http.createServer() -- listen for requests on a given port.    
+                    o   fs.readFile()  -- work with the file system
+                    o   http.createServer() -- listen for requests on a given port.    
 */
 
 
@@ -140,26 +144,26 @@
         inefficient compared to asynchronous arhcitecture.
 
 ==EXAMPLE==
-    •   For example, think of a restaurant.  
-    •   An Asynchronous restaurant would have a waiter (thread) that could service multiple tables (responses) while the orders 
-        are given to the kitchen (server).  When those orders are done, the finished order in the "event queue" is brought to 
-        the requesting table.
-
-
+    •   For example, imagine a restaurant with multiple tables, a waiter, and a kitchen.  
+            o   An Asynchronous restaurant has a waiter (thread) that could service multiple tables (responses) while the orders 
+                are given to the kitchen (server).  
+            o   When those orders are done, the finished order in the "event queue" is brough to the requesting table.
+        
 ==EXTENDED ANSWERS==
-    •   Since Node applications are highly scalable  BECAUSE of the Asynchronous nature of node.
-            o   What does asynchronous mean? Suppose you had a restaurant with a kitchen, two tables, and a waiter.
-                The waiter can take an order from one table, tell the kitchen who prepares the meal, and then wait on
-                the other table while the first tables order is being prepared.
-            o   This is the analogy behind non-blocking asynchronous architecture.
-    • 
+    •   Node benefits from "non-blocking" asynchronicity
+            o   Node applications are highly scalable because of the ASYNCHRONOUS nature of node.
+            o   What does asynchronous mean? 
+                    o   Suppose you had a restaurant with a kitchen, two tables, and a waiter.
+                    o   The waiter can take an order from one table, tell the kitchen who prepares the meal, and then wait on
+                        the other table while the first tables order is being prepared.
+                    o   This is the analogy behind non-blocking asynchronous architecture.
+  
+            o   In Node, the ASYNCHRONOUS waiter is a thread allocated to handle a request from MULTIPLE tables.
+                    o   A single thread (waiter) can be used to handle multiple requests (or in the examples case tables).
 
-    •   In Node, the ASYNCHRONOUS waiter is a thread allocated to handle a request from MULTIPLE tables.
-            o   A single thread (waiter) can be used to handle multiple requests (or in the examples case tables).
-
-                            [single thread]
-                           /               \
-                  [Request]                 [Response]
+                                    [single thread]
+                                /               \
+                        [Request]                 [Response]
 
              o   The single thread (waiter) can service mulitple requests.
                     o   Suppose that the waiter takes an order from table 1 and puts the order in to the kitchen.
@@ -168,7 +172,7 @@
                     o   Node is continually monitoring the event queue in the background.
                     o   When data is ready, node will take it out of queue and process it.
 
-    •   Conversely, we can have blocking SYNCHRONOUS architecture.
+    •   Conversely, we can have "blocking" SYNCHRONOUS architecture.
             o   In the case of the restaurant, the waiter takes an order from one table.
             o   However, the waiter waits in the kitchen until the order is done before waiting on table 2.
             o   The waiter will not take an order from another table until the order is ready.
@@ -179,13 +183,6 @@
                 run out of threads to serve the clients so new clients have to wait until free threads are available 
                 OR add more hardware.
             o   Synchronous architecture is inefficient compared to asynchronous architecture.
-
-
-==EXTENDED ANSWERS==
-    •   Node.js uses V8 JavaScript engine in chrome.
-    •   V8 is a "just-in-time compiler" written in C++ that takes the JavaScript you write in your web apps
-        and turns it into machine-level instructions.
-    •   A JavaScript engine translates JavaScript into instructions that the computer can execute.
 */
 
 
