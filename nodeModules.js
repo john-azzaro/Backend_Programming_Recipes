@@ -59,7 +59,7 @@
 
 ==EXAMPLE==
     •   Think of Node modules as a book (node) divided into chapters (modules.  
-    •   Modules are individual "chapters of a book" that can be edited without editing other chapters when they are updated.
+            o   Modules are individual "chapters of a book" that can be edited without editing other chapters when they are updated.
         
 
 ==EXTENDED ANSWER==
@@ -116,7 +116,6 @@
                 'C:\\Users\\Admin\\node_modules',
                 'C:\\Users\\node_modules',
                 'C:\\node_modules' ] }
-
 */
 
 
@@ -125,15 +124,16 @@
 3. How do you create a module?
 //////////////////////////////
 ==SHORT ANSWER==
-    •   To create a module, you simply need to create a file, write the code you want to use, and then "export"
-        that variable or function using "module.export" with the name of the module you want to call it, 
-        and of course assigning as a value the variable or function (e.g module.exports.myMod = myMod). 
+    •   To create a module, you simply write the code you want to use and then "export" that variable or
+        function using "module.export" with the name of the module you want to call it, and of course
+        assigning as a value the variable or function (e.g module.exports.myMod = myMod). 
+
 
                     function myMod() {
-                        // code for module              <== Function you want to export.
+                        // code for module              <== 1. Function you want to export.
                     }
 
-                    module.exports.myMod = myMod;       <== assigning the function you want to export in the module.
+                    module.exports.myMod = myMod;       <== 2. Assign the function you want to export in the module.
 
 
 ==PRACTICAL EXAMPLE==
@@ -255,15 +255,16 @@
 
 
 /* 
-4. What is the require() function?
+4. How do you load a core module?     
 ///////////////////////////////////
 ==SHORT ANSWER==
-    •   In order to access a module in another file, you need to use the require() function to return the object 
-        exported from that file.
+    •   To load a core module (i.e. access a module in another file), you need to use the require()  
+        function to return the object exported from that file.
 
 ==EXAMPLE==
     •   For example, suppose you created a "greeting" module in another file and you want to use it in your primary
-        module file.  You simply need to "load" that module to the current file using the require function and pass 
+        module file.  
+    •   You simply need to "load" that module to the current file using the require function and pass 
         as an argument the location of that module.  
 
 ==EXTENDED ANSWERS==
