@@ -814,11 +814,12 @@
                 or a mobile application).
             o   For more information, check out https://nodejs.org/dist/latest-v10.x/docs/api/http.html
 
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ==PRACTICAL EXAMPLE 1: Building a Basic HTTP service==
--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
     •   The program listens and responds to a connection event, which is not needed in real-world application but
         is helpful to show you how a basic server is setup.
-
 
     STEP 1: Create a server:
     ========================
@@ -878,6 +879,7 @@
                 New Connection...                 <== the request from the browser
 
 
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ==PRACTICAL EXAMPLE 2: Building an HTTP service more efficiently by passing a callback function to the createServer method==
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
     •   

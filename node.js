@@ -5,14 +5,13 @@
 //      1. What is Node.js?
 //         + What is Node?
 //         + What is NOT Node?
-//      2. What can Node.js be used for?
+//      2. Why would you use Node.js?
 //      3. What is a runtime enviroment?
-//      4. Why do we use Node.js?  
-//      5. Why is Node's language in JavaScript?
-//      6. What is Asynchronous vs Synchronous architecture and which would node be?
-//      7. How do you write a basic node program? 
-//      8. What are global objects in JavaScript?
-//      9. What are global objects in Node?    
+//      4. What is Asynchronous vs Synchronous architecture and which would node be?
+//      5. How do you run a basic program in Node?
+//      6. Is Node's JavaScript different than the browser's JavaScript when it comes to global scope?
+//      7. What are global objects in JavaScript?
+//      8. What are global objects in Node?     
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node.js from study, research, tutorials, mentor meetings,
@@ -136,7 +135,7 @@
 
 
 /*
-5. What is Asynchronous vs Synchronous architecture and which would node be?
+4. What is Asynchronous vs Synchronous architecture and which would node be?
 ////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWERS==
     •   Node has an Asynchronous, "non-blocking" architecture that uses a single thread to service multiple requests.
@@ -187,8 +186,8 @@
 
 
 /* 
-6. How do you write a basic node program?
-/////////////////////////////////////////
+5. How do you run a basic program in Node?
+//////////////////////////////////////////
 ==SHORT ANSWER==
     •   To write a basic node program, write a JavaScript program in a text editor and then 
          execute the program in Gitbash by running $node and calling the app as an argument.
@@ -198,7 +197,6 @@
     2. In Gitbash, cd into the folder.
     3. In your text editor, create a basic program and save it as app.js.  
     
-            For example:
 
                     function welcome(name) {
                         console.log("Hello there " + name);
@@ -206,16 +204,28 @@
 
                     welcome("Joe")      //=> Hello there Joe
 
+
     4. In Gitbash, run node and pass the file "app.js" as an argument:
+
 
                     $node app.js
 
+                    
             •   Note at this point that Node is a C++ program that includes chrome's v8 JavaScript engine.
             •   When we pass app.js to Node, Node will give the program to v8 for execution.
 
     5. Upon execution, you will get the desired program output:
 
                     Hello there Joe
+*/
+
+
+/* 
+6. Is Node's JavaScript different than the browser's JavaScript when it comes to global scope?
+//////////////////////////////////////////////////////////////////////////////////////////////
+    •   Yes.  In JavaScript variables declared WITHOUT a keyword are global but in Node, everything is local by default.
+            o   For example, to add something to global scope in Node, you need to EXPORT using "export" or "module.export".
+            o   To IMPORT modules/objects, you need to use the require() function to access it from global scope.
 */
 
 
