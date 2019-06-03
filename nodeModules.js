@@ -51,7 +51,7 @@
 1. What is a module?
 /////////////////////
 ==SHORT ANSWERS==
-    •   In Node, modules are simple or complex functionality in single or multiple JavaScript files which can be reused
+    •   In Node, modules are a simple or complex functionality within single or multiple JavaScript files which can be reused
         in the Node.js application.
             o   Each of the variables and functions defined in each of those modules are scoped to those files and need 
                 to be "exported" via export or module.export or imported via the require() function.
@@ -90,29 +90,29 @@
 
     What does a module JSON look like?
     ===================================
-    1. In your app.js "main" module, write this simple console.log (Note that module in the example above is NOT a global object):
+        1. In your app.js "main" module, write this simple console.log (Note that module in the example above is NOT a global object):
 
-            console.log(module);
+                console.log(module);
+            
+        2. In Gitbash, open app.js using node:
         
-    2. In Gitbash, open app.js using node:
-    
-            $ node app.js
+                $ node app.js
 
-    3. What is returned is a JSON object with key/value pairs:
+        3. What is returned is a JSON object with key/value pairs:
 
-            Module {                                                           // The module object with properties:
-            id: '.',                                                           // Unique identifer
-            exports: {},                                                       // modules in the file that can be "exported" (here empty bc no modudles to export yet)
-            parent: null,                                                      //
-            filename: 'C:\\Users\\Admin\\Desktop\\first-app\\app.js',          // Complete path to the file
-            loaded: false,                                                     // boolean which determines if the module is loaded or not
-            children: [],                                                      //
-            paths:                                                             // path is the direct paths it takes to get to your module.
-            [ 'C:\\Users\\Admin\\Desktop\\first-app\\node_modules',
-                'C:\\Users\\Admin\\Desktop\\node_modules',
-                'C:\\Users\\Admin\\node_modules',
-                'C:\\Users\\node_modules',
-                'C:\\node_modules' ] }
+                Module {                                                               // The module object with properties:
+                    id: '.',                                                           // Unique identifer
+                    exports: {},                                                       // modules in the file that can be "exported" (here empty bc no modudles to export yet)
+                    parent: null,                                                      //
+                    filename: 'C:\\Users\\Admin\\Desktop\\first-app\\app.js',          // Complete path to the file
+                    loaded: false,                                                     // boolean which determines if the module is loaded or not
+                    children: [],                                                      //
+                    paths:                                                             // path is the direct paths it takes to get to your module.
+                    [ 'C:\\Users\\Admin\\Desktop\\first-app\\node_modules',
+                        'C:\\Users\\Admin\\Desktop\\node_modules',
+                        'C:\\Users\\Admin\\node_modules',
+                        'C:\\Users\\node_modules',
+                        'C:\\node_modules' ] }
 */
 
 
@@ -130,15 +130,13 @@
                     o   (e.g. module.exports.myMod = myMod).
                     
 ==EXAMPLE==
-                    function myMod() {
-                        // code for module              <== 1. Function you want to export.
-                    }
-
-                    module.exports.myMod = myMod;       <== 2. Assign the function you want to export in the module.
+            function myMod() {
+                // code for module              <== 1. Function you want to export.
+            }
+            module.exports.myMod = myMod;       <== 2. Assign the function you want to export in the module.
 
 
 ==PRACTICAL EXAMPLE==
-
     STEP 1: Create a new module (i.e. file) in your project folder named "logger.js." 
     ==================================================================================          
         •   This module will be for log-in messages to be reused in different parts of the application
@@ -147,11 +145,11 @@
 
     STEP 2: In your logger.js module, write the code you want to be able to reuse.
     ===============================================================================
-        •   For this part, imagine that we want to use a remote login service for logging messages.  So we 
-            are using a service that provides a URL and we can send an HTTP request to that URL to log messages
+        •   For this part, imagine that we want to use a remote login service for logging messages.  
+        •   The app uses a service that provides a URL and we can send an HTTP request to that URL to log messages
             in the cloud.
                 o   Remember that the variable and function below is PRIVATE, and  CANNOT be accessed beyond the
-                    scope of this document. 
+                    scope of this document at the moment. 
         
 
                     let url = 'http://mylogger.io/log';       // sends an HTTP request to this endpoint
@@ -162,44 +160,21 @@
                     }
 
 
-    STEP 3: Add your method using dot notation to the exports object to make the code public and visible to the outside
-    ====================================================================================================================
-        •   Before going any further, remember that when we typed in $node app.js in Gitbash we got a "Module" JSON
-            object in return.  It looks like this:
-                o   Look at the "exports" property and you will see an empty object. 
-                o   Our goal is to add to this object so it can be exported from the module and available outside the module.
-            
-                    Module {
-                        id: '.',                                                           
-                        exports: {},                                                  <== EMPTY EXPORTS OBJECT                           
-                        parent: null,                                                      
-                        filename: 'C:\\Users\\Admin\\Desktop\\first-app\\app.js',          
-                        loaded: false,                                                     
-                        children: [],                                                      
-                        paths:                                                             
-                        [ 'C:\\Users\\Admin\\Desktop\\first-app\\node_modules',
-                            'C:\\Users\\Admin\\Desktop\\node_modules',
-                            'C:\\Users\\Admin\\node_modules',
-                            'C:\\Users\\node_modules',
-                            'C:\\node_modules' ] }
-
-        
-        
-    STEP 4: Export your function by adding it as a method of "log"
-    ==============================================================
-        •   TO EXPORT, we simply add it as a method to the "exports" object in the Module JSON object with dot-notation and
-            set it to the log function above.
-        •   You can apply this way of exporting a module to anything else in the module (i.e. file).                   
-            module.exports.url = url;
-        •   You can even rename the module to something else:
-            module.export.endPointUrl = url;
+    STEP 3: Export your function by adding it as a method of "log" (e.g. module.exports.log  = log; )       
+    ==================================================================================================
+        •   Add your method to the exports object to make the code public and visible to the outside
+                o   TO EXPORT, we simply add it as a method to the "exports" object in the Module JSON object with  
+                    dot-notation and set it to the log function above.
+                o   You can apply this way of exporting a module to anything else in the module (i.e. file).                   
+                    module.exports.url = url;
+                o   You can even rename the module to something else:
+                    module.export.endPointUrl = url;
                         
-                                         ... add the log method to the exports property...    
-                                        /
-                                module.exports.log = log;
-                                /                   \
-            In the file module...                    ... and set the value to the "log" function!
-
+                                            ... add the log method to the exports property...    
+                                            /
+                                    module.exports.log = log;
+                                    /                   \
+                In the file module...                    ... and set the value to the "log" function!
 
             
         •   So the logger module will look something like this when it is completed:
@@ -251,14 +226,16 @@
 
 
 /* 
-4. How do you load a core module?     
-///////////////////////////////////
+4. How do you load a module?     
+////////////////////////////
 ==SHORT ANSWER==
-    •   To load a core module (i.e. access a module in another file), you need to use the require()  
-        function to return the object exported from that file.
+    •   To load a module (i.e. access a module in another file), you need to use the require() function to 
+        return the object exported from that file (e.g.  const logger = require('./logger.js'); )
 
 ==EXAMPLE==
-    •   For example, suppose you created a "greeting" module in another file and you want to use it in your primary
+    •   Suppose you have two modules, a main module (app.js) and    
+    
+    If you create a "greeting" module in another file and you want to use it in your primary
         module file.  
     •   You simply need to "load" that module to the current file using the require function and pass 
         as an argument the location of that module.  
