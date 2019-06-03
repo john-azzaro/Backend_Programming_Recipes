@@ -130,10 +130,14 @@
                     o   (e.g. module.exports.myMod = myMod).
                     
 ==EXAMPLE==
-            function myMod() {
-                // code for module              <== 1. Function you want to export.
-            }
-            module.exports.myMod = myMod;       <== 2. Assign the function you want to export in the module.
+
+                        [ app.js ]
+            ___________________________________
+
+                function myMod() {
+                    // code for module              <== 1. Function you want to export.
+                }
+                module.exports.myMod = myMod;       <== 2. Assign the function you want to export in the module.
 
 
 ==PRACTICAL EXAMPLE==
@@ -186,8 +190,8 @@
                         console.log(message);
                     }
 
-                    module.exports.log  = log;                       // here we add a method "log" to the "exports" object and
-                                                                        assign it the value of the function "log" above.
+                    module.exports.log  = log;                       <== here we add a method "log" to the "exports" object and
+                                                                         assign it the value of the function "log" above.
         
   
         OPTIONAL: Can you export a single function?
@@ -210,7 +214,7 @@
 
                     Module {
                         id: '.',
-                        exports: { log: [Function: log] },              // Here you see it in the exports property.
+                        exports: { log: [Function: log] },                             <== Here you see it in the exports property.
                         parent: null,
                         filename: 'C:\\Users\\Admin\\Desktop\\first-app\\logger.js', 
                         loaded: false,
@@ -232,17 +236,28 @@
     •   To load a module (i.e. access a module in another file), you need to use the require() function to 
         return the object exported from that file (e.g.  const logger = require('./logger.js'); )
 
-==EXAMPLE==
-    •   Suppose you have two modules, a main module (app.js) and    
-    
-    If you create a "greeting" module in another file and you want to use it in your primary
-        module file.  
+==EXAMPLE== 
     •   You simply need to "load" that module to the current file using the require function and pass 
         as an argument the location of that module.  
 
-==EXTENDED ANSWERS==
-    •   The require function returns the object that is exported from a target module
-    •   The require() function is used to load a module.
+
+                       [logger.js]                                              [app.js]       
+            ____________________________________                  ________________________________________                        
+
+            let url = 'http://mylogger.io/log';        ------------>     require('./logger.js')
+                                                       |
+            function log(message) {                    |
+                // Send HTTP request                   |
+                console.log(message);                  |
+            }                                          |
+                                                       |
+            module.exports.log  = log;    --------------
+
+
+
+    What is the require function?
+    =============================
+    •   The require() function is used to load a module and returns the object that is exported from a target module. 
     •   The require() function is only in node, so it is not in browsers.
     •   The require() function takes only one argument, which is the name (i.e. path) of the module we want to load.
 
@@ -255,16 +270,17 @@
                     require('./logger.js')
 
 
-        OPTIONAL: Can you access a module if it is NOT in the same folder?
-        ===================================================================
-            o   If the module is a subfolder, you just need to include that subfolder in the path:
+    Can you access a module if it is NOT in the same folder?
+    ===================================================================
+    •   If the module is a subfolder, you just need to include that subfolder in the path:
             
-                            require('./subFolder/logger.js')
+                    require('./subFolder/logger.js')
             
-            o   If the module is in a PARENT folder, you add another period to the path at the beginning:
+    •   If the module is in a PARENT folder, you add another period to the path at the beginning:
 
-                            require('../logger.js');   
+                    require('../logger.js');   
 */
+
 
 
 /* 
