@@ -78,7 +78,6 @@
             o   The variables and function in those file "modules" are private, meaning that they are scoped to that particular file.
             o   To use a variable or functions defined in a module that is OUTSIDE that module, then you need to explicitly export it
                 and make it public.
- 
 */
 
 
@@ -86,16 +85,14 @@
 /* 
 2. What is a module JSON object?
 ////////////////////////////////
-    •   Since all files are modules, when you call "module" you will get a JSON object with properties with special
-        signifigance, some of which will allow you to "export" parts of that module elsewhere in your code.
+    •   When you call "module" you will get a JSON object with properties with special signifigance, some of which will allow
+        you to "export" parts of that module elsewhere in your code.
 
     What does a module JSON look like?
     ===================================
-    1. In your app.js "main" module, write this simple console.log:
+    1. In your app.js "main" module, write this simple console.log (Note that module in the example above is NOT a global object):
 
             console.log(module);
-
-        •   Note that module in the example above is NOT a global object
         
     2. In Gitbash, open app.js using node:
     
@@ -103,7 +100,7 @@
 
     3. What is returned is a JSON object with key/value pairs:
 
-            Module {
+            Module {                                                           // The module object with properties:
             id: '.',                                                           // Unique identifer
             exports: {},                                                       // modules in the file that can be "exported" (here empty bc no modudles to export yet)
             parent: null,                                                      //
