@@ -121,11 +121,15 @@
 3. How do you create a module?
 //////////////////////////////
 ==SHORT ANSWER==
-    •   To create a module, you simply write the code you want to use and then "export" that variable or
-        function using "module.export" with the name of the module you want to call it, and of course
-        assigning as a value the variable or function (e.g module.exports.myMod = myMod). 
-
-
+    •   To create a module: 
+            o   First write the code you want to use 
+                    o   (e.g. myMod)
+            o   Second, "export" that variable or function using "module.export" with a property name 
+                    o   (e.g. module.exports.myMod).
+            o   Lastly, assign a value with the variable or function you wish to resuse 
+                    o   (e.g. module.exports.myMod = myMod).
+                    
+==EXAMPLE==
                     function myMod() {
                         // code for module              <== 1. Function you want to export.
                     }
@@ -146,6 +150,8 @@
         •   For this part, imagine that we want to use a remote login service for logging messages.  So we 
             are using a service that provides a URL and we can send an HTTP request to that URL to log messages
             in the cloud.
+                o   Remember that the variable and function below is PRIVATE, and  CANNOT be accessed beyond the
+                    scope of this document. 
         
 
                     let url = 'http://mylogger.io/log';       // sends an HTTP request to this endpoint
@@ -155,10 +161,6 @@
                         console.log(message);
                     }
 
-
-        •   Remember that the variable and function above are PRIVATE, and they CANNOT be accessed beyond the
-            scope of this document. How we make them public is our next step!
-        
 
     STEP 3: Add your method using dot notation to the exports object to make the code public and visible to the outside
     ====================================================================================================================
