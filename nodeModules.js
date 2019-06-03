@@ -166,11 +166,12 @@
     ====================================================================================================================
         •   Before going any further, remember that when we typed in $node app.js in Gitbash we got a "Module" JSON
             object in return.  It looks like this:
- 
+                o   Look at the "exports" property and you will see an empty object. 
+                o   Our goal is to add to this object so it can be exported from the module and available outside the module.
             
                     Module {
                         id: '.',                                                           
-                        exports: {},                                // EMPTY EXPORTS OBJECT                           
+                        exports: {},                                                  <== EMPTY EXPORTS OBJECT                           
                         parent: null,                                                      
                         filename: 'C:\\Users\\Admin\\Desktop\\first-app\\app.js',          
                         loaded: false,                                                     
@@ -183,22 +184,25 @@
                             'C:\\node_modules' ] }
 
         
-        •   Look at the "exports" property and you will see an empty object. 
-        •   Our goal is to add to this object so it can be exported from the module and available outside the module.
-
+        
+    STEP 4: Export your function by adding it as a method of "log"
+    ==============================================================
         •   TO EXPORT, we simply add it as a method to the "exports" object in the Module JSON object with dot-notation and
             set it to the log function above.
-
+        •   You can apply this way of exporting a module to anything else in the module (i.e. file).                   
+            module.exports.url = url;
+        •   You can even rename the module to something else:
+            module.export.endPointUrl = url;
                         
-                                    ... add the log method to the exports property...    
-                                   /
-                        module.exports.log = log;
-                           /                   \
-        In the file module...                   ... and set the value to the "log" function!
+                                         ... add the log method to the exports property...    
+                                        /
+                                module.exports.log = log;
+                                /                   \
+            In the file module...                    ... and set the value to the "log" function!
 
 
+            
         •   So the logger module will look something like this when it is completed:
-
 
                     let url = 'http://mylogger.io/log';       
 
@@ -210,14 +214,7 @@
                     module.exports.log  = log;                       // here we add a method "log" to the "exports" object and
                                                                         assign it the value of the function "log" above.
         
-        ADDITIONAL NOTES
-        •   You can apply this way of exporting a module to anything else in the module (i.e. file).                   
-                    module.exports.url = url;
-        
-        •   You can even rename the module to something else:
-                    module.export.endPointUrl = url;
-
-
+  
         OPTIONAL: Can you export a single function?
         ===========================================
         •   Since using the "exports" property would be useful if you had multiple methods or properties.
