@@ -50,30 +50,35 @@
 /*
 1. What is a module?
 /////////////////////
-==SHORT ANSWER==
-    •   In Node, 
-
-    •   In Node, every file (i.e. index.js, etc.) is a "module" and variables and functions defined in each of 
-        those modules are scoped to those files.
+==SHORT ANSWERS==
+    •   In Node, modules are simple or complex functionality in single or multiple JavaScript files which can be reused
+        in the Node.js application.
+            o   Each of the variables and functions defined in each of those modules are scoped to those files and need 
+                to be "exported" via export or module.export or imported via the require() function.
+       
 
 ==EXAMPLE==
-    •   Think of a book divided into chapters.  Modules are individual "chapters of a book" that can be edited without
-        having to edit other chapters when they are updated.
+    •   Think of Node modules as a book (node) divided into chapters (modules.  
+    •   Modules are individual "chapters of a book" that can be edited without editing other chapters when they are updated.
+        
 
 ==EXTENDED ANSWER==
-    •   Modules are self-contained with distinct functionality which allows them to be shuffled, removed, or added when
-        necessary without disrupting the system as a whole.
-    •   Modules are self-contained, meaning that the code it can be updated
-    •   Because we might have multiple files of JavaScript code, accessing function and variables across those multiple files 
-        might result in having a function or variable over-ridden on one page or another and causing bugs in our code.  So to 
-        avoid this problem with global scope, we use modules which are small building blocks where we define variables and 
-        functions so that names will not conflict.
-    •   Every file in a Node application is a "module".
-    •   A module can export a single function or an object.
-    •   The variables and function in those file "modules" are private, meaning that they are scoped to that particular file.
-    •   To use a variable or functions defined in a module that is OUTSIDE that module, then you need to explicitly export it
-        and make it public.
-    •   Every Node application has at least one file (i.e. module) which is called the "main module"
+    •   Modules can be in seperate .js files (and under seperate folders).
+            o   Because we might have multiple files of JavaScript code, accessing function and variables across those multiple files 
+                might result in having a function or variable over-ridden on one page or another and causing bugs in our code.  
+            o   So to avoid this problem with global scope, we use modules which are small building blocks where we define variables
+                and functions so that names will not conflict.
+            o   Every Node application has at least one file (i.e. module) which is called the "main module"
+                
+    •   Modules are self-contained
+            o   Modules are self-contained (i.e. have thier own context) with distinct functionality which allows them to be shuffled,  
+                updated, removed, or added when necessary without disrupting the system as a whole.
+
+    •   Modules can export a single function or an object.
+            o   The variables and function in those file "modules" are private, meaning that they are scoped to that particular file.
+            o   To use a variable or functions defined in a module that is OUTSIDE that module, then you need to explicitly export it
+                and make it public.
+ 
 */
 
 
