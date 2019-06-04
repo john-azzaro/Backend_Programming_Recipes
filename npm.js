@@ -136,9 +136,30 @@ What is package.json?
 ==SHORT ANSWER==
 
 ==EXTENDED ANSWER==
-    •   To install an npm package, you first need to go to npmjs.com and find the name of the package you want to install.
-    •   For any third party library, you will see an "install" box on the page with something that looks like this:
-            o   For example, we want to install the "underscore" library:
+    •   To find a npm package, you first need to go to npmjs.com and find the name of the package you want to install.
+    •   To install a npm package, in Gitbash (in you project folder), you install using "i" or "install" and the name of the package.
 
-                npm i underscore   ()
+    How do you install an npm package?
+    ==================================
+    
+        STEP 1: Find an npm package on npmjs.com.
+        =========================================
+        •   For this example, we'll install the "underscore" package.
+        •   On the package page, you will see the command line install line: 
+                
+                npm i underscore
+
+        STEP 2: Install the npm package in Gitbash
+        ==========================================
+        • In Gitbash, run the command line install line and you will see
+
+                $ npm install underscore
+                npm notice created a lockfile as package-lock.json. You should commit this file.
+                npm WARN npm-demo@1.0.0 No description
+                npm WARN npm-demo@1.0.0 No repository field.
+
+                + underscore@1.9.1
+                added 1 package in 0.398s
+
+
 */
