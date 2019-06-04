@@ -9,6 +9,8 @@
 //         +  How do you access npm help? 
 //         +  How do you install a specific version of npm?
 //      2. What is package.json?
+//         +  How do you create a package.json file?
+//      3. How do you install an npm package (i.e. third party library)?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Package Manager from study, research, tutorials, mentor
@@ -124,6 +126,19 @@ What is package.json?
         OPTIONAL: If you want to bypass these questions and make a package.json file in a rush
         ======================================================================================
             •   write npm init --yes
+*/
 
 
+
+/* 
+3. How do you install an npm package (i.e. third party library)?
+////////////////////////////////////////////////////////////////
+==SHORT ANSWER==
+
+==EXTENDED ANSWER==
+    •   To install an npm package, you first need to go to npmjs.com and find the name of the package you want to install.
+    •   For any third party library, you will see an "install" box on the page with something that looks like this:
+            o   For example, we want to install the "underscore" library:
+
+                npm i underscore   ()
 */
