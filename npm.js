@@ -134,6 +134,8 @@ What is package.json?
 3. How do you install an npm package (i.e. third party library)?
 ////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
+    •   To install an npm package (i.e. third party library) as a node module, you find a package in the npmjs.com
+        library and install with "npm i [package-name-here]".
 
 ==EXTENDED ANSWER==
     •   To find a npm package, you first need to go to npmjs.com and find the name of the package you want to install.
@@ -166,8 +168,7 @@ What is package.json?
 
                 + underscore@1.9.1
                 added 1 package in 0.398s
-
-        STEP 3: 
-
-
 */
+
+
+
