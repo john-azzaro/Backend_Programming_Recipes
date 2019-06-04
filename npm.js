@@ -137,7 +137,13 @@ What is package.json?
 
 ==EXTENDED ANSWER==
     •   To find a npm package, you first need to go to npmjs.com and find the name of the package you want to install.
-    •   To install a npm package, in Gitbash (in you project folder), you install using "i" or "install" and the name of the package.
+    •   To install a npm package, in Gitbash (in you project folder), you install using "i" or "install" and the name 
+        of the package.
+            o   When you install, two things will happen:
+                1.   The package.json file will have an updated DEPENDENCIES property with the new npm package and its version.
+                2.   A new "node_modules" folder will be created (or if this is not your first package, then it will be updated).
+                        o   Inside the "node_modules" folder you will have the package and a package.json with the metadata 
+                            of your installed package.
 
     How do you install an npm package?
     ==================================
@@ -160,6 +166,8 @@ What is package.json?
 
                 + underscore@1.9.1
                 added 1 package in 0.398s
+
+        STEP 3: 
 
 
 */
