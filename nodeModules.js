@@ -230,33 +230,30 @@
 
 
 /* 
-4. How do you load a module?     
+4. How do you load a module?  
 ////////////////////////////
 ==SHORT ANSWER==
-    •   To load a module (i.e. access a module in another file), you need to use the require() function to 
-        return the object exported from that file (e.g.  const logger = require('./logger.js'); )
+    •   To load a module, you create a "const" variable and call the require() function as a value  return the object  
+        exported from that file (e.g.  const logger = require('./logger.js'); )
+
 
 ==EXAMPLE== 
-    •   You simply need to "load" that module to the current file using the require function and pass 
-        as an argument the location of that module.  
+                          [logger.js]                                                    [app.js]       
+            _________________________________________                  _________________________________________________                        
 
-
-                       [logger.js]                                              [app.js]       
-            ____________________________________                  ________________________________________                        
-
-            let url = 'http://mylogger.io/log';        ------------>     require('./logger.js')
-                                                       |
-            function log(message) {                    |
-                // Send HTTP request                   |
-                console.log(message);                  |
-            }                                          |
-                                                       |
-            module.exports.log  = log;    --------------
+            let url = 'http://mylogger.io/log';          ------------>       const logger = require('./logger.js')     
+                                                         |
+            function log(message) {                      |
+                // Send HTTP request                     |
+                console.log(message);                    |
+            }                                            |
+                                                         |
+            module.exports.log  = log;    ----------------       
 
 
 
-    What is the require function?
-    =============================
+    What is the require function and how does it allow us to load a module?
+    =======================================================================
     •   The require() function is used to load a module and returns the object that is exported from a target module. 
     •   The require() function is only in node, so it is not in browsers.
     •   The require() function takes only one argument, which is the name (i.e. path) of the module we want to load.
@@ -270,8 +267,8 @@
                     require('./logger.js')
 
 
-    Can you access a module if it is NOT in the same folder?
-    ===================================================================
+        Can you access a module if it is NOT in the same folder?
+    ========================================================
     •   If the module is a subfolder, you just need to include that subfolder in the path:
             
                     require('./subFolder/logger.js')
@@ -279,25 +276,15 @@
     •   If the module is in a PARENT folder, you add another period to the path at the beginning:
 
                     require('../logger.js');   
-*/
 
 
-
-/* 
-5. How do you load a module?
-////////////////////////////
-==SHORT ANSWER==
-    •   To load a module, you create a "const" variable and call the require function as a value.
-        o   Note: You want to use "const" for your variable because you do not want to accidently over-ride it.
-
-
-==PRACTICAL EXAMPLE==
-    
+==PRACTICAL EXAMPLE==  
     STEP 1: First, load your module using the require() function:
                     
                     require('./logger.js')
 
     STEP 2: Second, assign the require function as a value to a constant variable:
+            o   Note: You want to use "const" for your variable because you do not want to accidently over-ride it.
 
                     const logger = require('./logger.js')
 
@@ -312,19 +299,27 @@
     •   To verfiy that you loaded a module, in Gitbash, you will see that when you input node app.js, 
         you get an object with a single method called log with a function:
 
-                node app.js
-                { log: [Function: log] }
+                    node app.js
+                    { log: [Function: log] }      
 */
 
 
 
 /* 
-6. What is a Module wrapper function?
+5. What is a Module wrapper function?
 /////////////////////////////////////
 ==SHORT ANSWER==
     •   A module wrapper is a function that "wraps" around each module (i.e. file) to keep the code inside "private".
     •   Node does NOT execute code in a file directly, but rather wraps the code of each module in an IIFE (immediately
         Invoked Function Expression)
+
+        
+==EXAMPLE==
+
+                (function (exports, require, module, __filename, __dirname) {
+                    // code in the module.
+                })
+
 
 ==EXTENDED ANSWER==
     •   Since modules are "private", meaning that they are only scoped to that module and not visibile anywhere
@@ -333,7 +328,8 @@
     •   Node automatically wraps the module in a "wrapper".
     •   The "module wrapper" function has serveral arguments such as "exports", "require", etc.
 
-==EXAMPLE==
+
+==PRACTICAL EXAMPLE==
     STEP 1: Create an error in your node application, like this: 
     
                 let x =;
@@ -370,13 +366,6 @@
                         })      
 
 
-    What does a module wrapper function look like?
-    ===============================================
-
-        (function (exports, require, module, __filename, __dirname) {
-            // code in the module.
-        })
-
 
     What are the arguments of a module wrapper function?
     =====================================================
@@ -396,6 +385,7 @@
 */
 
 
+
 /* 
 7. What are built-in modules in Node?
 ///////////////////////////////////////
@@ -406,7 +396,7 @@
 ==EXTENDED ANSWER==
     •   For a complte list of built-in modules, see Node documentation: https://nodejs.org/dist/latest-v10.x/docs/api/
     •   For example:
-        o   File system which works with files.
+        o   File system, which works with files.
         o   HTTP, which allows us to create web servers that listen for HTTP requests.
         o   OS, which allows us to work with the operating system.
         o   Path, which gives us a bunch of utility function for working with paths.
@@ -414,6 +404,7 @@
         o   Query Strings, which is useful in building HTTP services.
         o   Stream, which allows us to work with streams of data.
 */
+
 
 
 /* 
@@ -450,6 +441,7 @@
           ext: '.js',
           name: 'app' }
 */
+
 
 
 /* 
@@ -536,6 +528,7 @@
             o   For informations sake, if we did have an error, like the path being incorrect, we would get an "Error" message
                 information about what is wrong.
 */
+
 
 
 /* 
