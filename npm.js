@@ -188,6 +188,11 @@ What is package.json?
 /* 
 4. How do you USE a npm module?
 ////////////////////////////////
+    •   To use an npm module, you need to load the module using the require function and store it as a const.
+    
+    
+
+
 
 
 */

@@ -4,32 +4,33 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //      1. What is a module?
 //      2. What is a module JSON object?
-//          + What does a module JSON look like?
+//          +  What does a module JSON look like?
 //      3. How do you create a module?
-//          + Can you export a single function?
-//          + Can you check the module to verify that you added your method to the exports function?
+//          +  Can you export a single function?
+//          +  Can you check the module to verify that you added your method to the exports function?
 //      4. What is the require() function?
-//          + Can you access a module if it is NOT in the same folder?
+//          +  Can you access a module if it is NOT in the same folder?
+//          +  How does the require function work?
 //      5. How do you load a module?
 //      6. What is a Module wrapper function?
-//          + What does a module wrapper function look like?
-//          + What are the arguments of a module wrapper function?
-//          + How do you check module wrapper arguments?
+//          +  What does a module wrapper function look like?
+//          +  What are the arguments of a module wrapper function?
+//          +  How do you check module wrapper arguments?
 //      7. What are built-in modules in Node?
 //      8. What is a path module?
-//          + How do you access the path module?
+//          +  How do you access the path module?
 //      9. What is an OS module?
-//          + How do you access the OS module?
-//          + How do you access OS module methods?
+//          +  How do you access the OS module?
+//          +  How do you access OS module methods?
 //      10. What is a File system module?
-//          + How do you access the file system module?
-//          + How do you access the FS module methods?
-//          + How do you use a SYNCHRONOUS file system module method?
-//          + How do you use a ASYNCHRONOUS file system module method?
+//          +  How do you access the file system module?
+//          +  How do you access the FS module methods?
+//          +  How do you use a SYNCHRONOUS file system module method?
+//          +  How do you use a ASYNCHRONOUS file system module method?
 //      11. What is an Events Module and EventsEmitter?
-//          + How do you access the EventEmitter module?
-//          + How do you access the EventEmitter methods?
-//          + How does the EventEmitter work in practical application?
+//          +  How do you access the EventEmitter module?
+//          +  How do you access the EventEmitter methods?
+//          +  How does the EventEmitter work in practical application?
 //      12. What are event arguments? (w/logger example)
 //      13. Why should you extend an EventEmitter? (w/logger example)
 //      14. How do you define a class? (w/logger example)
@@ -260,6 +261,7 @@
 
                     require('');
 
+
     •   However, we need to indicate what path to take to access the module and since the app.js and logger.js are in the 
         same folder, we use ./ and then the name of the module.  Note that "logger.js" can be simply "logger" because node
         assumes it is a JavaScript file.
@@ -267,7 +269,26 @@
                     require('./logger.js')
 
 
-        Can you access a module if it is NOT in the same folder?
+    How does the require function work?
+    ===================================
+    •   The require() function works like this: when you supply a module, it will "resolve a module by checking to see if
+        it is first a core module (e.g. a npm installed library), a file or folder (e.g. './something'), and if not the
+        previous two it will look inside the "node_modules" folder. 
+    
+    
+    "it assumes that it is a 
+        core module (see npm.js for more details).  
+            o   For example: require('mymodule').
+                o   When you DO NOT have a period and forward slash, Node assumes that the module lives in the
+                    node_modules folder.
+
+    •   However, if you have a period and forward slash, it assumes that it is a file or folder.
+            o   For example: require('./folderName')
+                o   So Node would first assume that we have a file named "folderName" in the same file.
+                o   If not, then Node would assume it is a folder and INSIDE that folder is index.js.
+
+        
+    Can you access a module if it is NOT in the same folder?
     ========================================================
     •   If the module is a subfolder, you just need to include that subfolder in the path:
             
