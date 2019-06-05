@@ -10,7 +10,9 @@
 //         +  How do you install a specific version of npm?
 //      2. What is package.json?
 //         +  How do you create a package.json file?
+//         +  If you want to bypass these questions and make a package.json file in a rush
 //      3. How do you install an npm package (i.e. third party library)?
+//         +  How do you update a package to the latest version?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Package Manager from study, research, tutorials, mentor
@@ -38,7 +40,7 @@
     ========================================
     •   write "npm -v" in your Gitbash terminal.
      
-    How do you update NPM to the latest version?
+    How do you install NPM to the latest version?
     ============================================
     •   write "npm install npm -g".
 
@@ -147,6 +149,10 @@ What is package.json?
                         o   Inside the "node_modules" folder you will have the package and a package.json with the metadata 
                             of your installed package.
 
+==EXAMPLES==
+
+
+
     How do you install an npm package?
     ==================================
     
@@ -157,9 +163,11 @@ What is package.json?
                 
                 npm i underscore
 
+
         STEP 2: Install the npm package in Gitbash
         ==========================================
         • In Gitbash, run the command line install line and you will see
+
 
                 $ npm install underscore
                 npm notice created a lockfile as package-lock.json. You should commit this file.
@@ -168,7 +176,18 @@ What is package.json?
 
                 + underscore@1.9.1
                 added 1 package in 0.398s
+
+
+    How do you update a package to the latest version?
+    ==================================================
+    •  write "npm update [package name]"
 */
 
 
 
+/* 
+4. How do you USE a npm module?
+////////////////////////////////
+
+
+*/
