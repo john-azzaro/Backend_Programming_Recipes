@@ -62,6 +62,10 @@
 /* 
 What is package.json?
 ////////////////////////
+    •   The package.json file is the core of the node ecosystem.
+    •   The package.json file is used as a manifest about applications, packages, etc.
+    •   The package.json file is used to make development streamlined, modular, and efficient.
+
 ==EXTENDED ANSWER==
     •   Package.json is a JSON file that include basic information about your application.
             o   When created, the package.json file will have a JSON object with key/value pairts
@@ -99,23 +103,23 @@ What is package.json?
                 save it as a dependency in the package.json file.
 
                 Press ^C at any time to quit.
-        2.      package name: (npm-demo)                                               <== Name of your project (file name of npm-demo by default)
-        3.      version: (1.0.0)                                                       <== Project version number
-        4.      description:                                                           <== description of project
+        2.      package name: (npm-demo)                                               <== Name property (must be url friendly)
+        3.      version: (1.0.0)                                                       <== Version property (current version of the module)
+        4.      description:                                                           <== Decription property is a string telling what the module does.
         5.      entry point: (index.js)
         6.      test command:
-        7.      git repository:
-        8.      keywords:
+        7.      git repository:                                                        <== where the source code lives (full url of version control)
+        8.      keywords:                                                              <== keywords (in array) in the module that help identify it.
         9.      author:
-        10.     license: (ISC)
+        10.     license: (ISC)                                                         <== License describes what license the module that pack.json is describing
                 About to write to C:\Users\Admin\Desktop\npm-demo\package.json:
 
                 {
                 "name": "npm-demo",
                 "version": "1.0.0",
                 "description": "",
-                "main": "index.js",
-                "scripts": {
+                "main": "index.js",                                                    <== direction to the entry point to the module package.json is describing
+                "scripts": {                                                           <== object with many key/values for building, testing of commands needed to work with the module.
                     "test": "echo \"Error: no test specified\" && exit 1"
                 },
                 "author": "",
@@ -215,6 +219,30 @@ What is package.json?
 
 
 
+/* 
+What are package dependencies in package.json?
+///////////////////////////////////////////////
+==SHORT ANSWER==
+    •   The package dependencies property is where dependencies (i.e. the othe rmodules that THIS module uses) are defined.
+
+==EXAMPLE==
+        "dependencies": {                        <== dependencies object
+            "underscore": "^0.2.10",             <== dependency with version number as a value.
+            "async": "^0.2.10",
+            "npm2es": "~0.4.2",
+            "optimist": "~0.6.0",
+        },
+
+==EXTENDED ANSWERS==
+    •   In your package.json file you will see a list of dependencies in the dependency property
+    •   
+
+
+
+*/
+
+
+
 
 
 
@@ -241,4 +269,5 @@ What is package.json?
 /*
 https://www.npmjs.com/ -- npmjs main
 https://underscorejs.org/  underscore documentation
+https://nodesource.com/blog/the-basics-of-package-json-in-node-js-and-npm/ -- package.json but other good info too
 */
