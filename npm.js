@@ -186,15 +186,24 @@ What is package.json?
 
 
 /* 
-4. How do you USE a npm module?
+4. How do you USE a npm module? 
 ////////////////////////////////
+==SHORT ANSWER==
+    •   
+
+
+==EXTENDED ANSWERS==
+    •   Once you have installed a library (e.g. underscore) as a node module, you can use it in your code.
     •   To use an npm module, you need to load the module using the require function and store it as a const.
     •   Then, we can use the built-in methods outlined in the documentation of underscore (https://underscorejs.org/).
     
-    
+    STEP 1: In the file you wish to use the module, load the library and store it as a const variable.
+    ==================================================================================================
+
+                const _ = require('underscore');              <== note here that the symbol "_" is used for the underscore library by convention.
 
 
-
+    STEP 2: To USE the 
 
 */
 

@@ -271,7 +271,7 @@
 
     How does the require function work?
     ===================================
-    •   The require() function works like this: when you supply a module, it will "resolve a module by checking to see if
+    •   The require() function works like this: when you supply a module, it will "resolve" a module by checking to see if
         it is first a core module (e.g. a npm installed library), a file or folder (e.g. './something'), and if not the
         previous two it will look inside the "node_modules" folder. 
     
