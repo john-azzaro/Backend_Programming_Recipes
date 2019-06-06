@@ -199,12 +199,18 @@ What is package.json?
     
     STEP 1: In the file you wish to use the module, load the library and store it as a const variable.
     ==================================================================================================
-
+            
                 const _ = require('underscore');              <== note here that the symbol "_" is used for the underscore library by convention.
 
 
-    STEP 2: To USE the 
+    STEP 2: To USE the module
+    ========================
+        •   To use the module, find your desired method in the module documentation (http://underscorejs.org).
+        •   For this example, lets use the "contains" method returns a boolean value (i.e. true or false) searching for 
+            a value in an array.
+                o   In the example below, we're looking for the value of 3 in an array of [1,2,3].
 
+                let result = _.contains([1,2,3], 3);                 //=> In Gitbash, when you run "node index.js" you will get true.
 */
 
 
