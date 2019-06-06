@@ -223,6 +223,7 @@ What is package.json?
 What are package dependencies in package.json?
 ///////////////////////////////////////////////
 ==SHORT ANSWER==
+    •   In your package.json file you will see a list of dependencies in the dependency property
     •   The package dependencies property is where dependencies (i.e. the othe rmodules that THIS module uses) are defined.
 
 ==EXAMPLE==
@@ -232,14 +233,45 @@ What are package dependencies in package.json?
             "npm2es": "~0.4.2",
             "optimist": "~0.6.0",
         },
-
-==EXTENDED ANSWERS==
-    •   In your package.json file you will see a list of dependencies in the dependency property
-    •   
+*/
 
 
+
+/* 
+What is gitignore and why do you need to include it?
+////////////////////////////////////////////////////
+==SHORT ANSWER==
+    •   Because the node_modules files can grow in size (potentially 100's of mb's), when you check your code into a source code repository, 
+        you want to make sure you DO NOT include this folder.
+            o   The main reason is because if someone checks out your code, they would have to wait for those files to download.
+
+    To exclude the node_modules file from your git repository:
+    ==========================================================
+        •   To exclude node_modules from git, simple create a file called ".gitignore".
+        •   Inside .gitignore, you put down all the files you want git to ignore (with a forward slash because it is a folder):
+
+                node_modules/
+
+
+    To restore dependencies:
+    =======================
+        •   Suppose you were on a different machine or downloaded this project and didnt have these installed.
+        •   When you run "npm install", it will restore all dependencies listed in package.json.
+        •   npm will look up package.json and download those dependencies from the npm registry.
+            
+
+
+
+
+
+
+
+
+            o   However, all the dependencies are stored in the package.json file so 
 
 */
+
+
 
 
 
