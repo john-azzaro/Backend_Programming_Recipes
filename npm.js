@@ -15,9 +15,9 @@
 //         +  How do you install a specific version of a package?
 //         +  How do you find out which packages are outdated?
 //         +  How do you update a package to the latest version of minor and patch releases?
-//         +  
-//
-
+//         +  How do you update to the latest version of major releases using ncu?
+//      4. How do you uninstall a npm package?
+//      5. How do you use a npm module? 
 //
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,8 +37,8 @@
         or uninstalls Node.js packages in your application.
 
 ==EXAMPLE==
-    •   When you write "npm install underscore", you are using npm to install the third-party library "underscore"
-        to your project.
+    •   When you write "npm install underscore", you are using Node Package Manager (NPM) to install the 
+        third-party library "underscore" to your project.
 
 ==EXTENDED ANSWER==
     •   NPM is also an online repository for open-source Node.js packages where the community creates useful modules
@@ -79,7 +79,10 @@
 ==SHORT ANSWER==
     •   Package.json is a file that contains metadata about applications, packages, and other information 
         about your application in JSON format
-  
+
+==EXAMPLE==
+
+        
 ==EXTENDED ANSWER==       
     •   Before you create any files in your project you need to create a package.json.
     •   The package.json file is the core of the node ecosystem.    
@@ -144,36 +147,37 @@
 
         OPTIONAL: Is there a way to create a package.json file quickly?  
         ===============================================================
-            •   write npm init --yes
+            •   write "npm init --yes"
 */
 
 
 
 /* 
-3. How do you install an npm package (i.e. third party library)?
-////////////////////////////////////////////////////////////////
+3. How do you install an npm package?
+/////////////////////////////////////
 ==SHORT ANSWER==
-    •   To install an npm package (i.e. third party library) as a node module, you find a package in the npmjs.com
-        library and install with "npm i [package-name-here]".
+    •   To install an npm package as a node module, you find a package on the npmjs.com website, then go to
+        Gitbash and install that library with "npm i [package-name-here]".
 
 ==EXTENDED ANSWER==
     •   To find a npm package, you first need to go to npmjs.com and find the name of the package you want to install.
     •   To install a npm package, in Gitbash (in you project folder), you install using "i" or "install" and the name 
         of the package.
-            o   When you install, two things will happen:
-                1.   The package.json file will have an updated DEPENDENCIES property with the new npm package and its version.
-                2.   A new "node_modules" folder will be created (or if this is not your first package, then it will be updated).
+            o   Following installation, two things will happen:
+                1.  The package.json file will have an updated DEPENDENCIES property with the new npm package 
+                    and its version.
+                2.  A new "node_modules" folder will be created (or if this is not your first package, then it will be updated).
                         o   Inside the "node_modules" folder you will have the package and a package.json with the metadata 
                             of your installed package.
 
-==EXAMPLES==
-    To install an npm package:
-    ==========================
+==PRACTICAL EXAMPLES==
+    How do you install an npm package?
+    =================================
 
         STEP 1: Find an npm package on npmjs.com.
         =========================================
-        •   For this example, we'll install the "underscore" package.
-        •   On the package page, you will see the command line install line: 
+            •   For this example, we'll install the "underscore" package.
+            •   On the package page, you will see the command line install line: 
                 
                 npm i underscore
 
@@ -236,31 +240,33 @@
 
 
 /* 
-How do you uninstall a npm package?
-///////////////////////////////////
+4. How do you uninstall a npm package?
+//////////////////////////////////////
     •   If you have a package that you no longer need in your application, simply write:
 
-                npm uninstall [package-name]  (or)  npm un [package-name]
+                npm uninstall [package-name]  
+                    (or)  
+                npm un [package-name]
 */
 
 
 
 /* 
-4. How do you USE a npm module? 
+5. How do you use a npm module? 
 ////////////////////////////////
 ==SHORT ANSWER==
-    •   
-
+    •   To use an npm module, you need to load the module using the require function and store it as a const.  
 
 ==EXTENDED ANSWERS==
     •   Once you have installed a library (e.g. underscore) as a node module, you can use it in your code.
     •   To use an npm module, you need to load the module using the require function and store it as a const.
     •   Then, we can use the built-in methods outlined in the documentation of underscore (https://underscorejs.org/).
     
+==PRACTICAL EXAMPLE==
     STEP 1: In the file you wish to use the module, load the library and store it as a const variable.
     ==================================================================================================
             
-                const _ = require('underscore');              <== note here that the symbol "_" is used for the underscore library by convention.
+                const _ = require('underscore');              <== note here that the symbol "_" is by convention used for the underscore library.
 
 
     STEP 2: To USE the module
@@ -276,9 +282,12 @@ How do you uninstall a npm package?
 
 
 /* 
-What are package dependencies in package.json?
-///////////////////////////////////////////////
+6. What are package dependencies in package.json?
+//////////////////////////////////////////////////
 ==SHORT ANSWER==
+    •               
+
+==EXTENDED ANSWERS==
     •   In your package.json file you will see a list of dependencies in the dependency property FOR YOUR APPLICATION.
             o   The application NEEDS these depencies in order to function properly.
     •   The package dependencies property is where dependencies (i.e. the othe rmodules that THIS module uses) are defined.
