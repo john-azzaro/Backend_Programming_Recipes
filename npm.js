@@ -238,13 +238,15 @@ What are package dependencies in package.json?
     ============================
     •   Semantic versioning helps keep your application up to date with the latest releases.
     •   Semantic versioning (or samver), the version of a node package has 3 components: major.minor.patch.
+ 
+                  major version        patch version
+                               \      /
+                "underscore": "^0.2.10",
+                                |
+                              minor version
 
-            "underscore": "^0.2.10",
-
-            "underscore": "^(carot)0(major version).2(minor version).10(patch version)",
-
-         Semantic versioning components
-         ==============================   
+        Semantic versioning components
+        ==============================   
         •   The patch number will increase if there is a bug that is fixed.
         •   The minor number will increase if there are new features that are added that dont break the existing api.  
             o   note that the patch number will be reset to 0 until bugs are discovered and fixed.
@@ -255,13 +257,27 @@ What are package dependencies in package.json?
         •   The carot symbol (^) means that we would be interested in anything that has the current major version (e.g. minor or patch update).
         •   The tilde symbol (~) means that you want any version so long as the version is better than the current.
         •   No symbol ( ) means that you want to keep the same version of the module so it cannot break.
-        
-            
 
 
+    How do you know what package version is installed?
+    ==================================================
+        •   There are two ways: 
+            o   First way is to look at package.json
+                o   node_modules ==> mongoose ==> package.json ==> "version": "4.13.6"
 
-
-
+            o   Second way is to go to Gitbash and write "npm list".
+                
+                $ npm list
+                npm-demo@1.0.0 C:\Users\Admin\Desktop\VSCode Project Files\misc\NodeTestApps\npm-demo
+                +-- mongoose@5.5.13
+                | +-- async@2.6.2
+                | | `-- lodash@4.17.11
+                | +-- bson@1.1.1
+                | +-- kareem@2.3.0
+                | +-- mongodb@3.2.6
+                ...
+                more
+                ...
 */
 
 
