@@ -194,12 +194,30 @@ What is package.json?
                 npm outdated
     
                 
-    How do you update a package to the latest version?
-    ==================================================
+    How do you update a package to the latest version of minor and patch releases?
+    ==============================================================================
     •  write "npm update [package-name]" for a specific package
     •  write "npm update" for project wide update of packages.
 
 
+    How do you update to the latest version of major releases using ncu?
+    ====================================================================
+    •  write "npm install -g npm-check-updates"
+        o   This will give you a new command line tool called "npm check updates"
+
+                npm install -g npm-check-updates
+
+
+    •  When you write "npm-check-updates", you will see all the packages you have installed and the newest version available.
+
+                npm-check-updates
+
+    • To update the packages, you simply write "npm-check-updates -u" or "ncu -u"   
+        o   However, this will only update the package.json.
+        o   To complete this upgrade, you need to install the dependency with "npm i"
+
+                ncu -u
+                npm i
 */
 
 
