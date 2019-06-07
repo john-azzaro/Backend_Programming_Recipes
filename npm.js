@@ -154,9 +154,6 @@ What is package.json?
                             of your installed package.
 
 ==EXAMPLES==
-
-
-
     How do you install an npm package?
     ==================================
     
@@ -184,7 +181,17 @@ What is package.json?
 
     How do you update a package to the latest version?
     ==================================================
-    •  write "npm update [package name]"
+    •  write "npm update [package-name]"
+
+
+    How do you install a specific version of a package?
+    ===================================================
+    •   To install a specific version of a package, install the package, then the "@" symbol followed by the version number.
+        
+                npm install [package-name]@5.8.2
+
+
+
 */
 
 
@@ -259,6 +266,8 @@ What are package dependencies in package.json?
         •   No symbol ( ) means that you want to keep the same version of the module so it cannot break.
 
     
+
+
     How do you view the registry of your package on Gitbash?
     ========================================================
         •   If you cannot get to the npm registry to see the list of dependencies, you simply go to Gitbash and type:
@@ -269,19 +278,24 @@ What are package dependencies in package.json?
 
     How do you view ONLY dependencies of your package on Gitbash?
     =============================================================
-        •   To view dependencies ONLY:
-          
-                    "npm view [package-name-here] dependencies
+        •   To view dependencies property ONLY:
+
+                    npm view [package-name-here] dependencies
 
 
     How do you know what package version is installed?
     ==================================================
-        •   There are THREE ways: 
-            o   First way is to look at package.json
-                    
-                    ode_modules ==> mongoose ==> package.json ==> "version": "4.13.6"
+        •   There are THREE ways:
+            o   Look at package.json.
+            o   Write "npm list" in Gitbash.
+            o   Write "npm list --depth=0" in Gitbash.
+        
 
-            o   Second way is to go to Gitbash and write "npm list".
+            1.  First way is to look at package.json
+                    
+                    node_modules ==> mongoose ==> package.json ==> "version": "4.13.6"
+
+            2.  Second way is to go to Gitbash and write "npm list".
                 
                     $ npm list
                     npm-demo@1.0.0 C:\Users\Admin\Desktop\NodeTestApps\npm-demo
@@ -295,12 +309,17 @@ What are package dependencies in package.json?
                     more
                     ...
 
-            o   Third way is to find the dependencies of only YOUR application with "--depth=0"
+            3.  Third way is to find the dependencies of only YOUR application with "--depth=0"
 
                     $ npm list --depth=0
                     npm-demo@1.0.0 C:\Users\Admin\Desktop\NodeTestApps\npm-demo
                     +-- mongoose@5.5.13
                     `-- underscore@1.9.1
+
+
+    How do you check for all the versions of a dependencies?
+    ========================================================
+        •   npm view [package-name-here] versions
 
 */
 
