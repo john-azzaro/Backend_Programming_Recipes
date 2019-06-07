@@ -2,17 +2,15 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Node Package Manager (NPM)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      1. What is Node Package Manager (NPM)?
-//         +  How do you install NPM? 
-//         +  How do you verify your NPM installation? 
-//         +  How do you update NPM to the latest version?
-//         +  How do you access npm help? 
+//      1. What is Node Package Manager?. 
+//         +  How do you install NPM?
+//         +  How do you verify your NPM installation?
+//         +  How do you install NPM to the latest version?
+//         +  How do you access npm help?
 //         +  How do you install a specific version of npm?
 //      2. What is package.json?
-//         +  How do you create a package.json file?
-//         +  If you want to bypass these questions and make a package.json file in a rush
-//      3. How do you install an npm package (i.e. third party library)?
-//         +  How do you update a package to the latest version?
+//
+//
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Package Manager from study, research, tutorials, mentor
@@ -26,12 +24,16 @@
 /* 
 1. What is Node Package Manager (NPM)?
 //////////////////////////////////////
-    •   Node Package Manager, or NPM, is a command line tool (such as using Gitbash) is a command line tool that 
-        installs, updates, or uninstalls Node.js packages in your application.
-            o  NPM is also an online repository for open-source Node.js packages where the community creates useful modules
-               and published them as packages to the repository.
-            o  NPM and Node are developed independently, so if you check the version of npm and node, they will be different.
+==SHORT ANSWER==
+    •   Node Package Manager, or NPM, is a command line tool (such as using Gitbash) that installs, updates, 
+        or uninstalls Node.js packages in your application.
 
+==EXTENDED ANSWER==
+    •   NPM is also an online repository for open-source Node.js packages where the community creates useful modules
+        and published them as packages to the repository.
+    •   NPM and Node are developed independently, so if you check the version of npm and node, they will be different.
+
+    
     How do you install NPM?
     =======================
     •   NPM is installed with your Node.js installation.
@@ -60,7 +62,7 @@
 
 
 /* 
-What is package.json?
+2. What is package.json?
 ////////////////////////
     •   The package.json file is the core of the node ecosystem.
     •   The package.json file is used as a manifest about applications, packages, etc.
@@ -78,9 +80,6 @@ What is package.json?
             o   git repo address
             o   dependencies
             o   etc.
-
-
-==PRACTICAL EXAMPLE==
 
     How do you create a package.json file?
     ======================================
@@ -428,13 +427,17 @@ What is gitignore and why do you need to include it?
 
 
 /* 
-What is semantic versioning?
-/////////////////////////////
-
+How do you publish your own node package and publish on npm registry?
+/////////////////////////////////////////////////////////////////////
+    •   
 */
 
 
-
+/* 
+How do you update an uploaded node package and publish on npm registry?
+////////////////////////////////////////////////////////////////////////
+    •   
+*/
 
 
 
