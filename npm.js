@@ -223,6 +223,16 @@ What is package.json?
 
 
 /* 
+How do you uninstall a npm package?
+///////////////////////////////////
+    •   If you have a package that you no longer need in your application, simply write:
+
+                npm uninstall [package-name]  (or)  npm un [package-name]
+*/
+
+
+
+/* 
 4. How do you USE a npm module? 
 ////////////////////////////////
 ==SHORT ANSWER==
@@ -358,6 +368,7 @@ What are DevDependencies and what do they do?
         code, dependencies for bundling JavaScript code, etc.
     •   Since DecDependencies are for development and not for essential for successful operation of the application, they should
         NOT go in the same production enviroment where we deploy our application.
+    •   DevDependencies are stored in the "node_modules" folder but seperated in package.json
 
     How do you install a DevDependency?
     ===================================
@@ -381,11 +392,10 @@ What are DevDependencies and what do they do?
                     "mongoose": "^5.5.13",
                     "underscore": "^1.9.1"
                 },
-                "devDependencies": {
+                "devDependencies": {                        <== This tells node this is a development dependency and should NOT go in production enviroment.
                     "jshint": "^2.10.2"
                 }
             }        
-
 */
 
 
