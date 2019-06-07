@@ -258,6 +258,21 @@ What are package dependencies in package.json?
         •   The tilde symbol (~) means that you want any version so long as the version is better than the current.
         •   No symbol ( ) means that you want to keep the same version of the module so it cannot break.
 
+    
+    How do you view the registry of your package on Gitbash?
+    ========================================================
+        •   If you cannot get to the npm registry to see the list of dependencies, you simply go to Gitbash and type:
+            o   This will show the package.json file in gitbash. 
+
+                    npm view [package-name-here]
+           
+
+    How do you view ONLY dependencies of your package on Gitbash?
+    =============================================================
+        •   To view dependencies ONLY:
+          
+                    "npm view [package-name-here] dependencies
+
 
     How do you know what package version is installed?
     ==================================================
