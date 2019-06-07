@@ -188,17 +188,16 @@ What is package.json?
         
     How do you update a package to the latest version?
     ==================================================
-    •    
+    •   To find out if you have a package that is outdated, you write "npm outdated" and you will see a list of 
+        current, wanted, latest, and location.
+
+                npm outdated
     
-    
-    
-    
-    
-    
-    
+                
     How do you update a package to the latest version?
     ==================================================
-    •  write "npm update [package-name]"
+    •  write "npm update [package-name]" for a specific package
+    •  write "npm update" for project wide update of packages.
 
 
 */
