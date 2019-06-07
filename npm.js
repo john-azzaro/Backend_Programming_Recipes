@@ -256,7 +256,8 @@ What is package.json?
 What are package dependencies in package.json?
 ///////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   In your package.json file you will see a list of dependencies in the dependency property
+    •   In your package.json file you will see a list of dependencies in the dependency property FOR YOUR APPLICATION.
+            o   The application NEEDS these depencies in order to function properly.
     •   The package dependencies property is where dependencies (i.e. the othe rmodules that THIS module uses) are defined.
 
 ==EXAMPLE==
@@ -346,6 +347,44 @@ What are package dependencies in package.json?
     How do you check for all the versions of a dependencies?
     ========================================================
         •   npm view [package-name-here] versions
+*/
+
+
+
+/* 
+What are DevDependencies and what do they do?
+/////////////////////////////////////////////
+    •   A DevDependency is a dependency that is used only in development, such as tools for running unit tests, static analysis 
+        code, dependencies for bundling JavaScript code, etc.
+    •   Since DecDependencies are for development and not for essential for successful operation of the application, they should
+        NOT go in the same production enviroment where we deploy our application.
+
+    How do you install a DevDependency?
+    ===================================
+    •   To install a DevDependency, you install the package and add "--save-dev" at the end.
+
+            $ npm install jshint --save-dev
+
+    •   In your package.json file, you will see a new propery "devDependencies" with the new package installed.
+
+            {
+                "name": "npm-demo",
+                "version": "1.0.0",
+                "description": "",
+                "main": "index.js",
+                "scripts": {
+                    "test": "echo \"Error: no test specified\" && exit 1"
+                },
+                "author": "",
+                "license": "ISC",
+                "dependencies": {
+                    "mongoose": "^5.5.13",
+                    "underscore": "^1.9.1"
+                },
+                "devDependencies": {
+                    "jshint": "^2.10.2"
+                }
+            }        
 
 */
 
