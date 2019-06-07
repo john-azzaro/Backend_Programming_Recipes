@@ -9,7 +9,15 @@
 //         +  How do you access npm help?
 //         +  How do you install a specific version of npm?
 //      2. What is package.json?
+//         +  How do you create a package.json file?
+//         +  OPTIONAL: Is there a way to create a package.json file quickly? 
+//      3. How do you install an npm package?
+//         +  How do you install a specific version of a package?
+//         +  How do you find out which packages are outdated?
+//         +  How do you update a package to the latest version of minor and patch releases?
+//         +  
 //
+
 //
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -28,6 +36,10 @@
     •   Node Package Manager, or NPM, is a command line tool (such as using Gitbash) that installs, updates, 
         or uninstalls Node.js packages in your application.
 
+==EXAMPLE==
+    •   When you write "npm install underscore", you are using npm to install the third-party library "underscore"
+        to your project.
+
 ==EXTENDED ANSWER==
     •   NPM is also an online repository for open-source Node.js packages where the community creates useful modules
         and published them as packages to the repository.
@@ -36,23 +48,23 @@
     
     How do you install NPM?
     =======================
-    •   NPM is installed with your Node.js installation.
+        •   NPM is installed with your Node.js installation.
 
     How do you verify your NPM installation?
     ========================================
-    •   write "npm -v" in your Gitbash terminal.
+        •   write "npm -v" in your Gitbash terminal.
      
     How do you install NPM to the latest version?
     ============================================
-    •   write "npm install npm -g".
+        •   write "npm install npm -g".
 
     How do you access npm help?
     ===========================
-    •   write "npm help".
+        •   write "npm help".
 
     How do you install a specific version of npm?
     =============================================
-    •   write "npm i -g npm@5.5.1"
+        •   write "npm i -g npm@5.5.1"
 
             o   "i" stands for install
             o   -g stands for global
@@ -64,15 +76,17 @@
 /* 
 2. What is package.json?
 ////////////////////////
-    •   The package.json file is the core of the node ecosystem.
-    •   The package.json file is used as a manifest about applications, packages, etc.
-    •   The package.json file is used to make development streamlined, modular, and efficient.
-
-==EXTENDED ANSWER==
-    •   Package.json is a JSON file that include basic information about your application.
-            o   When created, the package.json file will have a JSON object with key/value pairts
+==SHORT ANSWER==
+    •   Package.json is a file that contains metadata about applications, packages, and other information 
+        about your application in JSON format
+  
+==EXTENDED ANSWER==       
     •   Before you create any files in your project you need to create a package.json.
-    •   All applications have as a standard the package.json file.
+    •   The package.json file is the core of the node ecosystem.    
+    •   Every Node application has a package.json file that includes metadata about the application.
+    •   The package.json file is used to make development streamlined, modular, and efficient.
+    •   When created, the package.json file will have a JSON object with key/value pairts 
+    •   All node applications have as a standard the package.json file.
     •   Package.json includes "metadata" information for your application such as:
             o   name
             o   version
@@ -128,8 +142,8 @@
         11.     Is this ok? (yes)                                                        <== creates a package.json file in your project folder
 
 
-        OPTIONAL: If you want to bypass these questions and make a package.json file in a rush
-        ======================================================================================
+        OPTIONAL: Is there a way to create a package.json file quickly?  
+        ===============================================================
             •   write npm init --yes
 */
 
@@ -153,9 +167,9 @@
                             of your installed package.
 
 ==EXAMPLES==
-    How do you install an npm package?
-    ==================================
-    
+    To install an npm package:
+    ==========================
+
         STEP 1: Find an npm package on npmjs.com.
         =========================================
         •   For this example, we'll install the "underscore" package.
@@ -185,8 +199,8 @@
                 npm install [package-name]@5.8.2
 
         
-    How do you update a package to the latest version?
-    ==================================================
+    How do you find out which packages are outdated?
+    ================================================
     •   To find out if you have a package that is outdated, you write "npm outdated" and you will see a list of 
         current, wanted, latest, and location.
 
