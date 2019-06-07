@@ -233,6 +233,25 @@ What are package dependencies in package.json?
             "npm2es": "~0.4.2",
             "optimist": "~0.6.0",
         },
+
+    What is semantic versioning?
+    ============================
+    •   Samantic versioning (or samver), the version of a node package has 3 components: major.minor.patch.
+    •   The patch number will increase if there is a bug that is fixed.
+    •   The minor number will increase if there are new features that are added that dont break the existing api.  
+        o   note that the patch number will be reset to 0 until bugs are discovered and fixed.
+    •   The major number will increase if there is something that could break the dependencies of mongoose. 
+    •   The carot symbol () means that we would be interested in anything that has the current major version.
+    •   
+    
+            "underscore": "^0.2.10",
+
+            "underscore": "^(carot)0(major version).2(minor version).10(patch version)",
+
+
+
+
+
 */
 
 
@@ -251,6 +270,8 @@ What is gitignore and why do you need to include it?
         •   Inside .gitignore, you put down all the files you want git to ignore (with a forward slash because it is a folder):
 
                 node_modules/
+        
+        •   In the terminal, you should expect to see "node_modules" omitted from untracked files!
 
 
     To restore dependencies:
@@ -258,16 +279,13 @@ What is gitignore and why do you need to include it?
         •   Suppose you were on a different machine or downloaded this project and didnt have these installed.
         •   When you run "npm install", it will restore all dependencies listed in package.json.
         •   npm will look up package.json and download those dependencies from the npm registry.
-            
+*/
 
 
 
-
-
-
-
-
-            o   However, all the dependencies are stored in the package.json file so 
+/* 
+What is semantic versioning?
+/////////////////////////////
 
 */
 
