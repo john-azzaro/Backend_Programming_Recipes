@@ -179,17 +179,26 @@ What is package.json?
                 added 1 package in 0.398s
 
 
-    How do you update a package to the latest version?
-    ==================================================
-    •  write "npm update [package-name]"
-
-
     How do you install a specific version of a package?
     ===================================================
     •   To install a specific version of a package, install the package, then the "@" symbol followed by the version number.
         
                 npm install [package-name]@5.8.2
 
+        
+    How do you update a package to the latest version?
+    ==================================================
+    •    
+    
+    
+    
+    
+    
+    
+    
+    How do you update a package to the latest version?
+    ==================================================
+    •  write "npm update [package-name]"
 
 
 */
