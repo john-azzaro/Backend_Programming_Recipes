@@ -261,23 +261,32 @@ What are package dependencies in package.json?
 
     How do you know what package version is installed?
     ==================================================
-        •   There are two ways: 
+        •   There are THREE ways: 
             o   First way is to look at package.json
-                o   node_modules ==> mongoose ==> package.json ==> "version": "4.13.6"
+                    
+                    ode_modules ==> mongoose ==> package.json ==> "version": "4.13.6"
 
             o   Second way is to go to Gitbash and write "npm list".
                 
-                $ npm list
-                npm-demo@1.0.0 C:\Users\Admin\Desktop\VSCode Project Files\misc\NodeTestApps\npm-demo
-                +-- mongoose@5.5.13
-                | +-- async@2.6.2
-                | | `-- lodash@4.17.11
-                | +-- bson@1.1.1
-                | +-- kareem@2.3.0
-                | +-- mongodb@3.2.6
-                ...
-                more
-                ...
+                    $ npm list
+                    npm-demo@1.0.0 C:\Users\Admin\Desktop\NodeTestApps\npm-demo
+                    +-- mongoose@5.5.13
+                    | +-- async@2.6.2
+                    | | `-- lodash@4.17.11
+                    | +-- bson@1.1.1
+                    | +-- kareem@2.3.0
+                    | +-- mongodb@3.2.6
+                    ...
+                    more
+                    ...
+
+            o   Third way is to find the dependencies of only YOUR application with "--depth=0"
+
+                    $ npm list --depth=0
+                    npm-demo@1.0.0 C:\Users\Admin\Desktop\NodeTestApps\npm-demo
+                    +-- mongoose@5.5.13
+                    `-- underscore@1.9.1
+
 */
 
 
