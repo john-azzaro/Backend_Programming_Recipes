@@ -236,17 +236,27 @@ What are package dependencies in package.json?
 
     What is semantic versioning?
     ============================
-    •   Samantic versioning (or samver), the version of a node package has 3 components: major.minor.patch.
-    •   The patch number will increase if there is a bug that is fixed.
-    •   The minor number will increase if there are new features that are added that dont break the existing api.  
-        o   note that the patch number will be reset to 0 until bugs are discovered and fixed.
-    •   The major number will increase if there is something that could break the dependencies of mongoose. 
-    •   The carot symbol () means that we would be interested in anything that has the current major version.
-    •   
-    
+    •   Semantic versioning helps keep your application up to date with the latest releases.
+    •   Semantic versioning (or samver), the version of a node package has 3 components: major.minor.patch.
+
             "underscore": "^0.2.10",
 
             "underscore": "^(carot)0(major version).2(minor version).10(patch version)",
+
+         Semantic versioning components
+         ==============================   
+        •   The patch number will increase if there is a bug that is fixed.
+        •   The minor number will increase if there are new features that are added that dont break the existing api.  
+            o   note that the patch number will be reset to 0 until bugs are discovered and fixed.
+        •   The major number will increase if there is something that could break the dependencies of mongoose. 
+        
+        Symbols (or none)
+        =================
+        •   The carot symbol (^) means that we would be interested in anything that has the current major version (e.g. minor or patch update).
+        •   The tilde symbol (~) means that you want any version so long as the version is better than the current.
+        •   No symbol ( ) means that you want to keep the same version of the module so it cannot break.
+        
+            
 
 
 
