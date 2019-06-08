@@ -68,8 +68,12 @@ What is a RESTful service?
     •   In the REST world, the "/customers" part of the endpoint is called the "resource".
     •   RESOURCES can be exposed (e.g. customers, user data, etc.) at verious endpoints.
     •   All the operations surrounding the "customers" like creating a customer, deleting a customer, updating, etc. would be done
-        by sending an HTTP request to the customers endpoint
-    •   
+        by sending an HTTP request to the customers endpoint.
+    •   The type of HTTP request determines the type of operation. 
+    •   Every HTTP request has a verb(method) that determines its type or intention.
+    •   HTTP methods include GET(getting data), POST(posting data), DELETE(deleting data), and PUT (updating data) 
+    
+    3 36
 
 */
 
