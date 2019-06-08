@@ -61,7 +61,7 @@ What is a RESTful service?
     •   HTTP protocol principles provide support for CRUD operations.
     •   CRUD stands for Create, Read, Update, and Delete.
 
-    EXAMPLE
+    REST
     •   Suppose you have a client app that manages a list of customers.
     •   For example, the service is exposed in an endpoint like https://website.com/api/customers where "/customers" refers 
         to a list of customers.
@@ -73,7 +73,25 @@ What is a RESTful service?
     •   Every HTTP request has a verb(method) that determines its type or intention.
     •   HTTP methods include GET(getting data), POST(posting data), DELETE(deleting data), and PUT (updating data) 
     
-    3 36
+    EXAMPLE
+    •   In a GET request, you send a request for data and you receive a response with that data.
+            o   For example, if you send a request for customers, you will get an array of objects of those customers.
+
+                    REQUEST                                 RESPONSE
+                __________________                  ________________________
+                Get /api/customers     ========>    [
+                                                       { id: 1, name:'joe'},
+                                                       { id: 2, name:'bob'},                                                  
+                                                    ]
+
+    •   And if you want a single customer, you would include that in the address:
+            o   The server would then respond by sending back an object with that specific information.
+
+                     REQUEST                                 RESPONSE
+                __________________                  ________________________
+                Get /api/customers/1   =========>     { id: 1, name:'joe'}
+                                                      
+                                                     
 
 */
 
