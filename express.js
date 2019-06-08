@@ -16,16 +16,16 @@
 Why should you use express?
 ////////////////////////////
 ==SHORT ANSWER==
-    •   Below is an example of a webserver that listens on port 3000 and responds to requests for
+    •   Below is an example of a simple webserver that listens on port 3000 and responds to requests for
         various endpoint urls.
     •   HOWEVER, this apporach is not ideal for building complex application because there are many
         things we would need to hard code (e.g. if statements).
     •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
 
 ==EXAMPLE==
-            const http = require('http');                              <== loads the http module and stores it in a constant named "http".
+            const http = require('http');                              <== loads the http core module and stores it in a constant named "http".
 
-            const server = http.createServer((req, res) => {           <== the "server" will listen for requests...
+            const server = http.createServer((req, res) => {           <== creates the "server" will listen for requests...
                 if (req.url === '/') {                                 <== ... such as if the request url is '/', then do something....
                     // do something...
                 }
