@@ -56,6 +56,20 @@ What is a RESTful service?
     •   The "server" is the back-end, which is where the front-end talks goes to in order to get data.
     •   The communication between the client and the server occurs through "HTTP Protocol".
     •   The server "exposes" a bunch of services that are accessible via HTTP protocol.
+    •   The client calls those services by sending an HTTP request.
+    •   REST, which stands for Representational State Transfer, is a convention for what is used to build these HTTP services.
+    •   HTTP protocol principles provide support for CRUD operations.
+    •   CRUD stands for Create, Read, Update, and Delete.
+
+    EXAMPLE
+    •   Suppose you have a client app that manages a list of customers.
+    •   For example, the service is exposed in an endpoint like https://website.com/api/customers where "/customers" refers 
+        to a list of customers.
+    •   In the REST world, the "/customers" part of the endpoint is called the "resource".
+    •   RESOURCES can be exposed (e.g. customers, user data, etc.) at verious endpoints.
+    •   All the operations surrounding the "customers" like creating a customer, deleting a customer, updating, etc. would be done
+        by sending an HTTP request to the customers endpoint
+    •   
 
 */
 
