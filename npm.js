@@ -18,7 +18,19 @@
 //         +  How do you update to the latest version of major releases using ncu?
 //      4. How do you uninstall a npm package?
 //      5. How do you use a npm module? 
-//
+//      6. What are package dependencies in package.json?
+//         +  What is semantic versioning?
+//         +  How do you view the registry of your package on Gitbash?
+//         +  How do you view ONLY dependencies of your package on Gitbash?
+//         +  How do you know what package version is installed?
+//         +  How do you check for all the versions of a dependencies?
+//      7. What are DevDependencies and what do they do?
+//         +  How do you install a DevDependency?
+//      8. What is .gitignore and why do you need it with version control?
+//         +  How do you exclude the node_modules file from your git repository?
+//         +  How do you restore dependencies?
+//      9. How do you publish your own node package and publish on npm registry?
+//     10. How do you update an uploaded node package and publish on npm registry?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Node Package Manager from study, research, tutorials, mentor
@@ -285,12 +297,12 @@
 6. What are package dependencies in package.json?
 //////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •               
+    •   Package dependencies are used to specify any other modules that a given module requires to work.             
 
 ==EXTENDED ANSWERS==
     •   In your package.json file you will see a list of dependencies in the dependency property FOR YOUR APPLICATION.
             o   The application NEEDS these depencies in order to function properly.
-    •   The package dependencies property is where dependencies (i.e. the othe rmodules that THIS module uses) are defined.
+    •   The package dependencies property is where dependencies (i.e. the other modules that THIS module uses) are defined.
 
 ==EXAMPLE==
         "dependencies": {                        <== dependencies object
@@ -384,8 +396,8 @@
 
 
 /* 
-What are DevDependencies and what do they do?
-/////////////////////////////////////////////
+7. What are DevDependencies and what do they do?
+////////////////////////////////////////////////
     •   A DevDependency is a dependency that is used only in development, such as tools for running unit tests, static analysis 
         code, dependencies for bundling JavaScript code, etc.
     •   Since DecDependencies are for development and not for essential for successful operation of the application, they should
@@ -423,15 +435,15 @@ What are DevDependencies and what do they do?
 
 
 /* 
-What is gitignore and why do you need to include it?
-////////////////////////////////////////////////////
+8. What is .gitignore and why do you need it with version control?
+//////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Because the node_modules files can grow in size (potentially 100's of mb's), when you check your code into a source code repository, 
         you want to make sure you DO NOT include this folder.
             o   The main reason is because if someone checks out your code, they would have to wait for those files to download.
 
-    To exclude the node_modules file from your git repository:
-    ==========================================================
+    How do you exclude the node_modules file from your git repository?
+    ==================================================================
         •   To exclude node_modules from git, simple create a file called ".gitignore".
         •   Inside .gitignore, you put down all the files you want git to ignore (with a forward slash because it is a folder):
 
@@ -440,8 +452,8 @@ What is gitignore and why do you need to include it?
         •   In the terminal, you should expect to see "node_modules" omitted from untracked files!
 
 
-    To restore dependencies:
-    =======================
+    How do you restore dependencies?
+    ================================
         •   Suppose you were on a different machine or downloaded this project and didnt have these installed.
         •   When you run "npm install", it will restore all dependencies listed in package.json.
         •   npm will look up package.json and download those dependencies from the npm registry.
@@ -450,15 +462,15 @@ What is gitignore and why do you need to include it?
 
 
 /* 
-How do you publish your own node package and publish on npm registry?
-/////////////////////////////////////////////////////////////////////
+9. How do you publish your own node package and publish on npm registry?
+/////////////////////////////////////////////////////////////////////////
     •   
 */
 
 
 /* 
-How do you update an uploaded node package and publish on npm registry?
-////////////////////////////////////////////////////////////////////////
+10. How do you update an uploaded node package and publish on npm registry?
+///////////////////////////////////////////////////////////////////////////
     •   
 */
 
