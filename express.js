@@ -62,6 +62,7 @@ What is a RESTful service?
     •   CRUD stands for Create, Read, Update, and Delete.
 
     REST
+    ==========
     •   Suppose you have a client app that manages a list of customers.
     •   For example, the service is exposed in an endpoint like https://website.com/api/customers where "/customers" refers 
         to a list of customers.
@@ -73,26 +74,49 @@ What is a RESTful service?
     •   Every HTTP request has a verb(method) that determines its type or intention.
     •   HTTP methods include GET(getting data), POST(posting data), DELETE(deleting data), and PUT (updating data) 
     
-    EXAMPLE
+    GET REQUEST EXAMPLE
+    ====================
     •   In a GET request, you send a request for data and you receive a response with that data.
-            o   For example, if you send a request for customers, you will get an array of objects of those customers.
+            o   For example, if you send am HTTP GET request for customers, you will get an array of objects of those customers.
 
-                    REQUEST                                 RESPONSE
+                    GET REQUEST                             RESPONSE
                 __________________                  ________________________
                 Get /api/customers     ========>    [
                                                        { id: 1, name:'joe'},
                                                        { id: 2, name:'bob'},                                                  
                                                     ]
 
+
     •   And if you want a single customer, you would include that in the address:
             o   The server would then respond by sending back an object with that specific information.
 
-                     REQUEST                                 RESPONSE
-                __________________                  ________________________
-                Get /api/customers/1   =========>     { id: 1, name:'joe'}
-                                                      
-                                                     
+                     GET REQUEST                            RESPONSE
+                ____________________                  _______________________
+                Get /api/customers/1   =========>      { id: 1, name:'joe'}
+                              
+                
+    PUT REQUEST EXAMPLE
+    =====================
+    •   In a PUT request, we want to update existing data. 
+    •   To update the data via a put request, you would send an HTTP PUT request to the specific customer endpoint AND the data to update with.
+    •   The server then responds to the PUT request with the updated values.
 
+                     PUT REQUEST                             RESPONSE
+                ____________________                  ________________________
+                Get /api/customers/1   =========>       { id: 1, name:'alan'}
+                { id: 1, name:'alan'}
+
+
+     DELETE REQUEST EXAMPLE   
+     ======================        
+     •  In a DELETE request, you simply want to delete the id.
+
+                     PUT REQUEST                                RESPONSE
+                ____________________                     ________________________
+                DELETE /api/customers/1   =========>     
+               
+
+    
 */
 
 
