@@ -47,4 +47,18 @@ What is express?
 
 
 
+/* 
+What is a RESTful service?
+//////////////////////////
+
+    •   Almost all application follow a "client/server" relationship.
+    •   The "client" is the front-end, which is our application.
+    •   The "server" is the back-end, which is where the front-end talks goes to in order to get data.
+    •   The communication between the client and the server occurs through "HTTP Protocol".
+    •   The server "exposes" a bunch of services that are accessible via HTTP protocol.
+
+*/
+
+
+
 
