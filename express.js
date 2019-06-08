@@ -11,3 +11,40 @@
 //     3. Information on Express: https://expressjs.com/
 // 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* 
+Why should you use express?
+////////////////////////////
+==SHORT ANSWER==
+    •   Below is an example of a webserver that listens on port 3000 and responds to requests for
+        various endpoint urls.
+    •   HOWEVER, this apporach is not ideal for building complex application because there are many
+        things we would need to hard code (e.g. if statements).
+    •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
+
+==EXAMPLE==
+            const http = require('http');                              <== loads the http module and stores it in a constant named "http".
+
+            const server = http.createServer((req, res) => {           <== the "server" will listen for requests...
+                if (req.url === '/') {                                 <== ... such as if the request url is '/', then do something....
+                    // do something...
+                }
+                if (req.url === '/api/courses') {                      <== ... or if the request url is '/api/courses', then do something else...
+                    //do something...
+                }
+            })
+
+            server.listen(3000);                                       <== For the server that we created above, listen on port 3000.
+*/
+
+
+
+/* 
+What is express?
+/////////////////
+
+*/
+
+
+
+
