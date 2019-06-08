@@ -63,6 +63,11 @@ What is a RESTful service?
 
     REST
     ==========
+==SHORT ANSWER==
+    •   REST defines a set of conventions for creating HTTP services that expose resources such as creating a 
+        resource (POST), updating it (PUT), reading it (GET), and deleting it (DELETE).
+    
+==EXTENDED ANSWERS==  
     •   Suppose you have a client app that manages a list of customers.
     •   For example, the service is exposed in an endpoint like https://website.com/api/customers where "/customers" refers 
         to a list of customers.
@@ -81,7 +86,7 @@ What is a RESTful service?
 
                     GET REQUEST                             RESPONSE
                 __________________                  ________________________
-                Get /api/customers     ========>    [
+                GET /api/customers     ========>    [
                                                        { id: 1, name:'joe'},
                                                        { id: 2, name:'bob'},                                                  
                                                     ]
@@ -90,9 +95,9 @@ What is a RESTful service?
     •   And if you want a single customer, you would include that in the address:
             o   The server would then respond by sending back an object with that specific information.
 
-                     GET REQUEST                            RESPONSE
-                ____________________                  _______________________
-                Get /api/customers/1   =========>      { id: 1, name:'joe'}
+                     GET REQUEST                           RESPONSE
+                ____________________                _______________________
+                Get /api/customers/1   =========>     { id: 1, name:'joe'}
                               
                 
     PUT REQUEST EXAMPLE
@@ -101,22 +106,28 @@ What is a RESTful service?
     •   To update the data via a put request, you would send an HTTP PUT request to the specific customer endpoint AND the data to update with.
     •   The server then responds to the PUT request with the updated values.
 
-                     PUT REQUEST                             RESPONSE
-                ____________________                  ________________________
-                Get /api/customers/1   =========>       { id: 1, name:'alan'}
+                     PUT REQUEST                           RESPONSE
+                ____________________                ________________________
+                GET /api/customers/1   =========>     { id: 1, name:'alan'}
                 { id: 1, name:'alan'}
 
 
-     DELETE REQUEST EXAMPLE   
-     ======================        
-     •  In a DELETE request, you simply want to delete the id.
+    DELETE REQUEST EXAMPLE   
+    ======================        
+    •  In a DELETE request, you simply want to delete the id.
 
                      PUT REQUEST                                RESPONSE
                 ____________________                     ________________________
                 DELETE /api/customers/1   =========>     
                
-
+    CREATE REQUEST EXAMPLE
+    ======================
+    •   In a CREATE request, we are adding something to a database.
     
+                    POST REQUEST                                RESPONSE
+                ____________________                  ___________________________
+                POST /api/customers       =========>    { id: 3, name:'charlie'}
+                { name:'charlie'}
 */
 
 
