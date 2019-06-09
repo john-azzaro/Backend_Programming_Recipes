@@ -13,41 +13,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* 
-Why should you use express?
-////////////////////////////
-==SHORT ANSWER==
-    •   Below is an example of a simple webserver that listens on port 3000 and responds to requests for
-        various endpoint urls.
-    •   HOWEVER, this apporach is not ideal for building complex application because there are many
-        things we would need to hard code (e.g. if statements).
-    •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
-
-==EXAMPLE==
-            const http = require('http');                              <== loads the http core module and stores it in a constant named "http".
-
-            const server = http.createServer((req, res) => {           <== creates the "server" will listen for requests...
-                if (req.url === '/') {                                 <== ... such as if the request url is '/', then do something....
-                    // do something...
-                }
-                if (req.url === '/api/courses') {                      <== ... or if the request url is '/api/courses', then do something else...
-                    //do something...
-                }
-            })
-
-            server.listen(3000);                                       <== For the server that we created above, listen on port 3000.
-*/
-
-
-
-/* 
-What is express?
-/////////////////
-
-*/
-
-
-
-/* 
 What is a RESTful service?
 //////////////////////////
 
@@ -116,7 +81,7 @@ What is a RESTful service?
     ======================        
     •  In a DELETE request, you simply want to delete the id.
 
-                     PUT REQUEST                                RESPONSE
+                    PUT REQUEST                                RESPONSE
                 ____________________                     ________________________
                 DELETE /api/customers/1   =========>     
                
@@ -131,5 +96,57 @@ What is a RESTful service?
 */
 
 
+/* 
+Why should you use express?
+////////////////////////////
+==SHORT ANSWER==
+    •   Below is an example of a simple webserver that listens on port 3000 and responds to requests for
+        various endpoint urls.
+    •   HOWEVER, this apporach is not ideal for building complex application because there are many
+        things we would need to hard code (e.g. if statements).
+    •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
 
+==EXAMPLE==
+            const http = require('http');                              <== First, we load the http core module and store it in a constant named "http".
+
+            const server = http.createServer((req, res) => {           <== With the http module, we create a "server" with a callback function with two parameters...
+                if (req.url === '/') {                                 <== IF the incoming request url route is '/', then...
+                    res.write('Hello world!');                         <== ... the response will write "Hello world!"...
+                    res.end();                                         <== ... then end the response.
+                }
+                if (req.url === '/api/courses') {                      <==  IF the request url route is '/api/courses', then...
+                    res.write(JSON.stringify([1, 2, 3,]));             <== ... we respond to the client by writing an arrary of objects using JSON...
+                    res.end();                                         <== ... then end the response.
+                }
+            })
+
+            server.listen(3000);                                       <== For the server that we created above, listen on port 3000.
+            console.log('Listening on port 3000...')   
+*/
+
+
+
+/* 
+What is express?
+/////////////////
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+
+
+
+*/
 
