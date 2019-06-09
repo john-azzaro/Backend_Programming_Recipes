@@ -178,19 +178,62 @@ How do you install express?
 How do you create a basic web server with express?
 //////////////////////////////////////////////////
 
-
+PHASE 1: Setup project:
+=======================
     STEP 1: Create a folder for your project.
     STEP 2: Inside the folder, write the command "npm init" (with --yes if you want fast default installation) to create a package.json file.
     STEP 3: Install the express framework with the command "npm install express".
     STEP 4: Create a new file in your text editor called "index.js".
+
+PHASE 2: Create express server:
+===============================
     STEP 5: Load the express module:
 
-                const express = require('express');
+                const express = require('express');       
 
     STEP 6: Call the function express and store the object with the convetional name "app":
 
                 const express = require('express');
                 const app = express();
+
+        •   Once we have the app object, we can then useful methods like:
+                    
+                        app.get()     
+                        app.post()      
+                        app.delete()    
+                        app.put()
+                        
+PHASE 3: Implement endpoints that respond to specific HTTP requests (in this case GET ):
+========================================================================================
+    STEP 7: To create a GET request, we call "app.get()" with 2 arguments, the path (i.e. url or '/') anda callback function (i.e. 
+            the function that will be called when we get a HTTP request to the endpoint in the first argument).
+
+                GET object method             callback function
+                            \                 /
+                            app.get('/', (req, res) => {...});
+                                     |                    \
+                                    path                  code block
+   
+
+                const express = require('express');
+                const app = express();
+
+                app.get('/', (req, res) => {
+                    // code here
+                });
+
+
+
+
+
+    STEP 8:
+        •   Inside the code block of this request object, we can utilize a few useful properties that give us information about the
+            incoming request.
+
+
+
+
+
 
 */
 
