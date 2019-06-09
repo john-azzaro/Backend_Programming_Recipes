@@ -192,122 +192,167 @@ How do you install express?
 How do you create a basic web server with express?
 //////////////////////////////////////////////////
 
-PHASE 1: Setup project:
-=======================
-    STEP 1: Create a folder for your project.
-    STEP 2: Inside the folder, write the command "npm init" (with --yes if you want fast default installation) to create a package.json file.
-    STEP 3: Install the express framework with the command "npm install express".
-    STEP 4: Create a new file in your text editor called "index.js".
+    PHASE 1: Setup project:
+    =======================
+        STEP 1: Create a folder for your project.
+        STEP 2: Inside the folder, write the command "npm init" (with --yes if you want fast default installation) 
+                to create a package.json file.
+        STEP 3: Install the express framework with the command "npm install express".
+        STEP 4: Create a new file in your text editor called "index.js".
 
-PHASE 2: Create express server:
-===============================
-    STEP 5: Load the express module:
+    PHASE 2: Create express server:
+    ===============================
+        STEP 5: Load the express module:
 
-            ______________________________________________
-            
-                const express = require('express');        <==
+                ______________________________________________
+                
+                    const express = require('express');        <== Load the express module and store is as "express"
 
-             ______________________________________________
+                ______________________________________________
 
 
-    STEP 6: Call the function express and store the object with the convetional name "app":
+        STEP 6: Call the function express and store the object with the convetional name "app":
 
-             ______________________________________________
+                ______________________________________________
 
-                const express = require('express');
-                const app = express();                      <== 
+                    const express = require('express');
+                    const app = express();                      <== call "express" and store it as "app"
 
-             ______________________________________________
-             
-             
-        •   Once we have the app object, we can then useful methods like:
-                    
-                        app.get()     
-                        app.post()      
-                        app.delete()    
-                        app.put()
+                ______________________________________________
+                
+                
+            •   Once we have the app object, we can then useful methods like:
                         
-PHASE 3: Define a route that responds to specific HTTP requests (in this case GET ):
-====================================================================================
-    STEP 7: To create a GET request, we call "app.get()" with 2 arguments, the path (i.e. url or '/') anda callback function (i.e. 
-            the function that will be called when we get a HTTP request to the endpoint in the first argument).
-       
+                            app.get()     
+                            app.post()      
+                            app.delete()    
+                            app.put()
+                            
+    PHASE 3: Define a route that responds to specific HTTP requests (in this case GET ):
+    ====================================================================================
+        STEP 7: To create a GET request, we call "app.get()" with 2 arguments, the path (i.e. url or '/') and a  
+                callback function (i.e. the function that will be called when we get a HTTP request to the endpoint 
+                in the first argument).
 
-                GET object method             callback function (i.e. route handler) which can be done in es6 (i.e. (req, res) ==> {} or function declaration).
-                            \                 /
-                            app.get('/', function(req, res) {...});
-                                     |                    \
-                                    path                  code block
-   
-             ______________________________________________
-
-                const express = require('express');
-                const app = express();
-
-                app.get('/', function(req, res) => {        <== route handler
-                    // code here
-                });
-             ______________________________________________
-
-
-    STEP 8: Define the callback function and the response to the request
-        •   Inside the code block of this request object, we can utilize a few useful properties that give us information about the
-            incoming request.  For more information, see express documentation: https://expressjs.com/en/4x/api.html#req
-        •   In this case, we want the response to send back a message saying "Hello world!".    
-        •   The code body of the callback function, or the route handler, contains the instructions of what to do when a request is made
-            to the endpoint '/'.
+                    GET object method             callback function (i.e. route handler) which can be done in es6 (i.e. (req, res) ==> {} or function declaration).
+                                \                 /
+                                app.get('/', function(req, res) {...});
+                                        |                    \
+                                        path                  code block
     
-             ______________________________________________
+                ______________________________________________
 
-                const express = require('express');
-                const app = express();
+                    const express = require('express');
+                    const app = express();
 
-                app.get('/', function(req, res) {                <== The callback function (i.e. route handler) upon recieving a request from the "/" path... 
-                    res.send('Hello world!')                <== ... responds by sending back the message "Hello world!".
-                });
-             ______________________________________________
+                    app.get('/', function(req, res) => {        <== route handler
+                        // code here
+                    });
+                ______________________________________________
 
 
-PHASE 4: Listen on a given port for requests:
-=============================================
-    STEP 9: Listen on a given port for a request and a function that will be called when the app starts listening on the given port.
+        STEP 8: Define the callback function and the response to the request
+            •   Inside the code block of this request object, we can utilize a few useful properties that give us 
+                information about the incoming request.  
+            •   For more information, see express documentation: https://expressjs.com/en/4x/api.html#req
+                    o   In this case, we want the response to send back a message saying "Hello world!".    
+                    o   The code body of the callback function, or the route handler, contains the instructions of what to do 
+                        when a request is made to the endpoint '/'.
+        
+                ______________________________________________
 
-             ______________________________________________ 
+                    const express = require('express');
+                    const app = express();
 
-                const express = require('express');
-                const app = express();
+                    app.get('/', function(req, res) {                <== The callback function (i.e. route handler) upon recieving a request from the "/" path... 
+                        res.send('Hello world!')                <== ... responds by sending back the message "Hello world!".
+                    });
+                ______________________________________________
 
-                app.get('/', function(req, res) {
-                    res.send('Hello world!')
-                });;
 
-                app.listen(3000, function() {                  <== here we listen on port 3000 and an optional log a message.
-                    console.log('listening on port 3000...');
-                });                          
-             ______________________________________________
-
-OPTIONAL: If you go to your browser and type in "localhost:3000" you will see the message "Hello world!"
-
-OPTIONAL PHASE 5:  To add another route, call app.get again, specify the path and add the callback function with the desired response.
-======================================================================================================================================
+    PHASE 4: Listen on a given port for requests:
+    =============================================
+        STEP 9: Listen on a given port for a request and a function that will be called when the app starts listening on the given port.
 
                 ______________________________________________ 
 
-                const express = require('express');
-                const app = express();
+                    const express = require('express');
+                    const app = express();
 
-                app.get('/', function(req, res) {
-                    res.send('Hello world!')
-                });
+                    app.get('/', function(req, res) {
+                        res.send('Hello world!')
+                    });;
 
-                app.get('/api/courses', function(req, res) {    <== Additional get request that sends an array of numbers back as a reponse.
-                    res.send([1,2,3,4,5]);
-                });
+                    app.listen(3000, function() {                  <== here we listen on port 3000 and an optional log a message.
+                        console.log('listening on port 3000...');
+                    });                          
+                ______________________________________________
 
-                app.listen(3000, function() {
-                    console.log('listening on port 3000...');
-                });
-                ______________________________________________ 
+                OPTIONAL: If you go to your browser and type in "localhost:3000" you will see the message "Hello world!"
+
+
+    How do you add another route to your server?
+    ============================================
+        •   To add another route, call app.get again, specify the path and add the callback function 
+            with the desired response.
+
+                    ______________________________________________ 
+
+                    const express = require('express');
+                    const app = express();
+
+                    app.get('/', function(req, res) {
+                        res.send('Hello world!')
+                    });
+
+                    app.get('/api/courses', function(req, res) {    <== Additional get request that sends an array of numbers back as a reponse.
+                        res.send([1,2,3,4,5]);
+                    });
+
+                    app.listen(3000, function() {
+                        console.log('listening on port 3000...');
+                    });
+                    ______________________________________________ 
+
+*/
+
+
+/* 
+What is Nodemon and what does it do?
+///////////////////////////////////
+    •   Nodemon (short for Node Monitor) is an npm package that we install that allows us to update our node program
+        without having to start and restart our server every time we make a change in out program.
+
+    How do you install nodemon?
+    ===========================
+    •   To install nodemon, you simple write "npm install -g nodemon"
+        o   What will happen is is you will install the npm package "nodemon" but globally so it will be available from now on.
+
+    How do you use nodemon?
+    =======================
+    •   When you use nodemon, you simply type "nodemon" and then the application you want to listen in on.
+
+                    $ nodemon index.js                                   <== uses nodemon with index.js.
+                        [nodemon] 1.19.1
+                        [nodemon] to restart at any time, enter `rs`
+                        [nodemon] watching: *.*
+                        [nodemon] starting `node index.js`
+                        listening on port 3000...                        <== listening in on port 3000, which will show "Hello world!"
+
+    •   Then, when you update your program (i.e. the response is "Howdy world!"), nodemon will automatically restart.
+
+        
+                    $ nodemon index.js
+                        [nodemon] 1.19.1
+                        [nodemon] to restart at any time, enter `rs`
+                        [nodemon] watching: *.*
+                        [nodemon] starting `node index.js`
+                        listening on port 3000...
+                        [nodemon] restarting due to changes...           <== nodemon restarts after the change...
+                        [nodemon] starting `node index.js`
+                        listening on port 3000...                        <== and again listens on port 3000, and when requested will show "Howdy world!"
+
+
 
 
 */
