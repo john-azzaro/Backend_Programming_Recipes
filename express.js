@@ -8,7 +8,8 @@
 //     1. Useful overview of information on Express web framework from study, research, tutorials, mentor
 //        meetings, peer discussions, and good ole' fashioned curiosity.  I've put the document in Question
 //        andAnswer format for improved readability.
-//     3. Information on Express: https://expressjs.com/
+//     2. Information on Express: https://expressjs.com/
+//     3. Express documentation: https://expressjs.com/en/4x/api.html
 // 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -115,6 +116,7 @@ Why should you use a framework like express?
         things we would need to hard code (e.g. if statements).
     •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
 
+         ______________________________________________
 
             const http = require('http');                              <== First, we load the http core module and store it in a constant named "http".
 
@@ -131,6 +133,8 @@ Why should you use a framework like express?
 
             server.listen(3000);                                       <== For the server that we created above, listen on port 3000.
             console.log('Listening on port 3000...')                   <== ... and log that the server is active on port 3000.
+
+         ______________________________________________
 */
 
 
@@ -189,13 +193,23 @@ PHASE 2: Create express server:
 ===============================
     STEP 5: Load the express module:
 
-                const express = require('express');       
+            ______________________________________________
+            
+                const express = require('express');        <==
+
+             ______________________________________________
+
 
     STEP 6: Call the function express and store the object with the convetional name "app":
 
-                const express = require('express');
-                const app = express();
+             ______________________________________________
 
+                const express = require('express');
+                const app = express();                      <== 
+
+             ______________________________________________
+             
+             
         •   Once we have the app object, we can then useful methods like:
                     
                         app.get()     
@@ -203,34 +217,47 @@ PHASE 2: Create express server:
                         app.delete()    
                         app.put()
                         
-PHASE 3: Implement endpoints that respond to specific HTTP requests (in this case GET ):
-========================================================================================
+PHASE 3: Define a route that responds to specific HTTP requests (in this case GET ):
+====================================================================================
     STEP 7: To create a GET request, we call "app.get()" with 2 arguments, the path (i.e. url or '/') anda callback function (i.e. 
             the function that will be called when we get a HTTP request to the endpoint in the first argument).
 
-                GET object method             callback function
+                GET object method             callback function (i.e. route handler)
                             \                 /
                             app.get('/', (req, res) => {...});
                                      |                    \
                                     path                  code block
    
+             ______________________________________________
 
                 const express = require('express');
                 const app = express();
 
-                app.get('/', (req, res) => {
+                app.get('/', (req, res) => {                <== route handler
                     // code here
                 });
+             ______________________________________________
 
 
-
-
-
-    STEP 8:
+    STEP 8: Define the callback function and the response to the request
         •   Inside the code block of this request object, we can utilize a few useful properties that give us information about the
-            incoming request.
+            incoming request.  For more information, see express documentation: https://expressjs.com/en/4x/api.html#req
+        •   In this case, we want the response to send back a message saying "Hello world!".    
+        •   The code body of the callback function, or the route handler, contains the instructions of what to do when a request is made
+            to the endpoint '/'.
+             ______________________________________________
+
+                const express = require('express');
+                const app = express();
+
+                app.get('/', (req, res) => {                <== The callback function (i.e. route handler) upon recieving a request from the "/" path... 
+                    res.send('Hello world!')                <== ... responds by sending back the message "Hello world!".
+                });
+             ______________________________________________
 
 
+PHASE 4: Listen on a given port for requests
+============================================
 
 
 
