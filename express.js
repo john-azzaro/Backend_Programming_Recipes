@@ -97,11 +97,12 @@ What is a RESTful service?
 */
 
 
+
 /* 
 Why should you use a framework like express?
 ////////////////////////////////////////////
 ==SHORT ANSWER==
-     •  While using the core http module is doable, it is not maintainable for building complex applications because 
+    •   While using the core http module is doable, it is not maintainable for building complex applications because 
         there are many things we would need to hard code (e.g. if statements).  A framework give the application a proper structure 
         so we can create more routes while also keeping the application maintainable.                                   
 
@@ -135,6 +136,15 @@ Why should you use a framework like express?
             console.log('Listening on port 3000...')                   <== ... and log that the server is active on port 3000.
 
          ______________________________________________
+*/
+
+
+
+/* 
+What is express?
+////////////////
+    •   Express is a minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
+    •   Express gives you built in features and function to more easily use Node for web development, such as easier ways to route requests.
 */
 
 
@@ -271,7 +281,7 @@ PHASE 4: Listen on a given port for requests:
                     res.send('Hello world!')
                 });;
 
-                app.listen(3000, function() {                  <== here we listen on port 3000 and log a message.
+                app.listen(3000, function() {                  <== here we listen on port 3000 and an optional log a message.
                     console.log('listening on port 3000...');
                 });                          
              ______________________________________________
@@ -290,7 +300,7 @@ OPTIONAL PHASE 5:  To add another route, call app.get again, specify the path an
                     res.send('Hello world!')
                 });
 
-                app.get('/api/courses', function(req, res) {    <== Additional get request that sends an array of numbers back as a reponse
+                app.get('/api/courses', function(req, res) {    <== Additional get request that sends an array of numbers back as a reponse.
                     res.send([1,2,3,4,5]);
                 });
 
