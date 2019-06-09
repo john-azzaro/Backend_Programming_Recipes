@@ -97,16 +97,25 @@ What is a RESTful service?
 
 
 /* 
-Why should you use express?
-////////////////////////////
+Why should you use a framework like express?
+////////////////////////////////////////////
 ==SHORT ANSWER==
+     •  While using the core http module is doable, it is not maintainable for building complex applications because 
+        there are many things we would need to hard code (e.g. if statements).  A framework give the application a proper structure 
+        so we can create more routes while also keeping the application maintainable.                                   
+
+
+
+==EXTENDED ANSWER==
+
+   
     •   Below is an example of a simple webserver that listens on port 3000 and responds to requests for
         various endpoint urls.
-    •   HOWEVER, this apporach is not ideal for building complex application because there are many
+    •   HOWEVER, this apporach is neither ideal or maintainable for building complex application because there are many
         things we would need to hard code (e.g. if statements).
     •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
 
-==EXAMPLE==
+
             const http = require('http');                              <== First, we load the http core module and store it in a constant named "http".
 
             const server = http.createServer((req, res) => {           <== With the http module, we create a "server" with a callback function with two parameters...
@@ -121,14 +130,46 @@ Why should you use express?
             })
 
             server.listen(3000);                                       <== For the server that we created above, listen on port 3000.
-            console.log('Listening on port 3000...')   
+            console.log('Listening on port 3000...')                   <== ... and log that the server is active on port 3000.
 */
 
 
 
 /* 
-What is express?
-/////////////////
+How do you install express?
+///////////////////////////
+    •   To install express, simply move into the project folder, write "npm init --yes" and then install express by writing "npm install express"
+      
+    STEP 1: Initialize NPM
+    ======================
+        $ npm init --yes
+            Wrote to C:\Users\Admin\Desktop\express-demo\package.json:
+
+            {
+            "name": "express-demo",
+            "version": "1.0.0",
+            "description": "",
+            "main": "index.js",
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1"
+            },
+            "keywords": [],
+            "author": "",
+            "license": "ISC"
+            }
+
+    STEP 2: Install express
+    =======================
+
+        $ npm install express
+            npm notice created a lockfile as package-lock.json. You should commit this file.
+            npm WARN express-demo@1.0.0 No description
+            npm WARN express-demo@1.0.0 No repository field.
+
+            + express@4.17.1
+            added 50 packages in 2.191s
+
+
 
 */
 
@@ -145,7 +186,8 @@ What is express?
 
 
 /* 
-
+How do you install express?
+///////////////////////////
 
 
 */
