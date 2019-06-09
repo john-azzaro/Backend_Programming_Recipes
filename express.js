@@ -140,8 +140,8 @@ How do you install express?
 ///////////////////////////
     •   To install express, simply move into the project folder, write "npm init --yes" and then install express by writing "npm install express"
       
-    STEP 1: Initialize NPM
-    ======================
+    STEP 1: Initialize NPM (with the defaults instead of askng questions)
+    ====================================================================
         $ npm init --yes
             Wrote to C:\Users\Admin\Desktop\express-demo\package.json:
 
