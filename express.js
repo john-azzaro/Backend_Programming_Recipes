@@ -111,7 +111,7 @@ Why should you use a framework like express?
    
     •   Below is an example of a simple webserver that listens on port 3000 and responds to requests for
         various endpoint urls.
-    •   HOWEVER, this apporach is neither ideal or maintainable for building complex application because there are many
+    •   However, this approach is neither ideal or maintainable for building complex application because there are many
         things we would need to hard code (e.g. if statements).
     •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
 
@@ -168,27 +168,29 @@ How do you install express?
 
             + express@4.17.1
             added 50 packages in 2.191s
-
-
-
 */
 
 
 
 
 
-
-
-
-
-
-
-
-
 /* 
-How do you install express?
-///////////////////////////
+How do you create a basic web server with express?
+//////////////////////////////////////////////////
 
+
+    STEP 1: Create a folder for your project.
+    STEP 2: Inside the folder, write the command "npm init" (with --yes if you want fast default installation) to create a package.json file.
+    STEP 3: Install the express framework with the command "npm install express".
+    STEP 4: Create a new file in your text editor called "index.js".
+    STEP 5: Load the express module:
+
+                const express = require('express');
+
+    STEP 6: Call the function express and store the object with the convetional name "app":
+
+                const express = require('express');
+                const app = express();
 
 */
 
