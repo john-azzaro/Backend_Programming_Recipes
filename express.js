@@ -258,8 +258,8 @@ PHASE 3: Define a route that responds to specific HTTP requests (in this case GE
              ______________________________________________
 
 
-PHASE 4: Listen on a given port for requests
-============================================
+PHASE 4: Listen on a given port for requests:
+=============================================
     STEP 9: Listen on a given port for a request and a function that will be called when the app starts listening on the given port.
 
              ______________________________________________ 
@@ -271,10 +271,33 @@ PHASE 4: Listen on a given port for requests
                     res.send('Hello world!')
                 });;
 
-                app.listen(3000, function() {
+                app.listen(3000, function() {                  <== here we listen on port 3000 and log a message.
                     console.log('listening on port 3000...');
                 });                          
              ______________________________________________
+
+OPTIONAL: If you go to your browser and type in "localhost:3000" you will see the message "Hello world!"
+
+OPTIONAL PHASE 5:  To add another route, call app.get again, specify the path and add the callback function with the desired response.
+======================================================================================================================================
+
+                ______________________________________________ 
+
+                const express = require('express');
+                const app = express();
+
+                app.get('/', function(req, res) {
+                    res.send('Hello world!')
+                });
+
+                app.get('/api/courses', function(req, res) {    <== Additional get request that sends an array of numbers back as a reponse
+                    res.send([1,2,3,4,5]);
+                });
+
+                app.listen(3000, function() {
+                    console.log('listening on port 3000...');
+                });
+                ______________________________________________ 
 
 
 */
