@@ -221,10 +221,11 @@ PHASE 3: Define a route that responds to specific HTTP requests (in this case GE
 ====================================================================================
     STEP 7: To create a GET request, we call "app.get()" with 2 arguments, the path (i.e. url or '/') anda callback function (i.e. 
             the function that will be called when we get a HTTP request to the endpoint in the first argument).
+       
 
-                GET object method             callback function (i.e. route handler)
+                GET object method             callback function (i.e. route handler) which can be done in es6 (i.e. (req, res) ==> {} or function declaration).
                             \                 /
-                            app.get('/', (req, res) => {...});
+                            app.get('/', function(req, res) {...});
                                      |                    \
                                     path                  code block
    
@@ -233,7 +234,7 @@ PHASE 3: Define a route that responds to specific HTTP requests (in this case GE
                 const express = require('express');
                 const app = express();
 
-                app.get('/', (req, res) => {                <== route handler
+                app.get('/', function(req, res) => {        <== route handler
                     // code here
                 });
              ______________________________________________
@@ -245,12 +246,13 @@ PHASE 3: Define a route that responds to specific HTTP requests (in this case GE
         •   In this case, we want the response to send back a message saying "Hello world!".    
         •   The code body of the callback function, or the route handler, contains the instructions of what to do when a request is made
             to the endpoint '/'.
+    
              ______________________________________________
 
                 const express = require('express');
                 const app = express();
 
-                app.get('/', (req, res) => {                <== The callback function (i.e. route handler) upon recieving a request from the "/" path... 
+                app.get('/', function(req, res) {                <== The callback function (i.e. route handler) upon recieving a request from the "/" path... 
                     res.send('Hello world!')                <== ... responds by sending back the message "Hello world!".
                 });
              ______________________________________________
@@ -258,8 +260,21 @@ PHASE 3: Define a route that responds to specific HTTP requests (in this case GE
 
 PHASE 4: Listen on a given port for requests
 ============================================
+    STEP 9: Listen on a given port for a request and a function that will be called when the app starts listening on the given port.
 
+             ______________________________________________ 
 
+                const express = require('express');
+                const app = express();
+
+                app.get('/', function(req, res) {
+                    res.send('Hello world!')
+                });;
+
+                app.listen(3000, function() {
+                    console.log('listening on port 3000...');
+                });                          
+             ______________________________________________
 
 
 */
