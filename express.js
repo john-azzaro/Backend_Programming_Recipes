@@ -365,20 +365,19 @@ What is an enviroment variable and why do we use it?
             o   The value of this variable is set OUTSIDE the application.
             o   In an application, we need to read the value of the PORT enviroment variable, which is done with the "process" object.
 
+    •   Although using a hardcoded value for your port (i.e. 3000) will work on your development machine, it is unlikely
+        that it will work in a production enviroment because when you deploy your app to a hosting enviroment, the port is
+        dynamically assigned by the hosting enviroment, so 3000 might not be available.
+                                                                             
 ==EXAMPLE==
                     const port = process.env.PORT || 3000;                        <==   process = "process" is a global object.      
                     app.listen(port, function() {                                       .env    = a property of of the process global object, which is short for enviroment variable.
                         console.log(`Listening on port ${port}...`);                    .PORT   = The name of the enviroment variable.
                     });                                                                 || 3000 = If the above is not set, then we use port 3000.
 
-            o  
-
-==EXTENDED ANSWER==
-    •   Although using a hardcoded value for your port (i.e. 3000) will work on your development machine, it is unlikely
-        that it will work in a production enviroment because when you deploy your app to a hosting enviroment, the port is
-        dynamically assigned by the hosting enviroment, so 3000 might not be available.
-         
-                    ______________________________________________ 
+                                                                                        o  IF there is an enviorment variable call "PORT", then use that as the port for the web server.
+                                                                                        o  IF NOT, then use 3000 as the port for the webserver           
+                    ____________________________________________ 
 
                     const express = require('express');
                     const app = express();
@@ -391,16 +390,20 @@ What is an enviroment variable and why do we use it?
                         res.send([1,2,3,4,5]);
                     });
 
-                    // app.listen(3000, function() {
-                    //     console.log('listening on port 3000...');
-                    // });
-
-                    const port = process.env.PORT || 3000;
-                    app.listen(port, function() {
+                    const port = process.env.PORT || 3000;                <== port variable
+                    app.listen(port, function() {                         <== 
                         console.log(`Listening on port ${port}...`);
                     });
 
                     ______________________________________________ 
+
+    
+    How do you set an enviroment variable?
+    ======================================
+    •   To set an enviroment variable, write "export" + the enviroment variable and set its value to whatever you want (i.e. PORT=5000)             
+            o   When you run the application, it will show the new port it is listening in on (i.e. 5000).
+
+                    export PORT=5000
 
 */
 
