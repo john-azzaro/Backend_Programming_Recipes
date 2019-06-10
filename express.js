@@ -305,7 +305,7 @@ How do you create a basic web server with express?
                         res.send('Hello world!')
                     });
 
-                    app.get('/api/courses', function(req, res) {    <== Additional get request that sends an array of numbers back as a reponse.
+                    app.get('/api/courses', function(req, res) {    <== Additional get request that sends back a list of courses.
                         res.send([1,2,3,4,5]);
                     });
 
@@ -362,8 +362,7 @@ What is an enviroment variable and how do you assign a port to your node applica
 ==SHORT ANSWER==
     •   Enviroment variables are used to store various settings for an application.
     •   An enviroment variable, such as PORT in node applications, is a variable that is part of the enviroment in which a 
-        process runs, but the value of this variable is set OUTSIDE the application.  We want to assign a port to our 
-        application or else use an arbitrary port.
+        process runs, but the value of this variable is set OUTSIDE the application.  
                  
 ==EXTENDED ANSWERS==
     •   Although using a hardcoded value for your port (i.e. 3000) will work on your development machine, it is unlikely
@@ -377,7 +376,8 @@ What is an enviroment variable and how do you assign a port to your node applica
     •   To read an enviroment variable, use "process.env".
 
                                                                 
-==EXAMPLE==
+==EXAMPLE==                                                                       
+                                                                                        We want to assign a port to our application or else use an arbitrary port.
                     const port = process.env.PORT || 3000;                        <==   process = "process" is a global object.      
                     app.listen(port, function() {                                       .env    = a property of of the process global object, which is short for enviroment variable.
                         console.log(`Listening on port ${port}...`);                    .PORT   = The name of the enviroment variable.
@@ -399,7 +399,7 @@ What is an enviroment variable and how do you assign a port to your node applica
                     });
 
                     const port = process.env.PORT || 3000;                <== port variable
-                    app.listen(port, function() {                         <== 
+                    app.listen(port, function() {                         <== listener
                         console.log(`Listening on port ${port}...`);
                     });
 
@@ -412,6 +412,28 @@ What is an enviroment variable and how do you assign a port to your node applica
             o   When you run the application, it will show the new port it is listening in on (i.e. 5000).
 
                     export PORT=5000
+*/
+
+
+
+/* 
+What are route parameters?
+//////////////////////////
+    •   Routing refers to how an applications endpoints (URLs) respond to a clients requests,
+    •   Route paramaters are the named URL segments uses to capture the values specified at thier position in the URL. 
+
+==EXAMPLE==
+                          1. First, to get a specific course, we specify the endpoint and the given ID with ":id" 
+                             which could be something like "api/courses/1".       
+                                            |
+                    app.get('/api/courses/:id', function(req, res) {
+                    res.send(req.params.id);
+                    });              \
+                                      2. Then to read the parameter (i.e. ":id" or in this example "1"), we have "req.params.id" 
+                                          which will show the contents at the endpoint of "1" in "api/courses/1".    
+
+
+
 
 */
 
