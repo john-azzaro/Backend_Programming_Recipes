@@ -357,18 +357,24 @@ What is Nodemon and what does it do?
 
 
 /* 
-What is an enviroment variable and why do we use it?
-////////////////////////////////////////////////////
+What is an enviroment variable and how do you assign a port to your node application?
+/////////////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   An enviroment variable, such as PORT in node applications, is a variable that is part of the enviroment in which a 
-        process runs. 
-            o   The value of this variable is set OUTSIDE the application.
-            o   In an application, we need to read the value of the PORT enviroment variable, which is done with the "process" object.
-
+        process runs, but the value of this variable is set OUTSIDE the application.  We want to assign a port to our 
+        application or else use an arbitrary port.
+                 
+==EXTENDED ANSWERS==
     •   Although using a hardcoded value for your port (i.e. 3000) will work on your development machine, it is unlikely
         that it will work in a production enviroment because when you deploy your app to a hosting enviroment, the port is
         dynamically assigned by the hosting enviroment, so 3000 might not be available.
-                                                                             
+    
+    •   When you assign a port to your application (e.g. export PORT=5000) you use a port you have set for that application, 
+        or else use an arbitrary number like 3000.
+    
+    •   In an application, we need to read the value of the PORT enviroment variable, which is done with the "process" object.
+
+                                                                
 ==EXAMPLE==
                     const port = process.env.PORT || 3000;                        <==   process = "process" is a global object.      
                     app.listen(port, function() {                                       .env    = a property of of the process global object, which is short for enviroment variable.
@@ -398,8 +404,8 @@ What is an enviroment variable and why do we use it?
                     ______________________________________________ 
 
     
-    How do you set an enviroment variable?
-    ======================================
+    How do you set an enviroment variable (assign a port to your application?
+    =========================================================================
     •   To set an enviroment variable, write "export" + the enviroment variable and set its value to whatever you want (i.e. PORT=5000)             
             o   When you run the application, it will show the new port it is listening in on (i.e. 5000).
 
