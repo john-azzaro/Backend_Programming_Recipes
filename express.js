@@ -427,13 +427,23 @@ What are route parameters?
                              which could be something like "api/courses/1".       
                                             |
                     app.get('/api/courses/:id', function(req, res) {
-                    res.send(req.params.id);
+                        res.send(req.params.id);
                     });              \
                                       2. Then to read the parameter (i.e. ":id" or in this example "1"), we have "req.params.id" 
                                           which will show the contents at the endpoint of "1" in "api/courses/1".    
 
 
-
+    How do you include multiple parameters in a route?
+    ==================================================                  
+    •   To add multiple parameters to a route, you simply add id's to your endpoint.
+        o   For example, suppose you wanted a route that looked for specific years and months in a collection of blog posts:
+        
+                                 1st param        2nd Param
+                                          \       /
+                    app.get('/api/posts/:year/:month', function(req, res) {
+                        res.send(req.params);
+                    });              \
+                                     
 
 */
 
