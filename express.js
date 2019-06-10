@@ -360,24 +360,47 @@ What is Nodemon and what does it do?
 What is an enviroment variable and why do we use it?
 ////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   An enviroment variable, such as PORT in node applications, is a variable that is part of the enviroment in which the 
-        process runs.   
+    •   An enviroment variable, such as PORT in node applications, is a variable that is part of the enviroment in which a 
+        process runs. 
+            o   The value of this variable is set OUTSIDE the application.
+            o   In an application, we need to read the value of the PORT enviroment variable, which is done with the "process" object.
+
+==EXAMPLE==
+                    const port = process.env.PORT || 3000;                        <==   process = "process" is a global object.      
+                    app.listen(port, function() {                                       .env    = a property of of the process global object, which is short for enviroment variable.
+                        console.log(`Listening on port ${port}...`);                    .PORT   = The name of the enviroment variable.
+                    });                                                                 || 3000 = If the above is not set, then we use port 3000.
+
+            o  
 
 ==EXTENDED ANSWER==
     •   Although using a hardcoded value for your port (i.e. 3000) will work on your development machine, it is unlikely
         that it will work in a production enviroment because when you deploy your app to a hosting enviroment, the port is
         dynamically assigned by the hosting enviroment, so 3000 might not be available.
          
-    
-    
-    An enviroment variable 
+                    ______________________________________________ 
 
-    •   When listening 
-    
-                        app.listen(3000, function() {
-                        console.log('listening on port 3000...');
+                    const express = require('express');
+                    const app = express();
+
+                    app.get('/', function(req, res) {
+                        res.send('Hello world!!!!')
                     });
 
+                    app.get('/api/courses', function(req, res) {
+                        res.send([1,2,3,4,5]);
+                    });
+
+                    // app.listen(3000, function() {
+                    //     console.log('listening on port 3000...');
+                    // });
+
+                    const port = process.env.PORT || 3000;
+                    app.listen(port, function() {
+                        console.log(`Listening on port ${port}...`);
+                    });
+
+                    ______________________________________________ 
 
 */
 
