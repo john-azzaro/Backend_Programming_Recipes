@@ -360,6 +360,7 @@ What is Nodemon and what does it do?
 What is an enviroment variable and how do you assign a port to your node application?
 /////////////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
+    •   Enviroment variables are used to store various settings for an application.
     •   An enviroment variable, such as PORT in node applications, is a variable that is part of the enviroment in which a 
         process runs, but the value of this variable is set OUTSIDE the application.  We want to assign a port to our 
         application or else use an arbitrary port.
@@ -373,6 +374,7 @@ What is an enviroment variable and how do you assign a port to your node applica
         or else use an arbitrary number like 3000.
     
     •   In an application, we need to read the value of the PORT enviroment variable, which is done with the "process" object.
+    •   To read an enviroment variable, use "process.env".
 
                                                                 
 ==EXAMPLE==
