@@ -420,6 +420,7 @@ What is an enviroment variable and how do you assign a port to your node applica
 What are route parameters?
 //////////////////////////
     •   Routing refers to how an applications endpoints (URLs) respond to a clients requests,
+    •   Route parameters are used for essential or required values.
     •   Route paramaters are the named URL segments uses to capture the values specified at thier position in the URL. 
 
 ==EXAMPLE==
@@ -432,19 +433,35 @@ What are route parameters?
                                       2. Then to read the parameter (i.e. ":id" or in this example "1"), we have "req.params.id" 
                                           which will show the contents at the endpoint of "1" in "api/courses/1".    
 
+    What is req.params?
+    ===================
+    •   req.params returns the value of the parameter with the specific name.  For example"
+            o   req.params        -- This will show the entire request.parms object.
+            o   req.params.year   -- This will show the value of the year parameter.
+
 
     How do you include multiple parameters in a route?
     ==================================================                  
     •   To add multiple parameters to a route, you simply add id's to your endpoint.
-        o   For example, suppose you wanted a route that looked for specific years and months in a collection of blog posts:
+            o   For example, suppose you wanted a route that looked for specific years and months in a collection of blog posts:
         
-                                 1st param        2nd Param
+                                 1st param        2nd Param, etc.
                                           \       /
                     app.get('/api/posts/:year/:month', function(req, res) {
                         res.send(req.params);
-                    });              \
-                                     
+                    });              
+             
 
+    What are query string parameters using express and how do you use them?
+    =======================================================================
+    •   A query string parameter provides additional data for back end services.
+    •   Unlike route parameters are used for essential or required values, query paramaters are optional.
+    •   Query parameters are stored in an object with key/value pairs.
+
+                    app.get('/api/posts/:year/:month', function(req, res) {
+                        res.send(req.query);
+}                   );                  
+                                         
 */
 
 
