@@ -466,6 +466,71 @@ What are route parameters?
 
 
 
+/* 
+How do you handle a GET requests to an endpoint?
+/////////////////////////////////////////////////
+==SHORT ANSWER==
+•   To handle a GET request to an endpoint, you create a GET request endpoint and create logic to fulfill that request. 
+
+==EXAMPLE==
+    •   Suppose you want to implement an new endpoint to get a SINGLE course from the server.
+   
+    STEP 0: We have an array of objects containing your courses
+    ==========================================================                
+
+                    const courses = [                                      <== array of course objects.
+                        { id: 1, name: 'First course'},
+                        { id: 2, name: 'Second course'},
+                        { id: 3, name: 'Third course'}
+                    ];
+
+
+    STEP 1: Create a GET request that searches for the id parameter:
+    ==================================================================
+
+                    const courses = [
+                        { id: 1, name: 'First course'},
+                        { id: 2, name: 'Second course'},
+                        { id: 3, name: 'Third course'}
+                    ];
+
+                    app.get('/api/courses', function(req, res) {                                         <== GET request endpoint that sends back an array of object containing all courses.
+                        res.send(courses);
+                    });
+
+                    app.get('/api/courses/:id', function(req, res) {                                      <== GET request endpoint the looks for a course with a given ID.
+                        // code goes here
+                    }); 
+
+
+    STEP 2: Create the logic to find the course:
+    =============================================   
+    •   To create the logic to find the course, first Call "courses.find" with an es6 function that finds a 
+        course that matches the search criteria:
+    
+                    app.get('/api/courses/:id', function(req, res) {                                      
+                        const course = courses.find(course => course.id === parseInt(req.params.id));   <== This returns a boolean value that determines if this is the course or not.
+                        ...                                                                                 In this case, the course.id should equal req.params.id.
+                        ...                                                                                 However, we need to use parseInt() since we dont want to return a string.
+                        ...                                                                                 The result is then stored as a constant as "course".
+                        ...
+                    }); 
+
+
+    •   Then we need to include if statements for possible course submissions in the endpoint.
+
+                    app.get('/api/courses/:id', function(req, res) {
+                        const course = courses.find(course => course.id === parseInt(req.params.id));
+                        if (!course) {                                                                    <== if course does not exist...
+                            res.status(404).send('The course with the given id was not found');           <== respond with a 404 status and message.
+                        } else {                                                                          <== But if the course DOES exist...
+                            res.send(course);                                                             <== respond with the course.
+                        }
+                    }); 
+
+*/
+
+
 
 
 
