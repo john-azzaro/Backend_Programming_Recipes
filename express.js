@@ -335,25 +335,80 @@ What is Nodemon and what does it do?
                     $ nodemon index.js                                   <== uses nodemon with index.js.
                         [nodemon] 1.19.1
                         [nodemon] to restart at any time, enter `rs`
-                        [nodemon] watching: *.*
+                        [nodemon] watching: *.*                          <== nodemon watches everything in the folder.
                         [nodemon] starting `node index.js`
                         listening on port 3000...                        <== listening in on port 3000, which will show "Hello world!"
 
+
     •   Then, when you update your program (i.e. the response is "Howdy world!"), nodemon will automatically restart.
 
-        
                     $ nodemon index.js
                         [nodemon] 1.19.1
                         [nodemon] to restart at any time, enter `rs`
-                        [nodemon] watching: *.*
+                        [nodemon] watching: *.*   
                         [nodemon] starting `node index.js`
                         listening on port 3000...
                         [nodemon] restarting due to changes...           <== nodemon restarts after the change...
                         [nodemon] starting `node index.js`
                         listening on port 3000...                        <== and again listens on port 3000, and when requested will show "Howdy world!"
 
+*/
 
 
 
+/* 
+What is an enviroment variable and why do we use it?
+////////////////////////////////////////////////////
+==SHORT ANSWER==
+    •   An enviroment variable, such as PORT in node applications, is a variable that is part of the enviroment in which the 
+        process runs.   
+
+==EXTENDED ANSWER==
+    •   Although using a hardcoded value for your port (i.e. 3000) will work on your development machine, it is unlikely
+        that it will work in a production enviroment because when you deploy your app to a hosting enviroment, the port is
+        dynamically assigned by the hosting enviroment, so 3000 might not be available.
+         
+    
+    
+    An enviroment variable 
+
+    •   When listening 
+    
+                        app.listen(3000, function() {
+                        console.log('listening on port 3000...');
+                    });
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786 -- enviroment variables
 */
 
