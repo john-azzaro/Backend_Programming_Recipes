@@ -534,7 +534,58 @@ How do you handle a GET request to an endpoint?
 /* 
 How do you handle a HTTP POST request to an endpoint?
 //////////////////////////////////////////////////////
-    •   HTTP POST requests are used to create new resources.            
+    •   HTTP POST requests are used to create new resources.    
+    
+STEP 1: Create a HTTP POST request with the path and req/res route handler (i.e. callback function).
+===================================================================================================
+
+                    app.post('/api/courses', function(req, res) {          <== POST method with path and route handler.  Also note in this case the 
+                        ...                                                    "courses" endpoint (i.e. the "courses" object) where we will post to.
+                        ...
+                        ...    
+                    });
+
+
+STEP 2: Read the course object (which is in the body of the request) and use the properties to create a new object.
+====================================================================================================================
+
+                    app.post('/api/courses', function(req, res) {          
+                        const course = {                                  <== Read the course object (which is in the body of the request) and use the properties to create a new object...
+                        id: courses.length + 1,                           <== this is a mnaully assigned id since we are not working with a database
+                        name: req.body.name                               <== since this is begin read fromt he body of the request, we add the name to req.body.  HOWEVER, for this to work
+                        };                                                    need to enable the parsing of json objects in the body of requests using "app.use(express.json());" up top.
+                        ...                               
+                        ...                                
+                    });
+
+
+STEP 3: Push the object to the course object and return that object in the body of the reponse
+==============================================================================================
+
+                    app.post('/api/courses', function(req, res) {          
+                        const course = {                                   
+                        id: courses.length + 1,                         
+                        name: req.body.name                             
+                        };                                                 
+                        course.push(course);                               <== Add (i.e. push) the object to the course object.
+                        res.send(course)                                   <== And lastly, when posting an object to a server, it should return that object in the body of the reponse.
+                    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 */
 
