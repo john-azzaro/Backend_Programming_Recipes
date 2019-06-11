@@ -567,9 +567,10 @@ STEP 3: Push the object to the course object and return that object in the body 
                         id: courses.length + 1,                         
                         name: req.body.name                             
                         };                                                 
-                        course.push(course);                               <== Add (i.e. push) the object to the course object.
+                        courses.push(course);                              <== Add (i.e. push) the object to the course object.
                         res.send(course)                                   <== And lastly, when posting an object to a server, it should return that object in the body of the reponse.
                     });
+*/
 
 
 
@@ -579,13 +580,37 @@ STEP 3: Push the object to the course object and return that object in the body 
 
 
 
+/* 
+What is Postman?
+/////////////////////////
+    •   Postman is an api development tool that calls HTTP services.
 
+==EXAMPLE==
 
+    STEP 0: In Gitbash, make sure your application is listening on port 3000:
+    =========================================================================
 
+    STEP 1: In Postman, to test a POST request, make sure the following settings are correct:
+    =========================================================================================
+        •   Set the request to POST.
+        •   Write the URL to send the POST request to.
+        •   Set the "Body" of the request by selecting "raw"  and "JSON" which will allow yout o put a JSON object 
+            int he body of the request.
 
+    STEP 2: Add an object to POST:
+    ==============================
 
+            {
+                "name": "new course"
+            }
 
+    STEP 3: Press send, and in the body of the reponse, you should see a positive status (200) and the body of the reponse.
+    ======================================================================================================================
 
+            {
+                "id": 4,                     <== ID is 4 because we have 4 courses in the array now.
+                "name": "course name"
+            }
 
 */
 
