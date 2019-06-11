@@ -580,6 +580,54 @@ STEP 3: Push the object to the course object and return that object in the body 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+What is input validation?
+/////////////////////////
+   •    As a security concern, you should never trust what the client sends you.
+   •    Validation logic shoudl come at the beginning of your route handler.
+               
+
+
+    How do you add simple validation logic?
+    =======================================
+
+                    app.post('/api/courses', function(req, res) {          
+                        if(!req.body.name || req.body.name.length < 3) {                               <== If the req.body.name does NOT exist OR is less than 3 characters
+                            res.status(400).send('name is required')                                   <== return error of 400 (bad request) to the client.
+                            return;                                                                    <== return so that the rest of the function is not executed.
+                        } 
+                        const course = {                                   
+                        id: courses.length + 1,                         
+                        name: req.body.name                             
+                        };                                                 
+                        courses.push(course);                              
+                        res.send(course)                                   
+                    });    
+
+
+    How do you add validation using Joi?
+    ====================================
+
+*/
+
+
+
+
+
+
 /* 
 What is Postman?
 /////////////////////////
