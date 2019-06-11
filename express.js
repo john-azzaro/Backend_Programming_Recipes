@@ -264,7 +264,7 @@ How do you create a basic web server with express?
                     const express = require('express');
                     const app = express();
 
-                    app.get('/', function(req, res) {                <== The callback function (i.e. route handler) upon recieving a request from the "/" path... 
+                    app.get('/', function(req, res) {           <== The callback function (i.e. route handler) upon recieving a request from the "/" path... 
                         res.send('Hello world!')                <== ... responds by sending back the message "Hello world!".
                     });
                 ______________________________________________
@@ -467,7 +467,7 @@ What are route parameters?
 
 
 /* 
-How do you handle a GET requests to an endpoint?
+How do you handle a GET request to an endpoint?
 /////////////////////////////////////////////////
 ==SHORT ANSWER==
 •   To handle a GET request to an endpoint, you create a GET request endpoint and create logic to fulfill that request. 
@@ -530,6 +530,13 @@ How do you handle a GET requests to an endpoint?
 
 */
 
+
+/* 
+How do you handle a HTTP POST request to an endpoint?
+//////////////////////////////////////////////////////
+    •   HTTP POST requests are used to create new resources.            
+
+*/
 
 
 
