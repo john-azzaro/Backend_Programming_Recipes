@@ -574,8 +574,10 @@ STEP 3: Push the object to the course object and return that object in the body 
 
 
 
-
-
+/* 
+How do you handle an HTTP PUT request?
+//////////////////////////////////////
+*/
 
 
 
@@ -597,8 +599,9 @@ STEP 3: Push the object to the course object and return that object in the body 
 What is input validation?
 /////////////////////////
    •    As a security concern, you should never trust what the client sends you.
+   •    Input validation helps endures that the POST submission is valid and if not, will return an error. 
    •    Validation logic shoudl come at the beginning of your route handler.
-               
+   •    The example            
 
 
     How do you add simple validation logic?
