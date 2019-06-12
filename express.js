@@ -583,7 +583,7 @@ How do you handle an HTTP PUT request?
     STEP 1: Create a route handler with a path that will include the specific id to be edited.
     ==========================================================================================
 
-                    app.put('/api/courses/:id', function (req, res) {                                           // route handler with a path that include the specific id.
+                    app.put('/api/courses/:id', function (req, res) {                                          <== route handler with a path that include the specific id.
                         ...
                         ...
                         ...
@@ -591,17 +591,39 @@ How do you handle an HTTP PUT request?
                     });       
 
 
+     STEP 2:  Create the logic for the PUT request.  In this case, look up course with given id.
+    ============================================================================================  
 
+                    app.put('/api/courses/:id', function (req, res) {                                           
+                        const course = courses.find(course => course.id === parseInt(req.params.id));          <== first we need to look up the course with its given id.
+                        ...
+                        ...
+                        ...
+                    });       
 
+    STEP 3:  If the course does not exist,send a 404 status (resource not found).
+    ============================================================================             
 
-app.put('/api/courses/:id', function (req, res) {                                           // route handler with a path that include the specific id.
-    const course = courses.find(course => course.id === parseInt(req.params.id));           // first we need to look up the course with its given id.
-    if (!course) {                                                                          // then, if the course does NOT exist return 404 (resouce not found).
-        res.status(404).send('The course with the given id was not found');
-    }
-    course.name = req.body.name;                                                            // If all is good, then update the course.  
-    res.send(course);
-});       
+                    app.put('/api/courses/:id', function (req, res) {                                           
+                        const course = courses.find(course => course.id === parseInt(req.params.id));           
+                        if (!course) {                                                                          <== then, if the course does NOT exist return 404 (resouce not found).
+                            res.status(404).send('The course with the given id was not found');
+                        }
+                        ...
+                        ...
+                    });       
+    
+    STEP 4: If everything is good, update the course.
+    ================================================                
+
+                    app.put('/api/courses/:id', function (req, res) {                                           
+                        const course = courses.find(course => course.id === parseInt(req.params.id));           
+                        if (!course) {                                                                          
+                            res.status(404).send('The course with the given id was not found');
+                        }
+                        course.name = req.body.name;                                                           <== If all is good, then update the course.  
+                        res.send(course);
+                    });       
 
 
 
