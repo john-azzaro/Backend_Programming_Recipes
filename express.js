@@ -577,6 +577,49 @@ STEP 3: Push the object to the course object and return that object in the body 
 /* 
 How do you handle an HTTP PUT request?
 //////////////////////////////////////
+    •   A PUT request will edit an existing property.
+
+
+    STEP 1: Create a route handler with a path that will include the specific id to be edited.
+    ==========================================================================================
+
+                    app.put('/api/courses/:id', function (req, res) {                                           // route handler with a path that include the specific id.
+                        ...
+                        ...
+                        ...
+                        ...
+                    });       
+
+
+
+
+
+app.put('/api/courses/:id', function (req, res) {                                           // route handler with a path that include the specific id.
+    const course = courses.find(course => course.id === parseInt(req.params.id));           // first we need to look up the course with its given id.
+    if (!course) {                                                                          // then, if the course does NOT exist return 404 (resouce not found).
+        res.status(404).send('The course with the given id was not found');
+    }
+    course.name = req.body.name;                                                            // If all is good, then update the course.  
+    res.send(course);
+});       
+
+
+
+
+
+
+
+
+    first we need to look up the course with its given id.
+    then, if the course does NOT exist return 404 (resouce not found).
+   
+    otherwise, validate the course
+    if invalid, return 400 (bad request)
+
+    If all is good, then update the course.  
+    Return the updated course to the client.              
+
+
 */
 
 
