@@ -843,7 +843,8 @@ What is middleware?
 
 ==EXTENDED ANSWER==
     •   One example of a middleware function is the route handlers we use for GET, PUT, POST, and DELETE.
-    •   In express, every route handler function is technically a middleware function.
+    •   In express, every route handler function is technically a middleware function because it takes a request object and 
+        returns a response to the client.
 
                         app.get('/api/courses', function(req, res) {
                             res.send(courses);
