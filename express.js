@@ -834,6 +834,26 @@ What is Postman and how is it useful when building express apps?
 
 
 
+/* 
+What is middleware?
+////////////////////
+==SHORT ANSWER==
+    •   Middleware (or middleware function), which is a core concept in express, which takes a request object and either returns 
+        a reponse to the client or passes control to another middleware function.   
+
+==EXTENDED ANSWER==
+    •   One example of a middleware function is the route handlers we use for GET, PUT, POST, and DELETE.
+    •   In express, every route handler function is technically a middleware function.
+
+                        app.get('/api/courses', function(req, res) {
+                            res.send(courses);
+                        });
+
+
+
+
+*/
+
 
 
 
