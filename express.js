@@ -642,21 +642,84 @@ What is a HTTP DELETE request and how do you handle it to an endpoint?
     STEP 1: Create an HTTP DELETE request with a path that includes a path (with :id) and a response handler
     ========================================================================================================
 
+                app.delete('/api/courses/:id', function (req, res) {               <== call the app object with the delete method with a path and a route handler.
+                    ...
+                    ...
+                    ...
+                    ...
+                    ...
+                });
 
 
-
-
+    STEP 2:  Create the logic for the DELETErequest.  In this case, look up course with given id.
+    ============================================================================================              
   
-app.delete('/api/courses/:id', function (req, res) {
-    const course = courses.find(course => course.id === parseInt(req.params.id));          // look up course
-    if (!course) {                                                                         // if the course does NOT exist return 404 (resouce not found).
-        res.status(404).send('The course with the given id was not found');
-        return;
-    }
-    const index = courses.indexOf(course);                                                  // find index of course by looking in courses object for indexOf course
-    courses.splice(index, 1)                                                               // to remove an object from courses array, use splice and go to index and remove 1 object.
-    res.send(course);                                                                       // then send the response to the course object.
-});
+                app.delete('/api/courses/:id', function (req, res) {
+                    const course = courses.find(course => course.id === parseInt(req.params.id));          <== look up course
+                    ...
+                    ...
+                    ...
+                    ...
+                });
+
+    STEP 3:  If the course does not exist,send a 404 status (resource not found).
+    ============================================================================= 
+
+                app.delete('/api/courses/:id', function (req, res) {
+                    const course = courses.find(course => course.id === parseInt(req.params.id));          
+                    if (!course) {                                                                         <== if the course does NOT exist return 404 (resouce not found).
+                        res.status(404).send('The course with the given id was not found');
+                        return;
+                    }
+                    ...
+                    ...
+                    ...                                                                    
+                });
+
+     STEP 4:  Find index of course by looking in courses object for indexOf course
+    ===============================================================================             
+
+                app.delete('/api/courses/:id', function (req, res) {
+                    const course = courses.find(course => course.id === parseInt(req.params.id));          
+                    if (!course) {                                                                         
+                        res.status(404).send('The course with the given id was not found');
+                        return;
+                    }
+                    const index = courses.indexOf(course);                                                  <== find index of course by looking in courses object for indexOf course
+                    ...
+                    ...                                                                    
+                });
+
+
+    STEP 5:  Remove an object from courses array using .splice and go to index and remove 1 object
+    ============================================================================================== 
+
+                app.delete('/api/courses/:id', function (req, res) {
+                    const course = courses.find(course => course.id === parseInt(req.params.id));          
+                    if (!course) {                                                                         
+                        res.status(404).send('The course with the given id was not found');
+                        return;
+                    }
+                    const index = courses.indexOf(course);                                                 
+                    courses.splice(index, 1);                                                           <== to remove an object from courses array, use splice and go to index and remove 1 object.
+                    res.send(course);                                                                       
+                });
+
+
+    STEP 6: Send the response to the course object
+    ==============================================
+
+                app.delete('/api/courses/:id', function (req, res) {
+                    const course = courses.find(course => course.id === parseInt(req.params.id));          
+                    if (!course) {                                                                         
+                        res.status(404).send('The course with the given id was not found');
+                        return;
+                    }
+                    const index = courses.indexOf(course);                                                 
+                    courses.splice(index, 1);                                                           
+                    res.send(course);                                                                  <== Lastly, send the response to the course object.      
+                });
+
 
 */
 
