@@ -2,7 +2,24 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Express framework 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      1. 
+//      What is a RESTful service?     
+//      Why should you use a framework like express?
+//      What is express?
+//      How do you install express?
+//      How do you create a basic web server with express?
+//        +  How do you create an express server?
+//        +      
+//        +      
+//        +      
+//        +      
+//        +  How do you add another route to your server?
+//      What is Nodemon and what does it do?
+//        +  How do you install nodemon?
+//        +  How do you use nodemon?
+//
+//
+//
+//
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express web framework from study, research, tutorials, mentor
@@ -45,8 +62,8 @@ What is a RESTful service?
     •   Every HTTP request has a verb(method) that determines its type or intention.
     •   HTTP methods include GET(getting data), POST(posting data), DELETE(deleting data), and PUT (updating data) 
     
-    GET REQUEST EXAMPLE
-    ====================
+    What is a GET request?
+    ======================
     •   In a GET request, you send a request for data and you receive a response with that data.
             o   For example, if you send am HTTP GET request for customers, you will get an array of objects of those customers.
 
@@ -66,8 +83,8 @@ What is a RESTful service?
                 Get /api/customers/1   =========>     { id: 1, name:'joe'}
                               
                 
-    PUT REQUEST EXAMPLE
-    =====================
+    What is a PUT request?
+    ======================
     •   In a PUT request, we want to update existing data. 
     •   To update the data via a put request, you would send an HTTP PUT request to the specific customer endpoint AND the data to update with.
     •   The server then responds to the PUT request with the updated values.
@@ -78,17 +95,17 @@ What is a RESTful service?
                 { id: 1, name:'alan'}
 
 
-    DELETE REQUEST EXAMPLE   
-    ======================        
+    What is a DELETE request?
+    ======================       
     •  In a DELETE request, you simply want to delete the id.
 
                     PUT REQUEST                                RESPONSE
                 ____________________                     ________________________
                 DELETE /api/customers/1   =========>     
                
-    CREATE REQUEST EXAMPLE
+    What is a POST request?
     ======================
-    •   In a CREATE request, we are adding something to a database.
+    •   In a POST request, we are adding something to a database.
     
                     POST REQUEST                                RESPONSE
                 ____________________                  ___________________________
@@ -200,8 +217,10 @@ How do you create a basic web server with express?
         STEP 3: Install the express framework with the command "npm install express".
         STEP 4: Create a new file in your text editor called "index.js".
 
-    PHASE 2: Create express server:
-    ===============================
+    How do you create an express server?
+    =====================================    
+    PHASE 2: In index.js, create express server:
+    ============================================
         STEP 5: Load the express module:
 
                 ______________________________________________
@@ -228,6 +247,9 @@ How do you create a basic web server with express?
                             app.delete()    
                             app.put()
                             
+
+    How do you create a route?
+    ==========================
     PHASE 3: Define a route that responds to specific HTTP requests (in this case GET ):
     ====================================================================================
         STEP 7: To create a GET request, we call "app.get()" with 2 arguments, the path (i.e. url or '/') and a  
@@ -722,20 +744,6 @@ What is a HTTP DELETE request and how do you handle it to an endpoint?
 
 
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
