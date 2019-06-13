@@ -2,27 +2,30 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Express framework 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      What is a RESTful service?  
+//      What is a REST-ful service?  
 //        +  What is a GET request?   
 //        +  What is a PUT request?   
 //        +  What is a DELETE request?   
-//        +  What is a POST request?        
+//        +  What is a POST request?     
+
 //      Why should you use a framework like express?
 //      What is express?
 //      How do you install express?
+
 //      How do you create a basic web server with express?
 //        +  How do you create an express server?
 //        +  How do you create a route?    
 //        +  How do you listen on a given port for requests?         
 //        +  How do you add another route to your server?
-//      What is Nodemon and what does it do?
-//        +  How do you install nodemon?
-//        +  How do you use nodemon?
+
 //      What is Nodemon and what does it do?    
 //        +  How do you install nodemon?
 //        +  How do you use nodemon in Gitbash?
+
 //      What is an enviroment variable and how do you assign a port to your node application?
 //        +  How do you set an enviroment variable (assign a port to your application?
+
+
 //      What are route parameters?
 //        +  What is req.params?
 //        +  How do you include multiple parameters in a route?
@@ -31,8 +34,9 @@
 //      What is a HTTP POST request and how do you handle it to an endpoint?
 //      What is a HTTP PUT request and how do you handle it to an endpoint?
 //      What is a HTTP DELETE request and how do you handle it to an endpoint?
+
 //      What is input validation?
-//      What is Postman?      
+//      What is Postman and how is it useful when building express apps?      
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express web framework from study, research, tutorials, mentor
@@ -143,7 +147,7 @@ Why should you use a framework like express?
         things we would need to hard code (e.g. if statements).
     •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
 
-         ______________________________________________
+         ______________inefficent way__________________
 
             const http = require('http');                              <== First, we load the http core module and store it in a constant named "http".
 
@@ -391,8 +395,15 @@ What is an enviroment variable and how do you assign a port to your node applica
 ==SHORT ANSWER==
     •   Enviroment variables are used to store various settings for an application.
     •   An enviroment variable, such as PORT in node applications, is a variable that is part of the enviroment in which a 
-        process runs, but the value of this variable is set OUTSIDE the application.  
+        process runs, but the value of this variable is set OUTSIDE the application. 
+        
+==EXAMPLE==
+                    const port = process.env.PORT || 3000;                              
+                    app.listen(port, function() {                                       
+                        console.log(`Listening on port ${port}...`);                   
+                    });     
                  
+
 ==EXTENDED ANSWERS==
     •   Although using a hardcoded value for your port (i.e. 3000) will work on your development machine, it is unlikely
         that it will work in a production enviroment because when you deploy your app to a hosting enviroment, the port is
@@ -780,9 +791,6 @@ What is input validation?
                     });    
 
 
-    How do you add validation using Joi?
-    ====================================
-
 */
 
 
@@ -791,8 +799,8 @@ What is input validation?
 
 
 /* 
-What is Postman?
-/////////////////
+What is Postman and how is it useful when building express apps?  
+/////////////////////////////////////////////////////////////////
     •   Postman is an api development tool that calls HTTP services.
 
 ==EXAMPLE==
