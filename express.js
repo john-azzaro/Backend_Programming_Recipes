@@ -2,24 +2,37 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Express framework 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      What is a RESTful service?     
+//      What is a RESTful service?  
+//        +  What is a GET request?   
+//        +  What is a PUT request?   
+//        +  What is a DELETE request?   
+//        +  What is a POST request?        
 //      Why should you use a framework like express?
 //      What is express?
 //      How do you install express?
 //      How do you create a basic web server with express?
 //        +  How do you create an express server?
-//        +      
-//        +      
-//        +      
-//        +      
+//        +  How do you create a route?    
+//        +  How do you listen on a given port for requests?         
 //        +  How do you add another route to your server?
 //      What is Nodemon and what does it do?
 //        +  How do you install nodemon?
 //        +  How do you use nodemon?
-//
-//
-//
-//
+//      What is Nodemon and what does it do?    
+//        +  How do you install nodemon?
+//        +  How do you use nodemon in Gitbash?
+//      What is an enviroment variable and how do you assign a port to your node application?
+//        +  How do you set an enviroment variable (assign a port to your application?
+//      What are route parameters?
+//        +  What is req.params?
+//        +  How do you include multiple parameters in a route?
+//        +  What are query string parameters using express and how do you use them?
+//      What is a HTTP GET request and how do you handle it to an endpoint?
+//      What is a HTTP POST request and how do you handle it to an endpoint?
+//      What is a HTTP PUT request and how do you handle it to an endpoint?
+//      What is a HTTP DELETE request and how do you handle it to an endpoint?
+//      What is input validation?
+//      What is Postman?      
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express web framework from study, research, tutorials, mentor
@@ -123,11 +136,7 @@ Why should you use a framework like express?
         there are many things we would need to hard code (e.g. if statements).  A framework give the application a proper structure 
         so we can create more routes while also keeping the application maintainable.                                   
 
-
-
-==EXTENDED ANSWER==
-
-   
+==EXTENDED ANSWER==  
     •   Below is an example of a simple webserver that listens on port 3000 and responds to requests for
         various endpoint urls.
     •   However, this approach is neither ideal or maintainable for building complex application because there are many
@@ -209,8 +218,8 @@ How do you install express?
 How do you create a basic web server with express?
 //////////////////////////////////////////////////
 
-    PHASE 1: Setup project:
-    =======================
+    Setup project:
+    ==============
         STEP 1: Create a folder for your project.
         STEP 2: Inside the folder, write the command "npm init" (with --yes if you want fast default installation) 
                 to create a package.json file.
@@ -218,9 +227,7 @@ How do you create a basic web server with express?
         STEP 4: Create a new file in your text editor called "index.js".
 
     How do you create an express server?
-    =====================================    
-    PHASE 2: In index.js, create express server:
-    ============================================
+    ====================================   
         STEP 5: Load the express module:
 
                 ______________________________________________
@@ -248,10 +255,10 @@ How do you create a basic web server with express?
                             app.put()
                             
 
-    How do you create a route?
-    ==========================
-    PHASE 3: Define a route that responds to specific HTTP requests (in this case GET ):
-    ====================================================================================
+   How do you create a route?
+   ==========================
+        •  Define a route that responds to specific HTTP requests (in this case GET ):
+    
         STEP 7: To create a GET request, we call "app.get()" with 2 arguments, the path (i.e. url or '/') and a  
                 callback function (i.e. the function that will be called when we get a HTTP request to the endpoint 
                 in the first argument).
@@ -292,8 +299,8 @@ How do you create a basic web server with express?
                 ______________________________________________
 
 
-    PHASE 4: Listen on a given port for requests:
-    =============================================
+    How do you listen on a given port for requests?
+    ================================================
         STEP 9: Listen on a given port for a request and a function that will be called when the app starts listening on the given port.
 
                 ______________________________________________ 
@@ -350,8 +357,8 @@ What is Nodemon and what does it do?
     •   To install nodemon, you simple write "npm install -g nodemon"
         o   What will happen is is you will install the npm package "nodemon" but globally so it will be available from now on.
 
-    How do you use nodemon?
-    =======================
+    How do you use nodemon in Gitbash?
+    ==================================
     •   When you use nodemon, you simply type "nodemon" and then the application you want to listen in on.
 
                     $ nodemon index.js                                   <== uses nodemon with index.js.
@@ -785,7 +792,7 @@ What is input validation?
 
 /* 
 What is Postman?
-/////////////////////////
+/////////////////
     •   Postman is an api development tool that calls HTTP services.
 
 ==EXAMPLE==
