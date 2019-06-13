@@ -467,10 +467,12 @@ What are route parameters?
 
 
 /* 
-How do you handle a GET request to an endpoint?
-/////////////////////////////////////////////////
+What is a HTTP GET request and how do you handle it to an endpoint?
+///////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
-•   To handle a GET request to an endpoint, you create a GET request endpoint and create logic to fulfill that request. 
+•   To handle a GET request to an endpoint, you call the app object with the GET method, specifiy a path (i.e. /api/courses) that 
+    would also include a ":id" attached to the specific endpoint and you add a route handler (i.e. req, res), then add your logic.  
+
 
 ==EXAMPLE==
     •   Suppose you want to implement an new endpoint to get a SINGLE course from the server.
@@ -494,11 +496,11 @@ How do you handle a GET request to an endpoint?
                         { id: 3, name: 'Third course'}
                     ];
 
-                    app.get('/api/courses', function(req, res) {                                         <== GET request endpoint that sends back an array of object containing all courses.
-                        res.send(courses);
+                    app.get('/api/courses', function(req, res) {                                         <== app object and GET method (i.e. .get) with path and route handler (req, res).
+                        res.send(courses);                                                               <== the response will be to send the courses back to the client.
                     });
 
-                    app.get('/api/courses/:id', function(req, res) {                                      <== GET request endpoint the looks for a course with a given ID.
+                    app.get('/api/courses/:id', function(req, res) {                                      <== the GET request endpoint the looks for a course with a given ID.
                         // code goes here
                     }); 
 
@@ -532,14 +534,17 @@ How do you handle a GET request to an endpoint?
 
 
 /* 
-How do you handle a HTTP POST request to an endpoint?
-//////////////////////////////////////////////////////
+What is a HTTP POST request and how do you handle it to an endpoint?
+////////////////////////////////////////////////////////////////////
+    •   To handle a GET request to an endpoint, you call the app object with the GET method, specifiy a path (i.e. /api/courses) that 
+        would also include a ":id" attached to the specific endpoint and you add a route handler (i.e. req, res), then add your logic.  
+
     •   HTTP POST requests are used to create new resources.    
     
 STEP 1: Create a HTTP POST request with the path and req/res route handler (i.e. callback function).
 ===================================================================================================
 
-                    app.post('/api/courses', function(req, res) {          <== POST method with path and route handler.  Also note in this case the 
+                    app.post('/api/courses', function(req, res) {          <== create app object with POST method with path and route handler.  Also note in this case the 
                         ...                                                    "courses" endpoint (i.e. the "courses" object) where we will post to.
                         ...
                         ...    
@@ -575,17 +580,18 @@ STEP 3: Push the object to the course object and return that object in the body 
 
 
 /* 
-How do you handle an HTTP PUT request?
-//////////////////////////////////////
-    •   A PUT request will edit an existing property.
+What is a HTTP PUT request and how do you handle it to an endpoint?
+///////////////////////////////////////////////////////////////////
+    •   A PUT request will edit an existing property looking up the element by id and then, if everything is ok, 
+        will update the element.
 
 
-    STEP 1: Create a route handler with a path that will include the specific id to be edited.
+    STEP 1: Create a route handler with a path that will includes the specific id to be edited.
     ==========================================================================================
 
-                    app.put('/api/courses/:id', function (req, res) {                                          <== route handler with a path that include the specific id.
-                        ...
-                        ...
+                    app.put('/api/courses/:id', function (req, res) {                                          <== call app object with PUT method as well as a 
+                        ...                                                                                        route handler with a path that include the specific 
+                        ...                                                                                        id.
                         ...
                         ...
                     });       
@@ -624,23 +630,33 @@ How do you handle an HTTP PUT request?
                         course.name = req.body.name;                                                           <== If all is good, then update the course.  
                         res.send(course);
                     });       
+*/
+
+
+
+/* 
+What is a HTTP DELETE request and how do you handle it to an endpoint?
+//////////////////////////////////////////////////////////////////////
+    •   To handle an HTTP Delete request, we         
+
+    STEP 1: Create an HTTP DELETE request with a path that includes a path (with :id) and a response handler
+    ========================================================================================================
 
 
 
 
 
-
-
-
-    first we need to look up the course with its given id.
-    then, if the course does NOT exist return 404 (resouce not found).
-   
-    otherwise, validate the course
-    if invalid, return 400 (bad request)
-
-    If all is good, then update the course.  
-    Return the updated course to the client.              
-
+  
+app.delete('/api/courses/:id', function (req, res) {
+    const course = courses.find(course => course.id === parseInt(req.params.id));          // look up course
+    if (!course) {                                                                         // if the course does NOT exist return 404 (resouce not found).
+        res.status(404).send('The course with the given id was not found');
+        return;
+    }
+    const index = courses.indexOf(course);                                                  // find index of course by looking in courses object for indexOf course
+    courses.splice(index, 1)                                                               // to remove an object from courses array, use splice and go to index and remove 1 object.
+    res.send(course);                                                                       // then send the response to the course object.
+});
 
 */
 
