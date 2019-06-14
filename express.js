@@ -853,11 +853,11 @@ What is middleware?
                             res.send(courses);
                         });
 
-    •   Another form of middlewate is like the code below.
+    •   Another form of middleware is like the code below.
         o   This middleware function reads the request and if there is a json object in the body of the request, it will parse the body
             of the request into a json object and then set the req.body property.                   
 
-                       app.use(express.json());       <== when you call express.json, that method returns a middleware function. 
+                        app.use(express.json());       <== when you call express.json, that method returns a middleware function. 
 
 
     What is the request processing pipeline?
@@ -882,15 +882,32 @@ What is middleware?
                                                         handler.  In the route handler, we have the request object with the body
                                                         property populated, where we perform some operation and then terminate the 
                                                         req/res cycle by returning a response to the client.
-        
+*/
 
 
+/* 
+How do you create custom middleware?
+////////////////////////////////////
+    •   
+    
+    
+    How do you install a middleware function?
+    =========================================
+    •   To install a middleware function, we call app.use().
+    •   We use "app.use()" to install middleware function in our request processing pipeline.
+        o   And within the body of the function at the end, we call "next()" to pass control to the next function
+            in the middleware pipeline because if we dont terminate the request/response cycle, the request will
+            end up hanging (i.e. in postman, a GET request will continue "Loading..." without any response).  
+    
+==EXAMPLE==
 
-
-
-
-
-
+                                route handler        "next" refers to the next middleware function in the pipeline
+                                            \        /
+                        app.use(function(req, res, next) {
+                            //something
+                            next();
+                        });      \
+                                  Pass control to the next middleware function in the pipeline.
 */
 
 
