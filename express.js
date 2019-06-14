@@ -861,7 +861,10 @@ What is middleware?
     ========================================
     •   In a request processing pipeline, we can have one or more middleware function.
     •   Each middleware function either terminates the request/reponse cycle by returning a reponse object OR
-        pass control to another middleware function.  
+        pass control to another middleware function. 
+    •   Express has a few built-in middleware function, but you can also create custom middleware functions that you can put at
+        the front of request processing pipeline so that every request recieved on our server will go through a middleware function.
+    •   With custom middleware functions, you can perform "cross-cutting" concerns, like logging, authentication, authorization, etc. 
         
                 For example, the following has 2 middleware functions:  
 
@@ -874,7 +877,7 @@ What is middleware?
                                                         So control passes to the second middleware function, which is a route
                                                         handler.  In the route handler, we have the request object with the body
                                                         property populated, where we perform some operation and then terminate the 
-                                                        req/res cycle
+                                                        req/res cycle by returning a response to the client.
         
 
 
