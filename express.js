@@ -895,19 +895,34 @@ How do you create custom middleware?
     =========================================
     •   To install a middleware function, we call app.use().
     •   We use "app.use()" to install middleware function in our request processing pipeline.
-        o   And within the body of the function at the end, we call "next()" to pass control to the next function
-            in the middleware pipeline because if we dont terminate the request/response cycle, the request will
-            end up hanging (i.e. in postman, a GET request will continue "Loading..." without any response).  
+    •   And within the body of the function at the end, we call "next()" to pass control to the next function
+        in the middleware pipeline.
+        o   If we dont terminate the request/response cycle with next(), the request will
+            end up hanging (i.e. in postman, a GET request will continue "Loading..." without any response) 
+            because we did not pass control to another middleware function to terminate the req/res cycle.  
     
-==EXAMPLE==
 
                                 route handler        "next" refers to the next middleware function in the pipeline
                                             \        /
                         app.use(function(req, res, next) {
-                            //something
+                            console.log("Logging");             <= code to be executed, which will show "Logging..." in the console.
                             next();
                         });      \
                                   Pass control to the next middleware function in the pipeline.
+
+
+    •   And if we add ANOTHER middleware function, we will see the consecutive execution that occurs in the request processing pipeline:                   
+                    
+    
+                        app.use(function(req, res, next) {              
+                            console.log("Logging...")
+                        });                                          <== console will print "Logging..."
+
+                        app.use(function(req, res, next) {              
+                            console.log("Authenticating...")
+                        });                                          <== console will then print "Authenticating..."
+
+
 */
 
 
