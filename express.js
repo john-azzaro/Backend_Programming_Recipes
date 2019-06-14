@@ -846,13 +846,14 @@ What is middleware?
     •   In express, every route handler function is technically a middleware function because it takes a request object and 
         returns a response to the client.
 
-                        app.get('/api/courses', function(req, res) {
+                        app.get('/api/courses', function(req, res) {            <= the route handler function is middleware bc it terminates the req/res cycle.
                             res.send(courses);
                         });
 
+    •   Another form of middlewate is like the code below.
+        o   This middleware function reads the request and if there is a json object in the body of the request.                     
 
-
-
+                       app.use(express.json());       <== when you call express.json, that method returns a middleware function. 
 */
 
 
