@@ -851,9 +851,23 @@ What is middleware?
                         });
 
     •   Another form of middlewate is like the code below.
-        o   This middleware function reads the request and if there is a json object in the body of the request.                     
+        o   This middleware function reads the request and if there is a json object in the body of the request, it will parse the body
+            of the request into a json object and then set the req.body property.                   
 
                        app.use(express.json());       <== when you call express.json, that method returns a middleware function. 
+
+
+    What is the request processing pipeline?
+    ========================================
+    •   In a request processing pipeline, we can have one or more middleware function.
+    •   Each middleware function either terminates the request/reponse cycle by returning a reponse object OR
+        pass control to another middleware function.                   
+
+
+
+
+
+
 */
 
 
