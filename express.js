@@ -861,7 +861,23 @@ What is middleware?
     ========================================
     •   In a request processing pipeline, we can have one or more middleware function.
     •   Each middleware function either terminates the request/reponse cycle by returning a reponse object OR
-        pass control to another middleware function.                   
+        pass control to another middleware function.  
+        
+                For example, the following has 2 middleware functions:  
+
+                                        This is a middleware function that parses request body into
+                                        a json object. However, this does not terminate the req/res
+                                        cycle.
+                                         /
+                         REQUEST ==> [json()] ==> [route()] ==> RESPONSE
+                                                        \
+                                                        So control passes to the second middleware function, which is a route
+                                                        handler.  In the route handler, we have the request object with the body
+                                                        property populated, where we perform some operation and then terminate the 
+                                                        req/res cycle
+        
+
+
 
 
 
