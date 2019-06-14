@@ -36,7 +36,10 @@
 //      What is a HTTP DELETE request and how do you handle it to an endpoint?
 
 //      What is input validation?
-//      What is Postman and how is it useful when building express apps?      
+//      What is Postman and how is it useful when building express apps?     
+
+//      What is middleware?
+//        +  What is the request processing pipeline?    
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express web framework from study, research, tutorials, mentor
@@ -864,7 +867,8 @@ What is middleware?
         pass control to another middleware function. 
     •   Express has a few built-in middleware function, but you can also create custom middleware functions that you can put at
         the front of request processing pipeline so that every request recieved on our server will go through a middleware function.
-    •   With custom middleware functions, you can perform "cross-cutting" concerns, like logging, authentication, authorization, etc. 
+    •   With custom middleware functions, you can perform "cross-cutting" concerns, like logging, authentication, authorization, etc.
+    •   In fact, you could say that an express app is nothing more than a bunch of middleware functions. 
         
                 For example, the following has 2 middleware functions:  
 
