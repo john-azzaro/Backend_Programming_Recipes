@@ -955,6 +955,14 @@ How do you define a custom middleware function in a seperate module?
 How do you use built-in middleware?
 ///////////////////////////////////
 
+
+    •   For example, the "express.json()" is a built in middleware function that parses the body of the request and
+        if there is a json object, it will populate the "req.body" property.
+
+    •   Another example is url encoded, which parses incoming reaqests with url encoded payloads. 
+        o   For example: key=value&key=value&key=value
+        o   Although it is not used that often, if you have an html form with input fields, and post that form to your server
+            the body of your request will look like the example above... it is a url encoded payload.
 */
 
 
