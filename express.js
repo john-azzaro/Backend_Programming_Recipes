@@ -962,8 +962,34 @@ How do you use built-in middleware?
     •   Another example is url encoded, which parses incoming reaqests with url encoded payloads. 
         o   For example: key=value&key=value&key=value
         o   Although it is not used that often, if you have an html form with input fields, and post that form to your server
-            the body of your request will look like the example above... it is a url encoded payload.
-*/
+            the body of your request will look like the example above... it is a url encoded payload request.
+
+    What is the urlencoded() method and what does it do?
+    ====================================================
+    •   To use urlencoded() format with the object extended:true passed to it, you can pass arrays and complex objects
+        using the urlencoded format.
+
+                        app.use(express.urlencoded( { extended: true }));  
+                                            /                 \
+                                        method                object with the property "extended" set to true.
+
+    What is the "static" method and what does it do?
+    ================================================
+    •   "Static" is used to put all static assest like css, images, etc. inside a folder, such as "public".
+    •   This is middleware that serves static content from a public folder.
+
+                        app.use(express.static('public'));
+                                                    \
+                                                    folder where we put our "public" files like css.  
+
+
+
+
+
+
+
+
+*/                                                           
 
 
 
