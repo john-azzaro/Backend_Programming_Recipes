@@ -886,14 +886,9 @@ What is middleware?
 
 
 /* 
-How do you create custom middleware?
-////////////////////////////////////
-    •   
-    
-    
-    How do you create a middleware function?
-    =========================================
-    •   To install a middleware function, we call app.use().
+How do you define a custom middleware function in a seperate module?
+////////////////////////////////////////////////////////////////////
+    •   To use a  middleware function, we import and install using app.use().
     •   We use "app.use()" to install middleware function in our request processing pipeline.
     •   And within the body of the function at the end, we call "next()" to pass control to the next function
         in the middleware pipeline.
@@ -943,11 +938,14 @@ How do you create custom middleware?
 
     STEP 3: In your main file (i.e. index.js), we first load the new module:
 
+                        const logger = require('./logger');             <= load the logger module (in the current folder) and store as a constant.
+
+    STEP 4: Then you install the new logger module by using app.use();
+
+                        app.use(logger);                              <== logger passed to the app.use() function.
 
 
 
-
-    
 */
 
 
