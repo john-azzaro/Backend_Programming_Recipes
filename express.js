@@ -891,7 +891,7 @@ How do you create custom middleware?
     •   
     
     
-    How do you install a middleware function?
+    How do you create a middleware function?
     =========================================
     •   To install a middleware function, we call app.use().
     •   We use "app.use()" to install middleware function in our request processing pipeline.
@@ -923,6 +923,31 @@ How do you create custom middleware?
                         });                                          <== console will then print "Authenticating..."
 
 
+    Why do you create middleware in a seperate module(i.e. file) and how do you do it?
+    =================================================================================
+    •  Assuming you have two files, a main index.js and a middleware module file:
+    
+    STEP 1: Create a new module(i.e. file) to place your middleware:
+    
+                        function logger(req, res, next) {                <== middleware to be exported
+                            console.log("Logging...")
+                        };
+
+    STEP 2: Export the module sing module.exports.logger:
+                        
+                        function logger(req, res, next) {              
+                            console.log("Logging...")
+                        };
+
+                        module.exports = logger;                         <== module exporting a single function, specifically logger.
+
+    STEP 3: In your main file (i.e. index.js), we first load the new module:
+
+
+
+
+
+    
 */
 
 
