@@ -981,15 +981,56 @@ How do you use built-in middleware?
                         app.use(express.static('public'));
                                                     \
                                                     folder where we put our "public" files like css.  
-
-
-
-
-
-
-
-
 */                                                           
+
+
+
+/* 
+What is third-party middleware?
+////////////////////////////////
+    •  Third party middlewareadds functionality to express apps.
+    •  Third party middleware should be using sparingly as the more middleware you use, it will slow down your
+       request porcessing for your application.
+    •  There are a few useful third-party middleware function you may want to use in your projects:
+        o  For example, "helmet" secures your Express apps by setting various HTTP headers 
+        o  Another is "morgan", which logs http requests (i.e. will log a message with each request sent to the server)              
+    
+    •  For a complete list of thrid-party middleware, see documentation https://expressjs.com/en/resources/middleware.html                   
+
+    How do you install thrid-party middleware?
+    ==========================================
+    •   In this example, we'll install morgan, which logs http requests.
+        
+        STEP 1: First, install the third-party middleware (helmet) with npm:
+        ====================================================================
+
+                        npm install morgan     
+
+        STEP 2: Then in our index module (i.e. index.js), you load the third-party middleware (helment).
+        ===============================================================================================
+                        
+                        const morgan = require('morgan');
+                        
+        STEP 3: Now return the middleware using app.use():
+        ==================================================
+        
+                        app.use(morgan());
+
+        OPTIONAL BASED ON SPECIFIC MIDDLEWARE: Morgan has various options for formats (see documentation), such as "tiny":
+        ================================================================================================================== 
+
+                        app.use(morgan('tiny'));
+
+                o   The result will be that when you send a GET request to the server, morgan will log the http request:
+
+                        $ nodemon index.js
+                        [nodemon] 1.19.1
+                        [nodemon] to restart at any time, enter `rs`
+                        [nodemon] watching: *.*
+                        [nodemon] starting `node index.js`
+                        Listening on port 3000...
+                        GET /api/courses 200 95 - 2.022 ms           <== logged GET request by morgan in "tiny" format.
+*/
 
 
 
