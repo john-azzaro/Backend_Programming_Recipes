@@ -39,7 +39,9 @@
 //      What is Postman and how is it useful when building express apps?     
 
 //      What is middleware?
-//        +  What is the request processing pipeline?    
+//        +  What is the request processing pipeline? 
+//
+//      How do you define a custom middleware function in a seperate module? 
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express web framework from study, research, tutorials, mentor
@@ -918,17 +920,18 @@ How do you define a custom middleware function in a seperate module?
                         });                                          <== console will then print "Authenticating..."
 
 
-    Why do you create middleware in a seperate module(i.e. file) and how do you do it?
-    =================================================================================
+==PRACTICAL EXAMPLE==
     •  Assuming you have two files, a main index.js and a middleware module file:
     
     STEP 1: Create a new module(i.e. file) to place your middleware:
+    ===============================================================
     
                         function logger(req, res, next) {                <== middleware to be exported
                             console.log("Logging...")
                         };
 
     STEP 2: Export the module sing module.exports.logger:
+    =====================================================
                         
                         function logger(req, res, next) {              
                             console.log("Logging...")
@@ -937,14 +940,20 @@ How do you define a custom middleware function in a seperate module?
                         module.exports = logger;                         <== module exporting a single function, specifically logger.
 
     STEP 3: In your main file (i.e. index.js), we first load the new module:
+    ========================================================================
 
                         const logger = require('./logger');             <= load the logger module (in the current folder) and store as a constant.
 
-    STEP 4: Then you install the new logger module by using app.use();
+    STEP 4: Then you install the new logger module by using app.use():
+    ==================================================================
 
                         app.use(logger);                              <== logger passed to the app.use() function.
+*/
 
 
+/* 
+How do you use built-in middleware?
+///////////////////////////////////
 
 */
 
