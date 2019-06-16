@@ -1054,27 +1054,40 @@ What are enviroments and what kinds are there?
 
     --or--
 
-    app.use('env');    <== this method internally uses the "process.env.NODE_ENV" variable to detect the current enviroment
+    console.log(`app: ${app.get('env')}`);    <== this method internally uses the "process.env.NODE_ENV" variable to detect the current enviroment
 
 
 
-==EXAMPLE==
+    How to tell if your code is running on a development or production enviroment?
+    ===============================================================================
+        To enable logging using morgan only in the development enviroment
+        =================================================================
+            STEP 1: Create an if statement that specifies that if the enviroment is 'development', use Morgan:
 
-    To enable logging using morgan only in the development enviroment
-    =================================================================
-    STEP 1: Create an if statement that specifies that if the enviroment is 'development', use Morgan:
+                                if (app.get('env') === 'development') {      
+                                    ...
+                                    ...
+                                }
 
-                        if (app.get('env') === 'development') {      
-                            ...
-                            ...
-                        }
+            STEP 2: If so, enable Morgan and display confirmation on the console for debugging.
 
-    STEP 2: If so, enable Morgan and display confirmation on the console for debugging.
+                                if (app.get('env') === 'development') {      
+                                    app.use(morgan('tiny'));                 <== enable morgan.
+                                    console.log('Morgan enabled...')         <== display confirmation on console.
+                                }
 
-                        if (app.get('env') === 'development') {      
-                            app.use(morgan('tiny'));                 <== enable morgan.
-                            console.log('Morgan enabled...')         <== display confirmation on console.
-                        }
+        To set the enviroment to production (e.g. disable morgan in this example):
+        ===========================================================================
+        •   Make sure the server is stopped (e.g. stop nodemon index.js).
+        •   Set the enviroment variable in Gitbash by writing:
+
+                            export NODE_ENV=production     <== this sets the enviroment to production
+
+                            --or--
+
+                            export NODE_ENV=development    <== this sets the enviroment to development
+        
+
 
 */
 
