@@ -1040,29 +1040,31 @@ What are enviroments and what kinds are there?
     •   In complex applications or enterprise applications, you need to know what enviroment your code is running on (i.e.
         development or production enviroment).
     •   Perhaps you would want to enable/diable certain features based on the current enviroment.
+    •   To get the current enviroment, you need to call the following object and method:    
 
+                   "process" object in node that gives us access to the current object.
+                           \
+                            \                "NODE_ENV" returns the enviroment for this node application.
+                             \                /
+                              process.env.NODE_ENV     
+                                     | 
+                                    "env" property of the process object, which gives us enviroment variables.
+    
+    •   So in your index.js file, insert either of the following:
 
-    How do you get the current enviroment?
-    ======================================
-    process.env.NODE_ENV
+                    console.log(`Node_ENV: ${process.env.NODE_ENV}`);
 
-    process = object in node that gives us access to the current object.
-    env = property of the process object, which gives us enviroment variables.
-    NODE_ENV = this enviroment variable returns the enviroment for this node application.
+                        --or--
 
-    console.log(`Node_ENV: ${process.env.NODE_ENV}`);
-
-    --or--
-
-    console.log(`app: ${app.get('env')}`);    <== this method internally uses the "process.env.NODE_ENV" variable to detect the current enviroment
-
+                    console.log(`app: ${app.get('env')}`);    <== this method internally uses the "process.env.NODE_ENV" variable to detect the current enviroment
 
 
     How to tell if your code is running on a development or production enviroment?
     ===============================================================================
         To enable logging using morgan only in the development enviroment
         =================================================================
-            STEP 1: Create an if statement that specifies that if the enviroment is 'development', use Morgan:
+            STEP 1: Enable logging only in the development enviroment with an if statement that specifies 
+                    that if the enviroment is 'development', use Morgan:
 
                                 if (app.get('env') === 'development') {      
                                     ...
@@ -1086,9 +1088,6 @@ What are enviroments and what kinds are there?
                             --or--
 
                             export NODE_ENV=development    <== this sets the enviroment to development
-        
-
-
 */
 
 
