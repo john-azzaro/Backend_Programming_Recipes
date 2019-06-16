@@ -1035,21 +1035,19 @@ What is third-party middleware?
 
 
 /* 
-What are enviroments and what kinds are there?
-//////////////////////////////////////////////
+What are enviroments and How do you detect them?
+////////////////////////////////////////////////
     •   In complex applications or enterprise applications, you need to know what enviroment your code is running on (i.e.
         development or production enviroment).
     •   Perhaps you would want to enable/diable certain features based on the current enviroment.
-    •   To get the current enviroment, you need to call the following object and method:    
+    •   To detect the current enviroment, you need to call the following object and method:    
 
-                   "process" object in node that gives us access to the current object.
-                           \
-                            \                "NODE_ENV" returns the enviroment for this node application.
-                             \                /
-                              process.env.NODE_ENV     
-                                     | 
-                                    "env" property of the process object, which gives us enviroment variables.
-    
+
+                                          --  "process" object in node that gives us access to the current object.
+                 process.env.NODE_ENV     --  "env" property of the process object, which gives us enviroment variables.
+                                          --  "NODE_ENV" returns the enviroment for this node application.
+
+
     •   So in your index.js file, insert either of the following:
 
                     console.log(`Node_ENV: ${process.env.NODE_ENV}`);
@@ -1091,6 +1089,44 @@ What are enviroments and what kinds are there?
 */
 
 
+/* 
+How do you store configuration settings for your application and how do you override them in different enviroments?
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    •   
+    
+    
+    STEP 1: Install the "npm config" module (or "npm rc"):
+    ======================================================
+
+                            npm install config
+
+    STEP 2: In your project folder, create a folder call "config":
+    ==============================================================
+                            
+                            config
+
+    STEP 3: Inside your config folder, create two files called "default.json" and "development.json":
+    =================================================================================================
+                                
+                            default.json
+                            development.json      <== holds settings specific to the development enviroment and will override settings in default.json
+
+    STEP 4.1: Inside the default.json file, create a json object to define the default configuration settings:
+    ========================================================================================================
+
+                            {
+                               "name": "My Express" 
+                            }
+
+    STEP 4.2: Inside the development.json file, create a json object that overrides the default.json settings:
+    ==========================================================================================================
+
+
+
+
+
+    
+*/
 
 
 
