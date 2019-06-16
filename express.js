@@ -1034,6 +1034,37 @@ What is third-party middleware?
 
 
 
+/* 
+What are enviroments and what kinds are there?
+//////////////////////////////////////////////
+    •   In complex applications or enterprise applications, you need to know what enviroment your code is running on (i.e.
+        development or production enviroment).
+    •   Perhaps you would want to enable/diable certain features based on the current enviroment.
+
+
+    How do you get the current enviroment?
+    ======================================
+    process.env.NODE_ENV
+
+    process = object in node that gives us access to the current object.
+    env = property of the process object, which gives us enviroment variables.
+    NODE_ENV = this enviroment variable returns the enviroment for this node application.
+
+    console.log(`Node_ENV: ${process.env.NODE_ENV}`);
+
+
+
+
+
+==EXAMPLE==
+
+    To enable logging using morgan only in the development enviroment
+    =================================================================
+    STEP 1:
+
+
+*/
+
 
 
 
