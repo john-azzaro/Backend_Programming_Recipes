@@ -1092,7 +1092,10 @@ What are enviroments and How do you detect them?
 /* 
 How do you store configuration settings for your application and how do you override them in different enviroments?
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    •   
+    •   To store configuration settings and have a way to override them, you need to install the "config" node package.
+    •   The "config" node package will allow you to easily see the default configuration for each enviroment you have.
+    •   However, you should NOT store configuration secrets, like the password to your database or mail server because
+        it will be visible in a repository for anyone to see.
     
     
     STEP 1: Install the "npm config" module (or "npm rc"):
@@ -1105,27 +1108,82 @@ How do you store configuration settings for your application and how do you over
                             
                             config
 
-    STEP 3: Inside your config folder, create two files called "default.json" and "development.json":
+    STEP 3: Inside your config folder, create files with configuration settings:
     =================================================================================================
-                                
-                            default.json
-                            development.json      <== holds settings specific to the development enviroment and will override settings in default.json
+        •   In this example, we want to create three files called "default.json", "development.json", and "production.json"
+
+                            default.json          <== holds default settings.
+                            development.json      <== holds settings specific to the development enviroment and will override settings in default.json.
+                            production.json       <== holds settings 
 
     STEP 4.1: Inside the default.json file, create a json object to define the default configuration settings:
     ========================================================================================================
 
                             {
-                               "name": "My Express" 
+                               "name": "My Express App" 
                             }
 
     STEP 4.2: Inside the development.json file, create a json object that overrides the default.json settings:
     ==========================================================================================================
+        •   Remember that additional properties can be added and can be complex objects.
+
+                            {
+                                "name": "My Express App - Development",
+                                "mail": {
+                                    "host": "dev-mail-server"
+                                }
+                            }
+
+    STEP 4.3: Inside the production.json file, create a json object with production settings:
+    ========================================================================================
+
+                            {
+                                "name": "My Express App - Production",
+                                "mail": {
+                                    "host": "production-mail-server"
+                                }
+                            }
+
+    STEP 5: In index.js, at the top load the "config" module to easily get settings for our application:
+    ====================================================================================================
+
+                            const config = require('config');
+
+    STEP 6: To get the setting for an application, you console.log using "config.get":
+    ==================================================================================
+
+                            console.log(`Application Name: ${config.get('name')}`);    
+                            console.log(`Mail server: ${config.get('mail.host')}`);    
+                            
+                            --IN CONSOLE--
+
+                            $ nodemon index.js
+                            [nodemon] 1.19.1
+                            [nodemon] to restart at any time, enter `rs`
+                            [nodemon] watching: *.*
+                            [nodemon] starting `node index.js`
+                            Application Name: My Express App - Development      <== This setting is coming from the development .json file.
+                            Mail server: dev-mail-server                        <== This setting is also coming from the development .json file.
+                            Morgan enabled...                                   <== Note, Morgan was configured to show ONLY in development enviroment which is why you see it now.
+                            Listening on port 3000...
 
 
+    STEP 7: If you change the enviroment to a diffeerent setting, such as "production", you will see different values:
+    ==================================================================================================================
 
+                            $ export NODE_ENV=production
 
+                            $ nodemon index.js
+                            [nodemon] 1.19.1
+                            [nodemon] to restart at any time, enter `rs`
+                            [nodemon] watching: *.*
+                            [nodemon] starting `node index.js`
+                            Application Name: My Express App - Production       <== This setting is coming from the production .json file.
+                            Mail server: production-mail-server                 <== This setting is coming from the production .json file.
+                            Listening on port 3000...
 
-    
+                            
+
 */
 
 
