@@ -1168,7 +1168,7 @@ How do you store configuration settings for your application and how do you over
                             Listening on port 3000...
 
 
-    STEP 7: If you change the enviroment to a diffeerent setting, such as "production", you will see different values:
+    STEP 7: If you change the enviroment to a different setting, such as "production", you will see different values:
     ==================================================================================================================
 
                             $ export NODE_ENV=production
@@ -1182,7 +1182,57 @@ How do you store configuration settings for your application and how do you over
                             Mail server: production-mail-server                 <== This setting is coming from the production .json file.
                             Listening on port 3000...
 
+
+    OPTIONAL: How do you store secrets in enviroment variables?
+    ===========================================================                       
+        •   Suppose you want to store a password for a mail server and you do NOT want anyone to see it in a repository.
+        
+        STEP 1: In your terminal, define an enviroment variable for storing the password (in this case, a mail server):
+        ===============================================================================================================
+            •   REMEMBER: To prevent this password variable from clashing with another enviroment password variable
+                          of the same name, you should prefix the password with the name of the application (i.e. app_).                
+                             
+                            export app_password=1234
+
+        STEP 2: In your config folder, add a file called "custom-enviroment-variables.json" (make sure to spell it correctly):
+        =======================================================================================================================
+
+                            custom-environment-variables.json
+
+        STEP 3: Inside this file, define the mapping of the configuration settings to enviroment variables:
+        ===================================================================================================
+            •   Only the mapping of our configuration settings to the enviroment variables.
+
+                            {
+                                "mail": {
+                                    "password": "app_password"
+                                }
+                            }
+            
+        STEP 4: In index.js, when you try to display the password to the mail server:
+        =============================================================================
+            •   Note that the config object will look at various sources to find the value for the 'mail.password' configuration.
+            •   The source can be a configuration file (i.e. json file), an enviroment variable, or even a commnad line argument.
+
+                            console.log(`Mail password: ${config.get('mail.password')}`);
+
+
+        STEP 5: In the terminal, you will see this when you run:
+        ========================================================
                             
+                            $ nodemon index.js
+                            [nodemon] 1.19.1
+                            [nodemon] to restart at any time, enter `rs`
+                            [nodemon] watching: *.*
+                            [nodemon] starting `node index.js`
+                            Application Name: My Express App - Production
+                            Mail server: production-mail-server
+                            Mail Password: 1234                             <== This is read from an enviroment variable, not a config file.
+                            Listening on port 3000...
+
+
+
+
 
 */
 
