@@ -1052,7 +1052,9 @@ What are enviroments and what kinds are there?
 
     console.log(`Node_ENV: ${process.env.NODE_ENV}`);
 
+    --or--
 
+    app.use('env');    <== this method internally uses the "process.env.NODE_ENV" variable to detect the current enviroment
 
 
 
@@ -1060,8 +1062,19 @@ What are enviroments and what kinds are there?
 
     To enable logging using morgan only in the development enviroment
     =================================================================
-    STEP 1:
+    STEP 1: Create an if statement that specifies that if the enviroment is 'development', use Morgan:
 
+                        if (app.get('env') === 'development') {      
+                            ...
+                            ...
+                        }
+
+    STEP 2: If so, enable Morgan and display confirmation on the console for debugging.
+
+                        if (app.get('env') === 'development') {      
+                            app.use(morgan('tiny'));                 <== enable morgan.
+                            console.log('Morgan enabled...')         <== display confirmation on console.
+                        }
 
 */
 
