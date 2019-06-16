@@ -42,6 +42,19 @@
 //        +  What is the request processing pipeline? 
 //
 //      How do you define a custom middleware function in a seperate module? 
+//      How do you use built-in middleware?
+//        +  What is the urlencoded() method and what does it do?
+//        +  What is the "static" method and what does it do?
+//
+//      What is third-party middleware?
+//        +  How do you install thrid-party middleware?
+//
+//      What are enviroments and How do you detect them?
+//        +  How do you tell if your code is running on a development or production enviroment?
+//        +  How do you set the enviroment to a specific environment?
+//
+//      How do you store configuration settings for your application and how do you override them in different enviroments?
+//        +  How do you store secrets in enviroment variables?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express web framework from study, research, tutorials, mentor
@@ -49,6 +62,7 @@
 //        andAnswer format for improved readability.
 //     2. Information on Express: https://expressjs.com/
 //     3. Express documentation: https://expressjs.com/en/4x/api.html
+//     4. Navigation Note: Highlight the question, press ctrl+f and navigate to the next occurence to find the Question faster.
 // 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1057,7 +1071,7 @@ What are enviroments and How do you detect them?
                     console.log(`app: ${app.get('env')}`);    <== this method internally uses the "process.env.NODE_ENV" variable to detect the current enviroment
 
 
-    How to tell if your code is running on a development or production enviroment?
+    How do you tell if your code is running on a development or production enviroment?
     ===============================================================================
         To enable logging using morgan only in the development enviroment
         =================================================================
@@ -1076,8 +1090,8 @@ What are enviroments and How do you detect them?
                                     console.log('Morgan enabled...')         <== display confirmation on console.
                                 }
 
-        To set the enviroment to production (e.g. disable morgan in this example):
-        ===========================================================================
+        How do you set the enviroment to a specific environment? (e.g. disable morgan in this example):
+        ===============================================================================================
         •   Make sure the server is stopped (e.g. stop nodemon index.js).
         •   Set the enviroment variable in Gitbash by writing:
 
@@ -1229,10 +1243,6 @@ How do you store configuration settings for your application and how do you over
                             Mail server: production-mail-server
                             Mail Password: 1234                             <== This is read from an enviroment variable, not a config file.
                             Listening on port 3000...
-
-
-
-
 
 */
 
