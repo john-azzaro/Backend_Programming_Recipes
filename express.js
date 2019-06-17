@@ -1251,7 +1251,9 @@ How do you log messages for the purpose of debugging?
 //////////////////////////////////////////////////////
     •   Although console.log is a good way to debug, it can be a bit tricky to keep track of all of them, so a better
         way to log messages for the purpose of debugging is to use the debug package in node.  
-    •   Debug replaces all the console.logs statements with a              
+    •   Debug replaces all the console.logs statements with a call to a debug function and then use an enviroment variable
+        to enable of disable bugging so we dont have to go back to the code and modify it... we can control it from the outside
+        using an enviroment variable.         
 
 
 */
