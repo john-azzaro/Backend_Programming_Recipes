@@ -69,7 +69,6 @@
 /* 
 What is a RESTful service?
 //////////////////////////
-
     •   Almost all application follow a "client/server" relationship.
     •   The "client" is the front-end, which is our application.
     •   The "server" is the back-end, which is where the front-end talks goes to in order to get data.
@@ -223,7 +222,6 @@ How do you install express?
 
     STEP 2: Install express
     =======================
-
         $ npm install express
             npm notice created a lockfile as package-lock.json. You should commit this file.
             npm WARN express-demo@1.0.0 No description
@@ -1247,6 +1245,16 @@ How do you store configuration settings for your application and how do you over
 */
 
 
+
+/*
+How do you log messages for the purpose of debugging?
+//////////////////////////////////////////////////////
+    •   Although console.log is a good way to debug, it can be a bit tricky to keep track of all of them, so a better
+        way to log messages for the purpose of debugging is to use the debug package in node.  
+    •   Debug replaces all the console.logs statements with a              
+
+
+*/
 
 
 
