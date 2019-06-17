@@ -1255,7 +1255,36 @@ How do you log messages for the purpose of debugging?
         to enable of disable bugging so we dont have to go back to the code and modify it... we can control it from the outside
         using an enviroment variable.         
 
+    STEP 1: Install the npm debug package:
+    ======================================
 
+                            npm install debug
+
+    STEP 2: in the index.js module, load the debug module AND a returning function with the argument that will be
+            a namespace for debugging.
+    ==============================================================================================================
+
+                                                           module             returning function with namespace as an argument.
+                                                                \             /
+                            const startupDebugger = required('debug')('app:startup');
+
+
+            o   You can also have a debugger for debugging database related messages:
+
+                            const dbDebugger = require('debug')('app:db'); 
+
+
+    STEP 3: In the places where you want to replace console.log with the debugging function, simply call the debugging function
+            and add the message as an argument:
+    ============================================================================================================================
+
+                            if (app.get('env') === 'development') {      
+                                app.use(morgan('tiny'));
+                                startupDebugger('Morgan enabled...');       <== call startupDebugger and the message as a function
+                            }
+
+
+                                                            
 */
 
 
