@@ -49,12 +49,16 @@
 //      What is third-party middleware?
 //        +  How do you install thrid-party middleware?
 //
-//      What are enviroments and How do you detect them?
+//      What are environments and How do you detect them?
 //        +  How do you tell if your code is running on a development or production enviroment?
 //        +  How do you set the enviroment to a specific environment?
 //
 //      How do you store configuration settings for your application and how do you override them in different enviroments?
 //        +  How do you store secrets in enviroment variables?
+//
+//      How do you log messages for the purpose of debugging?
+
+//      How do you structure express applications?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express web framework from study, research, tutorials, mentor
@@ -1280,13 +1284,66 @@ How do you log messages for the purpose of debugging?
 
                             if (app.get('env') === 'development') {      
                                 app.use(morgan('tiny'));
-                                startupDebugger('Morgan enabled...');       <== call startupDebugger and the message as a function
+                                startupDebugger('Morgan enabled...');       <== call startupDebugger and the message as a function.
                             }
 
 
-                                                            
+    STEP 4: In the terminnal, use an enviroment variable to determine what type of debugging information we want to see in the console.
+    ===================================================================================================================================
+    
+                            export DEBUG=app:startup               <== we set an enviroment variable named DEBUG and set to app:startup
+                                                                       so that we only see the debugging messages for this namespace.
+
+                            $ nodemon index.js
+                            [nodemon] 1.19.1
+                            [nodemon] to restart at any time, enter `rs`
+                            [nodemon] watching: *.*
+                            [nodemon] starting `node index.js`
+                            Application Name: My Express App - Development
+                            Mail server: dev-mail-server
+                            Mail Password: 1234
+                            2019-06-17T01:57:35.941Z app:startup Morgan enabled...            <== shows the debug information
+                            Listening on port 3000...
+
+
+    OPTIONAL: If you want to see debugging messages for multiple namespaces, simply add a comma when defining the enviroment variable:
+    ==================================================================================================================================
+
+                            export DEBUG=app:startup, app:db
+
+    OPTIONAL: If you do NOT want to see the debug information, set the enviroment variable to nothing
+    ===============================================================================================
+
+                            export DEBUG=                           <== enviroment variable set to nothing.
+
+                            $ nodemon index.js
+                            [nodemon] 1.19.1
+                            [nodemon] to restart at any time, enter `rs`
+                            [nodemon] watching: *.*
+                            [nodemon] starting `node index.js`
+                            Application Name: My Express App - Development
+                            Mail server: dev-mail-server
+                            Mail Password: 1234                                        Notice the debugging information is gone.
+                            Listening on port 3000...
+
+
+    OPTIONAL: As a shortcut (without having to use the enviroment export command), you can set the enviroment variable AND
+              run the application AT THE SAME TIME:
+    =======================================================================================================================
+
+                            DEBUG=app:startup nodemon index.js
+
 */
 
+
+/* 
+How do you structure express applications?
+///////////////////////////////////////////
+
+
+
+
+*/
 
 
 
