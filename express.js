@@ -1477,8 +1477,32 @@ How do you structure express applications?
     ============================================================ 
        •    However, because you seperated the routes in a seperate module, you need to add a method called ".Router" 
             which returns a router object.  
-       •    Consequently, all the                   
+       •    Consequently, all the the routes with "app" are chnaged to "route", so insteads of working with the app object
+            we are working with the router object.                 
 
+
+                            const express = require('express');
+                            const router = express.Router();
+
+                            router.get('/api/courses', function(req, res) {                                       
+                                // code here //
+                            });
+
+                            router.get('/api/courses/:id', function(req, res) {
+                                // code here //
+                            }); 
+
+                            router.put('/api/courses/:id', function (req, res) {                                          
+                                // code here //
+                            });                                               
+
+                            router.delete('/api/courses/:id', function (req, res) {
+                                // code here //                                                                   
+                            });
+
+                            router.post('/api/courses', function(req, res) {          
+                                // code here //                                
+                            });
 
 
 
