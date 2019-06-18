@@ -1473,8 +1473,9 @@ How do you structure express applications?
                             });
 
 
-    STEP 4: when your code is in your new module, load express:
-    ============================================================ 
+    STEP 4: when your code is in your new module, load express and .Router(), as well as an module.export:
+    ======================================================================== 
+       •    Add router, add routes, and export the router at the end of the module.                    
        •    However, because you seperated the routes in a seperate module, you need to add a method called ".Router" 
             which returns a router object.  
        •    Consequently, all the the routes with "app" are chnaged to "route", so insteads of working with the app object
@@ -1504,6 +1505,7 @@ How do you structure express applications?
                                 // code here //                                
                             });
 
+                            module.exports = router;
 
 
 
