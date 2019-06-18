@@ -1451,7 +1451,9 @@ How do you structure express applications?
 
     STEP 3: Move the logic to this new folder. 
     ========================================== 
-                                                                                                                
+                            
+                            const courses = [...]
+                            
                             app.get('/api/courses', function(req, res) {                              <== First, insert the code you want to go in the module.            
                                 // code here //
                             });
@@ -1485,6 +1487,8 @@ How do you structure express applications?
                             const express = require('express');
                             const router = express.Router();
 
+                            const courses = [...]
+
                             router.get('/api/courses', function(req, res) {                                       
                                 // code here //
                             });
@@ -1507,6 +1511,48 @@ How do you structure express applications?
 
                             module.exports = router;
 
+
+    STEP 5: Load the "courses" module in index.js
+    ============================================
+
+                            const courses = require('./courses');
+
+    STEP 6: Call app.use() with two arguments, the path and the router object that we imported
+    ==========================================================================================
+    •   What this tells express is that for any route with /api/courses, use the "courses" router (i.e. the router that
+        we loaded from the courses module).
+
+                            app.use('/api/courses', courses);
+
+    OPTIONAL: We can now get rid of all the /api/courses routes in "router.js" and make the routes shorter (i.e. /).
+    ==============================================================================================================
+
+                            const express = require('express');
+                            const router = express.Router();
+
+                            const courses = [...]
+
+                            router.get('/', function(req, res) {                                       
+                                // code here //
+                            });
+
+                            router.get('/:id', function(req, res) {
+                                // code here //
+                            }); 
+
+                            router.put('/:id', function (req, res) {                                          
+                                // code here //
+                            });                                               
+
+                            router.delete('/:id', function (req, res) {
+                                // code here //                                                                   
+                            });
+
+                            router.post('/', function(req, res) {          
+                                // code here //                                
+                            });
+
+                            module.exports = router;
 
 
 
