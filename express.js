@@ -1339,8 +1339,24 @@ How do you log messages for the purpose of debugging?
 /* 
 How do you structure express applications?
 ///////////////////////////////////////////
-   •    Express applications can result in very lengthy index.js modules, so proper structure helps keep code tidy.
-   •                           
+   •    Express applications can result in very lengthy index.js modules, so proper structure helps keep code managable.
+   •    For every logical part of the application, every api endpoint, etc, you want to have a seperate module.                      
+
+
+    STEP 1: Create a new folder for your specific logic (i.e. all the /api/courses endpoints called "routes"). 
+    =========================================================================================================
+
+                            routes
+
+    STEP 2: Create a new file (i.e. module) for the specific logic (i.e. courses.js).
+    ==================================================================================
+
+                            courses.js
+
+    STEP 3: 
+
+
+
 
 
         _________Origninal index.js file__________________________________________________         
@@ -1382,8 +1398,8 @@ How do you structure express applications?
             res.send('Hello world!!!!')
         });
 
-
-        app.get('/api/courses', function(req, res) {
+                                                                                             
+        app.get('/api/courses', function(req, res) {                                          
             res.send(courses);
         });
 
