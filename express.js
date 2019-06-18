@@ -1343,6 +1343,7 @@ How do you structure express applications?
    •    For every logical part of the application, every api endpoint, etc, you want to have a seperate module.                      
 
 
+
     STEP 1: Create a new folder for your specific logic (i.e. all the /api/courses endpoints called "routes"). 
     =========================================================================================================
 
@@ -1353,106 +1354,132 @@ How do you structure express applications?
 
                             courses.js
 
-    STEP 3: 
+   STEP 3: Relocate the logic you want to the new module "courses.js":
+   ====================================================================
+
+
+                            const startupDebugger = require('debug')('app:startup');    
+                            const dbDebugger = require('debug')('app:db');              
+                            const config = require('config');
+                            const morgan = require('morgan');
+                            const helmet = require('helmet');
+                            const express = require('express');
+                            const app = express();
+
+                            app.set('view engine', 'pug');
+                            app.set('views', './views');
+
+                            app.use(express.json());            
+                            app.use(express.urlencoded( { extended: true }));   
+                            app.use(express.static('public'));                    
+                            app.use(helmet());
+
+
+                            console.log(`Application Name: ${config.get('name')}`);
+                            console.log(`Mail server: ${config.get('mail.host')}`);
+                            console.log(`Mail Password: ${config.get('mail.password')}`);
+
+                            if (app.get('env') === 'development') {      
+                                app.use(morgan('tiny'));
+                                startupDebugger('Morgan enabled...');
+                            }
+
+                            const courses = [
+                                { id: 1, name: 'First course'},
+                                { id: 2, name: 'Second course'},
+                                { id: 3, name: 'Third course'}
+                            ];
+
+                            app.get('/', function(req, res) {
+                                res.send('Hello world!!!!')
+                            });
+
+                                                                                                                        --------                     
+                            app.get('/api/courses', function(req, res) {                                                       |
+                                res.send(courses);                                                                             |
+                            });                                                                                                |
+                                                                                                                               |
+                            app.get('/api/courses/:id', function(req, res) {                                                   |
+                                if(!req.body.name || req.body.name.length < 3) {                                               |          
+                                    res.status(400).send('name is required');                                                  |
+                                    return;                                                                                    |
+                                }                                                                                              |         
+                                const course = courses.find(course => course.id === parseInt(req.params.id));                  |          
+                                if (!course) {                                                                                 |                
+                                    res.status(404).send('The course with the given id was not found');                        |                                     
+                                } else {                                                                                       |                             
+                                    res.send(course);                                                                          |                                         
+                                }                                                                                              |                                     
+                            });                                                                                                | -----  Relocate the routes                          
+                                                                                                                               |        to a seperate module and
+                            app.put('/api/courses/:id', function (req, res) {                                                  |        remove from index.js.                          
+                                const course = courses.find(course => course.id === parseInt(req.params.id));                  |                 
+                                if (!course) {                                                                                 |                                       
+                                    res.status(404).send('The course with the given id was not found');                        |                             
+                                    return;                                                                                    |         
+                                }                                                                                              |                 
+                                course.name = req.body.name;                                                                   |                                                                          
+                                res.send(course);                                                                              |                     
+                            });                                                                                                |                                                                                                                                  
+                                                                                                                               |
+                            app.delete('/api/courses/:id', function (req, res) {                                               |                                     
+                                const course = courses.find(course => course.id === parseInt(req.params.id));                  |                                                       
+                                if (!course) {                                                                                 | 
+                                    res.status(404).send('The course with the given id was not found');                        |                                                             
+                                    return;                                                                                    |                                                     
+                                }                                                                                              |                                                 
+                                const index = courses.indexOf(course);                                                         |                                                                                                       
+                                courses.splice(index, 1)                                                                       |                                                                                                 
+                                res.send(course);                                                                              |                                                                                                    
+                            });                                                                                                |                             
+                                                                                                                               | 
+                            app.post('/api/courses', function(req, res) {                                                      |                                      
+                                const course = {                                                                               |                                                                         
+                                id: courses.length + 1,                                                                        |                                                                    
+                                name: req.body.name,                                                                           |                                                                              
+                                };                                                                                             |                                                       
+                                courses.push(course);                                                                          |                                                                            
+                                res.send(course)                                                                               |                                                        
+                            });                                                                                                |                                 
+                                                                                                                        --------
+                            const port = process.env.PORT || 3000;
+                            app.listen(port, function() {
+                                console.log(`Listening on port ${port}...`);
+                            });
 
 
 
+    STEP 3: Move the logic to this new folder. 
+    ========================================== 
+                                                                                                                
+                            app.get('/api/courses', function(req, res) {                              <== First, insert the code you want to go in the module.            
+                                // code here //
+                            });
+
+                            app.get('/api/courses/:id', function(req, res) {
+                                // code here //
+                            }); 
+
+                            app.put('/api/courses/:id', function (req, res) {                                          
+                                // code here //
+                            });                                               
+
+                            app.delete('/api/courses/:id', function (req, res) {
+                                // code here //                                                                   
+                            });
+
+                            app.post('/api/courses', function(req, res) {          
+                                // code here //                                
+                            });
 
 
-        _________Origninal index.js file__________________________________________________         
+    STEP 4: when your code is in your new module, load express:
+    ============================================================ 
+       •    However, because you seperated the routes in a seperate module, you need to add a method called ".Router" 
+            which returns a router object.  
+       •    Consequently, all the                   
 
 
-        const startupDebugger = require('debug')('app:startup');    
-        const dbDebugger = require('debug')('app:db');              
-        const config = require('config');
-        const morgan = require('morgan');
-        const helmet = require('helmet');
-        const express = require('express');
-        const app = express();
-
-        app.set('view engine', 'pug');
-        app.set('views', './views');
-
-        app.use(express.json());            
-        app.use(express.urlencoded( { extended: true }));   
-        app.use(express.static('public'));                    
-        app.use(helmet());
-
-
-        console.log(`Application Name: ${config.get('name')}`);
-        console.log(`Mail server: ${config.get('mail.host')}`);
-        console.log(`Mail Password: ${config.get('mail.password')}`);
-
-        if (app.get('env') === 'development') {      
-            app.use(morgan('tiny'));
-            startupDebugger('Morgan enabled...');
-        }
-
-        const courses = [
-            { id: 1, name: 'First course'},
-            { id: 2, name: 'Second course'},
-            { id: 3, name: 'Third course'}
-        ];
-
-        app.get('/', function(req, res) {
-            res.send('Hello world!!!!')
-        });
-
-                                                                                             
-        app.get('/api/courses', function(req, res) {                                          
-            res.send(courses);
-        });
-
-        app.get('/api/courses/:id', function(req, res) {
-            if(!req.body.name || req.body.name.length < 3) {                                                          
-                res.status(400).send('name is required');
-                return;                                  
-            } 
-            const course = courses.find(course => course.id === parseInt(req.params.id));            
-            if (!course) {
-                res.status(404).send('The course with the given id was not found');
-            } else {
-                res.send(course);
-            }
-        }); 
-
-        app.put('/api/courses/:id', function (req, res) {                                          
-            const course = courses.find(course => course.id === parseInt(req.params.id));           
-            if (!course) {                                                                          
-                res.status(404).send('The course with the given id was not found');
-                return;
-            }
-            course.name = req.body.name;                                                             
-            res.send(course);
-        });                                               
-
-        app.delete('/api/courses/:id', function (req, res) {
-            const course = courses.find(course => course.id === parseInt(req.params.id));          
-            if (!course) {                                                                         
-                res.status(404).send('The course with the given id was not found');
-                return;
-            }
-            const index = courses.indexOf(course);                                                  
-            courses.splice(index, 1)                                                               
-            res.send(course);                                                                       
-        });
-
-        app.post('/api/courses', function(req, res) {          
-            const course = {                                  
-            id: courses.length + 1,                        
-            name: req.body.name,                            
-            };                                                 
-            courses.push(course);                              
-            res.send(course)                                   
-        });
-
-        const port = process.env.PORT || 3000;
-        app.listen(port, function() {
-            console.log(`Listening on port ${port}...`);
-        });
-
-
-        ________________________________________________________________________________________
 
 
 
