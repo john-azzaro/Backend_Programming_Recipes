@@ -73,13 +73,13 @@
 /* 
 What is a RESTful service?
 //////////////////////////
+    •   REST, which stands for Representational State Transfer, is a convention for what is used to build these HTTP services.
     •   Almost all application follow a "client/server" relationship.
     •   The "client" is the front-end, which is our application.
     •   The "server" is the back-end, which is where the front-end talks goes to in order to get data.
     •   The communication between the client and the server occurs through "HTTP Protocol".
     •   The server "exposes" a bunch of services that are accessible via HTTP protocol.
-    •   The client calls those services by sending an HTTP request.
-    •   REST, which stands for Representational State Transfer, is a convention for what is used to build these HTTP services.
+    •   The client calls those services by sending an HTTP request.  
     •   HTTP protocol principles provide support for CRUD operations.
     •   CRUD stands for Create, Read, Update, and Delete.
 
@@ -1340,7 +1340,7 @@ How do you log messages for the purpose of debugging?
 How do you structure express applications?
 ///////////////////////////////////////////
    •    Express applications can result in very lengthy index.js modules, so proper structure helps keep code managable.
-   •    For every logical part of the application, every api endpoint, etc, you want to have a seperate module.                      
+   •    For every logical part of the application, every api endpoint, middleware, etc, you want to have a seperate module.                      
 
 
 
@@ -1354,8 +1354,8 @@ How do you structure express applications?
 
                             courses.js
 
-   STEP 3: Relocate the logic you want to the new module "courses.js":
-   ====================================================================
+    STEP 3: Relocate the logic you want to the new module "courses.js":
+    ====================================================================
 
 
                             const startupDebugger = require('debug')('app:startup');    
@@ -1515,10 +1515,10 @@ How do you structure express applications?
     STEP 5: Load the "courses" module in index.js
     ============================================
 
-                            const courses = require('./courses');
+                            const courses = require('./routes/courses');
 
-    STEP 6: Call app.use() with two arguments, the path and the router object that we imported
-    ==========================================================================================
+    STEP 6: Call the middlware app.use() with two arguments, the path and the router object that we imported
+    ========================================================================================================
     •   What this tells express is that for any route with /api/courses, use the "courses" router (i.e. the router that
         we loaded from the courses module).
 
@@ -1554,7 +1554,7 @@ How do you structure express applications?
 
                             module.exports = router;
 
-
+                            
 
 */
 
