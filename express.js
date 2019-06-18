@@ -1339,6 +1339,104 @@ How do you log messages for the purpose of debugging?
 /* 
 How do you structure express applications?
 ///////////////////////////////////////////
+   •    Express applications can result in very lengthy index.js modules, so proper structure helps keep code tidy.
+   •                           
+
+
+        _________Origninal index.js file__________________________________________________         
+
+
+        const startupDebugger = require('debug')('app:startup');    
+        const dbDebugger = require('debug')('app:db');              
+        const config = require('config');
+        const morgan = require('morgan');
+        const helmet = require('helmet');
+        const express = require('express');
+        const app = express();
+
+        app.set('view engine', 'pug');
+        app.set('views', './views');
+
+        app.use(express.json());            
+        app.use(express.urlencoded( { extended: true }));   
+        app.use(express.static('public'));                    
+        app.use(helmet());
+
+
+        console.log(`Application Name: ${config.get('name')}`);
+        console.log(`Mail server: ${config.get('mail.host')}`);
+        console.log(`Mail Password: ${config.get('mail.password')}`);
+
+        if (app.get('env') === 'development') {      
+            app.use(morgan('tiny'));
+            startupDebugger('Morgan enabled...');
+        }
+
+        const courses = [
+            { id: 1, name: 'First course'},
+            { id: 2, name: 'Second course'},
+            { id: 3, name: 'Third course'}
+        ];
+
+        app.get('/', function(req, res) {
+            res.send('Hello world!!!!')
+        });
+
+
+        app.get('/api/courses', function(req, res) {
+            res.send(courses);
+        });
+
+        app.get('/api/courses/:id', function(req, res) {
+            if(!req.body.name || req.body.name.length < 3) {                                                          
+                res.status(400).send('name is required');
+                return;                                  
+            } 
+            const course = courses.find(course => course.id === parseInt(req.params.id));            
+            if (!course) {
+                res.status(404).send('The course with the given id was not found');
+            } else {
+                res.send(course);
+            }
+        }); 
+
+        app.put('/api/courses/:id', function (req, res) {                                          
+            const course = courses.find(course => course.id === parseInt(req.params.id));           
+            if (!course) {                                                                          
+                res.status(404).send('The course with the given id was not found');
+                return;
+            }
+            course.name = req.body.name;                                                             
+            res.send(course);
+        });                                               
+
+        app.delete('/api/courses/:id', function (req, res) {
+            const course = courses.find(course => course.id === parseInt(req.params.id));          
+            if (!course) {                                                                         
+                res.status(404).send('The course with the given id was not found');
+                return;
+            }
+            const index = courses.indexOf(course);                                                  
+            courses.splice(index, 1)                                                               
+            res.send(course);                                                                       
+        });
+
+        app.post('/api/courses', function(req, res) {          
+            const course = {                                  
+            id: courses.length + 1,                        
+            name: req.body.name,                            
+            };                                                 
+            courses.push(course);                              
+            res.send(course)                                   
+        });
+
+        const port = process.env.PORT || 3000;
+        app.listen(port, function() {
+            console.log(`Listening on port ${port}...`);
+        });
+
+
+        ________________________________________________________________________________________
 
 
 
