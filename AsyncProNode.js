@@ -111,6 +111,45 @@
         o   In other words, the function will NOT be available at the time of calling getUser() to show in the console, so it will
             return as undefined.
         o   To avoid this issue, we use three patterns to help deal with asynchrnous code: Callbacks, Promises, and Async/Await.
+*/
+
+/* 
+What is a callback and how do you use it?
+/////////////////////////////////////////
+==SHORT ANSWER==
+    •   A "callback" is a function that will be called when the result of an asynchronous operation is ready.
+    
+==EXTENDED ANSWER==
+    •                               
+     
+    How do you add a callback to a function?
+    ========================================
+    •   Note: for this example, 
+
+        STEP 1: Add "callback" as a paramater to your function
+        ======================================================
+
+                                function getUser(id, callback) {                         <== "callback" added to function parameters.           
+                                    setTimeout(function() {
+                                        console.log('Reading a user from a database...');
+                                        return { id: id, gitHubUsername: 'joe' }   ;                       
+                                    }, 2000);
+                                }
+
+        STEP 2: Add "callback()" with the code you want to return (e.g. user object):
+        ==============================================================================
+
+                                function getUser(id, callback) {                                   
+                                    setTimeout(function() {
+                                        console.log('Reading a user from a database...');
+                                        callback({ id: id, gitHubUsername: 'joe' });      <== callback function with user object inside it.                      
+                                    }, 2000);
+                                }
+
+
+
+
+
 
 
 
