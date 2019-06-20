@@ -142,13 +142,69 @@ What is a callback and how do you use it?
                                 function getUser(id, callback) {                                   
                                     setTimeout(function() {
                                         console.log('Reading a user from a database...');
-                                        callback({ id: id, gitHubUsername: 'joe' });      <== callback function with user object inside it.                      
+                                        callback({ id: id, gitHubUsername: 'joe' });         <== callback function with user object inside it.                      
                                     }, 2000);
                                 }
 
+        
+        STEP 3: Call the "getUser" with 2 arguments: First argument for the id and Second argument with a function that
+                will be called with the argument "{ id: id, gitHubUsername: 'joe' }"
+        ================================================================================================================
+
+                                                takes "user" because we're passing a user object (i.e. { id: id, gitHubUsername: 'joe' })
+                                                    \
+                                getUser(1, function(user) {
+                                    console.log('User', user)   <== so "user" is passed the parameter "user" that was passed from the getUser callback function.
+                                });    
+
+                o   The return of this program would be:
+
+                               $ node index.js
+                                Before
+                                After
+                                Reading a user from a database...
+                                User { id: 1, gitHubUsername: 'joe' }     <== now the console prints the user object!
 
 
+        OPTIONAL: Suppose you wanted add another layer of complexity by getting the repositories of this user:
+        ======================================================================================================
+ 
+                                function getUser(id, callback) {
+                                    setTimeout(function() {
+                                        console.log('Reading a user from a database...');
+                                        callback({ id: id, gitHubUsername: 'joe' });                       
+                                    }, 2000);
+                                }
 
+                                function getRepositories(username, callback) {              <== first, we add another function to get the repos for the user...
+                                    setTimeout(function() {                                 <== then, the setTimout to simulate delay...
+                                        console.log('Calling Github API...')                <== with message logged on execution...
+                                        callback(['repo1', 'repo2', 'repo3']);              <== and the callback function with the repos of the user!
+                                    }, 2000);
+                                }
+
+                                getUser(1, function(user) {                                  <== Then when the getUser() function is called...
+                                    console.log('User', user);
+                                    getRepositories(user.gitHubUsername, function(repos) {   <== we call getRepositories with the user name and the callback function.
+                                        console.log('Repos', repos );
+                                    });
+                                });  
+                    
+                o   The return of this program would be:
+
+                                $ node index.js
+                                Before
+                                After
+                                Reading a user from a database...
+                                User { id: 1, gitHubUsername: 'joe' }
+                                Calling Github API...
+                                Repos [ 'repo1', 'repo2', 'repo3' ]
+*/
+
+
+/* 
+What is Callback Hell and how do you avoid it?
+///////////////////////////////////////////////
 
 
 
