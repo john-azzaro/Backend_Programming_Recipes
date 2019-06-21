@@ -205,9 +205,63 @@ What is a callback and how do you use it?
 /* 
 What is Callback Hell and how do you avoid it?
 ///////////////////////////////////////////////
+==SHORT ANSWER==
+    •  "Callback Hell" or "Christmas tree problem" or "pyramid of doom" occurs when you have a nested structure of 
+        callbacks one after the other and is usually the result of poor coding practices.
+    •   To avoid Callback hell, you need to replace the anonymous functions with named functions.
 
+==EXAMPLE==
+    •   An example of "Callback Hell" would look something like this in asynchronous code: 
+            o   For example:                                  
 
+                                getUser(1, function(user) {                                 
+                                    getRepositories(user.gitHubUsername, function(repos) {        <== first nested callback.
+                                        getCommits(repo, function(commits) {                      <== second nexted callback, etc.
+                                            console.log(commits); 
+                                        });
+                                    });
+                                }); 
+     
+    •   To avoid the nested "callback hell" structure, you need to replace the anonymous function with named functions.
+            o   For example:
 
+                                getUser(1, getRepositories);                <== when you call getUser, you have the user (1) and then get repositories for that user (i.e. getRepositories)...
 
+                                function getRepositories(user) {                      <== This function takes the user object...
+                                   getRepositories(user.gitHubUsername, getCommits);  <== ... and then calls getRepositories and pass the reference of getCommits.
+                                }
+                                
+                                function getCommits(repos) {             <== This function becomes "getCommits" that takes an array of repos...
+                                   getCommits(repo, displayCommits);     <== ...and then call getCommits with the repo and pass the reference of displayCommits.
+                                }
+
+                                function displayCommits(commits) {         <== The innermost anonymous function becomes "displayCommits "which takes an array of commits... 
+                                   console.log(commits);                   <== ... and displays them on the console.
+                                } 
+                                
+            o  So the logical flow of the functions above go as follows:
+
+                    1.   When you call "getUser", you will get the repositories for that user.
+                    2.   Then, when you get the repositories for that user, you pass the user name (e.g. gitHubUserName) and 
+                         then get the commits for that user (e.g. getCommits).
+                    3.   THEN, when you get the commits for the user, you will display the commits with "displayCommits".
+                    4.   FINALLY, you display the commits!
 */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+http://callbackhell.com/ -- callbacks, callback hell
+*/
