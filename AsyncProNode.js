@@ -290,13 +290,47 @@ How do you use promises?
     •   First, use a constructor function to create a new promise which takes an argument.
         o   That argument is a function with two parameters, resolve and reject.
 
-
                         const p = new Promise(function(resolve, reject) {
-                            // code 
+                            // start some async work like access a database, etc.
                         });
 
-    STEP 2: 
 
+    STEP 2: In the body of the function, when the async work is complete, you need to have either a value or an error.
+    ==================================================================================================================
+    •   If there is a VALUE, then you want to return to the consumers of the promise. 
+        o   So somewhere in the code we are going to consume the code because the promise object promises us that it will
+            give us the result of an asynchronous operation.  
+    •   So we need to send the result to the consumer of the promise by using either the resolve or reject parameters.  
+    •   It is important to remember that the two paramters resolve and reject are functions, so we can call them and 
+        pass a value.
+        
+        
+                        const p = new Promise(function(resolve, reject) {
+                            setTimeout(function() {                  <== timeOut function to simulate async work...
+                                resolve(1);                          <== after 2 seconds, this asynchronous operation will produce the value of 1.
+                            }, 2000);                                
+                            reject(new Error('message'));                <== call the reject function and pass an error message as an error object (best practice).
+                        });
+
+    STEP 3.1: To consume the promise, if the asynchronous operation completes successfully:
+    =======================================================================================
+    
+                        p.then( function(result) {
+                            console.log('Result', result);
+                        });
+
+            o   In console, the result will be:
+
+                        $ node promise.js
+                        Result 1
+
+
+
+
+
+
+
+            
 */
 
 
