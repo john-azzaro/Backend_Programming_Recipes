@@ -251,7 +251,10 @@ What is Callback Hell and how do you avoid it?
 /* 
 What are Promises and what states can promises be?
 ////////////////////////////////////////////////////
+==SHORT ANSWER==
     •   A "promise" is an object that holds the eventual result of an asynchrnous operation.
+
+==EXTENDED ANSWER==
     •   When an asynchrnous operation completes, it can result in either another value or error.    
     •   A "promise" essentially promisses you to give you the result of an asynchronous operation. 
 
@@ -312,19 +315,48 @@ How do you use promises?
                             reject(new Error('message'));                <== call the reject function and pass an error message as an error object (best practice).
                         });
 
-    STEP 3.1: To consume the promise, if the asynchronous operation completes successfully:
+    STEP 3.1: If the asynchronous operation completes successfully, the promise is resolved:
     =======================================================================================
+    •   The state of this promise changes from "pending" to "resolved".
+    •   When calling "p", use the "then" method to get the result.
+        o   For example:
     
-                        p.then( function(result) {
+                        const p = new Promise(function(resolve, reject) {
+                            setTimeout(function() {
+                                resolve(1);                    <== if resolved, return 1.
+                            }, 2000);                                                    
+                        });    
+
+                        p.then( function(result) {              <== call p, and "then" with an anonymous function with "result" being the "1" passed in.
                             console.log('Result', result);
                         });
 
             o   In console, the result will be:
 
                         $ node promise.js
-                        Result 1
+                        Result 1                               <== successfully resolved!
 
+    STEP 3.2: If the asynchronous operation does NOT complete", the promise is rejected:
+    ====================================================================================
+    •   The state of this promise changes from "pending" to "rejected". 
+    •   When calling "p", we chain ".then" for the result and, if there is an error, chain ".catch" to get the rejection.                 
 
+                        const p = new Promise(function(resolve, reject) {
+                            setTimeout(function() {
+                                reject(new Error('message'));       <== the async work here returns a rejection...
+                            }, 2000);                                                    
+                        });
+
+                        p.then( function(result) {                 
+                            console.log('Result', result);
+                        }).catch(function(err) {                    <== the .catch method covers what happens in the event of a rejection.
+                            console.log('Error', err.message);
+                        });
+
+            o   In console, the result will be:
+
+                        $ node promise.js
+                        Error message                               <== rejected!
 
 
 
