@@ -293,8 +293,10 @@
 ///////////////////////////
 ==SHORT ANSWER==
     •   To use a promise, you need to create a constructor function (storing as a constant), add asynchronous work, and specify 
-        the resolve or rejection logic.  When you call the promise to "consume" it, use ".then" for the result and ".catch" for
-        the error.
+        the resolve or rejection logic.  
+    •   Every promise has two methods: "then" and "catch".
+        o   When you call the promise to "consume" it, use ".then" for the result and ".catch" for
+            the error.
         
 ==EXAMPLE===
     STEP 1: Create a promise object:
@@ -409,11 +411,36 @@
                                     resolve({ id: id, gitHubUsername: 'joe' });              <== change "callback" to "resolve".          
                                 }, 2000);
                             });
+*/
 
 
 
-                        
+/* 
+How do you consume promises?
+////////////////////////////
+    •   To consume a promise, you simply call an initial function and chain the ".then" method                      
 
+        o   When you used callback (and subsequently fell into callback hell), getUser looked like this:
+
+                        getUser(1, (user) => {
+                        getRepositories(user.gitHubUsername, (repos) => {
+                            getCommits(repos[0], (commits) => {
+                                 console.log(commits);
+                                 })
+                            })
+                        });
+
+        o   Now, we can consume promises by calling getUser and chaining .then methods together:
+
+                        getUser(1)
+                            .then (user => getRepositories(user.gitHubUsername))
+                            .then (repos => getCommits(repos[0]))
+                            .then(commits => console.log('Commits', commits))
+                            .catch(err => console.log('Error', err.message));
+*/
+
+
+/* 
 
 */
 
