@@ -249,33 +249,54 @@ What is Callback Hell and how do you avoid it?
 */
 
 /* 
-What are Promises and how do they work?
-///////////////////////////////////////
+What are Promises and what states can promises be?
+////////////////////////////////////////////////////
     •   A "promise" is an object that holds the eventual result of an asynchrnous operation.
     •   When an asynchrnous operation completes, it can result in either another value or error.    
     •   A "promise" essentially promisses you to give you the result of an asynchronous operation. 
 
     What are the three states that a promise can be in?
     ===================================================
-    •   A Promise can be in one of three states: pending, .  
+    •   A Promise can be in one of three states: pending, fulfilled, or rejected.  
 
 
-                                                                            [ Fulfilled ]
-                              [ Pending ] ----Asynchronous Operation ---->      -or-
-                                                                            [ Rejected ]
+                                                                        [ Fulfilled ] => If async operation completed successfully.
+                              [ Pending ]  -------Asynchronous-------->      -or-
+                                                   Operation            [ Rejected ]  => If aysn operation has an error.
 
 
-            o   Pending 
-                o   When you create a promise object, it will be in the pending state.
-                o   It can then kick-off some asynchronous operation.
+                o   Pending 
+                    o   When you create a promise object, it will be in the pending state.
+                    o   It can then kick-off some asynchronous operation.
 
-            o   Fulfilled (or "resolved")
-                o   When the result is ready, the promise can be "fulfilled" (or "resolved") which means the asynchronous operation
-                    completed successfully, so you will have a value.
+                o   Fulfilled (or "resolved")
+                    o   When the result is ready, the promise can be "fulfilled" (or "resolved") which means the asynchronous operation
+                        completed successfully, so you will have a value.
 
-            o   Rejected
-                o   Otherwise, if something went wrong with the execution of that asynchronous operation, then the promise will 
-                    be in the "rejected" state.
+                o   Rejected
+                    o   Otherwise, if something went wrong with the execution of that asynchronous operation, then the promise will 
+                        be in the "rejected" state.
+*/
+
+
+
+/* 
+How do you use promises?
+////////////////////////
+
+
+    STEP 1: Create a promise obejct:
+    ================================
+    •   First, use a constructor function to create a new promise which takes an argument.
+        o   That argument is a function with two parameters, resolve and reject.
+
+
+                        const p = new Promise(function(resolve, reject) {
+                            // code 
+                        });
+
+    STEP 2: 
+
 */
 
 
