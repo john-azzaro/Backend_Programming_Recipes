@@ -441,7 +441,45 @@ How do you consume promises?
 
 
 /* 
+How do you create settled promises?
+///////////////////////////////////
+    •   A "settled promise" is a promise that is already resovled.
+    •   Settled promises are particularly useful when writing unit tests.
 
+    How do you create a promise that is already successfully resolved?
+    ==================================================================
+    •   To return a promise that is already resolved, we call the promise class with the "resolve" static method.
+        o   Optionally, we can pass a value or something like a user object (i.e. {id:1} ).   
+    •   Then, when you call p.then(), the "result" will be a console.log with the result. 
+
+                        const p = Promise.resolve( { id:1 });     
+                        p.then(result => console.log(result));    
+
+                o   In the console, you will see this returned:
+
+                        $ node promise-api.js
+                        { id: 1 }
+
+
+    How do you create a promise that is already rejected?
+    =====================================================
+    •   As best practice, it is best to use a native error object (i.e. new Error()) because it will include the callstack.
+
+                        const p = Promise.reject(new Error('This is a rejection message'));     
+                        p.then(result => console.log(result));    
+
+                o   In the console, you will see this returned:
+
+                        Error: This is a rejection message                                                    <== error message.
+                            at Object.<anonymous> (c:\Users\Admin\Desktop\async-demo\promise-api.js:5:26)     <== callstack that comes with every error object in js
+                            at Module._compile (module.js:652:30)
+                            at Object.Module._extensions..js (module.js:663:10)
+                            at Module.load (module.js:565:32)
+                            at tryModuleLoad (module.js:505:12)
+                            at Function.Module._load (module.js:497:3)
+                            at Function.Module.runMain (module.js:693:10)
+                            at startup (bootstrap_node.js:191:16)
+                            at bootstrap_node.js:612:3
 */
 
 
