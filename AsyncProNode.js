@@ -374,6 +374,46 @@
 /* 
 7. How do you replace a callback with a promise?
 /////////////////////////////////////////////////
+    •   To replace callbacks with a promises, you simple need relocate your asynchronous work inside a new promise
+        and change the "callback" to "resolve" (and even add an error if you choose).  
+
+    STEP 0: Observe the orginal getUser() function that uses a callback:
+    ====================================================================                    
+
+                        function getUser(id, callback) {
+                            setTimeout(function() {
+                                console.log('Reading a user from a database...');
+                                callback({ id: id, gitHubUsername: 'joe' });                       
+                            }, 2000);
+                        }
+
+        
+    STEP 1: First, the getUser() function should return a promise:
+    ==============================================================
+
+                        function getUser(id, callback) {
+                            return new Promise(function(resolve, reject) {                 <== return a new promise with a function as an argument...
+                                setTimeout(function() {
+                                    console.log('Reading a user from a database...');
+                                    callback({ id: id, gitHubUsername: 'joe' });                       
+                                }, 2000);
+                            });
+
+    STEP 2: Replace the "callback" in the code body with "resolve" and remove "callback" from the function call signature.
+    =======================================================================================================================
+
+                        function getUser(id) {                                               <== remove "callback" from call signature.
+                            return new Promise(function(resolve, reject) {
+                                setTimeout(function() {
+                                    console.log('Reading a user from a database...');
+                                    resolve({ id: id, gitHubUsername: 'joe' });              <== change "callback" to "resolve".          
+                                }, 2000);
+                            });
+
+
+
+                        
+
 
 */
 
