@@ -3,7 +3,13 @@
 //     Asynchronous Programming in Node
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //      1. What is the difference between aysnchronous vs synchronous programming?
-//      
+//      2. What patterns can you use to deal with asynchronous code and why would you need them?  
+//      3. What is a callback and how do you use it? 
+//      4. What is "callback hell" and how do you avoid it? 
+//      5. What are promises and what are the different states of promises? 
+//      6. How do you use promises? 
+//      7. How do you replace a callback with a promise? 
+//       
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //        1. Although asynchronous programming is covered in earlier outlines, this is extremely useful to 
@@ -12,7 +18,6 @@
 //        mentor meetings, peer discussions, and good ole' fashioned curiosity.  I've put the document in 
 //        Question and Answer format for improved readability.
 //
-// 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -114,8 +119,8 @@
 */
 
 /* 
-What is a callback and how do you use it?
-/////////////////////////////////////////
+3. What is a callback and how do you use it?
+////////////////////////////////////////////
 ==SHORT ANSWER==
     •   A "callback" is a function that will be called when the result of an asynchronous operation is ready.
     
@@ -203,8 +208,8 @@ What is a callback and how do you use it?
 
 
 /* 
-What is Callback Hell and how do you avoid it?
-///////////////////////////////////////////////
+4. What is "callback hell" and how do you avoid it?
+//////////////////////////////////////////////////
 ==SHORT ANSWER==
     •  "Callback Hell" or "Christmas tree problem" or "pyramid of doom" occurs when you have a nested structure of 
         callbacks one after the other and is usually the result of poor coding practices.
@@ -249,8 +254,8 @@ What is Callback Hell and how do you avoid it?
 */
 
 /* 
-What are Promises and what states can promises be?
-////////////////////////////////////////////////////
+5. What are promises and what are the different states or promises?
+////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   A "promise" is an object that holds the eventual result of an asynchrnous operation.
 
@@ -284,11 +289,15 @@ What are Promises and what states can promises be?
 
 
 /* 
-How do you use promises?
-////////////////////////
-
-
-    STEP 1: Create a promise obejct:
+6. How do you use promises?
+///////////////////////////
+==SHORT ANSWER==
+    •   To use a promise, you need to create a constructor function (storing as a constant), add asynchronous work, and specify 
+        the resolve or rejection logic.  When you call the promise to "consume" it, use ".then" for the result and ".catch" for
+        the error.
+        
+==EXAMPLE===
+    STEP 1: Create a promise object:
     ================================
     •   First, use a constructor function to create a new promise which takes an argument.
         o   That argument is a function with two parameters, resolve and reject.
@@ -357,15 +366,16 @@ How do you use promises?
 
                         $ node promise.js
                         Error message                               <== rejected!
-
-
-
-
-
-            
+           
 */
 
 
+
+/* 
+7. How do you replace a callback with a promise?
+/////////////////////////////////////////////////
+
+*/
 
 
 
