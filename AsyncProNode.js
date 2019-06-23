@@ -501,7 +501,7 @@ How do you run promises in parallel?
         to do something.
             o   For example, you may have an app that calls wikipedia, youtube, and dictionary.com at the same time.
             o   When the result of all three of these asynchronous operations are ready, then you return something to the client. 
-            
+
     •   Using the Promise class, you can use the method "all" to execute all the promise you want when they all complete.
     •   Inside the ".all" method, we use an array to gather our promises to execute when they are all complete.
     •   When the result of "Promise.all" is ready, it will be available as an ARRAY.
@@ -552,6 +552,30 @@ How do you run promises in parallel?
                         Async operation 1...
                         Async operation 2...
                         [ 1, 2 ]                                     <== ... results displayed.
+
+
+    OPTIONAL: What if one of the promises is rejected?
+    ===================================================
+    
+                        const callApi1 = new Promise((resolve, reject) => {            <== add a "reject" parameter.
+                            setTimeout(function() {
+                                console.log('Async operation 1...');
+                                reject(new Error('something failed...'));              <== if rejected, create new error object with message "something failed..."
+                            }, 2000);
+                        });
+
+                        const callApi2 = new Promise((resolve) => {
+                            setTimeout(function() {
+                                console.log('Async operation 2...');
+                                resolve(2);
+                            }, 2000);
+                        });
+
+                        Promise.all([callApi1, callApi2])
+                            .then(result => console.log(result))
+                            .catch(err => console.log('Error', err.message));          <== .catch with error printing to console with message.
+
+    
 
 */
 
