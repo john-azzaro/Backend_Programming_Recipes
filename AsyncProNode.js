@@ -544,8 +544,8 @@ How do you run promises in parallel?
 
                 o   And if you wanted to display the results in the console:
 
-                        Promise.all([callApi1, callApi2]) 
-                            .then(result => console.log(result));    <== display results...
+                        Promise.all([callApi1, callApi2])            <== call Promise.all and pass an array promises...
+                            .then(result => console.log(result));    <== then for the result, display results...
  
                 o   Which in the console will show this:
 
@@ -556,6 +556,7 @@ How do you run promises in parallel?
 
     OPTIONAL: What if one of the promises is rejected?
     ===================================================
+        •   If any of our promises are rejected, the final promise that is returned from Promise.all is considered rejected.
     
                         const callApi1 = new Promise((resolve, reject) => {            <== add a "reject" parameter.
                             setTimeout(function() {
@@ -575,8 +576,23 @@ How do you run promises in parallel?
                             .then(result => console.log(result))
                             .catch(err => console.log('Error', err.message));          <== .catch with error printing to console with message.
 
-    
 
+    OPTIONAL: What if you want to kick off one promise while other promises are waiting to complete?
+    ===============================================================================================
+        •   If you want to return the first promise that completes, use ".race" instead of ".all".
+        •   The result of ".race" is NOT an array but the FIRST fulfilled promise.        
+        
+                        Promise.race([callApi1, callApi2])
+                        .then(result => console.log(result))
+                        .catch(error => console.log('Error', error.message));
+
+
+            o   In the console, you should the result:
+
+                        Async operation 1...            <== Note that BOTH asynchrnous operations were started...
+                        Async operation 2...
+                        1                               <== However, the promise was resolved when the first asynchronous operation was completed.
+                                                            Thus, the result is NOT an array but the FIRST fulfilled promise. 
 */
 
 
