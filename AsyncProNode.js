@@ -493,12 +493,21 @@
 How do you run promises in parallel?
 ////////////////////////////////////
 ==SHORT ANSWER==
-   •  To run promises in parallel,  
+   •  To run promises in parallel, you simply need to use Promise.all([]) and within the array add your promises you wish to do
+      something when they both complete.
+      
+==EXTENDED ANSWER==
+    •   If you want a few asynchronous operations in parallel (i.e. at the same time), and when ALL of they complete you want 
+        to do something.
+            o   For example, you may have an app that calls wikipedia, youtube, and dictionary.com at the same time.
+            o   When the result of all three of these asynchronous operations are ready, then you return something to the client. 
+            
+    •   Using the Promise class, you can use the method "all" to execute all the promise you want when they all complete.
+    •   Inside the ".all" method, we use an array to gather our promises to execute when they are all complete.
+    •   When the result of "Promise.all" is ready, it will be available as an ARRAY.
 
-   •   If you want a few asynchronous operations in parallel (i.e. at the same time), and when ALL of they complete you want 
-       to do something.
-        o   For example, you may have an app that calls wikipedia, youtube, and dictionary.com at the same time.
-        o   When the result of all three of these asynchronous operations are ready, then you return something to the client. 
+    •   Note that with this operation there is no real concurrency (no multithreading), we still have a single thread.
+            o   The single thread is kicking off multiple asynchrnous operations at almost the same time with Promise.all()
    
 ==EXAMPLE==
 
