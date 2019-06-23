@@ -9,7 +9,10 @@
 //      5. What are promises and what are the different states of promises? 
 //      6. How do you use promises? 
 //      7. How do you replace a callback with a promise? 
-//       
+//      8. How do you consume promises? 
+//      9. How do you create settled promises?
+//         + How do you create a promise that is already successfully resolved?
+//         + How do you create a promise that is already rejected?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //        1. Although asynchronous programming is covered in earlier outlines, this is extremely useful to 
@@ -416,10 +419,12 @@
 
 
 /* 
-How do you consume promises?
-////////////////////////////
-    •   To consume a promise, you simply call an initial function and chain the ".then" method                      
-
+8. How do you consume promises?
+///////////////////////////////
+==SHORT ANSWER==
+    •   To consume a promise, you simply call an initial function and chain the ".then" method       
+    
+==PRACTICAL EXAMPLE==    
         o   When you used callback (and subsequently fell into callback hell), getUser looked like this:
 
                         getUser(1, (user) => {
@@ -441,8 +446,9 @@ How do you consume promises?
 
 
 /* 
-How do you create settled promises?
-///////////////////////////////////
+9. How do you create settled promises?
+///////////////////////////////////////
+==SHORT ANSWER==
     •   A "settled promise" is a promise that is already resovled.
     •   Settled promises are particularly useful when writing unit tests.
 
@@ -482,6 +488,37 @@ How do you create settled promises?
                             at bootstrap_node.js:612:3
 */
 
+
+/* 
+How do you run promises in parallel?
+////////////////////////////////////
+   •   If you want a few asynchronous operations in parallel (i.e. at the same time), and when ALL of they complete you want 
+       to do something.
+        o   For example, you may have an app that calls wikipedia, youtube, and dictionary.com at the same time.
+        o   When the result of all three of these asynchronous operations are ready, then you return something to the client. 
+   
+==EXAMPLE==
+
+    STEP 0: Suppose you have two API's that, when they finish thier asynchronous operation, you want to do something:
+
+                        const callApi1 = new Promise((resolve) => {      <== API 1
+                            setTimeout(function() {
+                                console.log('Async operation 1...');
+                                resolve(1);
+                            }, 2000);
+                        });
+
+                        const callApi2 = new Promise((resolve) => {       <== API 2
+                            setTimeout(function() {
+                                console.log('Async operation 2...');
+                                resolve(2);
+                            }, 2000);
+                        });
+
+
+
+
+*/
 
 
 
