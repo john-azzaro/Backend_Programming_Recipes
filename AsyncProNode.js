@@ -492,6 +492,9 @@
 /* 
 How do you run promises in parallel?
 ////////////////////////////////////
+==SHORT ANSWER==
+   •  To run promises in parallel,  
+
    •   If you want a few asynchronous operations in parallel (i.e. at the same time), and when ALL of they complete you want 
        to do something.
         o   For example, you may have an app that calls wikipedia, youtube, and dictionary.com at the same time.
@@ -500,23 +503,46 @@ How do you run promises in parallel?
 ==EXAMPLE==
 
     STEP 0: Suppose you have two API's that, when they finish thier asynchronous operation, you want to do something:
+    =================================================================================================================
 
-                        const callApi1 = new Promise((resolve) => {      <== API 1
+                        const callApi1 = new Promise((resolve) => {      <== API 1 (note reject is removed bc we dont want to reject it)
                             setTimeout(function() {
                                 console.log('Async operation 1...');
-                                resolve(1);
+                                resolve(1);                              <== Promise is resovled with the value 2
                             }, 2000);
                         });
 
                         const callApi2 = new Promise((resolve) => {       <== API 2
                             setTimeout(function() {
                                 console.log('Async operation 2...');
-                                resolve(2);
+                                resolve(2);                               <== Promise is resovled with the value 2
                             }, 2000);
                         });
 
+    STEP 1: When both asynchronous operations complete, you want to do something after by using Promise.all():
+    ==========================================================================================================
+        •   "all" is a method of the "Promise" class (instead of a promise object).
+        •   Inside the "all" method you give it an array of promises. 
+        •   The result of this method will be a new promise that will be resolved when all the promises in the array are resolved.           
 
+                        Promise.all([callApi1, callApi2]);    
 
+                o   In the console, you will see this result after 4 seconds:
+                
+                        $ node promise-api.js
+                        Async operation 1...
+                        Async operation 2...
+
+                o   And if you wanted to display the results in the console:
+
+                        Promise.all([callApi1, callApi2]) 
+                            .then(result => console.log(result));    <== display results...
+ 
+                o   Which in the console will show this:
+
+                        Async operation 1...
+                        Async operation 2...
+                        [ 1, 2 ]                                     <== ... results displayed.
 
 */
 
