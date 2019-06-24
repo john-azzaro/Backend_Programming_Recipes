@@ -605,9 +605,10 @@
 /* 
 What is async and await?
 ////////////////////////
-   •   "Async and await" helps you write asynchronous code like synchronous code.                      
-
-
+==SHORT ANSWER==
+   •   "Async and await" helps you write asynchronous code like synchronous code.  
+                    
+==EXAMPLE==
     •   In the Promise-based approach (which we will rewrite into the async and await approach), we have this:                    
 
                         getUser(1)
@@ -617,7 +618,7 @@ What is async and await?
                             .catch(err => console.log('Error', err.message));
 
                             
-    •   In the Async and await approach, you simply need to store each function as a variable and wait "await" 
+    •   In the Async and await approach, you simply  
     
 
     STEP 1: For each function (i.e. getUser, getRepositories, etc), add "await" and store to a constant variable:
@@ -625,19 +626,40 @@ What is async and await?
     •   When you call a function that returns a promise (i.e. getUser returns a new Promise object that resolves 
         an user object), you can "await" the result of that function and then call the result by calling the 
         variable you stored it to:
+            o   So to clarify, for each of these objects below (i.e. user, repos, commits), since you are "await"-ing the 
+                promises, they will be accessible via the stored constants.    
+            o   Remember here that these follow one from the other so the order is IMPORTANT because one necessarily follow from
+                the other. For example, you couldnt call getUser before getRepositories because you wouldnt know what user to
+                get the repositories from.
 
 
+                                const user = await getUser(1);                                 <== First, "await" the promise result of getUser (i.e. 1) and store it to the user object.
+                                const repos = await getRepositories(user.gitHubUsername);      <== Second, "await" the promise result of getRepositories and store it to the repos object.                                   
+                                const commits = await getCommits(repos[0]);                    <== Third, "await" the promise result of getCommits, in this case the first commit 0...
+                                console.log(commits);                                          <== ... and then log to the console the commits object.
 
 
+    STEP 2: Define a function that will cncapsulate your code and add the "async" modifier:
+    =======================================================================================    
+    •   When you use the "await" operator in a function, you need to declare a function with the "async" modifier.
+    •   In the example below, after all the asynchronous operations, the eventual result will display the commits, thus "displayCommits".
 
+                        Because you use "await" inside the function, declare the "async" modifier.
+                                \
+                                async function displayCommits() {
+                                        const user = await getUser(1);  
+                                        const repos = await getRepositories(user.gitHubUsername);                                       
+                                        const commits = await getCommits(repos[0]);
+                                        console.log(commits);
+                                }
 
+                o   When you call "displayCommits()", you will get the same result as the Promise-based appraoch                 
 
-
-
-
-
-
-
+                                After
+                                Reading a user from a database...
+                                Calling GitHub API...
+                                Calling GitHub API...
+                                [ 'commit' ]
 
 
         o   Since the getUser function returns a promise, you can "await" the result of that function and then get the result
