@@ -608,7 +608,7 @@ What is async and await?
    •   "Async and await" helps you write asynchronous code like synchronous code.                      
 
 
-    •   In the Promise-based approach, we have this:                    
+    •   In the Promise-based approach (which we will rewrite into the async and await approach), we have this:                    
 
                         getUser(1)
                             .then (user => getRepositories(user.gitHubUsername))
@@ -617,20 +617,42 @@ What is async and await?
                             .catch(err => console.log('Error', err.message));
 
                             
-    •   In the Async and await approach, we have this:
+    •   In the Async and await approach, you simply need to store each function as a variable and wait "await" 
+    
+
+    STEP 1: For each function (i.e. getUser, getRepositories, etc), add "await" and store to a constant variable:
+    =============================================================================================================
+    •   When you call a function that returns a promise (i.e. getUser returns a new Promise object that resolves 
+        an user object), you can "await" the result of that function and then call the result by calling the 
+        variable you stored it to:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         o   Since the getUser function returns a promise, you can "await" the result of that function and then get the result
-            by calling a synchronous function.
+            by calling a synchronous function
     
                         async function displayCommits() {
-                        try {
-                            const user = await getUser(1);  
-                            const repos = await getRepositories(user.gitHubUsername);                                       
-                            const commits = await getCommits(repos[0]);
-                            console.log(commits);
-                        }
-                        catch (err) {
-                            console.log('Error', err.message)
-                        }    
+                            try {
+                                const user = await getUser(1);  
+                                const repos = await getRepositories(user.gitHubUsername);                                       
+                                const commits = await getCommits(repos[0]);
+                                console.log(commits);
+                            }
+                            catch (err) {
+                                console.log('Error', err.message)
+                            }    
                         }
 */
 
