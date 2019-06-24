@@ -605,8 +605,33 @@
 /* 
 What is async and await?
 ////////////////////////
+   •   "Async and await" helps you write asynchronous code like synchronous code.                      
 
 
+    •   In the Promise-based approach, we have this:                    
+
+                        getUser(1)
+                            .then (user => getRepositories(user.gitHubUsername))
+                            .then (repos => getCommits(repos[0]))
+                            .then(commits => console.log('Commits', commits))
+                            .catch(err => console.log('Error', err.message));
+
+                            
+    •   In the Async and await approach, we have this:
+        o   Since the getUser function returns a promise, you can "await" the result of that function and then get the result
+            by calling a synchronous function.
+    
+                        async function displayCommits() {
+                        try {
+                            const user = await getUser(1);  
+                            const repos = await getRepositories(user.gitHubUsername);                                       
+                            const commits = await getCommits(repos[0]);
+                            console.log(commits);
+                        }
+                        catch (err) {
+                            console.log('Error', err.message)
+                        }    
+                        }
 */
 
 
