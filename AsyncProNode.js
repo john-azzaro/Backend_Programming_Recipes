@@ -13,6 +13,10 @@
 //      9. How do you create settled promises?
 //         + How do you create a promise that is already successfully resolved?
 //         + How do you create a promise that is already rejected?
+//     10. How do you run promises in parallel?
+//         + What if one of the promises is rejected?
+//         + What if you want to kick-off one promise while other promises are waiting to complete?
+//     11. How do you return the first promise that completes?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //        1. Although asynchronous programming is covered in earlier outlines, this is extremely useful to 
@@ -490,8 +494,8 @@
 
 
 /* 
-How do you run promises in parallel?
-////////////////////////////////////
+10. How do you run promises in parallel?
+/////////////////////////////////////////
 ==SHORT ANSWER==
    •  To run promises in parallel, you simply need to use Promise.all([]) and within the array add your promises you wish to do
       something when they both complete.
@@ -577,8 +581,8 @@ How do you run promises in parallel?
                             .catch(err => console.log('Error', err.message));          <== .catch with error printing to console with message.
 
 
-    OPTIONAL: What if you want to kick off one promise while other promises are waiting to complete?
-    ===============================================================================================
+    OPTIONAL: How do you return the first promise that completes?
+    =============================================================
         •   If you want to return the first promise that completes, use ".race" instead of ".all".
         •   The result of ".race" is NOT an array but the FIRST fulfilled promise.        
         
@@ -589,7 +593,7 @@ How do you run promises in parallel?
 
             o   In the console, you should the result:
 
-                        Async operation 1...            <== Note that BOTH asynchrnous operations were started...
+                        Async operation 1...            <== Note that BOTH asynchronous operations were started...
                         Async operation 2...
                         1                               <== However, the promise was resolved when the first asynchronous operation was completed.
                                                             Thus, the result is NOT an array but the FIRST fulfilled promise. 
@@ -598,7 +602,12 @@ How do you run promises in parallel?
 
 
 
+/* 
+What is async and await?
+////////////////////////
 
+
+*/
 
 
 
