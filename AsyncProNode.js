@@ -678,8 +678,60 @@ What is async and await?
                                 console.log('Error', err.message)
                             }    
                         }
-*/
 
+
+==PRACTICAL EXAMPLE==
+
+                        async function notifyMember() {
+                            try {
+                                const member = await getMember(1);
+                                console.log('member: ', member);
+                                if (member.isMember) {
+                                    const movies = await getArticles();
+                                    console.log('Top movies: ', movies);
+                                    await sendEmail(member.email, movies);
+                                    console.log('Email sent...');
+                                }
+                            }
+                            catch (err) {
+                                console.log('Error', err.message);
+                            }
+                            }
+
+                            notifyMember();
+
+
+                            function getMember(id) {
+                            return new Promise((resolve, reject) => {
+                                setTimeout(() => {
+                                resolve({ 
+                                    id: 1, 
+                                    name: 'John Smith', 
+                                    isMember: true, 
+                                    email: 'johnsmith@gmail.com' 
+                                });
+                                }, 4000);  
+                            });
+                            }
+
+
+                            function getArticles() {
+                            return new Promise( (resolve, reject) => {
+                                setTimeout(() => {
+                                resolve(['How to be awesome', '10 ways to stay awesome']);
+                                }, 4000);
+                            });
+                            }
+
+                            function sendEmail(email, articles) {
+                            return new Promise( (resolve, reject) => {
+                                setTimeout(() => {
+                                resolve();
+                                }, 4000);
+                            })
+                            }
+
+*/
 
 
 
