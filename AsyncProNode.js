@@ -639,8 +639,9 @@ What is async and await?
                                 console.log(commits);                                          <== ... and then log to the console the commits object.
 
 
+
     STEP 2: Define a function that will cncapsulate your code and add the "async" modifier:
-    =======================================================================================    
+    ========================================================================================    
     •   When you use the "await" operator in a function, you need to declare a function with the "async" modifier.
     •   In the example below, after all the asynchronous operations, the eventual result will display the commits, thus "displayCommits".
 
@@ -662,17 +663,18 @@ What is async and await?
                                 [ 'commit' ]
 
 
-        o   Since the getUser function returns a promise, you can "await" the result of that function and then get the result
-            by calling a synchronous function
-    
+
+    STEP 3: Lastly, use the "try/catch" block for catching errors when using async/await:
+    ====================================================================================
+      
                         async function displayCommits() {
-                            try {
+                            try {                                                            <== First, wrap the asynchronous code in a "try" block.
                                 const user = await getUser(1);  
                                 const repos = await getRepositories(user.gitHubUsername);                                       
                                 const commits = await getCommits(repos[0]);
                                 console.log(commits);
                             }
-                            catch (err) {
+                            catch (err) {                                                     <== Second, wrap the error message in a "catch" block if anything goes wrong.
                                 console.log('Error', err.message)
                             }    
                         }
