@@ -2,7 +2,11 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     MongoDb
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      1. 
+//      1. What is MongoDB?
+//      2. How do you use MongoDB?
+//         +  How do you install MongoDB?
+//         +  What is mongod and why do you use it?
+//         +  How do you view the defautl Mongo database?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on MongoDB from study, research, tutorials, mentor meetings,
@@ -66,13 +70,56 @@ How do you use MongoDB?
             o   Then, select "enviroment variables".
             o   Edit the PATH variable and add a new entry using the previous path.
 
+
     STEP 2: In command prompt, run "mongod":
     ========================================
+
+                    mongod                
+
     •   When you run "mongod" in command prompt, you will see multiple lines of output like "2019-06-25T12:11:32.446-0800 I Control [initandlisten] MonogDb starting : ..."
     •   If you get "exception in initandlisten: NonExitentPath: Data directory C:\data\db not found, terminating", this means that by default
         MongoDB stores your data in this folder, but the folder is not there yet.
         o   So in Gitbash, write "md c:\data\db".
-        o   After you do this, MongoDB should run.              
+        o   After you do this, MongoDB should run and you will see at the end "waiting for connections on port 27017" which verifies that MongoDB server IS RUNNING.
+        
+
+    STEP 3: In Gitbash, run "mongo" to start the interactive Mongo shell:
+    =====================================================================
+    •   When you run "mongo", you will see this:
+
+                    $ mongo
+                    MongoDB shell version v4.0.5
+                    connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+                    Implicit session: session { "id" : UUID("fdfdb4ce-ecfc-4fd1-b426-3887a1ac7fd3") }
+                    MongoDB server version: 4.0.5
+
+
+    OPTIONAL: To show the default database for mongo, run the command "show dbs;"
+    =============================================================================                
+
+                    $ mongo
+                    MongoDB shell version v4.0.5
+                    connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+                    Implicit session: session { "id" : UUID("805e412e-6b52-4869-a045-a1dad11ccd05") }
+                    MongoDB server version: 4.0.5
+                    show dbs;                                                                      <== to see the local database.
+                    admin            0.000GB                                                       <== Default database.
+                    config           0.000GB
+                    local            0.000GB                                                       <== Default database.
+
+
+    OPTIONAL: To exit Mongo shell (in Gitbash), write "quit()":
+    ===========================================================
+
+                    quit()
+
+    OPTIONAL: To exit Mongod (in command prompt), press ctrl-c
+    ==========================================================
+                    
+                    ctrl-c
+
+
+
 
 */
 
