@@ -196,16 +196,13 @@ How do you connect with MongoDB?
 
 
 
+/* 
+What is MongoDB compass and what does it do?
+////////////////////////////////////////////
+    •   MongoDB Compass is a simple GUI that allows users to explore data.
+    •   MongoDB Compass lets you explore, insert, modify, and delete from your database visually as well as run ad hoc queries.
 
-
-
-
-
-
-
-
-
-
+*/
 
 
 
@@ -213,7 +210,12 @@ How do you connect with MongoDB?
 /* 
 What is a schema?
 ////////////////////
-   •  A "schema" is used to define the shape of documents within a collection in MongoDB.
+==SHORT ANSWER==
+   •   A "schema" is used to define the shape of documents within a collection in MongoDB.
+
+=+EXTENDED ANSWER==
+   •   In MongoDB Compass for each database you will see "collections".
+   •   A "collection"    
         
    How do you create a schema?
    ===========================
@@ -245,4 +247,5 @@ What is a schema?
 
 /* 
 https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/
+https://stackoverflow.com/questions/50448272/avoid-current-url-string-parser-is-deprecated-warning-by-setting-usenewurlpars -- workaround for mongodb connection
 */

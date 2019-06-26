@@ -28,7 +28,7 @@
 1. What is server-side programming?
 ///////////////////////////////////
 ==SHORT ANSWER==
-    •   Server-side programming is writing programs that create dynamic pages.
+    •   "Server-side programming" is about writing programs that create dynamic pages.
 
 ==EXAMPLE==
     •   For example, Amazon will use server-side programming to construct search results for products
@@ -38,6 +38,7 @@
     •   Server-side programming allows us to efficiently deliver information tailored for individual users.  
         o   JavaScript, where the programs run in the web browser, is called "client-side" programming.
 */
+
 
 
 /*
@@ -52,6 +53,7 @@
     o   Server-side programming is software testing
     o   Server-side programming is about devops.
 */
+
 
 
 /* 
@@ -75,9 +77,9 @@
     •   The content of most web pages is encoded in HTML.
     •   Content can be static (text or images) or dynamic (items user selects for purchase),
     •   To deliver dynamic content, web servers use server-side scripting languages to encode business logic.
-    •   A web server runs a website by returning HTML files over an HTTP connection.
-    
+    •   A web server runs a website by returning HTML files over an HTTP connection.    
 */
+
 
 
 /* 
@@ -91,6 +93,7 @@
     •   For example, when you type in a URL to go to a website, you send a request a SERVER (which is both a
         device and computer program) that accepts and responds to requests made by your browser.
 */
+
 
 
 /*
@@ -114,6 +117,7 @@
     •   A single web server can support many CLIENTS such as WEB BROWSERS, MOBILE APPS, OTHER SERVERS, etc.	
     •   
 */
+
 
 
 /* 
@@ -157,7 +161,9 @@
 8. What kind of resources can server-side apps expose?
 ///////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •	Server-side apps can expose two types of resources: FILES and PARAMETERIZED DATA.
+    •	Server-side apps can expose two types of resources: 
+        o   FILES
+        o   PARAMETERIZED DATA.
 
 ==EXTENDED ANSWER==    
     1. Files
