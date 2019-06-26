@@ -61,7 +61,9 @@ How do you use MongoDB?
     =======================
     •   To use MongoDB, you first need to install MongoDB on your computer 
         o   First, install MongoDB by going to: https://www.mongodb.com/download-center/community
-            o   Make sure to install Complete installation.      
+            o   Make sure to install Complete installation. 
+            o   DO NOT INSTALL (i.e. uncheck) MongoDB Compass, there are issues doing this with complete installation so better to install seperately
+                after the rest of the program is installed.     
             o   Make sure to install MongoDB Compass (this is the client application to connect to the MongoDB server).
         o   Second, navigate to the installation folder 
             o   Navigate to this file:  C:\Program Files\MongoDB\Server\4.0\bin
@@ -69,6 +71,7 @@ How do you use MongoDB?
         o   Third, in windows search bar, search for "advanced system settings"
             o   Then, select "enviroment variables".
             o   Edit the PATH variable and add a new entry using the previous path.
+        o   Lastly, install "MongoDB Compass" community version to use the database GUI.
 
 
     STEP 2: In command prompt, run "mongod":
@@ -117,8 +120,105 @@ How do you use MongoDB?
     ==========================================================
                     
                     ctrl-c
+*/
 
 
+/* 
+What is mongoose and how do you install it?
+////////////////////////////////////////////
+    •   Mongoose is a simple API to work with a MongoDB database. 
+
+    STEP 1: Make sure you have your project folder run "npm init":
+    ===============================================================
+           
+                    mkdir mongo-test
+                    npm init
+
+    STEP 2: Install the node package "mongoose":
+    =============================================
+
+                    npm install mongoose
+
+                    */
+
+
+
+
+/* 
+How do you connect with MongoDB?
+////////////////////////////////
+    •   In your index.js file:
+
+    STEP 1: Connect to MongoDB by first loading the mongoose module and storing it as a constant:
+    =============================================================================================
+
+                    const mongoose = require('mongoose');         <==
+ 
+
+    STEP 2: Use the ".connect" method to connect to MongoDB:
+    ========================================================
+                    
+                    const mongoose = require('mongoose');
+
+                    mongoose.connect('')                          <==
+
+
+    STEP 3: Pass a connection string that references the mongo database we have installed on the computer FOR LOCAL DEVELOPMENT:
+    ============================================================================================================================
+        •   Note that when the application is deployed to the production enviroment, you use a different connection string. 
+        •   Also note that the database "playground" will be created          
+
+                    const mongoose = require('mongoose');
+
+                    mongoose.connect('mongodb://localhost/playground')  
+                    
+
+    STEP 4: The ".connect" method FRST returns a PROMISE that when the promise is fulfilled, log "Connected to MongoDB..."
+    ======================================================================================================================
+
+                    const mongoose = require('mongoose');
+
+                    mongoose.connect('mongodb://localhost/playground')  
+                        .then(() => console.log('Connected to MongoDB...'));        <== "then", when the promise is fulfilled (i.e.()=>) log "connected to mongodb..."
+
+
+    STEP 5: And lastly add a "catch" if there is an error
+    =====================================================
+
+                    const mongoose = require('mongoose');
+
+                    mongoose.connect('mongodb://localhost/playground')
+                        .then( () => console.log('Connected to MongoDB...'))
+                        .catch( (err) => console.log('Could not connect to MongoDB...', err))
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+What is a schema?
+////////////////////
+   •  A "schema" is used to define the shape of documents within a collection in MongoDB.
+        
+   How do you create a schema?
+   ===========================
+
+        STEP 1: 
 
 
 */
