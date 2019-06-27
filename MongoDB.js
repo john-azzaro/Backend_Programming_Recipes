@@ -201,6 +201,32 @@ What is MongoDB compass and what does it do?
 ////////////////////////////////////////////
     •   MongoDB Compass is a simple GUI that allows users to explore data.
     •   MongoDB Compass lets you explore, insert, modify, and delete from your database visually as well as run ad hoc queries.
+    •   Within MongoDB Compass, you can see your databases.
+            
+                > admin
+                > config
+                > local
+                > testDB         
+        
+    •   Inside those databases, you can see collections within those databases, how many documents in each collection, and 
+        other information such as document size, number of indexes, and total index size. 
+
+            Collection Name    Documents   Avg. Document Size   Total Document Size    Num. Indexes    Total Index Size    Properties
+            _______________    _________   __________________   ___________________    ____________    ________________    __________
+                books            3,950          451.2 B               1.8 MB                1               45.1 KB             
+    
+
+        o   "Collection" is like a table in a relational database.
+        o   "Documents" are like rows in relational databases.
+            o   Inside each document are a list of key/value pairs.
+
+                {"_id":"59074c7c057aaffaafb0da64",
+                "Author": Object,                      
+                "genre":"fiction",
+                "uisinec":"Italian",
+                "reviews" Array:
+                "name":"Making Bread the Easy Way",
+                "book_id":"40365784"}
 
 */
 
@@ -211,18 +237,39 @@ What is MongoDB compass and what does it do?
 What is a schema?
 ////////////////////
 ==SHORT ANSWER==
-   •   A "schema" is used to define the shape of documents within a collection in MongoDB.
+   •   A "schema" is used to define the shape (i.e. layout of properties) of documents within a collection in MongoDB.
+   •   A schema is used to define the properties we have in a collection's document.     
+
+==EXAMPLE==
+                    
+       
 
 =+EXTENDED ANSWER==
    •   In MongoDB Compass for each database you will see "collections".
-   •   A "collection"    
+   •   A "documents" in a MongoDB "collection", you have a document lihe this with a     
         
    How do you create a schema?
    ===========================
 
-        STEP 1: 
+        STEP 1: In index.js, create a constant called "courseSchema" which will define the shape of 
+                course documents in MongoDB and set it to new mongoose.Schema class.
+        ===========================================================================================
 
+                    const courseSchema = new mongoose.Schema()
 
+        STEP 2: Because this creates a new instance of the class, you pass an object with the key/value 
+                pairs in the course documents:
+        ===============================================================================================
+
+                    const courseSchema = new mongoose.Schema({
+                        name: String,                               <== name key with value that will be a String
+                        author: String,
+                        tags: [ String ],
+                        date: { type: Date, default: Date.now },
+                        isPublished: Boolean
+                    });
+
+        STEP 3: 
 */
 
 
