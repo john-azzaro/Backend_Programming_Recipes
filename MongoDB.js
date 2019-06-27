@@ -262,10 +262,10 @@ What is a schema?
         ===============================================================================================
 
                     const courseSchema = new mongoose.Schema({
-                        name: String,                               <== name key with value that will be a String
+                        name: String,                                <== name key with value that will be a String
                         author: String,
-                        tags: [ String ],
-                        date: { type: Date, default: Date.now },
+                        tags: [ String ],                           <== will be an array of strings
+                        date: { type: Date, default: Date.now },    <== can either be Date or object with a type property set to dat and default date when course created. 
                         isPublished: Boolean
                     });
 
