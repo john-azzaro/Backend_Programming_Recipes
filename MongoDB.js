@@ -298,9 +298,22 @@ What is a Model and how do you create and save a document based on a schema?
     •   To create a class (i.e. course), you need to compile a schema into a model.
           
     
-    
-    STEP 1: Create a course "class" in the application:
-    ===================================================
+    STEP 0: Once you have an existing schema...
+    ============================================
+
+                    const courseSchema = new mongoose.Schema({
+                        name: String,
+                        author: String,
+                        tags: [ String ],
+                        date: { type: Date, default: Date.now },
+                        isPublished: Boolean
+                    });                   
+
+
+
+    STEP 1: Compile that schema into a "model" that gives you a "Class":
+    ====================================================================
+
     •   Create a mongoose object with the method "model" with 2 arguments, the name of the collection the model is 
         for and the second is the name of the schema that defines the documents in this collection:
             o   First argument is the collection you want to apply the schema to.
@@ -310,26 +323,46 @@ What is a Model and how do you create and save a document based on a schema?
     •   Once you do this, you can create an object based on this class.
    
 
-                                       collection name
-                                                \
-                const Course = mongoose.model('Course', courseSchema);
-                       /                                       \
-                   Class name                                schema blueprint
-                                                                    |      
-                                                                    |
-                                                                   \|/
-                                                                    const courseSchema = new mongoose.Schema({
-                                                                        name: String,
-                                                                        author: String,
-                                                                        tags: [ String ],
-                                                                        date: { type: Date, default: Date.now },
-                                                                        isPublished: Boolean
-                                                                    });
+                                            collection name
+                                                        \
+                        const Course = mongoose.model('Course', courseSchema);
+                            /                                       \
+                        Class name                                "courseSchema" blueprint
+                                                                            |      
+                                                                            |
+                                                                           \|/
+                                                                        const courseSchema = new mongoose.Schema({
+                                                                            name: String,
+                                                                            author: String,
+                                                                            tags: [ String ],
+                                                                            date: { type: Date, default: Date.now },
+                                                                            isPublished: Boolean
+                                                                        });
+
+
+    STEP 2: Create an object based on the class you just created which maps to a documentin Mongo database:
+    ========================================================================================================
+    
+    •   To create a new object, create a new Course (see step 1) and store as "course" and pass the new object.
+    •   Note here that in noSQL databases like Mongo, the document can have complex objects (i.e. tags with an array of strings). 
+            o   Relational databases like SQL have simple attributes and the same structure below will have 3 tables such as:
+                Courses, tags, and an intermediary table called course tags.
+
+                        const Course = mongoose.model('Course', courseSchema);
+                        const course = new Course({                              <== create a "new Course" and pass an object that fills the schema model...
+                            name: 'Italian Cooking Course',
+                            author: 'Joe Franco',
+                            tags: ['italian', 'food'],
+                            isPublished: true                                    <== note here that "date" was already defined to have a defautl value so you dont need it here. 
+                        });
+
+                                                                    
 
 
 
-    STEP 2: 
-    =========================================================
+
+
+
 */
 
 
