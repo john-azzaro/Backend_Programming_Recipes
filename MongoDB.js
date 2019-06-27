@@ -354,9 +354,49 @@ What is a Model and how do you create one?
 
 
 /* 
-How do you save a document based on a schema to Mongo database?
+How do you save a document (based on a schema) to Mongo database?
 ///////////////////////////////////////////////////////////////
-    •   To save the new objects (that are modeled on repsective schemas), you need to 
+==SHORT ANSWER==
+    •   To save the new objects (that are modeled on repsective schemas), you use the method ".save()" on your new object,
+        which in this case is "course".
+    •   ".save()" is an asynchronous operation because it will take time to save the "course" to the database because we 
+        need to access the file system.
+
+==PRACTICAL EXAMPLE==
+
+    STEP 1: 
+    ===============================================================
+    •   const result = await course.save()
+
+
+
+
+
+
+    •   The result of ".save()" will be ready in the future.
+    •   ".save()" returns a promise, so you can "await" it and get the result.
+
+
+
+
+
+
+
+async function createCourse() {
+    const course = new Course({                  <== create a course object 
+        name: 'Italian Cooking Course',
+        author: 'Joe Franco',
+        tags: ['italian', 'food'],
+        isPublished: true
+    });
+    const result = await course.save();
+    console.log(result)
+}
+
+
+
+
+
 
 
 
