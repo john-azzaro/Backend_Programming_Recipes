@@ -246,6 +246,8 @@ What is a schema?
     •   Think of schemas like the difference between Classes and objects.  
         o   A Class would be a human.
         o   An object would be a person named "Joe". 
+    •   So in the example below, our Class will be the "Course" blueprint and our object will be an instance of that 
+        blueprint, like "Intro to Cooking".
                     
 
 =+EXTENDED ANSWER==
@@ -291,8 +293,23 @@ What is a schema?
 
 
 /* 
-How do you create and save a document based on a schema?
-////////////////////////////////////////////////////////
+What is a Model and how do you create and save a document based on a schema?
+/////////////////////////////////////////////////////////////////////////////
+    •   To create a class (i.e. course), you need to compile a schema into a model.
+    •            
+    
+    
+    STEP 1: Create a mongoose object with the method "model" with 2 arguments, the name of the collection the model is for and
+            the second is the name of the schema that defines the documents in this collection:
+    ==========================================================================================================================
+
+                               collection name
+                                      \
+                    mongoose.model('Course', courseSchema);
+                                                  \
+                                                schema blueprint
+
+    STEP 2: 
 
 */
 
