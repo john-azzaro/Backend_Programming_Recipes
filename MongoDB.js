@@ -255,7 +255,8 @@ What is a schema?
                 course documents in MongoDB and set it to new mongoose.Schema class.
         ===========================================================================================
 
-                    const courseSchema = new mongoose.Schema()
+                    const courseSchema = new mongoose.Schema();
+
 
         STEP 2: Because this creates a new instance of the class, you pass an object with the key/value 
                 pairs in the course documents:
@@ -269,7 +270,17 @@ What is a schema?
                         isPublished: Boolean
                     });
 
-        STEP 3: 
+
+    What types can you use when creating a schema?
+    ============================================== 
+        •  There are types you can use, such as:
+            o  String             
+            o  Number             
+            o  Date             
+            o  Buffer           <== used for string binary data.   
+            o  Boolean              
+            o  ObjectID         <== used for assinging unique identifiers.     
+            o  Array             
 */
 
 
