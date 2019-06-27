@@ -2,7 +2,7 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     MongoDb
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      1. What is MongoDB?
+//      1. What is MongoDB and why is a database management system necessary?
 //      2. How do you use MongoDB?
 //         +  How do you install MongoDB?
 //         +  What is mongod and why do you use it?
@@ -17,17 +17,19 @@
 
 
 /* 
-What is MongoDB?
-/////////////////
+1. What is MongoDB and why is a database management system necessary?
+/////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==    
-    •   MongoDB is a schema-less NoSQL document database that allows you to simply store your json object in the database. 
-
+    •   MongoDB is a popular, schema-less NoSQL document database that allows you to simply store your json object in the database. 
+    •   MongoDB stores "documents" of data and will store it unlike data stored to memory which will be lost when the application is restarted.
 
 ==EXTENDED ANSWER==
     •   Although in some applications you can store data to memory, when the server restarts you will lose all your data so you 
         need to store your data in a database.
     •   Using Node and Express, you have a large number of database choices, including MongoDB.
-    •   MongoDB is a popular database management system that 
+    •   Using MongoDB, we can store objects in a collection in MongoDB.
+         o  Additionally, when querying data out of MongoDB, you get JSON objects which can be returned to the client.
+    •   MongoDB is a popular database management system.
     •   MongoDB is a schema-less NoSQL document database. 
     •   MongoDB differs from traditional databases that use concepts like tables, schemas, views, records, columns, etc. 
     •   MongoDB is different from relational databases where you have to design your database ahead of time.
@@ -36,19 +38,6 @@ What is MongoDB?
         o   structure of these documents can vary as it is not enforced like SQL databases. 
             o   This is one of the advantages of using NoSQL as it speeds up application development and 
                 reduces the complexity of deployments.
-
-
-==EXAMPLE==
-    •   In the example below, you have an array of books, with objects representing individual books.
-
-                    const books = [
-                    { id: 1, name: 'Fiction' },  
-                    { id: 2, name: 'Non-Fiction' },  
-                    { id: 3, name: 'Romance' },  
-                    ];
-
-    •   Using MongoDB, we can store all these objects in the array above in a collection in MongoDB.
-    •   Additionally, when querying data out of MongoDB, you get JSON objects which can be returned to the client.
 */
 
 
@@ -234,39 +223,43 @@ What is MongoDB compass and what does it do?
 
 
 /* 
-What is a schema?
-////////////////////
+What is a schema and how do you create one?
+///////////////////////////////////////////
 ==SHORT ANSWER==
    •   A "schema" is used to define the shape (i.e. layout of properties) of documents within a collection in MongoDB.
+   •   To create a schema, you                  
+
+==EXTENDED ANSWER==
    •   A schema is used to define the properties we have in a collection's document.  
    •   In other words, a schema is a template that you can plug data into and save in a collection in MongoDB.  
-
-
-==EXAMPLE==
-    •   Think of schemas like the difference between Classes and objects.  
-        o   A Class would be a human.
-        o   An object would be a person named "Joe". 
-    •   So in the example below, our Class will be the "Course" blueprint and our object will be an instance of that 
-        blueprint, like "Intro to Cooking".
-                    
-
-=+EXTENDED ANSWER==
    •   In MongoDB Compass for each database you will see "collections".
    •   A "document" in a MongoDB "collection" is an individual instance of each schema with unique values in the standard properties.
+   •   Think of schemas like the difference between Classes and objects.  
+        o   A Class would be a human.
+        o   An object would be a person named "Joe". 
+        o   So in the example below, our Class will be the "Course" blueprint and our object will be an instance of that 
+            blueprint, like "Intro to Cooking".
+                    
+==PRACTICAL EXAMPLE==
 
    How do you create a schema?
    ===========================
 
-        STEP 1: In index.js, create a constant called "courseSchema" which will define the shape of 
-                course documents in MongoDB and set it to new mongoose.Schema class.
-        ===========================================================================================
+        STEP 1: First, create  the "blueprint" of your document in MongoDB:
+        ====================================================================
+        •   In index.js, create a constant called "courseSchema" which will define the shape of 
+            course documents in MongoDB and set it to new mongoose.Schema class.
+        
 
-                    const courseSchema = new mongoose.Schema();
+                    const courseSchema = new mongoose.Schema({
+                        // properties go here
+                    });
 
 
-        STEP 2: Because this creates a new instance of the class, you pass an object with the key/value 
-                pairs in the course documents:
-        ===============================================================================================
+
+        STEP 2: Second, create the properties for your schema with names and types for values:
+        =======================================================================================
+        •   Because this creates a new instance of the class, you pass an object with the key/value pairs in the course documents.
         •   This course "schema" will define the shape (layout) of the course documents (individual instances) in the Mongo database.
 
                     const courseSchema = new mongoose.Schema({
@@ -278,23 +271,23 @@ What is a schema?
                     });
 
 
-    What types can you use when creating a schema?
-    ============================================== 
-        •  There are types you can use, such as:
-            o  String             
-            o  Number             
-            o  Date             
-            o  Buffer           <== used for string binary data.   
-            o  Boolean              
-            o  ObjectID         <== used for assinging unique identifiers.     
-            o  Array             
-*/
+        What types can you use when creating a schema?
+        ============================================== 
+            •  There are types you can use, such as:
+                o  String             
+                o  Number             
+                o  Date             
+                o  Buffer           <== used for string binary data.   
+                o  Boolean              
+                o  ObjectID         <== used for assinging unique identifiers.     
+                o  Array             
+    */
 
 
 
 /* 
-What is a Model and how do you create and save a document based on a schema?
-/////////////////////////////////////////////////////////////////////////////
+What is a Model and how do you create one? 
+///////////////////////////////////////////
     •   To create a class (i.e. course), you need to compile a schema into a model.
           
     
@@ -340,9 +333,9 @@ What is a Model and how do you create and save a document based on a schema?
                                                                         });
 
 
-    STEP 2: Create an object based on the class you just created which maps to a documentin Mongo database:
+    STEP 2: Create an object based on the class you just created which maps to a document in Mongo database:
     ========================================================================================================
-    
+
     •   To create a new object, create a new Course (see step 1) and store as "course" and pass the new object.
     •   Note here that in noSQL databases like Mongo, the document can have complex objects (i.e. tags with an array of strings). 
             o   Relational databases like SQL have simple attributes and the same structure below will have 3 tables such as:
@@ -356,7 +349,14 @@ What is a Model and how do you create and save a document based on a schema?
                             isPublished: true                                    <== note here that "date" was already defined to have a defautl value so you dont need it here. 
                         });
 
-                                                                    
+*/
+
+
+
+/* 
+How do you save a document based on a schema to Mongo database?
+///////////////////////////////////////////////////////////////
+    •   To save the new objects (that are modeled on repsective schemas), you need to 
 
 
 
@@ -364,7 +364,6 @@ What is a Model and how do you create and save a document based on a schema?
 
 
 */
-
 
 
 
