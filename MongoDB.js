@@ -299,18 +299,20 @@ What is a Model and how do you create and save a document based on a schema?
     •            
     
     
-    STEP 1: Create a mongoose object with the method "model" with 2 arguments, the name of the collection the model is for and
-            the second is the name of the schema that defines the documents in this collection:
-    ==========================================================================================================================
-
+    STEP 1: Create a course class in the application:
+    =================================================
+    • Create a mongoose object with the method "model" with 2 arguments, the name of the collection the model is 
+      for and the second is the name of the schema that defines the documents in this collection:
+   
                                collection name
                                       \
                     mongoose.model('Course', courseSchema);
                                                   \
                                                 schema blueprint
 
-    STEP 2: 
 
+    STEP 2: 
+    =========================================================
 */
 
 
