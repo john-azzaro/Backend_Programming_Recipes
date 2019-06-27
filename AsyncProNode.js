@@ -89,7 +89,7 @@
             o   Async/Await.
 
     •   You need these patterns because when you try to access something like a database, the result will not be 
-        available immediately.  
+        available immediately so you need an asynchronous solution.  
             o   It might take a few seconds to retrieve the information so you need something like
                 these patterns to successfully retrieve the information.
 
@@ -135,15 +135,11 @@
 ==SHORT ANSWER==
     •   A "callback" is a function that will be called when the result of an asynchronous operation is ready.
     
-==EXTENDED ANSWER==
-    •                               
-     
-    How do you add a callback to a function?
-    ========================================
-    •   Note: for this example, 
 
-        STEP 1: Add "callback" as a paramater to your function
-        ======================================================
+==PRACTICAL EXAMPLE== 
+        STEP 1: To add a callback,  first add "callback" as a paramater to your function
+        ================================================================================
+
 
                                 function getUser(id, callback) {                         <== "callback" added to function parameters.           
                                     setTimeout(function() {
@@ -155,6 +151,7 @@
         STEP 2: Add "callback()" with the code you want to return (e.g. user object):
         ==============================================================================
 
+
                                 function getUser(id, callback) {                                   
                                     setTimeout(function() {
                                         console.log('Reading a user from a database...');
@@ -163,23 +160,25 @@
                                 }
 
         
-        STEP 3: Call the "getUser" with 2 arguments: First argument for the id and Second argument with a function that
-                will be called with the argument "{ id: id, gitHubUsername: 'joe' }"
-        ================================================================================================================
+        STEP 3: Call the function 
+        ==========================
+        •   Call the "getUser" with 2 arguments: First argument for the id and Second argument with a function that
+            will be called with the argument "{ id: id, gitHubUsername: 'joe' }".
+        
 
-                                                takes "user" because we're passing a user object (i.e. { id: id, gitHubUsername: 'joe' })
-                                                    \
-                                getUser(1, function(user) {
-                                    console.log('User', user)   <== so "user" is passed the parameter "user" that was passed from the getUser callback function.
+                                getUser(1, function(user) {          <== function takes "user" because we're passing a user object (i.e. { id: id, gitHubUsername: 'joe' })
+                                    console.log('User', user)        <== so "user" is passed the parameter "user" that was passed from the getUser callback function.
                                 });    
 
-                o   The return of this program would be:
+
+                    o   The return of this program would be:
 
                                $ node index.js
                                 Before
                                 After
                                 Reading a user from a database...
                                 User { id: 1, gitHubUsername: 'joe' }     <== now the console prints the user object!
+
 
 
         OPTIONAL: Suppose you wanted add another layer of complexity by getting the repositories of this user:
@@ -206,7 +205,7 @@
                                     });
                                 });  
                     
-                o   The return of this program would be:
+                    o   The return of this program would be:
 
                                 $ node index.js
                                 Before
@@ -218,11 +217,12 @@
 */
 
 
+
 /* 
 4. What is "callback hell" and how do you avoid it?
 //////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •  "Callback Hell" or "Christmas tree problem" or "pyramid of doom" occurs when you have a nested structure of 
+    •  "Callback Hell" (or "Christmas tree problem" or "pyramid of doom") occurs when you have a nested structure of 
         callbacks one after the other and is usually the result of poor coding practices.
     •   To avoid Callback hell, you need to replace the anonymous functions with named functions.
 
@@ -238,13 +238,15 @@
                                     });
                                 }); 
      
+
     •   To avoid the nested "callback hell" structure, you need to replace the anonymous function with named functions.
             o   For example:
 
+
                                 getUser(1, getRepositories);                <== when you call getUser, you have the user (1) and then get repositories for that user (i.e. getRepositories)...
 
-                                function getRepositories(user) {                      <== This function takes the user object...
-                                   getRepositories(user.gitHubUsername, getCommits);  <== ... and then calls getRepositories and pass the reference of getCommits.
+                                function getRepositories(user) {                        <== This function takes the user object...
+                                   getRepositories(user.gitHubUsername, getCommits);    <== ... and then calls getRepositories and pass the reference of getCommits.
                                 }
                                 
                                 function getCommits(repos) {             <== This function becomes "getCommits" that takes an array of repos...
@@ -255,7 +257,8 @@
                                    console.log(commits);                   <== ... and displays them on the console.
                                 } 
                                 
-            o  So the logical flow of the functions above go as follows:
+                                
+            o  The logical flow of the functions above go as follows:
 
                     1.   When you call "getUser", you will get the repositories for that user.
                     2.   Then, when you get the repositories for that user, you pass the user name (e.g. gitHubUserName) and 
@@ -264,35 +267,44 @@
                     4.   FINALLY, you display the commits!
 */
 
+
+
 /* 
 5. What are promises and what are the different states or promises?
 ////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   A "promise" is an object that holds the eventual result of an asynchrnous operation.
+    •   A promise can have 3 different states: 
+            o   Pending.
+            o   Resolved (i.e. fulfilled).
+            o   Rejected 
+
 
 ==EXTENDED ANSWER==
-    •   When an asynchrnous operation completes, it can result in either another value or error.    
+    •   When an asynchronous operation completes, it can result in either another value or error.    
     •   A "promise" essentially promisses you to give you the result of an asynchronous operation. 
 
+
+==ADDITIONAL QUESTIONS==
     What are the three states that a promise can be in?
     ===================================================
     •   A Promise can be in one of three states: pending, fulfilled, or rejected.  
 
 
-                                                                        [ Fulfilled ] => If async operation completed successfully.
-                              [ Pending ]  -------Asynchronous-------->      -or-
-                                                   Operation            [ Rejected ]  => If aysn operation has an error.
+                                                          [ Fulfilled ] => If async operation completed successfully.
+                [ Pending ]  -------Asynchronous-------->      -or-
+                                     Operation            [ Rejected ]  => If aysn operation has an error.
 
 
-                o   Pending 
+                o   PENDING 
                     o   When you create a promise object, it will be in the pending state.
                     o   It can then kick-off some asynchronous operation.
 
-                o   Fulfilled (or "resolved")
+                o   RESOLVED (or FULFILLED)
                     o   When the result is ready, the promise can be "fulfilled" (or "resolved") which means the asynchronous operation
                         completed successfully, so you will have a value.
 
-                o   Rejected
+                o   REJECTED
                     o   Otherwise, if something went wrong with the execution of that asynchronous operation, then the promise will 
                         be in the "rejected" state.
 */
@@ -300,20 +312,21 @@
 
 
 /* 
-6. How do you use promises?
-///////////////////////////
+6. How do you use (i.e. consume) promises and how do you handle resolved and rejected promises?
+///////////////////////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   To use a promise, you need to create a constructor function (storing as a constant), add asynchronous work, and specify 
-        the resolve or rejection logic.  
-    •   Every promise has two methods: "then" and "catch".
-        o   When you call the promise to "consume" it, use ".then" for the result and ".catch" for
-            the error.
-        
+    •   To consume a promise, (assuming you have created a constructor function and store as a constant with asynchronous work 
+        as well as the resolve or rejection logic), you call the constant (e.g. "p" as in the example below).
+    •   Since promises have two methods (e.g. "then" and "catch"), when you call the promise to "consume" it, use ".then" 
+        for the result and ".catch" for the error.
+
+       
 ==EXAMPLE===
     STEP 1: Create a promise object:
     ================================
     •   First, use a constructor function to create a new promise which takes an argument.
         o   That argument is a function with two parameters, resolve and reject.
+
 
                         const p = new Promise(function(resolve, reject) {
                             // start some async work like access a database, etc.
@@ -325,17 +338,18 @@
     •   If there is a VALUE, then you want to return to the consumers of the promise. 
         o   So somewhere in the code we are going to consume the code because the promise object promises us that it will
             give us the result of an asynchronous operation.  
-    •   So we need to send the result to the consumer of the promise by using either the resolve or reject parameters.  
-    •   It is important to remember that the two paramters resolve and reject are functions, so we can call them and 
-        pass a value.
+        o   So we need to send the result to the consumer of the promise by using either the resolve or reject parameters.  
+        o   It is important to remember that the two paramters resolve and reject are functions, so we can call them and 
+            pass a value.
         
         
                         const p = new Promise(function(resolve, reject) {
-                            setTimeout(function() {                  <== timeOut function to simulate async work...
-                                resolve(1);                          <== after 2 seconds, this asynchronous operation will produce the value of 1.
+                            setTimeout(function() {                           <== timeOut function to simulate async work...
+                                resolve(1);                                   <== after 2 seconds, this asynchronous operation will produce the value of 1.
                             }, 2000);                                
-                            reject(new Error('message'));                <== call the reject function and pass an error message as an error object (best practice).
+                            reject(new Error('message'));                     <== call the reject function and pass an error message as an error object (best practice).
                         });
+
 
     STEP 3.1: If the asynchronous operation completes successfully, the promise is resolved:
     =======================================================================================
@@ -343,20 +357,22 @@
     •   When calling "p", use the "then" method to get the result.
         o   For example:
     
+
                         const p = new Promise(function(resolve, reject) {
                             setTimeout(function() {
-                                resolve(1);                    <== if resolved, return 1.
+                                resolve(1);                                   <== if resolved, return 1.
                             }, 2000);                                                    
                         });    
 
-                        p.then( function(result) {              <== call p, and "then" with an anonymous function with "result" being the "1" passed in.
+                        p.then( function(result) {                            <== call p, and "then" with an anonymous function with "result" being the "1" passed in.
                             console.log('Result', result);
                         });
 
             o   In console, the result will be:
 
                         $ node promise.js
-                        Result 1                               <== successfully resolved!
+                        Result 1                                               <== successfully resolved!
+
 
     STEP 3.2: If the asynchronous operation does NOT complete", the promise is rejected:
     ====================================================================================
@@ -365,21 +381,22 @@
 
                         const p = new Promise(function(resolve, reject) {
                             setTimeout(function() {
-                                reject(new Error('message'));       <== the async work here returns a rejection...
+                                reject(new Error('message'));                 <== the async work here returns a rejection...
                             }, 2000);                                                    
                         });
 
+
                         p.then( function(result) {                 
                             console.log('Result', result);
-                        }).catch(function(err) {                    <== the .catch method covers what happens in the event of a rejection.
+                        }).catch(function(err) {                              <== the .catch method covers what happens in the event of a rejection.
                             console.log('Error', err.message);
                         });
 
             o   In console, the result will be:
 
                         $ node promise.js
-                        Error message                               <== rejected!
-           
+                        Error message                                          <== rejected!
+            
 */
 
 
