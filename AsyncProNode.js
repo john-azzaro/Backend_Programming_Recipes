@@ -408,15 +408,14 @@
 7. How do you replace a callback with a promise?
 /////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   To replace callbacks with a promises, you need to:
-            1. Return a new Promise.    
+    •   To replace callbacks with a promise, you need to:
+            1. Add the new logic to return a new Promise.    
             2. Relocate your asynchronous work inside that new promise
             3. Change the "callback" to "resolve" (and even add an error if you choose).  
 
 ==PRACTICAL EXAMPLE==
         STEP 0: Observe the orginal getUser() function that uses a callback:
         ====================================================================                    
-
 
                             function getUser(id, callback) {
                                 setTimeout(function() {
@@ -441,7 +440,6 @@
         STEP 2: Replace the "callback" in the code body with "resolve" and remove "callback" from the function call signature.
         =======================================================================================================================
 
-
                             function getUser(id) {                                               <== remove "callback" from call signature.
                                 return new Promise(function(resolve, reject) {
                                     setTimeout(function() {
@@ -449,7 +447,7 @@
                                         resolve({ id: id, gitHubUsername: 'joe' });              <== change "callback" to "resolve".          
                                     }, 2000);
                                 });
-    */
+*/
 
 
 
@@ -457,7 +455,8 @@
 8. How do you consume promises?
 ///////////////////////////////
 ==SHORT ANSWER==
-    •   To consume a promise, you simply call an initial function and chain the ".then" method       
+    •   To consume a promise, you simply call an initial function and chain the ".then" and ".catch" methods
+        to account for the resolved or rejected instances when you run your asynchronous code.      
     
 ==PRACTICAL EXAMPLE==    
         o   When you used callback (and subsequently fell into callback hell), getUser looked like this:
@@ -480,71 +479,77 @@
 */
 
 
+
 /* 
-9. How do you create settled promises?
-///////////////////////////////////////
+9. How do you create settled promises and why would you use one?
+////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   A "settled promise" is a promise that is already resovled.
-    •   Settled promises are particularly useful when writing unit tests.
+    •   Settled promises are useful when writing unit tests.
+
 
     How do you create a promise that is already successfully resolved?
     ==================================================================
-    •   To return a promise that is already resolved, we call the promise class with the "resolve" static method.
-        o   Optionally, we can pass a value or something like a user object (i.e. {id:1} ).   
-    •   Then, when you call p.then(), the "result" will be a console.log with the result. 
+        •   To return a promise that is already resolved, we call the promise class with the "resolve" static method.
+            o   Optionally, we can pass a value or something like a user object (i.e. {id:1} ).   
+        •   Then, when you call p.then(), the "result" will be a console.log with the result. 
 
-                        const p = Promise.resolve( { id:1 });     
-                        p.then(result => console.log(result));    
+                            const p = Promise.resolve( { id:1 });     
+                            p.then(result => console.log(result));    
 
-                o   In the console, you will see this returned:
+                    o   In the console, you will see this returned:
 
-                        $ node promise-api.js
-                        { id: 1 }
+                            $ node promise-api.js
+                            { id: 1 }
 
 
     How do you create a promise that is already rejected?
     =====================================================
-    •   As best practice, it is best to use a native error object (i.e. new Error()) because it will include the callstack.
+        •   As best practice, it is best to use a native error object (i.e. new Error()) because it will include the callstack.
 
-                        const p = Promise.reject(new Error('This is a rejection message'));     
-                        p.then(result => console.log(result));    
+                            const p = Promise.reject(new Error('This is a rejection message'));     
+                            p.then(result => console.log(result));    
 
-                o   In the console, you will see this returned:
+                    o   In the console, you will see this returned:
 
-                        Error: This is a rejection message                                                    <== error message.
-                            at Object.<anonymous> (c:\Users\Admin\Desktop\async-demo\promise-api.js:5:26)     <== callstack that comes with every error object in js
-                            at Module._compile (module.js:652:30)
-                            at Object.Module._extensions..js (module.js:663:10)
-                            at Module.load (module.js:565:32)
-                            at tryModuleLoad (module.js:505:12)
-                            at Function.Module._load (module.js:497:3)
-                            at Function.Module.runMain (module.js:693:10)
-                            at startup (bootstrap_node.js:191:16)
-                            at bootstrap_node.js:612:3
+                            Error: This is a rejection message                                                    <== error message.
+                                at Object.<anonymous> (c:\Users\Admin\Desktop\async-demo\promise-api.js:5:26)     <== callstack that comes with every error object in js
+                                at Module._compile (module.js:652:30)
+                                at Object.Module._extensions..js (module.js:663:10)
+                                at Module.load (module.js:565:32)
+                                at tryModuleLoad (module.js:505:12)
+                                at Function.Module._load (module.js:497:3)
+                                at Function.Module.runMain (module.js:693:10)
+                                at startup (bootstrap_node.js:191:16)
+                                at bootstrap_node.js:612:3
 */
+
 
 
 /* 
 10. How do you run promises in parallel?
 /////////////////////////////////////////
 ==SHORT ANSWER==
-   •  To run promises in parallel, you simply need to use Promise.all([]) and within the array add your promises you wish to do
-      something when they both complete.
-      
+   •   To run promises in parallel, you simply need to use Promise.all([ ]).
+        o   Within the array add your promises you wish to do something when they both complete.
+
+==EXAMPLE==
+
+                        Promise.all([callApi1, callApi2]);    
+
+
 ==EXTENDED ANSWER==
     •   If you want a few asynchronous operations in parallel (i.e. at the same time), and when ALL of they complete you want 
         to do something.
             o   For example, you may have an app that calls wikipedia, youtube, and dictionary.com at the same time.
             o   When the result of all three of these asynchronous operations are ready, then you return something to the client. 
-
     •   Using the Promise class, you can use the method "all" to execute all the promise you want when they all complete.
     •   Inside the ".all" method, we use an array to gather our promises to execute when they are all complete.
     •   When the result of "Promise.all" is ready, it will be available as an ARRAY.
-
     •   Note that with this operation there is no real concurrency (no multithreading), we still have a single thread.
             o   The single thread is kicking off multiple asynchrnous operations at almost the same time with Promise.all()
    
-==EXAMPLE==
+==PRACTICAL EXAMPLE==
 
     STEP 0: Suppose you have two API's that, when they finish thier asynchronous operation, you want to do something:
     =================================================================================================================
@@ -562,6 +567,7 @@
                                 resolve(2);                               <== Promise is resovled with the value 2
                             }, 2000);
                         });
+
 
     STEP 1: When both asynchronous operations complete, you want to do something after by using Promise.all():
     ==========================================================================================================
@@ -638,19 +644,31 @@ What is async and await?
 ////////////////////////
 ==SHORT ANSWER==
    •   "Async and await" helps you write asynchronous code like synchronous code.  
-                    
+   •   In the Async and await approach, you simply add your code with "await" modifier to a function with an "async" modifier 
+   
 ==EXAMPLE==
-    •   In the Promise-based approach (which we will rewrite into the async and await approach), we have this:                    
+
+                        async function displayCommits() {                                    <== "async" modifer added to function
+                            const user = await getUser(1);                                   <== "await" modfier added
+                            const repos = await getRepositories(user.gitHubUsername);                                       
+                            const commits = await getCommits(repos[0]);
+                            console.log(commits);
+                         }
+
+
+==PRACTICAL EXAMPLE==
+
+    STEP 0: In the Promise-based approach (which we will rewrite into the async and await approach), we have this:                    
+    ==============================================================================================================
+    
 
                         getUser(1)
                             .then (user => getRepositories(user.gitHubUsername))
                             .then (repos => getCommits(repos[0]))
                             .then(commits => console.log('Commits', commits))
                             .catch(err => console.log('Error', err.message));
+                               
 
-                            
-    •   In the Async and await approach, you simply  
-    
 
     STEP 1: For each function (i.e. getUser, getRepositories, etc), add "await" and store to a constant variable:
     =============================================================================================================
@@ -676,6 +694,7 @@ What is async and await?
     •   When you use the "await" operator in a function, you need to declare a function with the "async" modifier.
     •   In the example below, after all the asynchronous operations, the eventual result will display the commits, thus "displayCommits".
 
+
                         Because you use "await" inside the function, declare the "async" modifier.
                                 \
                                 async function displayCommits() {
@@ -684,6 +703,7 @@ What is async and await?
                                         const commits = await getCommits(repos[0]);
                                         console.log(commits);
                                 }
+
 
                 o   When you call "displayCommits()", you will get the same result as the Promise-based appraoch                 
 
@@ -711,55 +731,56 @@ What is async and await?
                         }
 
 
-==PRACTICAL EXAMPLE==
 
-                        async function notifyMember() {
-                            try {
-                                const member = await getMember(1);
-                                console.log('member: ', member);
-                                if (member.isMember) {
-                                    const movies = await getArticles();
-                                    console.log('Top movies: ', movies);
-                                    await sendEmail(member.email, movies);
-                                    console.log('Email sent...');
+==SECOND PRACTICAL EXAMPLE ==
+
+                            async function notifyMember() {
+                                try {
+                                    const member = await getMember(1);
+                                    console.log('member: ', member);
+                                    if (member.isMember) {
+                                        const movies = await getArticles();
+                                        console.log('Top movies: ', movies);
+                                        await sendEmail(member.email, movies);
+                                        console.log('Email sent...');
+                                    }
+                                }
+                                catch (err) {
+                                    console.log('Error', err.message);
                                 }
                             }
-                            catch (err) {
-                                console.log('Error', err.message);
-                            }
-                            }
 
-                            notifyMember();
+                            notifyMember();                                                      
 
 
                             function getMember(id) {
-                            return new Promise((resolve, reject) => {
-                                setTimeout(() => {
-                                resolve({ 
-                                    id: 1, 
-                                    name: 'John Smith', 
-                                    isMember: true, 
-                                    email: 'johnsmith@gmail.com' 
+                                return new Promise((resolve, reject) => {
+                                    setTimeout(() => {
+                                    resolve({ 
+                                        id: 1, 
+                                        name: 'John Smith', 
+                                        isMember: true, 
+                                        email: 'johnsmith@gmail.com' 
+                                    });
+                                    }, 4000);  
                                 });
-                                }, 4000);  
-                            });
                             }
 
 
                             function getArticles() {
-                            return new Promise( (resolve, reject) => {
-                                setTimeout(() => {
-                                resolve(['How to be awesome', '10 ways to stay awesome']);
-                                }, 4000);
-                            });
+                                return new Promise( (resolve, reject) => {
+                                    setTimeout(() => {
+                                    resolve(['How to be awesome', '10 ways to stay awesome']);
+                                    }, 4000);
+                                });
                             }
 
                             function sendEmail(email, articles) {
-                            return new Promise( (resolve, reject) => {
-                                setTimeout(() => {
-                                resolve();
-                                }, 4000);
-                            })
+                                return new Promise( (resolve, reject) => {
+                                    setTimeout(() => {
+                                    resolve();
+                                    }, 4000);
+                                })
                             }
 
 */
