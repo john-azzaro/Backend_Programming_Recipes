@@ -238,16 +238,20 @@ What is a schema?
 ////////////////////
 ==SHORT ANSWER==
    •   A "schema" is used to define the shape (i.e. layout of properties) of documents within a collection in MongoDB.
-   •   A schema is used to define the properties we have in a collection's document.     
+   •   A schema is used to define the properties we have in a collection's document.  
+   •   In other words, a schema is a template that you can plug data into and save in a collection in MongoDB.  
+
 
 ==EXAMPLE==
+    •   Think of schemas like the difference between Classes and objects.  
+        o   A Class would be a human.
+        o   An object would be a person named "Joe". 
                     
-       
 
 =+EXTENDED ANSWER==
    •   In MongoDB Compass for each database you will see "collections".
-   •   A "documents" in a MongoDB "collection", you have a document lihe this with a     
-        
+   •   A "document" in a MongoDB "collection" is an individual instance of each schema with unique values in the standard properties.
+
    How do you create a schema?
    ===========================
 
@@ -261,6 +265,7 @@ What is a schema?
         STEP 2: Because this creates a new instance of the class, you pass an object with the key/value 
                 pairs in the course documents:
         ===============================================================================================
+        •   This course "schema" will define the shape (layout) of the course documents (individual instances) in the Mongo database.
 
                     const courseSchema = new mongoose.Schema({
                         name: String,                                <== name key with value that will be a String
@@ -281,6 +286,14 @@ What is a schema?
             o  Boolean              
             o  ObjectID         <== used for assinging unique identifiers.     
             o  Array             
+*/
+
+
+
+/* 
+How do you create and save a document based on a schema?
+////////////////////////////////////////////////////////
+
 */
 
 
