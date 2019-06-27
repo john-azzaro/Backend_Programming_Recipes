@@ -296,19 +296,36 @@ What is a schema?
 What is a Model and how do you create and save a document based on a schema?
 /////////////////////////////////////////////////////////////////////////////
     •   To create a class (i.e. course), you need to compile a schema into a model.
-    •            
+          
     
     
-    STEP 1: Create a course class in the application:
-    =================================================
-    • Create a mongoose object with the method "model" with 2 arguments, the name of the collection the model is 
-      for and the second is the name of the schema that defines the documents in this collection:
+    STEP 1: Create a course "class" in the application:
+    ===================================================
+    •   Create a mongoose object with the method "model" with 2 arguments, the name of the collection the model is 
+        for and the second is the name of the schema that defines the documents in this collection:
+            o   First argument is the collection you want to apply the schema to.
+            o   Second argument is the schema model you want to use for the collection you just specified.
+    •   Then set as a constant with the name "Course" with a capital.
+            o   Remember, capital is using pascal naming conventions to denote a Class (i.e. not an object).
+    •   Once you do this, you can create an object based on this class.
    
-                               collection name
-                                      \
-                    mongoose.model('Course', courseSchema);
-                                                  \
-                                                schema blueprint
+
+                                       collection name
+                                                \
+                const Course = mongoose.model('Course', courseSchema);
+                       /                                       \
+                   Class name                                schema blueprint
+                                                                    |      
+                                                                    |
+                                                                   \|/
+                                                                    const courseSchema = new mongoose.Schema({
+                                                                        name: String,
+                                                                        author: String,
+                                                                        tags: [ String ],
+                                                                        date: { type: Date, default: Date.now },
+                                                                        isPublished: Boolean
+                                                                    });
+
 
 
     STEP 2: 
