@@ -312,13 +312,14 @@
 
 
 /* 
-6. How do you use (i.e. consume) promises and how do you handle resolved and rejected promises?
-///////////////////////////////////////////////////////////////////////////////////////////////
+6. How do you create promises and how do you handle resolved and rejected promises?
+/////////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   To consume a promise, (assuming you have created a constructor function and store as a constant with asynchronous work 
-        as well as the resolve or rejection logic), you call the constant (e.g. "p" as in the example below).
-    •   Since promises have two methods (e.g. "then" and "catch"), when you call the promise to "consume" it, use ".then" 
-        for the result and ".catch" for the error.
+    •   To create a promise, create a constructor function and store as a constant with asynchronous work 
+        as well as the resolve or rejection logic.
+    •   To use the promise, you call the constant (e.g. "p" as in the example below) and use "then" and "catch".
+            o   Use ".then" for successful resolution. 
+            o   Use ".catch" for the error.
 
        
 ==EXAMPLE===
@@ -333,8 +334,8 @@
                         });
 
 
-    STEP 2: In the body of the function, when the async work is complete, you need to have either a value or an error.
-    ==================================================================================================================
+    STEP 2: When the async work is complete, your code will return a "resolve" function or a "reject" function.
+    ============================================================================================================
     •   If there is a VALUE, then you want to return to the consumers of the promise. 
         o   So somewhere in the code we are going to consume the code because the promise object promises us that it will
             give us the result of an asynchronous operation.  
@@ -351,11 +352,11 @@
                         });
 
 
-    STEP 3.1: If the asynchronous operation completes successfully, the promise is resolved:
-    =======================================================================================
+    STEP 3.1: If the asynchronous operation completes successfully, the promise is resolved with ".then":
+    ====================================================================================================
     •   The state of this promise changes from "pending" to "resolved".
     •   When calling "p", use the "then" method to get the result.
-        o   For example:
+            o   For example:
     
 
                         const p = new Promise(function(resolve, reject) {
@@ -368,16 +369,18 @@
                             console.log('Result', result);
                         });
 
-            o   In console, the result will be:
+
+                o   In console, the result will be:
 
                         $ node promise.js
                         Result 1                                               <== successfully resolved!
 
 
-    STEP 3.2: If the asynchronous operation does NOT complete", the promise is rejected:
-    ====================================================================================
+    STEP 3.2: If the asynchronous operation does NOT complete, the promise is rejected using ".catch":
+    =================================================================================================
     •   The state of this promise changes from "pending" to "rejected". 
-    •   When calling "p", we chain ".then" for the result and, if there is an error, chain ".catch" to get the rejection.                 
+            o   When calling "p", we chain ".then" for the result and, if there is an error, chain ".catch" to get the rejection.                 
+
 
                         const p = new Promise(function(resolve, reject) {
                             setTimeout(function() {
@@ -392,11 +395,11 @@
                             console.log('Error', err.message);
                         });
 
+
             o   In console, the result will be:
 
                         $ node promise.js
-                        Error message                                          <== rejected!
-            
+                        Error message                                          <== rejected!          
 */
 
 
@@ -404,42 +407,49 @@
 /* 
 7. How do you replace a callback with a promise?
 /////////////////////////////////////////////////
-    •   To replace callbacks with a promises, you simple need relocate your asynchronous work inside a new promise
-        and change the "callback" to "resolve" (and even add an error if you choose).  
+==SHORT ANSWER==
+    •   To replace callbacks with a promises, you need to:
+            1. Return a new Promise.    
+            2. Relocate your asynchronous work inside that new promise
+            3. Change the "callback" to "resolve" (and even add an error if you choose).  
 
-    STEP 0: Observe the orginal getUser() function that uses a callback:
-    ====================================================================                    
+==PRACTICAL EXAMPLE==
+        STEP 0: Observe the orginal getUser() function that uses a callback:
+        ====================================================================                    
 
-                        function getUser(id, callback) {
-                            setTimeout(function() {
-                                console.log('Reading a user from a database...');
-                                callback({ id: id, gitHubUsername: 'joe' });                       
-                            }, 2000);
-                        }
 
-        
-    STEP 1: First, the getUser() function should return a promise:
-    ==============================================================
-
-                        function getUser(id, callback) {
-                            return new Promise(function(resolve, reject) {                 <== return a new promise with a function as an argument...
+                            function getUser(id, callback) {
                                 setTimeout(function() {
                                     console.log('Reading a user from a database...');
                                     callback({ id: id, gitHubUsername: 'joe' });                       
                                 }, 2000);
-                            });
+                            }
 
-    STEP 2: Replace the "callback" in the code body with "resolve" and remove "callback" from the function call signature.
-    =======================================================================================================================
+            
+        STEP 1: First, the getUser() function should return a promise:
+        ==============================================================
 
-                        function getUser(id) {                                               <== remove "callback" from call signature.
-                            return new Promise(function(resolve, reject) {
-                                setTimeout(function() {
-                                    console.log('Reading a user from a database...');
-                                    resolve({ id: id, gitHubUsername: 'joe' });              <== change "callback" to "resolve".          
-                                }, 2000);
-                            });
-*/
+                            function getUser(id, callback) {
+                                return new Promise(function(resolve, reject) {                 <== return a new promise with a function as an argument...
+                                    setTimeout(function() {
+                                        console.log('Reading a user from a database...');
+                                        callback({ id: id, gitHubUsername: 'joe' });                       
+                                    }, 2000);
+                                });
+
+
+        STEP 2: Replace the "callback" in the code body with "resolve" and remove "callback" from the function call signature.
+        =======================================================================================================================
+
+
+                            function getUser(id) {                                               <== remove "callback" from call signature.
+                                return new Promise(function(resolve, reject) {
+                                    setTimeout(function() {
+                                        console.log('Reading a user from a database...');
+                                        resolve({ id: id, gitHubUsername: 'joe' });              <== change "callback" to "resolve".          
+                                    }, 2000);
+                                });
+    */
 
 
 
