@@ -364,7 +364,7 @@ How do you save a document (based on a schema) to Mongo database?
 
 ==PRACTICAL EXAMPLE==
 
-    STEP 1: 
+    STEP 0: 
     ===============================================================
     •   const result = await course.save()
 
@@ -383,15 +383,17 @@ How do you save a document (based on a schema) to Mongo database?
 
 
 async function createCourse() {
-    const course = new Course({                  <== create a course object 
+    const course = new Course({                  <== create a course object...
         name: 'Italian Cooking Course',
         author: 'Joe Franco',
         tags: ['italian', 'food'],
         isPublished: true
     });
-    const result = await course.save();
-    console.log(result)
+    const result = await course.save();           <== save it...
+    console.log(result)                           <== and display on the console.
 }
+
+createCourse();
 
 
 
