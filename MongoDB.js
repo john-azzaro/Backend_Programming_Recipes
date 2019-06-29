@@ -359,8 +359,13 @@ How do you save a document (based on a schema) to Mongo database?
 ==SHORT ANSWER==
     •   To save the new objects (that are modeled on repsective schemas), you use the method ".save()" on your new object,
         which in this case is "course".
+
+==EXTENDED ANSWER==
     •   ".save()" is an asynchronous operation because it will take time to save the "course" to the database because we 
-        need to access the file system.
+        need to access the file system (thus it is an asynchronous operation) which will be ready in the future.
+    •   The result of ".save()" will be ready in the future.                    
+    •   In turn, ".save()" returns a promise, so you can "await" it and get the result.
+
 
 ==PRACTICAL EXAMPLE==
 
@@ -374,7 +379,7 @@ How do you save a document (based on a schema) to Mongo database?
 
 
     •   The result of ".save()" will be ready in the future.
-    •   ".save()" returns a promise, so you can "await" it and get the result.
+    
 
 
 
