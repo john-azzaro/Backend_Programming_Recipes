@@ -357,8 +357,19 @@ What is a Model and how do you create one?
 How do you save a document (based on a schema) to Mongo database?
 ///////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   To save the new objects (that are modeled on repsective schemas), you use the method ".save()" on your new object,
-        which in this case is "course".
+    •   To save the new objects, create a new function 
+    
+    
+    
+    
+    you use the method ".save()" on your new object by adding it directly following your
+        new schema object.
+
+==EXAMPLE==
+
+            const result = await course.save()
+                    \
+                 "result" is the course object that is saved to the database.
 
 ==EXTENDED ANSWER==
     •   ".save()" is an asynchronous operation because it will take time to save the "course" to the database because we 
@@ -369,36 +380,32 @@ How do you save a document (based on a schema) to Mongo database?
 
 ==PRACTICAL EXAMPLE==
 
-    STEP 0: 
-    ===============================================================
-    •   const result = await course.save()
+    STEP 0:
+    ================================== 
+                                                
+                        const course = new Course({                              <== create a "new Course" and pass an object that fills the schema model...
+                            name: 'Italian Cooking Course',
+                            author: 'Joe Franco',
+                            tags: ['italian', 'food'],
+                            isPublished: true                                    <== note here that "date" was already defined to have a defautl value so you dont need it here. 
+                        });
 
 
 
 
 
+                        async function createCourse() {                  <== add async m
+                            const course = new Course({                  <== create a course object...
+                                name: 'Italian Cooking Course',
+                                author: 'Joe Franco',
+                                tags: ['italian', 'food'],
+                                isPublished: true
+                            });
+                            const result = await course.save();           <== save it...
+                            console.log(result)                           <== and display on the console.
+                        }
 
-    •   The result of ".save()" will be ready in the future.
-    
-
-
-
-
-
-
-
-async function createCourse() {
-    const course = new Course({                  <== create a course object...
-        name: 'Italian Cooking Course',
-        author: 'Joe Franco',
-        tags: ['italian', 'food'],
-        isPublished: true
-    });
-    const result = await course.save();           <== save it...
-    console.log(result)                           <== and display on the console.
-}
-
-createCourse();
+                        createCourse();
 
 
 
