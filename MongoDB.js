@@ -425,13 +425,66 @@ How do you save a document (based on a schema) to Mongo database?
 
                         $ node index.js
                         Connected to MongoDB...
-                        { tags: [ 'italian', 'food' ],
-                        _id: 5d17e75a3d52921858ce5658,
+                        { tags: [ 'italian', 'food' ],               <== this is the document that is stored in MongoDB!
+                        _id: 5d17e75a3d52921858ce5658,               <== Note that MongoDB assigned a unique identifier as well!
                         name: 'Italian Cooking Course',
                         author: 'Joe Franco',
                         isPublished: true,
-                        date: 2019-06-29T22:34:02.188Z,
+                        date: 2019-06-29T22:34:02.188Z,              <== also note the default that is Date.now!
                         __v: 0 }
+
+
+    •   And when you check compass, your mongo database, you will see under "documents" your new object saved to the database. 
+    
+
+    OPTIONAL: To create another document, you would simply change the values of your object and run again.
+    =======================================================================================================
+    •   And when you check compass again, you will have another document added below with the new information.
+*/
+
+
+/* 
+How do you query (i.e. retrieve) documents from a Mongo database?
+/////////////////////////////////////////////////////////////////
+==SHORT ANSWER==
+    •   To retrieve documents from a Mongo database, within an async function you use the ".find" method on your given Class (in this case Course). 
+
+==EXTENDED ANSWER==
+    •   Note that There are a few variations of the ".find" method, including:
+            o   ".find" to find a list of documents.
+            o   ".findByID" which finds the document by ID.
+            o   ".findOne" which returns a single document.
+            o   etc. 
+    
+==PRACTICAL EXAMPLE==
+
+                        async function getCourses() {
+                            const courses = await Course.find();    <== gets all of the existing documents in the database.
+                        }                                     
+                        getCourses();                       
+                        
+                o   In the console, you will see all the current documents in your database.
+
+                        $ node index.js
+                        Connected to MongoDB...
+                        [ { tags: [ 'italian', 'food' ],
+                            _id: 5d153cee8f15e62a6cc54372,
+                            name: 'Italian Cooking Course',
+                            author: 'Joe Franco',
+                            isPublished: true,
+                            date: 2019-06-27T22:02:22.484Z,
+                            __v: 0 },
+                        { tags: [ 'french', 'paris' ],
+                            _id: 5d17ea0ec72d880db8ae89a8,
+                            name: 'French Cooking Course',
+                            author: 'Joe Schmo',
+                            isPublished: true,
+                            date: 2019-06-29T22:45:34.620Z,
+                            __v: 0 } ]
+
+
+                                
+
 
 
 
