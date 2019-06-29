@@ -357,61 +357,81 @@ What is a Model and how do you create one?
 How do you save a document (based on a schema) to Mongo database?
 ///////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   To save the new objects, create a new function 
+    •   To save the new objects, create a new async/await function and directly after your new object, add the ".save" method to your
+        new object and store the "result" as a constant.
+            o   This will save the course to MongoDB and this will be assigned a unique identifier for the document (i.e document) 
+                and when "result" is finally stored, you can see the id assigned to it.
     
-    
-    
-    
-    you use the method ".save()" on your new object by adding it directly following your
-        new schema object.
-
 ==EXAMPLE==
-
-            const result = await course.save()
+ 
+                            "await"...        ... the promise of the course object which uses the method ".save"...    
+                             /                /
+            const result = await course.save() 
                     \
-                 "result" is the course object that is saved to the database.
-
-==EXTENDED ANSWER==
-    •   ".save()" is an asynchronous operation because it will take time to save the "course" to the database because we 
-        need to access the file system (thus it is an asynchronous operation) which will be ready in the future.
-    •   The result of ".save()" will be ready in the future.                    
-    •   In turn, ".save()" returns a promise, so you can "await" it and get the result.
+                     ...and store the course object as "result" to the database.
 
 
 ==PRACTICAL EXAMPLE==
 
-    STEP 0:
+    STEP 0: With your new object...
     ================================== 
-                                                
-                        const course = new Course({                              <== create a "new Course" and pass an object that fills the schema model...
+                        ...                        
+                        const course = new Course({                    <== create a course object...              
                             name: 'Italian Cooking Course',
                             author: 'Joe Franco',
                             tags: ['italian', 'food'],
-                            isPublished: true                                    <== note here that "date" was already defined to have a defautl value so you dont need it here. 
+                            isPublished: true                                   
                         });
+                        ...
+                        ...
+                        
 
-
-
-
-
-                        async function createCourse() {                  <== add async m
-                            const course = new Course({                  <== create a course object...
+    STEP 1:  Insert the object into a new async function...
+    ==============================================================
+    
+                        async function createCourse() {                  <== add async/await function...
+                            const course = new Course({                  
                                 name: 'Italian Cooking Course',
                                 author: 'Joe Franco',
                                 tags: ['italian', 'food'],
                                 isPublished: true
                             });
-                            const result = await course.save();           <== save it...
-                            console.log(result)                           <== and display on the console.
+                            ...
+                            ...
                         }
-
                         createCourse();
 
+    STEP 2: Save the object to mongoDB:
+    ===================================
+    •   ".save()" is an asynchronous operation because it will take time to save the "course" to the database because we 
+        need to access the file system (thus it is an asynchronous operation) which will be ready in the future.                   
+            •   So ".save()" returns a promise which we can "await" and get the result.
 
 
+                        async function createCourse() {
+                            const course = new Course({
+                                name: 'Italian Cooking Course',
+                                author: 'Joe Franco',
+                                tags: ['italian', 'food'],
+                                isPublished: true
+                            });
+                            const result = await course.save();        <== await the async operation of course.save()...
+                            console.log(result)                        <== and log result to the console.
+                        }
+                        createCourse();
+                
 
+                o   The result in the console should be:
 
-
+                        $ node index.js
+                        Connected to MongoDB...
+                        { tags: [ 'italian', 'food' ],
+                        _id: 5d17e75a3d52921858ce5658,
+                        name: 'Italian Cooking Course',
+                        author: 'Joe Franco',
+                        isPublished: true,
+                        date: 2019-06-29T22:34:02.188Z,
+                        __v: 0 }
 
 
 
