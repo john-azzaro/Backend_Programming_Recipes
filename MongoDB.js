@@ -483,8 +483,28 @@ How do you query (i.e. retrieve) documents from a Mongo database?
                             __v: 0 } ]
 
 
+    How do you filter queried documents?
+    =====================================
+    •   To filter queried documents, you simply pass an argument in the .find() method and add one or more
+        key/value pairs to filter for your deisred document.
                                 
+                        async function getCourses() {
+                            const courses = await Course.find( { tags: 'italian'} );     <== passed an object with key/value pairs for filtering.
+                        }                                     
+                        getCourses();      
 
+
+                o   In the console, you will see all the current documents in your database.
+
+                        $ node index.js
+                        Connected to MongoDB...
+                        [ { tags: [ 'italian', 'food' ],                                <== MongoDB returns the object with the tag "italian" in it.
+                            _id: 5d153cee8f15e62a6cc54372,
+                            name: 'Italian Cooking Course',
+                            author: 'Joe Franco',
+                            isPublished: true,
+                            date: 2019-06-27T22:02:22.484Z,
+                            __v: 0 } ]
 
 
 
