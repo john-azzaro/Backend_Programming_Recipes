@@ -528,21 +528,12 @@ How do you build queries (i.e. retrieve documents from a Mongo database)?
 /* 
 What are comparison operators and how do you use them?
 //////////////////////////////////////////////////////
+==SHORT ANSWER==
     •   Comparison operators enhance querying power.
-            o   For example, suppose you are looking for a course that costs 10:
+    •   To use a comparison operator, you replace a simple value with an object to express our query and use an operator like greater-than X,
+        less-than X, etc.
 
-                        .find( { price: 10 } )
-
-            o   Now suppose you wanted to look for courses that were at and above 10 dollars:
-            o   To do this, you would use a comparison operator.
-
-                        .find( { price: 10} )
-                
-            o   Since the query is a JSON object in JavaScript, which itself is collection of key/value pairs.
-            o    
-
-
-
+==EXTENDED ANSWER==
     •   In MongoDB, you have a bunch of operators for comparing values.
     •   Since mongoose is built on top of the MongoDB driver, the standard operators that Mongo understands are also available in mongoose.
     •   Here are a few comparison operators we can use:
@@ -553,9 +544,39 @@ What are comparison operators and how do you use them?
             o   lt (less than)
             o   lte (less than or equal to)   
             o   in (in)
-            o   nin (not in)                  
+            o   nin (not in)    
 
+==EXAMPLE==
+    Finding a specific value:
+    =========================
+            o   For example, suppose you are looking for a course that costs 10:
 
+                    .find( { price: 10 } )
+
+    Finding a value ABOVE a certain value:
+    ============================================
+            o   Now suppose you wanted to look for courses that were at and above 10 dollars:
+            o   To do this, you would use a comparison operator.
+
+                    .find( { price: { $gt: 10 } })
+
+    Finding a value AT OR ABOVE a certain value:
+    ============================================
+            o   To find a price greater than or equal to 10...
+
+                    .find( { price: { $gte: 10 } })    
+
+    Finding a value within a given range:
+    ==================================
+            o   To find a price greater than or equal to 10 AND less than or equal to 20...
+
+                    .find( { price: { $gte: 10, $lte: 20 } })
+
+    Finding multiple values:
+    ========================
+            o   To find multiple prices such as 10, 15, and 20, you use an array with the multiple values inside...
+
+                    .find( { price: { $in: [10, 15, 20]} })    
 */
 
 
