@@ -443,9 +443,11 @@ How do you save a document (based on a schema) to Mongo database?
 */
 
 
+
+
 /* 
-How do you query (i.e. retrieve) documents from a Mongo database?
-/////////////////////////////////////////////////////////////////
+How do you build queries (i.e. retrieve documents from a Mongo database)?
+//////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   To retrieve documents from a Mongo database, within an async function you use the ".find" method on your given Class (in this case Course). 
 
@@ -487,6 +489,8 @@ How do you query (i.e. retrieve) documents from a Mongo database?
     =====================================
     •   To filter queried documents, you simply pass an argument in the .find() method and add one or more
         key/value pairs to filter for your deisred document.
+    •   Remember that you can filter with more than one key/value pair, so you could search for a key word AND
+        return only, such as in the example below, those which have been published.  
                                 
                         async function getCourses() {
                             const courses = await Course.find( { tags: 'italian'} );     <== passed an object with key/value pairs for filtering.
@@ -507,7 +511,49 @@ How do you query (i.e. retrieve) documents from a Mongo database?
                             __v: 0 } ]
 
 
+    How do you add more querying options?
+    =======================================
+    •   To add more querying options, you simply chain additional methods to narrow down your search using dot-notation.
 
+                                                                   find document with "italian" tags        sort (i.e. order) in ascending order... -1 is in descending order.
+                        async function getCourses() {                  /                                    /
+                            const courses = await Course.find( { tags: 'italian'} ).limit(10).sort( { name: 1 } ).select( { name: 1, tags: 1 } );
+                            console.log(courses)                                           \                         \
+                        }                                                               limit results to 10          select the properties we want returned... 1 means return them
+
+*/
+
+
+
+/* 
+What are comparison operators and how do you use them?
+//////////////////////////////////////////////////////
+    •   Comparison operators enhance querying power.
+            o   For example, suppose you are looking for a course that costs 10:
+
+                        .find( { price: 10 } )
+
+            o   Now suppose you wanted to look for courses that were at and above 10 dollars:
+            o   To do this, you would use a comparison operator.
+
+                        .find( { price: 10} )
+                
+            o   Since the query is a JSON object in JavaScript, which itself is collection of key/value pairs.
+            o    
+
+
+
+    •   In MongoDB, you have a bunch of operators for comparing values.
+    •   Since mongoose is built on top of the MongoDB driver, the standard operators that Mongo understands are also available in mongoose.
+    •   Here are a few comparison operators we can use:
+            o   eq (equal)
+            o   ne (not equal)
+            o   gt (greater than)
+            o   gte (greater than or equal to)
+            o   lt (less than)
+            o   lte (less than or equal to)   
+            o   in (in)
+            o   nin (not in)                  
 
 
 */
