@@ -526,8 +526,8 @@ How do you build queries (i.e. retrieve documents from a Mongo database)?
 
 
 /* 
-What are comparison operators and how do you use them?
-//////////////////////////////////////////////////////
+What are comparison operators and how do you use them while querying documents?
+///////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Comparison operators enhance querying power.
     •   To use a comparison operator, you replace a simple value with an object to express our query and use an operator like greater-than X,
@@ -581,7 +581,76 @@ What are comparison operators and how do you use them?
 
 
 
+/* 
+What are logical query operators and how do you use them while querying documents?
+/////////////////////////////////////////////////////////////////////////////////
+==SHORT ANSWER==    
+    •   logical query operators consist of either ".or" or ".and" methods which filter based on either "or" or "and" logical conditions.
+    •   To use logical query operators, you first use the .find method WITHOUT any filters and then
+        chain ".or" or ".and" folloing it.
+            o   When you use ".or", you pass an ARRAY and inside that array pass one or more filters (i.e. objects).
+            o   When you sue ".and", you also pass an array and one or more object filters.
 
+==EXAMPLE==
+
+                    .find().or([ { author: "Joe Franco"}, { isPublished: true} ])
+                    .find().and([ { author: "Joe Franco"}, { isPublished: true} ])
+*/
+
+
+
+/* 
+What are regular expressions and how do you use them while querying documents?
+//////////////////////////////////////////////////////////////////////////////
+    •   Regular expressions allow you to have more control over filtering strings.
+    •   To use a regular expressions, replace the value with a pattern between forward slashes (i.e. /pattern/ ).                     
+
+==EXAMPLE==
+
+    •   If you are looking for an author "Joe", add a carot symbol (i.e. ^) to the beginning of the string:
+        
+                    .find( { author: /^Joe/ } )           <== The carot symbol (i.e. ^) represents a string that starts with something, in this case Joe.
+
+    •   If you want to look for an author which ENDS with a specific string, add cash sign to the end of the string: 
+
+                    .find( { author: /Franco$/ } )          <==add the forward slashes, the string and a dollar sign ($ represents the end of string) at the end.
+
+    •   If you want to make either of these case insensitive, you add an "i" to the end:
+
+                    .find( { author: /^Joe/i } ) 
+                    .find( { author: /Franco$/i } ) 
+
+    •   If you want to look for a specific word in the string, you add ".*" to the beginning and end of the string:
+
+                    .find( { author: /.*Joe.* / } )     <== this means that we can have 0 or more characters before or after "Joe".
+
+*/
+
+
+
+
+/* 
+How do you find out how many documents you have in your database?
+//////////////////////////////////////////////////////////////////
+==SHORT ANSWER==
+    •   To find out how many documents you have in your database, you need to use ".count"   
+    
+==EXAMPLE==
+
+                        async function getCourses() {
+                            const courses = await Course
+                                .find( author: "Joe Franco", isPublished: true)
+                                .count();                                            <== this will return the number of documents in your database
+                            console.log(courses)        
+                        }
+*/
+
+
+/* 
+What is pagination and how do you use it while querying documents?
+///////////////////////////////////////////////////////////////////
+
+*/
 
 
 
