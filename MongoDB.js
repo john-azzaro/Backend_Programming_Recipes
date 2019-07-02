@@ -653,7 +653,8 @@ What is pagination and how do you use it while querying documents?
     •   Closely related to the ".limit" method, the ".skip" is used to implement pagination by escaping all the documents in the 
         previous page using the formula:  .skip((pageNumber - 1) * pageSize)    
     
-                    ==EXAMPLE==   
+==EXAMPLE==   
+
                     async function getCourses() {
                         const pageNumber = 2;           <== although these are hard coded here, these would be query string parameters (i.e. ${pageNumber}) via api.
                         const pageSize = 10;            <== same thing here too
@@ -665,10 +666,24 @@ What is pagination and how do you use it while querying documents?
                             .select( { name: 1, tags: 1} );
                         console.log(courses)
                     }
+*/
+
+
+
+/* 
+How do you update document in the MongoDB database?
+///////////////////////////////////////////////////
+==SHORT ANSWER==
+
+
 
 
 
 */
+
+
+
+
 
 
 
