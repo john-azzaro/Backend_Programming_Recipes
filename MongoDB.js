@@ -695,18 +695,46 @@ How do you update document in the MongoDB database?
         =================================================================
 
                         async function updateCourse(id) {          <== async function with id passed in.
-                            // code here...
+                            ...
+                            ...
+                            ...
+                            ...
                         }
 
         STEP 2: Find the course by the given ID:
         ========================================
 
                         async function updateCourse(id) {
-                            await Course.findById(id);                    <== await the promise Course object, and with the "findById", pass in the "id" you want to find
+                            const course = await Course.findById(id);          <== await the promise Course object, and with the "findById", pass in the "id" you want to find.
+                            ...
+                            ...
+                            ...
                         }
 
+        STEP 3: Check to see if the course actually exists with an "if" statement:
+        ==========================================================================
 
+                        async function updateCourse(id) {
+                            const course = await Course.findById(id);          
+                            if (!course) {                                     <== if there is NO course, return immediately.
+                               return;
+                            } 
+                            ...
+                            ...
+                        }
 
+         STEP 4: If there IS a course, update the properties:
+         =====================================================                
+
+                        async function updateCourse(id) {
+                            const course = await Course.findById(id);          
+                            if (!course) {                                     
+                               return;
+                            } 
+                            course.isPublished = true;              <== otherwise, properties are updated such as updating the property "isPublished" to true.
+                            course.author = 'Mike Jones'            <== and updating the author property to another author name.
+                            ...
+                        }
 
 
 */
