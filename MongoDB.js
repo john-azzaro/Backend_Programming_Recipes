@@ -674,6 +674,36 @@ What is pagination and how do you use it while querying documents?
 How do you update document in the MongoDB database?
 ///////////////////////////////////////////////////
 ==SHORT ANSWER==
+     •   To update a document in MongoDB, there are two ways:
+            1. Query first
+            2. Update first
+
+    •   With "Query first", you:
+            1. findById()
+            2. Modify it's properties
+            3. save()
+
+    •   With "Update first", you:
+            1. Update the document in the database directly.
+            2. Optionally, you can get the updated document as well.
+    
+
+    How do you update a document with the "Query first" approach?
+    ==============================================================                
+
+        STEP 1: create an async function which takes "id" as a parameter:
+        =================================================================
+
+                        async function updateCourse(id) {          <== async function with id passed in.
+                            // code here...
+                        }
+
+        STEP 2: Find the course by the given ID:
+        ========================================
+
+                        async function updateCourse(id) {
+                            await Course.findById(id);                    <== await the promise Course object, and with the "findById", pass in the "id" you want to find
+                        }
 
 
 
