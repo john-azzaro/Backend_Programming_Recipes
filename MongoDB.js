@@ -723,8 +723,8 @@ How do you update document in the MongoDB database?
                             ...
                         }
 
-         STEP 4: If there IS a course, update the properties:
-         =====================================================                
+        STEP 4.1: If there IS a course, update the properties by updating each property in "course" individually:
+        =========================================================================================================                
 
                         async function updateCourse(id) {
                             const course = await Course.findById(id);          
@@ -736,6 +736,42 @@ How do you update document in the MongoDB database?
                             ...
                         }
 
+        STEP 4.2: If there IS a course, use the ".set" method:
+        ======================================================
+
+                        async function updateCourse(id) {
+                            const course = await Course.findById(id);          
+                            if (!course) {                                     
+                               return;
+                            } 
+                            course.set({                            <== calling the .set method, passing an object with the updated properties.
+                                isPublished: true,
+                                author: 'Mike Jones'
+                            });
+                            ...
+                        }
+
+        STEP 5. Call the .save method to update the document in MongoDB:
+        ================================================================
+
+                        async function updateCourse(id) {
+                            const course = await Course.findById(id);          
+                            if (!course) {                                     
+                               return;
+                            } 
+                            course.set({                            
+                                isPublished: true,
+                                author: 'Mike Jones'
+                            });
+
+                            const result = await course.save();        <== same as creating a new course, so it returns a promise that we await and store as "result"
+                            console.log(result);                       <== and print to the console.
+                        }
+
+        STEP 6: Them to update the course, simply use a valid course id from your database:
+        ===================================================================================
+
+                        updateCourse('5d153cee8f15e62a6cc54372');
 
 */
 
