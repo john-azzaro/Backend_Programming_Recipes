@@ -649,6 +649,24 @@ How do you find out how many documents you have in your database?
 /* 
 What is pagination and how do you use it while querying documents?
 ///////////////////////////////////////////////////////////////////
+==SHORT ANSWER==    
+    •   Closely related to the ".limit" method, the ".skip" is used to implement pagination by escaping all the documents in the 
+        previous page using the formula:  .skip((pageNumber - 1) * pageSize)    
+    
+                    ==EXAMPLE==   
+                    async function getCourses() {
+                        const pageNumber = 2;           <== although these are hard coded here, these would be query string parameters (i.e. ${pageNumber}) via api.
+                        const pageSize = 10;            <== same thing here too
+
+                        const courses = await Course
+                            .find( { tags: 'italian'} )
+                            .skip((pageNumber - 1) * pageSize)                <== formula for pagination
+                            .limit(pageSize)                                  <== limit is the page size query string parameter passed in.
+                            .select( { name: 1, tags: 1} );
+                        console.log(courses)
+                    }
+
+
 
 */
 
