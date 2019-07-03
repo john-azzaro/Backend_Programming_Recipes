@@ -781,6 +781,14 @@ How do you update document in the MongoDB database?
     •   To do this, you use ".update" and first pass a filter object (i.e. {_id = id}) and the second argument is a MongoDB update operators.
             o   See mongodb.com/manual.reference/operator/update for full list of operators.
 
+        What are some update operators in MongoDb?
+        ==========================================
+        $currentDate - set value of field to current date
+        $inc - increment a field by a certain amount.
+
+
+
+
                         async function updateCourse(id) {
                             const course = await Course.update({_id: id}, {              <== instead of "findById", you use "update" and in this case update a course with a particualr id.
 
