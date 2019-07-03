@@ -777,16 +777,18 @@ How do you update document in the MongoDB database?
     How do you update a document with "update first"?
     =================================================
     •   Useful if you receive an input from the client and you want to make sure the update is a valid operation.   
-    •   Useful updating documents directly in your database.             
+    •   Useful updating documents directly in your database.   
+    •   To do this, you use ".update" and first pass a filter object (i.e. {_id = id}) and the second argument is a MongoDB update operators.
+            o   See mongodb.com/manual.reference/operator/update for full list of operators.
 
                         async function updateCourse(id) {
-                            const course = await Course.findById(id);          
+                            const course = await Course.update({_id: id}, {              <== instead of "findById", you use "update" and in this case update a course with a particualr id.
+
+                            });          
                             if (!course) {                                     
                                return;
                             } 
-                            if (course.isPublished) {
-                               return;
-                            }
+     
                             course.set({                            
                                 isPublished: true,
                                 author: 'Mike Jones'
