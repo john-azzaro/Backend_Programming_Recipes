@@ -779,12 +779,21 @@ How do you update document in the MongoDB database?
     •   Useful if you receive an input from the client and you want to make sure the update is a valid operation.   
     •   Useful updating documents directly in your database.   
     •   To do this, you use ".update" and first pass a filter object (i.e. {_id = id}) and the second argument is a MongoDB update operators.
-            o   See mongodb.com/manual.reference/operator/update for full list of operators.
+            o   See https://docs.mongodb.com/manual/reference/operator/update/ for full list of operators.
 
         What are some update operators in MongoDb?
         ==========================================
-        $currentDate - set value of field to current date
-        $inc - increment a field by a certain amount.
+            $currentDate - set value of field to current date
+            $inc - increment (or decrement) the value of a field by a certain amount (i.e. increment the thumbs up of a youtube video).
+            $min - only updates the field if the specified value is LESS than the existing field
+            $max - only updates the filed is the value is MORE than the existing field
+            $mul - similar to increment but multiplies the value.
+            $rename - rename a field
+            $set - set the value of a field.
+            $unset - remove a specified field from a document.
+            $setOnInsert - sets value fo a field IF update results in insert of a document.
+
+
 
 
 
