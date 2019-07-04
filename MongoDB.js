@@ -793,29 +793,32 @@ How do you update document in the MongoDB database?
             $unset - remove a specified field from a document.
             $setOnInsert - sets value fo a field IF update results in insert of a document.
 
-
-
-
-
+        How do you update with "update first":
+        =======================================                
 
                         async function updateCourse(id) {
-                            const course = await Course.update({_id: id}, {              <== instead of "findById", you use "update" and in this case update a course with a particualr id.
-
-                            });          
-                            if (!course) {                                     
-                               return;
-                            } 
-     
-                            course.set({                            
-                                isPublished: true,
-                                author: 'Mike Jones'
-                            });
-
-                            const result = await course.save();        
+                            const result = await Course.update({_id: id}, {              <== instead of "findById", you use "update" and in this case update "result" with a particualr id.
+                                $set: {                                                  <== in this example, we use $set to set the value of a field and set to an object...
+                                   author: 'Alan',                                        <== add in one or more key/value pairs.
+                                   isPublished: false
+                                }
+                            });              
                             console.log(result);                       
                         }
 
 
+        What if you want to get the document that was updated?
+        =======================================================
+
+                        async function updateCourse(id) {
+                            const course = await Course.findByIdAndUpdate( id, {     <== use ".findByIdAndUpdate", pass "id" instead of a query object       
+                                $set: {                                              <== and then pass your update object.          
+                                   author: 'Bob',                                        
+                                   isPublished: True
+                                }
+                            }, { new: true });                                                     <== but also pass a second argument, an object with the "new:" property to true. 
+                            console.log(course);                       
+                        }
 */
 
 
