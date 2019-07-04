@@ -806,6 +806,7 @@ How do you update document in the MongoDB database?
                             console.log(result);                       
                         }
 
+                         updateCourse('5d153cee8f15e62a6cc54372');
 
         What if you want to get the document that was updated?
         =======================================================
@@ -819,10 +820,54 @@ How do you update document in the MongoDB database?
                             }, { new: true });                                                     <== but also pass a second argument, an object with the "new:" property to true. 
                             console.log(course);                       
                         }
+
+                         updateCourse('5d153cee8f15e62a6cc54372');
 */
 
 
+
 /* 
+How do your remove a document from MongoDB?
+///////////////////////////////////////////
+    •   To delete a document from MongoDB, you need you use:
+        o   ".deleteOne()" which will delete one document 
+        o   ".deleteMany()" which will                  
+
+
+    How do you delete a single document?
+    =====================================                    
+
+                        async function removeCourse(id) {
+                            const result = await Course.deleteOne({ _id: id });           <== takes a filter or a query object, can also do generic in query object  "isePublished: false"
+                            console.log(result);                 
+                        }
+
+                         removeCourse('5d153cee8f15e62a6cc54372');
+
+    How do you delete a multiple document?
+    ======================================                    
+
+                        async function removeCourse(id) {
+                            const result = await Course.deleteMany({ _id: id });            <== use ".deleteMany() method"
+                            console.log(result);                 
+                        }
+
+                         removeCourse('5d153cee8f15e62a6cc54372');
+
+    How do you make sure a document was deleted?
+    ============================================              
+
+                        async function removeCourse(id) {
+                            const course = Course.findByIdAndRemove(id)            <== If you try find the course again, it will return null because it was already deleted.
+                            console.log(result);                 
+                        }
+
+                         removeCourse('5d153cee8f15e62a6cc54372');
+
+
+
+
+
 
 
 */
