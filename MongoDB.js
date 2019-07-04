@@ -831,7 +831,7 @@ How do your remove a document from MongoDB?
 ///////////////////////////////////////////
     •   To delete a document from MongoDB, you need you use:
         o   ".deleteOne()" which will delete one document 
-        o   ".deleteMany()" which will                  
+        o   ".deleteMany()" which will delete all document specified in the query object.                
 
 
     How do you delete a single document?
