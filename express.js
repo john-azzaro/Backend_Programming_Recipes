@@ -2,63 +2,49 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Express framework 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      What is a REST-ful service?  
+//      1. What is a REST-ful service?  
 //        +  What is a GET request?   
 //        +  What is a PUT request?   
 //        +  What is a DELETE request?   
 //        +  What is a POST request?     
-
-//      Why should you use a framework like express?
-//      What is express?
-//      How do you install express?
-
-//      How do you create a basic web server with express?
+//      2. Why should you use a framework like express?
+//      3. What is express?
+//      4. How do you install express?
+//      5. How do you create a basic web server with express?
 //        +  How do you create an express server?
 //        +  How do you create a route?    
 //        +  How do you listen on a given port for requests?         
 //        +  How do you add another route to your server?
-
-//      What is Nodemon and what does it do?    
+//      6. What is Nodemon and what does it do?    
 //        +  How do you install nodemon?
 //        +  How do you use nodemon in Gitbash?
-
-//      What is an enviroment variable and how do you assign a port to your node application?
+//      7. What is an enviroment variable and how do you assign a port to your node application?
 //        +  How do you set an enviroment variable (assign a port to your application?
-
-
-//      What are route parameters?
+//      8. What are route parameters?
 //        +  What is req.params?
 //        +  How do you include multiple parameters in a route?
 //        +  What are query string parameters using express and how do you use them?
-//      What is a HTTP GET request and how do you handle it to an endpoint?
-//      What is a HTTP POST request and how do you handle it to an endpoint?
-//      What is a HTTP PUT request and how do you handle it to an endpoint?
-//      What is a HTTP DELETE request and how do you handle it to an endpoint?
-
-//      What is input validation?
-//      What is Postman and how is it useful when building express apps?     
-
-//      What is middleware?
+//      9. What is a HTTP GET request and how do you handle it to an endpoint?
+//     10. What is a HTTP POST request and how do you handle it to an endpoint?
+//     11. What is a HTTP PUT request and how do you handle it to an endpoint?
+//     12. What is a HTTP DELETE request and how do you handle it to an endpoint?
+//     13. What is input validation?
+//     14. What is Postman and how is it useful when building express apps?     
+//     15. What is middleware?
 //        +  What is the request processing pipeline? 
-//
-//      How do you define a custom middleware function in a seperate module? 
-//      How do you use built-in middleware?
+//     16. How do you define a custom middleware function in a seperate module? 
+//     17. How do you use built-in middleware?
 //        +  What is the urlencoded() method and what does it do?
 //        +  What is the "static" method and what does it do?
-//
-//      What is third-party middleware?
+//     18. What is third-party middleware?
 //        +  How do you install thrid-party middleware?
-//
-//      What are environments and How do you detect them?
+//     19. What are environments and How do you detect them?
 //        +  How do you tell if your code is running on a development or production enviroment?
 //        +  How do you set the enviroment to a specific environment?
-//
-//      How do you store configuration settings for your application and how do you override them in different enviroments?
+//     20. How do you store configuration settings for your application and how do you override them in different enviroments?
 //        +  How do you store secrets in enviroment variables?
-//
-//      How do you log messages for the purpose of debugging?
-
-//      How do you structure express applications?
+//     21. How do you log messages for the purpose of debugging?
+//     22. How do you structure express applications?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express web framework from study, research, tutorials, mentor
@@ -71,8 +57,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* 
-What is a RESTful service?
-//////////////////////////
+1. What is a REST-ful service?
+///////////////////////////////
     •   REST, which stands for Representational State Transfer, is a convention for what is used to build these HTTP services.
     •   Almost all application follow a "client/server" relationship.
     •   The "client" is the front-end, which is our application.
