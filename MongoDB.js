@@ -7,7 +7,30 @@
 //         +  How do you install MongoDB?
 //         +  What is mongod and why do you use it?
 //         +  How do you view the defautl Mongo database?
-//
+//      3. What is mongoose and how do you install it?
+//      4. How do you connect with MongoDB?
+//      5. What is MongoDB compass and what does it do?
+//      6. What is a schema and how do you create one?
+//         + How do you create a schema?
+//         + What types can you use when creating a schema?
+//      7. What is a Model and how do you create one? 
+//      8. How do you save a document (based on a schema) to Mongo database?
+//      9. How do you build queries (i.e. retrieve documents from a Mongo database)?
+//         + How do you filter queried documents?
+//         + How do you add more querying options?
+//     10. What are comparison operators and how do you use them while querying documents?
+//     11. What are logical query operators and how do you use them while querying documents? 
+//     12. What are regular expressions and how do you use them while querying documents? 
+//     13. How do you find out how many documents you have in your database? 
+//     14. What is pagination and how do you use it while querying documents? 
+//     15. How do you update document in the MongoDB database? 
+//         + How do you update a document with the "Query first" approach?
+//         + How do you update a document with "update first"?
+//     16. How do your remove a document from MongoDB?  
+//         + How do you delete a single document?
+//         + How do you delete a multiple document?
+//         + How do you make sure a document was deleted?
+//      
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on MongoDB from study, research, tutorials, mentor meetings,
 //         peer discussions, and good ole' fashioned curiosity.  I've put the document in Question
@@ -43,8 +66,8 @@
 
 
 /* 
-How do you use MongoDB?
-///////////////////////
+2. How do you use MongoDB?
+///////////////////////////
 
     STEP 1: Install MongoDB:
     =======================
@@ -113,8 +136,8 @@ How do you use MongoDB?
 
 
 /* 
-What is mongoose and how do you install it?
-////////////////////////////////////////////
+3. What is mongoose and how do you install it?
+///////////////////////////////////////////////
     •   Mongoose is a simple API to work with a MongoDB database. 
 
     STEP 1: Make sure you have your project folder run "npm init":
@@ -134,8 +157,8 @@ What is mongoose and how do you install it?
 
 
 /* 
-How do you connect with MongoDB?
-////////////////////////////////
+4. How do you connect with MongoDB?
+////////////////////////////////////
     •   In your index.js file:
 
     STEP 1: Connect to MongoDB by first loading the mongoose module and storing it as a constant:
@@ -186,8 +209,8 @@ How do you connect with MongoDB?
 
 
 /* 
-What is MongoDB compass and what does it do?
-////////////////////////////////////////////
+5. What is MongoDB compass and what does it do?
+///////////////////////////////////////////////
     •   MongoDB Compass is a simple GUI that allows users to explore data.
     •   MongoDB Compass lets you explore, insert, modify, and delete from your database visually as well as run ad hoc queries.
     •   Within MongoDB Compass, you can see your databases.
@@ -223,8 +246,8 @@ What is MongoDB compass and what does it do?
 
 
 /* 
-What is a schema and how do you create one?
-///////////////////////////////////////////
+6. What is a schema and how do you create one?
+///////////////////////////////////////////////
 ==SHORT ANSWER==
    •   A "schema" is used to define the shape (i.e. layout of properties) of documents within a collection in MongoDB.
    •   To create a schema, you                  
@@ -271,9 +294,9 @@ What is a schema and how do you create one?
                     });
 
 
-        What types can you use when creating a schema?
-        ============================================== 
-            •  There are types you can use, such as:
+    What types can you use when creating a schema?
+    ============================================== 
+        •  There are types you can use, such as:
                 o  String             
                 o  Number             
                 o  Date             
@@ -286,8 +309,8 @@ What is a schema and how do you create one?
 
 
 /* 
-What is a Model and how do you create one? 
-///////////////////////////////////////////
+7. What is a Model and how do you create one? 
+//////////////////////////////////////////////
     •   To create a class (i.e. course), you need to compile a schema into a model.
           
     
@@ -354,8 +377,8 @@ What is a Model and how do you create one?
 
 
 /* 
-How do you save a document (based on a schema) to Mongo database?
-///////////////////////////////////////////////////////////////
+8. How do you save a document (based on a schema) to Mongo database?
+////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   To save the new objects, create a new async/await function and directly after your new object, add the ".save" method to your
         new object and store the "result" as a constant.
@@ -446,8 +469,8 @@ How do you save a document (based on a schema) to Mongo database?
 
 
 /* 
-How do you build queries (i.e. retrieve documents from a Mongo database)?
-//////////////////////////////////////////////////////////////////////////
+9. How do you build queries (i.e. retrieve documents from a Mongo database)?
+/////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   To retrieve documents from a Mongo database, within an async function you use the ".find" method on your given Class (in this case Course). 
 
@@ -526,8 +549,8 @@ How do you build queries (i.e. retrieve documents from a Mongo database)?
 
 
 /* 
-What are comparison operators and how do you use them while querying documents?
-///////////////////////////////////////////////////////////////////////////////
+10. What are comparison operators and how do you use them while querying documents?
+///////////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Comparison operators enhance querying power.
     •   To use a comparison operator, you replace a simple value with an object to express our query and use an operator like greater-than X,
@@ -582,8 +605,8 @@ What are comparison operators and how do you use them while querying documents?
 
 
 /* 
-What are logical query operators and how do you use them while querying documents?
-/////////////////////////////////////////////////////////////////////////////////
+11. What are logical query operators and how do you use them while querying documents?
+/////////////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==    
     •   logical query operators consist of either ".or" or ".and" methods which filter based on either "or" or "and" logical conditions.
     •   To use logical query operators, you first use the .find method WITHOUT any filters and then
@@ -600,8 +623,8 @@ What are logical query operators and how do you use them while querying document
 
 
 /* 
-What are regular expressions and how do you use them while querying documents?
-//////////////////////////////////////////////////////////////////////////////
+12. What are regular expressions and how do you use them while querying documents?
+//////////////////////////////////////////////////////////////////////////////////
     •   Regular expressions allow you to have more control over filtering strings.
     •   To use a regular expressions, replace the value with a pattern between forward slashes (i.e. /pattern/ ).                     
 
@@ -630,8 +653,8 @@ What are regular expressions and how do you use them while querying documents?
 
 
 /* 
-How do you find out how many documents you have in your database?
-//////////////////////////////////////////////////////////////////
+13. How do you find out how many documents you have in your database?
+//////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   To find out how many documents you have in your database, you need to use ".count"   
     
@@ -647,8 +670,8 @@ How do you find out how many documents you have in your database?
 
 
 /* 
-What is pagination and how do you use it while querying documents?
-///////////////////////////////////////////////////////////////////
+14. What is pagination and how do you use it while querying documents?
+///////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==    
     •   Closely related to the ".limit" method, the ".skip" is used to implement pagination by escaping all the documents in the 
         previous page using the formula:  .skip((pageNumber - 1) * pageSize)    
@@ -671,8 +694,8 @@ What is pagination and how do you use it while querying documents?
 
 
 /* 
-How do you update document in the MongoDB database?
-///////////////////////////////////////////////////
+15. How do you update document in the MongoDB database?
+///////////////////////////////////////////////////////
 ==SHORT ANSWER==
      •   To update a document in MongoDB, there are two ways:
             1. Query first
@@ -827,8 +850,8 @@ How do you update document in the MongoDB database?
 
 
 /* 
-How do your remove a document from MongoDB?
-///////////////////////////////////////////
+16. How do your remove a document from MongoDB?
+//////////////////////////////////////////////
     •   To delete a document from MongoDB, you need you use:
         o   ".deleteOne()" which will delete one document 
         o   ".deleteMany()" which will delete all document specified in the query object.                
@@ -863,12 +886,6 @@ How do your remove a document from MongoDB?
                         }
 
                          removeCourse('5d153cee8f15e62a6cc54372');
-
-
-
-
-
-
 
 */
 
