@@ -18,7 +18,7 @@
 //      6. What is Nodemon and what does it do?    
 //        +  How do you install nodemon?
 //        +  How do you use nodemon in Gitbash?
-//      7. What is an enviroment variable and how do you assign a port to your node application?
+//      7. What is an environment variable and how do you assign a port to your node application?
 //        +  How do you set an enviroment variable (assign a port to your application?
 //      8. What are route parameters?
 //        +  What is req.params?
@@ -141,8 +141,8 @@
 
 
 /* 
-Why should you use a framework like express?
-////////////////////////////////////////////
+2. Why should you use a framework like express?
+///////////////////////////////////////////////
 ==SHORT ANSWER==
     •   While using the core http module is doable, it is not maintainable for building complex applications because 
         there are many things we would need to hard code (e.g. if statements).  A framework give the application a proper structure 
@@ -179,8 +179,8 @@ Why should you use a framework like express?
 
 
 /* 
-What is express?
-////////////////
+3. What is express?
+///////////////////
     •   Express is a minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
     •   Express gives you built in features and function to more easily use Node for web development, such as easier ways to route requests.
 */
@@ -188,8 +188,8 @@ What is express?
 
 
 /* 
-How do you install express?
-///////////////////////////
+4. How do you install express?
+//////////////////////////////
     •   To install express, simply move into the project folder, write "npm init --yes" and then install express by writing "npm install express"
       
     STEP 1: Initialize NPM (with the defaults instead of askng questions)
@@ -226,8 +226,8 @@ How do you install express?
 
 
 /* 
-How do you create a basic web server with express?
-//////////////////////////////////////////////////
+5. How do you create a basic web server with express?
+//////////////////////////////////////////////////////
 
     Setup project:
     ==============
@@ -358,8 +358,8 @@ How do you create a basic web server with express?
 
 
 /* 
-What is Nodemon and what does it do?
-///////////////////////////////////
+6. What is Nodemon and what does it do?
+///////////////////////////////////////
     •   Nodemon (short for Node Monitor) is an npm package that we install that allows us to update our node program
         without having to start and restart our server every time we make a change in out program.
 
@@ -397,8 +397,8 @@ What is Nodemon and what does it do?
 
 
 /* 
-What is an enviroment variable and how do you assign a port to your node application?
-/////////////////////////////////////////////////////////////////////////////////////
+7. What is an environment variable and how do you assign a port to your node application?
+//////////////////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Enviroment variables are used to store various settings for an application.
     •   An enviroment variable, such as PORT in node applications, is a variable that is part of the enviroment in which a 
@@ -464,8 +464,8 @@ What is an enviroment variable and how do you assign a port to your node applica
 
 
 /* 
-What are route parameters?
-//////////////////////////
+8. What are route parameters?
+//////////////////////////////
     •   Routing refers to how an applications endpoints (URLs) respond to a clients requests,
     •   Route parameters are used for essential or required values.
     •   Route paramaters are the named URL segments uses to capture the values specified at thier position in the URL. 
@@ -514,8 +514,8 @@ What are route parameters?
 
 
 /* 
-What is a HTTP GET request and how do you handle it to an endpoint?
-///////////////////////////////////////////////////////////////////
+9. What is a HTTP GET request and how do you handle it to an endpoint?
+///////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
 •   To handle a GET request to an endpoint, you call the app object with the GET method, specifiy a path (i.e. /api/courses) that 
     would also include a ":id" attached to the specific endpoint and you add a route handler (i.e. req, res), then add your logic.  
@@ -581,8 +581,8 @@ What is a HTTP GET request and how do you handle it to an endpoint?
 
 
 /* 
-What is a HTTP POST request and how do you handle it to an endpoint?
-////////////////////////////////////////////////////////////////////
+10. What is a HTTP POST request and how do you handle it to an endpoint?
+///////////////////////////////////////////////////////////////////////
     •   To handle a GET request to an endpoint, you call the app object with the GET method, specifiy a path (i.e. /api/courses) that 
         would also include a ":id" attached to the specific endpoint and you add a route handler (i.e. req, res), then add your logic.  
 
@@ -627,7 +627,7 @@ STEP 3: Push the object to the course object and return that object in the body 
 
 
 /* 
-What is a HTTP PUT request and how do you handle it to an endpoint?
+11. What is a HTTP PUT request and how do you handle it to an endpoint?
 ///////////////////////////////////////////////////////////////////
     •   A PUT request will edit an existing property looking up the element by id and then, if everything is ok, 
         will update the element.
@@ -682,7 +682,7 @@ What is a HTTP PUT request and how do you handle it to an endpoint?
 
 
 /* 
-What is a HTTP DELETE request and how do you handle it to an endpoint?
+12. What is a HTTP DELETE request and how do you handle it to an endpoint?
 //////////////////////////////////////////////////////////////////////
     •   To handle an HTTP Delete request, we         
 
@@ -773,8 +773,8 @@ What is a HTTP DELETE request and how do you handle it to an endpoint?
 
 
 /* 
-What is input validation?
-/////////////////////////
+13. What is input validation?
+//////////////////////////////
    •    As a security concern, you should never trust what the client sends you.
    •    Input validation helps endures that the POST submission is valid and if not, will return an error. 
    •    Validation logic shoudl come at the beginning of your route handler.
@@ -796,18 +796,13 @@ What is input validation?
                         courses.push(course);                              
                         res.send(course)                                   
                     });    
-
-
 */
 
 
 
-
-
-
 /* 
-What is Postman and how is it useful when building express apps?  
-/////////////////////////////////////////////////////////////////
+14. What is Postman and how is it useful when building express apps?  
+////////////////////////////////////////////////////////////////////
     •   Postman is an api development tool that calls HTTP services.
 
 ==EXAMPLE==
@@ -842,8 +837,8 @@ What is Postman and how is it useful when building express apps?
 
 
 /* 
-What is middleware?
-////////////////////
+15. What is middleware?
+///////////////////////
 ==SHORT ANSWER==
     •   Middleware (or middleware function), which is a core concept in express, which takes a request object and either returns 
         a reponse to the client or passes control to another middleware function.   
@@ -890,7 +885,7 @@ What is middleware?
 
 
 /* 
-How do you define a custom middleware function in a seperate module?
+16. How do you define a custom middleware function in a seperate module?
 ////////////////////////////////////////////////////////////////////
     •   To use a  middleware function, we import and install using app.use().
     •   We use "app.use()" to install middleware function in our request processing pipeline.
@@ -954,10 +949,8 @@ How do you define a custom middleware function in a seperate module?
 
 
 /* 
-How do you use built-in middleware?
-///////////////////////////////////
-
-
+17. How do you use built-in middleware?
+//////////////////////////////////////
     •   For example, the "express.json()" is a built in middleware function that parses the body of the request and
         if there is a json object, it will populate the "req.body" property.
 
@@ -988,8 +981,8 @@ How do you use built-in middleware?
 
 
 /* 
-What is third-party middleware?
-////////////////////////////////
+18. What is third-party middleware?
+////////////////////////////////////
     •  Third party middlewareadds functionality to express apps.
     •  Third party middleware should be using sparingly as the more middleware you use, it will slow down your
        request porcessing for your application.
@@ -1037,8 +1030,8 @@ What is third-party middleware?
 
 
 /* 
-What are enviroments and How do you detect them?
-////////////////////////////////////////////////
+19. What are environments and How do you detect them?
+////////////////////////////////////////////////////
     •   In complex applications or enterprise applications, you need to know what enviroment your code is running on (i.e.
         development or production enviroment).
     •   Perhaps you would want to enable/diable certain features based on the current enviroment.
@@ -1092,8 +1085,8 @@ What are enviroments and How do you detect them?
 
 
 /* 
-How do you store configuration settings for your application and how do you override them in different enviroments?
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+20. How do you store configuration settings for your application and how do you override them in different enviroments?
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     •   To store configuration settings and have a way to override them, you need to install the "config" node package.
     •   The "config" node package will allow you to easily see the default configuration for each enviroment you have.
     •   However, you should NOT store configuration secrets, like the password to your database or mail server because
@@ -1237,8 +1230,8 @@ How do you store configuration settings for your application and how do you over
 
 
 /*
-How do you log messages for the purpose of debugging?
-//////////////////////////////////////////////////////
+21. How do you log messages for the purpose of debugging?
+/////////////////////////////////////////////////////////
     •   Although console.log is a good way to debug, it can be a bit tricky to keep track of all of them, so a better
         way to log messages for the purpose of debugging is to use the debug package in node.  
     •   Debug replaces all the console.logs statements with a call to a debug function and then use an enviroment variable
@@ -1323,8 +1316,8 @@ How do you log messages for the purpose of debugging?
 
 
 /* 
-How do you structure express applications?
-///////////////////////////////////////////
+22. How do you structure express applications?
+///////////////////////////////////////////////
    •    Express applications can result in very lengthy index.js modules, so proper structure helps keep code managable.
    •    For every logical part of the application, every api endpoint, middleware, etc, you want to have a seperate module.                      
 
