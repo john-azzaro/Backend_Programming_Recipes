@@ -8,13 +8,14 @@
 //      4. What is the client-side and what is its purpose?
 //      5. What is client-side vs. server-side scripting?
 //      6. What is a client application and what are some key parts?
-//      7. What kind of resources can server-side apps expose?
-//      8. How does the HTTP Protocol request-response cycle work?
-//      9. Why is it important to route requests to the right request handlers?
-//      10. How is data persistence important to server-side programming?
-//      11. What is buisness logic in the context of server-side programming?
-//      12. What is software testing and what is the importance of software testing in server-side programming?
-//
+//      7. What kind of assets (i.e. resources) can server-side apps serve (i.e. expose)? 
+//         + What is a dynamic asset?
+//         + What is a static asset?
+//      8. Why is it important to route requests to the right request handlers?
+//      9. How is data persistence important to server-side programming?
+//     10. What is buisness logic in the context of server-side programming?
+//     11. What is software testing and what is the importance of software testing in server-side programming?
+//     12. How does the HTTP Protocol request-response cycle work?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Server side programming (in JavaScript) from study, research, tutorials, 
@@ -39,6 +40,7 @@
     •   Server-side programming allows us to efficiently deliver information tailored for individual users.  
         o   Note that JavaScript (where the programs run in the web browser) is called "client-side" programming.
 */
+
 
 
 /* 
@@ -149,29 +151,87 @@
 
 
 /* 
-7. What kind of resources can server-side apps expose?
-///////////////////////////////////////////////////////
+7. What kind of assets (i.e. resources) can server-side apps serve (i.e. expose)?
+/////////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •	Server-side apps can expose two types of resources: 
-        o   FILES, such as HTML and CSS.
-        o   PARAMETERIZED DATA.
+    •	Server-side apps can serve two types of assets: 
+        o   Dynamic
+        o   Static
 
-==EXTENDED ANSWER==    
-    1. Files
-        o   Files include: HTML, CSS, JavaScript, JPEG's, MP3's, etc.
-        o   For example, when you enter a URL you request resource files like HTML and CSS. 
 
-    2. Paramaterized data through an API layer
-        o   Parameterized data is when you are able to provide data in bulk using a common format.   
-        o   For example, a web page for a shoe store might request data from an endpoint (i.e. URL) for shoes 
-            that are for sale THEN a seperate request to a different endpoint would retrieve data about the
-            customers shoe size or color preference.
+    What is a dynamic asset?
+    =========================
+    •   A DYNAMIC asset is created when it is requested.
+        o   For example, suppose you were on a shopping website and your browser might request account data from an endpoint
+            at shopping.com/api/account/12345
+        o   The server would look for the account with the id 12345 and if the account can be located, it will send
+            back a json obejct representing the state of the account at the time of the request.
+
+
+    What is a static asset?
+    =======================
+    •   A STATIC asset is a file that does NOT change between requests (unless a new version is uploaded).
+        o   For example, if you visit a shopping site shopping.com/my-account in the web browser, the server would send back
+            an HTML file, which could link to stylesheets or client-side JavaScript files located on the same server.
+        o   HTML, CSS, and JavaScript files would all be considered static assets.
+
+
+    OPTIONAL: How do you serve static assets?
+    ==========================================
+    •   To serve a static asset, see express.js outline, "how do you use built-in middleware?" under the sub-question 
+        "What is the "static" method and what does it do?"  
+
+*/
+
+
+
+
+/* 
+8. Why is it important to route requests to the right request handlers?
+////////////////////////////////////////////////////////////////////////
+==SHORT ANSWER==
+    •   Web servers need to have a way of ensuring that when a client requests a resource through a URL, 
+        that request gets routed to the right code that knows how to handle it.
 */
 
 
 
 /* 
-8. How does the HTTP Protocol request-response cycle work?
+9. How is data persistence important to server-side programming?
+//////////////////////////////////////////////////////////////////
+    •   Web servers store the common set of data that all client applications can access.
+*/
+
+
+
+/* 
+10. What is buisness logic in the context of server-side programming?
+///////////////////////////////////////////////////////////////////// 
+    •   Across the layers of a server-side web application, the overriding purpose is to implement one or
+        more pieces of business logic.
+*/
+
+
+
+/* 
+11. What is software testing and what is the importance of software testing in server-side programming?
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+    •   A software test is a peice of codesthat checks whether or not another peice of code bahves as it should.
+        o   As code is written and refactored, suites of software tests can be run to let us know if any changes we
+            made have broken any of our existing functionality.
+        o   If the test fails, we know that the changes have broken some part of our web application and we can fix
+            the broken code before it enters production.
+
+    •   Web servers support user accounts and as soon as you start storing user information like email 
+        addresses security becomes an important concern, especially with access control which is how
+        a system ensures that its resources are accessible only to the right users.
+*/
+
+
+
+
+/* 
+12. How does the HTTP Protocol request-response cycle work?
 ///////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Web servers and clients speak http to each other   
@@ -220,48 +280,6 @@
                 <html><body><header><h1>Hello world!</h1></header></body></html>
 
 */
-
-
-
-/* 
-9. Why is it important to route requests to the right request handlers?
-////////////////////////////////////////////////////////////////////////
-==SHORT ANSWER==
-    •   Web servers need to have a way of ensuring that when a client requests a resource through a URL, 
-        that request gets routed to the right code that knows how to handle it.
-*/
-
-
-/* 
-10. How is data persistence important to server-side programming?
-//////////////////////////////////////////////////////////////////
-    •   Web servers store the common set of data that all client applications can access.
-*/
-
-
-/* 
-11. What is buisness logic in the context of server-side programming?
-///////////////////////////////////////////////////////////////////// 
-    •   Across the layers of a server-side web application, the overriding purpose is to implement one or
-        more pieces of business logic.
-*/
-
-
-/* 
-12. What is software testing and what is the importance of software testing in server-side programming?
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-    •   A software test is a peice of codesthat checks whether or not another peice of code bahves as it should.
-        o   As code is written and refactored, suites of software tests can be run to let us know if any changes we
-            made have broken any of our existing functionality.
-        o   If the test fails, we know that the changes have broken some part of our web application and we can fix
-            the broken code before it enters production.
-
-    •   Web servers support user accounts and as soon as you start storing user information like email 
-        addresses security becomes an important concern, especially with access control which is how
-        a system ensures that its resources are accessible only to the right users.
-*/
-
-
 
 
 
