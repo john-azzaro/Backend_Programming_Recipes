@@ -89,8 +89,9 @@
 2. What is package.json?
 ////////////////////////
 ==SHORT ANSWER==
-    •   Package.json is a file that contains metadata about applications, packages, and other information 
-        about your application in JSON format
+    •   Package.json is created when you first create your project folder and run "npm init". 
+    •   Package.json includes all the essential information of an app, so it contains metadata about applications, 
+        packages, and other information about your application in JSON format.
 
 ==EXAMPLE==
 
