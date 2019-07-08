@@ -7,7 +7,7 @@
 //      3. What is the server-side and what is it's purpose?
 //      4. What is the client-side and what is its purpose?
 //      5. What is client-side vs. server-side scripting?
-//      6. What is a client application?
+//      6. What is a client application and what are some key parts?
 //      7. What kind of resources can server-side apps expose?
 //      8. How does the HTTP Protocol request-response cycle work?
 //      9. Why is it important to route requests to the right request handlers?
@@ -127,10 +127,16 @@
 
 
 /* 
-6. What is a client application?
-/////////////////////////////////
+6. What is a client application and what are some key parts?
+////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •	A client application has a UI, runs on the users machine in a web browser, and requests resources from a server. 
+    •   A client application consists of a few key parts:
+            o   A way to listen for HTTP requests over a port.
+            o   A way to inspect and interact with HTTP request and response objects.
+            o   A way to route HTTP requests from clients to the right request handlers.
+            o   A way to serve static assets to clients to client browsers.
+            o   A way to serve data to clients
 
 ==EXAMPLE==
     •   The user utlizes a browser (client) to request resources (index.html, index.css, etc.) from a server.	
