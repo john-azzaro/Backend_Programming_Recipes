@@ -45,7 +45,7 @@
 
 /* 
 2. What is a web server?
-/////////////////////////
+////////////////////////
 ==SHORT ANSWER==
     •   A WEB SERVER is a system (device and/or program) that stores and delivers content to a users browser over the internet.   
 
@@ -66,6 +66,7 @@
     •   To deliver dynamic content, web servers use server-side scripting languages to encode business logic.
     •   A web server runs a website by returning HTML files over an HTTP connection.    
 */
+
 
 
 

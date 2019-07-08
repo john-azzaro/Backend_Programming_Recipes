@@ -2,11 +2,11 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Express framework 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      1. What is a REST-ful service?  
-//        +  What is a GET request?   
-//        +  What is a PUT request?   
-//        +  What is a DELETE request?   
-//        +  What is a POST request?     
+//      1. What is a REST?  
+//      2. What is a GET request?   
+//      3. What is a PUT request?   
+//      4. What is a DELETE request?   
+//      5. What is a POST request?     
 //      2. Why should you use a framework like express?
 //      3. What is express?
 //      4. How do you install express?
@@ -56,39 +56,49 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* 
-1. What is a REST-ful service?
-///////////////////////////////
-    •   REST, which stands for Representational State Transfer, is a convention for what is used to build these HTTP services.
-    •   Almost all application follow a "client/server" relationship.
-    •   The "client" is the front-end, which is our application.
-    •   The "server" is the back-end, which is where the front-end talks goes to in order to get data.
-    •   The communication between the client and the server occurs through "HTTP Protocol".
-    •   The server "exposes" a bunch of services that are accessible via HTTP protocol.
-    •   The client calls those services by sending an HTTP request.  
-    •   HTTP protocol principles provide support for CRUD operations.
-    •   CRUD stands for Create, Read, Update, and Delete.
 
-    REST
-    ==========
+/* 
+1. What is REST?
+///////////////////////////////
 ==SHORT ANSWER==
-    •   REST defines a set of conventions for creating HTTP services that expose resources such as creating a 
-        resource (POST), updating it (PUT), reading it (GET), and deleting it (DELETE).
-    
-==EXTENDED ANSWERS==  
+    •   REST stands for REpresentational State Transfer.
+    •   REST is an architectural style that defines a set of standard conventions for creating HTTP services for providing
+        access (i.e. exposing) resources such as creating a resource (POST), updating it (PUT), reading it (GET), and 
+        deleting it (DELETE).
+
+==EXTENDED ANSWER==
+    •   REST is a convention for what is used to build HTTP services.
+
+    •   Almost all applications follow a "client/server" relationship.
+        o   The "client" is the front-end, which is our application.
+        o   The "server" is the back-end, which is where the front-end talks goes to in order to get data.
+
+    •   The communication between the client and the server occurs through "HTTP Protocol".
+        o   The server "exposes" a bunch of services that are accessible via HTTP protocol.
+        o   The client calls those services by sending an HTTP request.  
+        o   HTTP protocol principles provide support for CRUD operations.
+        o   CRUD stands for Create, Read, Update, and Delete.
+
+==EXAMPLE==
     •   Suppose you have a client app that manages a list of customers.
-    •   For example, the service is exposed in an endpoint like https://website.com/api/customers where "/customers" refers 
-        to a list of customers.
-    •   In the REST world, the "/customers" part of the endpoint is called the "resource".
-    •   RESOURCES can be exposed (e.g. customers, user data, etc.) at verious endpoints.
-    •   All the operations surrounding the "customers" like creating a customer, deleting a customer, updating, etc. would be done
-        by sending an HTTP request to the customers endpoint.
-    •   The type of HTTP request determines the type of operation. 
-    •   Every HTTP request has a verb(method) that determines its type or intention.
-    •   HTTP methods include GET(getting data), POST(posting data), DELETE(deleting data), and PUT (updating data) 
-    
-    What is a GET request?
-    ======================
+        o   The service is exposed in an endpoint like https://website.com/api/customers where "/customers" refers 
+            to a list of customers.
+
+        o   In the REST world, the "/customers" part of the endpoint is called the "resource".
+            o   RESOURCES can be exposed (e.g. customers, user data, etc.) at verious endpoints.
+            o   All the operations surrounding the "customers" like creating a customer, deleting a customer, updating, etc. would be done
+            by sending an HTTP request to the customers endpoint.
+
+        o   The type of HTTP request determines the type of operation. 
+            o   Every HTTP request has a verb(method) that determines its type or intention.
+            o   HTTP methods include GET(getting data), POST(posting data), DELETE(deleting data), and PUT (updating data) 
+*/
+
+
+
+/*
+What is a GET request?
+///////////////////////
     •   In a GET request, you send a request for data and you receive a response with that data.
             o   For example, if you send am HTTP GET request for customers, you will get an array of objects of those customers.
 
@@ -106,10 +116,13 @@
                      GET REQUEST                           RESPONSE
                 ____________________                _______________________
                 Get /api/customers/1   =========>     { id: 1, name:'joe'}
-                              
-                
-    What is a PUT request?
-    ======================
+*/
+
+
+
+/*                
+What is a PUT request?
+///////////////////////
     •   In a PUT request, we want to update existing data. 
     •   To update the data via a put request, you would send an HTTP PUT request to the specific customer endpoint AND the data to update with.
     •   The server then responds to the PUT request with the updated values.
@@ -120,8 +133,14 @@
                 { id: 1, name:'alan'}
 
 
-    What is a DELETE request?
-    ======================       
+*/
+
+
+
+
+/*
+What is a DELETE request?
+//////////////////////////     
     •  In a DELETE request, you simply want to delete the id.
 
                     PUT REQUEST                                RESPONSE
@@ -1555,5 +1574,7 @@ STEP 3: Push the object to the course object and return that object in the body 
 
 /* 
 https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786 -- enviroment variables
+http://www.drdobbs.com/web-development/restful-web-services-a-tutorial/240169069 -- restful webservice article
+https://www.codecademy.com/articles/what-is-rest -- what is rest
 */
 
