@@ -2,19 +2,19 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Fundamentals of Server Side Programming
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      1. What is server-side programming?      
-//      2. What are important factors in server-side programming?
-//      3. What is a web server?
-//      4. What is the server-side and what is it's purpose?
-//      5. What is the client-side and what is its purpose?
-//      6. What is client-side vs. server-side scripting?
-//      7. What is a client application?
-//      8. What kind of resources can server-side apps expose?
-//      9. How does the HTTP Protocol request-response cycle work?
-//      10. Why is it important to route requests to the right request handlers?
-//      11. How is data persistence important to server-side programming?
-//      12. What is buisness logic in the context of server-side programming?
-//      13. What is software testing and what is the importance of software testing in server-side programming?
+//      1. What is server-side programming?            
+//      2. What is a web server?
+//      3. What is the server-side and what is it's purpose?
+//      4. What is the client-side and what is its purpose?
+//      5. What is client-side vs. server-side scripting?
+//      6. What is a client application?
+//      7. What kind of resources can server-side apps expose?
+//      8. How does the HTTP Protocol request-response cycle work?
+//      9. Why is it important to route requests to the right request handlers?
+//      10. How is data persistence important to server-side programming?
+//      11. What is buisness logic in the context of server-side programming?
+//      12. What is software testing and what is the importance of software testing in server-side programming?
+//
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Server side programming (in JavaScript) from study, research, tutorials, 
@@ -29,40 +29,25 @@
 ///////////////////////////////////
 ==SHORT ANSWER==
     •   "Server-side programming" is about writing programs that create dynamic pages.
+    •   Server-side programming is generally about:
 
-==EXAMPLE==
+==ABSTRACT EXAMPLE==
     •   For example, Amazon will use server-side programming to construct search results for products
         based on the users buying habits, preferences, etc.
          
 ==EXTENDED ANSWERS==
     •   Server-side programming allows us to efficiently deliver information tailored for individual users.  
-        o   JavaScript, where the programs run in the web browser, is called "client-side" programming.
+        o   Note that JavaScript (where the programs run in the web browser) is called "client-side" programming.
 */
-
-
-
-/*
-2. What are important factors in server-side programming?
-//////////////////////////////////////////////////////////
-==BROAD ANSWER==        
-    o   Web applications exposing resources
-    o   Web servers and clients speaking http to each other
-    o   Web servers route requests to the right request handlers
-    o   Server-side programming is about data persistence
-    o   Server-side programming is about business logic
-    o   Server-side programming is software testing
-    o   Server-side programming is about devops.
-*/
-
 
 
 /* 
-3. What is a web server?
+2. What is a web server?
 /////////////////////////
 ==SHORT ANSWER==
-    •   A WEB SERVER is a system (device and program) that stores and delivers content to a users browser over the internet.   
+    •   A WEB SERVER is a system (device and/or program) that stores and delivers content to a users browser over the internet.   
 
-==EXAMPLE==
+==ABSTRACT EXAMPLE==
     •   For example, when a user uses a client-side browser to request information (i.e. www.amazon.com) from a website, 
         the physical server (a physical server like AWS) which also houses a server program (a back-end language like node.js),
         sends a request to the internet for viweing the corresponding page for that address.
@@ -83,7 +68,7 @@
 
 
 /* 
-4. What is the server-side and what is it's purpose?
+3. What is the server-side and what is it's purpose?
 ////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •  "Server-side" refers to anything that happens on the server (back-end) instead of the client (front-end).    
@@ -97,16 +82,15 @@
 
 
 /*
-5. What is the client-side and what is its purpose?
+4. What is the client-side and what is its purpose?
 //////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   The client-side (aka Front-end) is everything in a web application that is displayed or takes place on the client
-        device (e.g. phone, pc, etc.).
-        o   For example, Netflix has html, css, and javascript that dictate how the site appears to the user when it is 
-            interpreted in the client-side browser.
+    •   The client-side (Front-end) is everything in a web application that is displayed or takes place on the 
+        client device (e.g. phone, pc, etc.).   
 
-==EXAMPLE==
-    •   When you use a web browser, you are using a server-side client.    
+==ABSTRACT EXAMPLE==
+    •   For example, When you use a web browser, you are using a server-side client and when you visit a site like Netflix,
+         it has html, css, and javascript that dictate how the site appears to the user when it is interpreted in the client-side browser.    
 
 ==ENTENDED ANSWERS==
     •   The client-side (i.e. user side) handles the STRUCTURE and PRESENTATION of the data the user gets.
@@ -121,7 +105,7 @@
 
 
 /* 
-6. What is client-side vs. server-side scripting?
+5. What is client-side vs. server-side scripting?
 /////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Client-side scripting refers to running scripts within the front-end browser like JavaScript while 
@@ -141,8 +125,9 @@
 */
 
 
+
 /* 
-7. What is a client application?
+6. What is a client application?
 /////////////////////////////////
 ==SHORT ANSWER==
     •	A client application has a UI, runs on the users machine in a web browser, and requests resources from a server. 
@@ -158,11 +143,11 @@
 
 
 /* 
-8. What kind of resources can server-side apps expose?
+7. What kind of resources can server-side apps expose?
 ///////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •	Server-side apps can expose two types of resources: 
-        o   FILES
+        o   FILES, such as HTML and CSS.
         o   PARAMETERIZED DATA.
 
 ==EXTENDED ANSWER==    
@@ -178,12 +163,14 @@
 */
 
 
+
 /* 
-9. How does the HTTP Protocol request-response cycle work?
+8. How does the HTTP Protocol request-response cycle work?
 ///////////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    1.   The client makes a REQUEST to an HTTP server by opening a connection to the server and sending a request message.
-    2.   Then, the server sends a RESPONSE to the request in the form of an HTML file with headers and a body.
+    •   Web servers and clients speak http to each other   
+            1.   The client makes a REQUEST to an HTTP server by opening a connection to the server and sending a request message.
+            2.   Then, the server sends a RESPONSE to the request in the form of an HTML file with headers and a body.
 
 ==EXTENDED ANSWERS==
     •   Servers and clients communicate via HTTP Protocol.
@@ -226,8 +213,9 @@ Example of an HTTP Protocol request-reponse cycle
 */
 
 
+
 /* 
-10. Why is it important to route requests to the right request handlers?
+9. Why is it important to route requests to the right request handlers?
 ////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Web servers need to have a way of ensuring that when a client requests a resource through a URL, 
@@ -236,14 +224,14 @@ Example of an HTTP Protocol request-reponse cycle
 
 
 /* 
-11. How is data persistence important to server-side programming?
+10. How is data persistence important to server-side programming?
 //////////////////////////////////////////////////////////////////
     •   Web servers store the common set of data that all client applications can access.
 */
 
 
 /* 
-12. What is buisness logic in the context of server-side programming?
+11. What is buisness logic in the context of server-side programming?
 ///////////////////////////////////////////////////////////////////// 
     •   Across the layers of a server-side web application, the overriding purpose is to implement one or
         more pieces of business logic.
@@ -251,7 +239,7 @@ Example of an HTTP Protocol request-reponse cycle
 
 
 /* 
-13. What is software testing and what is the importance of software testing in server-side programming?
+12. What is software testing and what is the importance of software testing in server-side programming?
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
     •   A software test is a peice of codesthat checks whether or not another peice of code bahves as it should.
         o   As code is written and refactored, suites of software tests can be run to let us know if any changes we
@@ -269,43 +257,16 @@ Example of an HTTP Protocol request-reponse cycle
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* 
-
-https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%20Steps.png
-https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-side/
-https://www.nginx.com/resources/glossary/web-server/
+Additional resources
+/////////////////////
+https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%20Steps.png  --  infromative diagram for server cycle.
+https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-side/  --  client vs server side article
+https://www.nginx.com/resources/glossary/web-server/ -- about web servers.
 https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html -- request/response example
 https://expressjs.com/en/advanced/best-practice-security.html -- disable x-powered-by note
-https://www.seguetech.com/client-server-side-code/ -- clinet vs server side scripting, good AJAX and jQuery summary
+https://www.seguetech.com/client-server-side-code/ -- client vs server side scripting, good AJAX and jQuery summary
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Introduction -- interesting MDN intor to server side programming
+
 
 */
