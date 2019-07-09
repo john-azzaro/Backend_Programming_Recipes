@@ -2,14 +2,18 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Express framework 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//      0. What is a webserver and what is its role?
+//
 //      1. What is a REST?  
 //      2. What is a GET request?   
 //      3. What is a PUT request?   
 //      4. What is a DELETE request?   
 //      5. What is a POST request?     
+//
 //      2. Why should you use a framework like express?
 //      3. What is express?
 //      4. How do you install express?
+//
 //      5. How do you create a basic web server with express?
 //        +  How do you create an express server?
 //        +  How do you create a route?    
@@ -20,6 +24,7 @@
 //        +  How do you use nodemon in Gitbash?
 //      7. What is an environment variable and how do you assign a port to your node application?
 //        +  How do you set an enviroment variable (assign a port to your application?
+//
 //      8. What are route parameters?
 //        +  What is req.params?
 //        +  How do you include multiple parameters in a route?
@@ -29,7 +34,9 @@
 //     11. What is a HTTP PUT request and how do you handle it to an endpoint?
 //     12. What is a HTTP DELETE request and how do you handle it to an endpoint?
 //     13. What is input validation?
-//     14. What is Postman and how is it useful when building express apps?     
+//
+//     14. What is Postman and how is it useful when building express apps?  
+//   
 //     15. What is middleware?
 //        +  What is the request processing pipeline? 
 //     16. How do you define a custom middleware function in a seperate module? 
@@ -38,12 +45,14 @@
 //        +  What is the "static" method and what does it do?
 //     18. What is third-party middleware?
 //        +  How do you install thrid-party middleware?
+//
 //     19. What are environments and How do you detect them?
 //        +  How do you tell if your code is running on a development or production enviroment?
 //        +  How do you set the enviroment to a specific environment?
 //     20. How do you store configuration settings for your application and how do you override them in different enviroments?
 //        +  How do you store secrets in enviroment variables?
 //     21. How do you log messages for the purpose of debugging?
+//
 //     22. How do you structure express applications?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,6 +65,18 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/* 
+What is a web server and what is its role?
+///////////////////////////////////////////////////////////
+    •   Although a web server can refer to either the hardware (i.e. the computer) or the software (i.e. application) 
+        that helps deliver content that can be accessed through the internet, the role of a web server it to respond 
+        to HTTP requests from clients with HTTP responses.
+    •   
+
+
+*/
+
+
 
 /* 
 1. What is REST?
@@ -65,6 +86,7 @@
     •   REST is an architectural style that defines a set of standard conventions for creating HTTP services for providing
         access (i.e. exposing) resources such as creating a resource (POST), updating it (PUT), reading it (GET), and 
         deleting it (DELETE).
+
 
 ==EXTENDED ANSWER==
     •   REST is a convention for what is used to build HTTP services.
@@ -78,6 +100,7 @@
         o   The client calls those services by sending an HTTP request.  
         o   HTTP protocol principles provide support for CRUD operations.
         o   CRUD stands for Create, Read, Update, and Delete.
+
 
 ==EXAMPLE==
     •   Suppose you have a client app that manages a list of customers.
@@ -131,10 +154,7 @@ What is a PUT request?
                 ____________________                ________________________
                 GET /api/customers/1   =========>     { id: 1, name:'alan'}
                 { id: 1, name:'alan'}
-
-
 */
-
 
 
 
@@ -156,6 +176,9 @@ What is a DELETE request?
                 POST /api/customers       =========>    { id: 3, name:'charlie'}
                 { name:'charlie'}
 */
+
+
+
 
 
 
