@@ -109,78 +109,6 @@
 
 
 
-/* What are request and response objects?
-/////////////////////////////////////////
-
-
-*/
-
-
-
-
-/*
-What is a GET request?
-///////////////////////
-    •   In a GET request, you send a request for data and you receive a response with that data.
-            o   For example, if you send am HTTP GET request for customers, you will get an array of objects of those customers.
-
-                    GET REQUEST                             RESPONSE
-                __________________                  ________________________
-                GET /api/customers     ========>    [
-                                                       { id: 1, name:'joe'},
-                                                       { id: 2, name:'bob'},                                                  
-                                                    ]
-
-
-    •   And if you want a single customer, you would include that in the address:
-            o   The server would then respond by sending back an object with that specific information.
-
-                     GET REQUEST                           RESPONSE
-                ____________________                _______________________
-                Get /api/customers/1   =========>     { id: 1, name:'joe'}
-*/
-
-
-
-/*                
-What is a PUT request?
-///////////////////////
-    •   In a PUT request, we want to update existing data. 
-    •   To update the data via a put request, you would send an HTTP PUT request to the specific customer endpoint AND the data to update with.
-    •   The server then responds to the PUT request with the updated values.
-
-                     PUT REQUEST                           RESPONSE
-                ____________________                ________________________
-                GET /api/customers/1   =========>     { id: 1, name:'alan'}
-                { id: 1, name:'alan'}
-*/
-
-
-
-/*
-What is a DELETE request?
-//////////////////////////     
-    •  In a DELETE request, you simply want to delete the id.
-
-                    PUT REQUEST                                RESPONSE
-                ____________________                     ________________________
-                DELETE /api/customers/1   =========>     
-               
-    What is a POST request?
-    ======================
-    •   In a POST request, we are adding something to a database.
-    
-                    POST REQUEST                                RESPONSE
-                ____________________                  ___________________________
-                POST /api/customers       =========>    { id: 3, name:'charlie'}
-                { name:'charlie'}
-*/
-
-
-
-
-
-
 /* 
 2. Why should you use a framework like express?
 ///////////////////////////////////////////////
@@ -224,6 +152,7 @@ What is a DELETE request?
 ///////////////////
     •   Express is a minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
     •   Express gives you built in features and function to more easily use Node for web development, such as easier ways to route requests.
+    •   Express provides a request and response object for representing and interacting with HTTP requests and reponses.
 */
 
 

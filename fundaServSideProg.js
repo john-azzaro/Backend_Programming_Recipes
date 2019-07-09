@@ -31,7 +31,6 @@
 ///////////////////////////////////
 ==SHORT ANSWER==
     •   "Server-side programming" is about writing programs that create dynamic pages.
-    •   Server-side programming is generally about:
 
 ==ABSTRACT EXAMPLE==
     •   For example, Amazon will use server-side programming to construct search results for products
@@ -45,10 +44,13 @@
 
 
 /* 
-2. What is a web server?
-/////////////////////////
+2. What is a web server and what is it's role?
+//////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   A WEB SERVER is a system (device and/or program) that stores and delivers content to a users browser over the internet.   
+    •   A WEB SERVER is a system (device and/or program) that stores and delivers content to a users browser over the internet. 
+    •   Although a web server can refer to either the hardware (i.e. the computer) or the software (i.e. application) 
+        that helps deliver content that can be accessed through the internet, the role of a web server it to respond 
+        to HTTP requests from clients with HTTP responses.  
 
 ==ABSTRACT EXAMPLE==
     •   For example, when a user uses a client-side browser to request information (i.e. www.amazon.com) from a website, 
@@ -71,14 +73,9 @@
 
 
 /* 
-What is the role of a web server?
-//////////////////////////////////
-==SHORT ANSWER==
-    •   Although a web server can refer to either the hardware (i.e. the computer) or the software (i.e. application) 
-        that helps deliver content that can be accessed through the internet, the role of a web server it to respond 
-        to HTTP requests from clients with HTTP responses.
-    •   Express, which is a minimalist for Node.js that simplifies the creation of modern server-side web applications in Node, 
-        provides built in features and functions to more easily use Node for web development, such as easier ways to route requests.
+What two important jobs does a web server do?
+//////////////////////////////////////////////
+
 */
 
 
@@ -294,8 +291,85 @@ What is the role of a web server?
                 Content-Type: text/html: charset=UTF-8                                 // media type of resource
 
                 <html><body><header><h1>Hello world!</h1></header></body></html>
-
 */
+
+
+
+/*
+What is a GET request?
+///////////////////////
+==SHORT ANSWER==
+
+
+    •   In a GET request, you send a request for data and you receive a response with that data.
+            o   For example, if you send am HTTP GET request for customers, you will get an array of objects of those customers.
+
+                    GET REQUEST                             RESPONSE
+                __________________                  ________________________
+                GET /api/customers     ========>    [
+                                                       { id: 1, name:'joe'},
+                                                       { id: 2, name:'bob'},                                                  
+                                                    ]
+
+
+    •   And if you want a single customer, you would include that in the address:
+            o   The server would then respond by sending back an object with that specific information.
+
+                     GET REQUEST                           RESPONSE
+                ____________________                _______________________
+                Get /api/customers/1   =========>     { id: 1, name:'joe'}
+*/
+
+
+
+/*                
+What is a PUT request?
+///////////////////////
+==SHORT ANSWER==
+
+
+    •   In a PUT request, we want to update existing data. 
+    •   To update the data via a put request, you would send an HTTP PUT request to the specific customer endpoint AND the data to update with.
+    •   The server then responds to the PUT request with the updated values.
+
+                     PUT REQUEST                           RESPONSE
+                ____________________                ________________________
+                GET /api/customers/1   =========>     { id: 1, name:'alan'}
+                { id: 1, name:'alan'}
+*/
+
+
+
+/*
+What is a DELETE request?
+////////////////////////// 
+==SHORT ANSWER==    
+
+
+    •  In a DELETE request, you simply want to delete the id.
+
+                    PUT REQUEST                                RESPONSE
+                ____________________                     ________________________
+                DELETE /api/customers/1   =========>     
+ */ 
+   
+ 
+
+ /*
+ What is a POST request?
+ ///////////////////////
+ ==SHORT ANSWER==
+
+
+    •   In a POST request, we are adding something to a database.
+    
+                    POST REQUEST                                RESPONSE
+                ____________________                  ___________________________
+                POST /api/customers       =========>    { id: 3, name:'charlie'}
+                { name:'charlie'}
+*/
+
+
 
 
 
