@@ -4,7 +4,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //      1. What is server-side programming?            
 //      2. What is a web server?
-//      3. What is the server-side and what is it's purpose?
+//      3. What is the role of a web server?
+//     >3. What is the server-side and what is it's purpose?
 //      4. What is the client-side and what is its purpose?
 //      5. What is client-side vs. server-side scripting?
 //      6. What is a client application and what are some key parts?
@@ -45,7 +46,7 @@
 
 /* 
 2. What is a web server?
-////////////////////////
+/////////////////////////
 ==SHORT ANSWER==
     •   A WEB SERVER is a system (device and/or program) that stores and delivers content to a users browser over the internet.   
 
@@ -65,6 +66,19 @@
     •   Content can be static (text or images) or dynamic (items user selects for purchase),
     •   To deliver dynamic content, web servers use server-side scripting languages to encode business logic.
     •   A web server runs a website by returning HTML files over an HTTP connection.    
+*/
+
+
+
+/* 
+What is the role of a web server?
+//////////////////////////////////
+==SHORT ANSWER==
+    •   Although a web server can refer to either the hardware (i.e. the computer) or the software (i.e. application) 
+        that helps deliver content that can be accessed through the internet, the role of a web server it to respond 
+        to HTTP requests from clients with HTTP responses.
+    •   Express, which is a minimalist for Node.js that simplifies the creation of modern server-side web applications in Node, 
+        provides built in features and functions to more easily use Node for web development, such as easier ways to route requests.
 */
 
 
@@ -230,6 +244,16 @@
 
 
 
+/* 
+What is an HTTP request?
+////////////////////////
+    •   An HTTP request asks the server to return a resource available at a particular place.
+        o   Specifically, at the host specified in the requets heades, plus the path specified in the inital line.
+*/
+
+
+
+
 
 /* 
 12. How does the HTTP Protocol request-response cycle work?
@@ -295,6 +319,7 @@ https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html -
 https://expressjs.com/en/advanced/best-practice-security.html -- disable x-powered-by note
 https://www.seguetech.com/client-server-side-code/ -- client vs server side scripting, good AJAX and jQuery summary
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Introduction -- interesting MDN intor to server side programming
+https://www.codecademy.com/articles/http-requests -- HTTP requests
 
 
 */

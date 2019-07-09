@@ -65,17 +65,6 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/* 
-What is a web server and what is its role?
-///////////////////////////////////////////////////////////
-    •   Although a web server can refer to either the hardware (i.e. the computer) or the software (i.e. application) 
-        that helps deliver content that can be accessed through the internet, the role of a web server it to respond 
-        to HTTP requests from clients with HTTP responses.
-    •   
-
-
-*/
-
 
 
 /* 
@@ -116,6 +105,16 @@ What is a web server and what is its role?
             o   Every HTTP request has a verb(method) that determines its type or intention.
             o   HTTP methods include GET(getting data), POST(posting data), DELETE(deleting data), and PUT (updating data) 
 */
+
+
+
+
+/* What are request and response objects?
+/////////////////////////////////////////
+
+
+*/
+
 
 
 
