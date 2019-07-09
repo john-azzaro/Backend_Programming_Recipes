@@ -245,20 +245,11 @@ What is the role of a web server?
 
 
 /* 
-What is an HTTP request?
-////////////////////////
+12. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
+////////////////////////////////////////////////////////////////////////////////////////
+==SHORT ANSWER==
     •   An HTTP request asks the server to return a resource available at a particular place.
         o   Specifically, at the host specified in the requets heades, plus the path specified in the inital line.
-*/
-
-
-
-
-
-/* 
-12. How does the HTTP Protocol request-response cycle work?
-///////////////////////////////////////////////////////////
-==SHORT ANSWER==
     •   Web servers and clients speak http to each other   
             1.   The client makes a REQUEST to an HTTP server by opening a connection to the server and sending a request message.
             2.   Then, the server sends a RESPONSE to the request in the form of an HTML file with headers and a body.
