@@ -4,10 +4,10 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //
-//      1. What is a REST?  
+//      0. What is a REST?  
 
+//      1. What is express?
 //      2. Why should you use a framework like express?
-//      3. What is express?
 //      4. How do you install express?
 //
 //      5. How do you create a basic web server with express?
@@ -65,7 +65,7 @@
 
 
 /* 
-1. What is REST?
+1. What is REST?  (relocate??)
 ///////////////////////////////
 ==SHORT ANSWER==
     •   REST stands for REpresentational State Transfer.
@@ -103,7 +103,13 @@
             o   HTTP methods include GET(getting data), POST(posting data), DELETE(deleting data), and PUT (updating data) 
 */
 
-
+/* 
+1. What is express?
+///////////////////
+    •   Express is a minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
+    •   Express gives you built in features and function to more easily use Node for web development, such as easier ways to route requests.
+    •   Express provides a request and response object for representing and interacting with HTTP requests and reponses.
+*/
 
 
 /* 
@@ -144,13 +150,7 @@
 
 
 
-/* 
-3. What is express?
-///////////////////
-    •   Express is a minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
-    •   Express gives you built in features and function to more easily use Node for web development, such as easier ways to route requests.
-    •   Express provides a request and response object for representing and interacting with HTTP requests and reponses.
-*/
+
 
 
 
@@ -437,7 +437,7 @@
     •   Route parameters are used for essential or required values.
     •   Route paramaters are the named URL segments uses to capture the values specified at thier position in the URL. 
 
-    
+
 ==EXAMPLE==
                           1. First, to get a specific course, we specify the endpoint and the given ID with ":id" 
                              which could be something like "api/courses/1".       
@@ -482,13 +482,12 @@
 
 
 /* 
+How do request and response objects work in express?
+////////////////////////////////////////////////////
+
 
 
 */
-
-
-
-
 
 
 

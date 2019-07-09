@@ -16,7 +16,11 @@
 //      9. How is data persistence important to server-side programming?
 //     10. What is buisness logic in the context of server-side programming?
 //     11. What is software testing and what is the importance of software testing in server-side programming?
-//     12. How does the HTTP Protocol request-response cycle work?
+//     12. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
+//     13. What is a GET request?
+//     14. What is a PUT request?
+//     15. What is a DELETE request?
+//     16. What is a POST request?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Server side programming (in JavaScript) from study, research, tutorials, 
@@ -79,7 +83,7 @@ What two important jobs does a web server do?
 
         1. The server must appropriatley route the request to the correct request handler.
             o   For example, requests to /current-weather might be handled by a getCurrentWeather function.
-            
+
         2. The request handler needs to know how to translate the information fromt he request into an appropriate 
            response it can send back
 */
