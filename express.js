@@ -2,14 +2,10 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Express framework 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      0. What is a webserver and what is its role?
+
 //
 //      1. What is a REST?  
-//      2. What is a GET request?   
-//      3. What is a PUT request?   
-//      4. What is a DELETE request?   
-//      5. What is a POST request?     
-//
+
 //      2. Why should you use a framework like express?
 //      3. What is express?
 //      4. How do you install express?
@@ -29,6 +25,7 @@
 //        +  What is req.params?
 //        +  How do you include multiple parameters in a route?
 //        +  What are query string parameters using express and how do you use them?
+
 //      9. What is a HTTP GET request and how do you handle it to an endpoint?
 //     10. What is a HTTP POST request and how do you handle it to an endpoint?
 //     11. What is a HTTP PUT request and how do you handle it to an endpoint?
@@ -440,6 +437,7 @@
     •   Route parameters are used for essential or required values.
     •   Route paramaters are the named URL segments uses to capture the values specified at thier position in the URL. 
 
+    
 ==EXAMPLE==
                           1. First, to get a specific course, we specify the endpoint and the given ID with ":id" 
                              which could be something like "api/courses/1".       
@@ -480,6 +478,18 @@
 }                   );                  
                                          
 */
+
+
+
+/* 
+
+
+*/
+
+
+
+
+
 
 
 

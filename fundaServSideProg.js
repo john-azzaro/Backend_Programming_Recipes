@@ -75,9 +75,14 @@
 /* 
 What two important jobs does a web server do?
 //////////////////////////////////////////////
+    •   A web server has two important jobs:
 
+        1. The server must appropriatley route the request to the correct request handler.
+            o   For example, requests to /current-weather might be handled by a getCurrentWeather function.
+            
+        2. The request handler needs to know how to translate the information fromt he request into an appropriate 
+           response it can send back
 */
-
 
 
 
@@ -299,8 +304,9 @@ What two important jobs does a web server do?
 What is a GET request?
 ///////////////////////
 ==SHORT ANSWER==
+    •   GET is used to read or retrieve resources.
 
-
+==EXTENDED ANSWER==
     •   In a GET request, you send a request for data and you receive a response with that data.
             o   For example, if you send am HTTP GET request for customers, you will get an array of objects of those customers.
 
@@ -326,8 +332,9 @@ What is a GET request?
 What is a PUT request?
 ///////////////////////
 ==SHORT ANSWER==
+    •   PUT is used to replace an existing resource.
 
-
+==EXTENDED ANSWER==
     •   In a PUT request, we want to update existing data. 
     •   To update the data via a put request, you would send an HTTP PUT request to the specific customer endpoint AND the data to update with.
     •   The server then responds to the PUT request with the updated values.
@@ -344,8 +351,9 @@ What is a PUT request?
 What is a DELETE request?
 ////////////////////////// 
 ==SHORT ANSWER==    
+    •  DELETE is used to delete resources.
 
-
+==EXTENDED ANSWER==
     •  In a DELETE request, you simply want to delete the id.
 
                     PUT REQUEST                                RESPONSE
@@ -359,8 +367,9 @@ What is a DELETE request?
  What is a POST request?
  ///////////////////////
  ==SHORT ANSWER==
+    •   POST is used to create new resources.
 
-
+==EXTENDED ANSWER==
     •   In a POST request, we are adding something to a database.
     
                     POST REQUEST                                RESPONSE
