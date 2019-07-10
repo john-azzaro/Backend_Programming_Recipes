@@ -23,7 +23,7 @@
 ==SHORT ANSWER==
     •   Middleware is the organizing principle of Express applications.
     •   Middleware (or middleware function) takes a request object and either returns a reponse to the client 
-        or passes control to another middleware function. 
+        or passes control to another middleware function (i.e. the request processing pipeline). 
 
 ==EXTENDED ANSWER==
     •   One example of a middleware function is the route handlers we use for GET, PUT, POST, and DELETE.
@@ -83,10 +83,145 @@
 
 
 /* 
-How does middleware work?
-//////////////////////////
+How do you add middleware to your express app?
+//////////////////////////////////////////////
+==SHORT ANSWER==
+    •  
 
 
+==BASIC EXAMPLE==
+    
+                            app.use( function(req, res, next) {              
+                                console.log("Logging...")
+                            });                                          <== console will print "Logging..."
+
+
+==PRACTICAL EXAMPLE==
+
+    STEP 0: Starting with a basic express app
+    ==========================================
+    •   Suppose we had a basic express app with two routes:
+            1.  (with request to /api/bar... the response will be a JSON object {bar:"foo"})
+            2.  (with request to /api/bar... the response will be a JSON object {bar:"foo"})                   
+    
+                        _________________________________________________
+
+                                const express = require('express');                              <== load express and store as "express".
+                                const app = express();                                           <== execute express and store as "app".  
+
+                                app.get('/api/foo', function(req, res) {                         <== Route 1 
+                                return res.json({foo: 'bar'});
+                                });
+
+                                app.get('/api/bar', function(req, res)  {                        <== Route 2 
+                                return res.json({bar: 'foo'});
+                                })
+
+                                app.listen(8080);                                 
+
+                        _________________________________________________
+
+
+    STEP 1: Create your middleware function
+    =======================================
+    •   In this example, we want to create middleware that checks to see if some condition is true about the request object.
+
+    •   To add middleware, you must first make your middleware function.                           
+    •   Each middleware is essentially a function and each middleware function stack has 3 things:
+            1. A request object (i.e. route handler).
+            2. A response object.
+            3. A "next" function.          
+                        ___________________________________________________________________________
+
+                                                                         1    2     3
+                                                                         |    |     |
+                                const myMiddlewareFunction = function(req, res, next)  {         <== 1. create a middleware function.
+                                    // code here           
+                                    next();
+                                }
+
+                        ____________________________________________________________________________
+    
+    •   Then build-out the logic.
+            o   In this case, we want to create a middleware function that checks to see that if the response 
+                is true, sent a message, and if not move on to the next middleware function (if there is any).    
+            o   Within the body of this function, we call "next()" to pass control to the next function
+                in the middleware pipeline.  
+            o   If we dont terminate the request/response cycle with next(), the request will
+                end up hanging (i.e. in postman, a GET request will continue "Loading..." without any response) 
+                because we did not pass control to another middleware function to terminate the req/res cycle.                  
+
+                        ___________________________________________________________________________
+
+
+                            const myMiddlewareFunc = function(req, res, next) {                    
+                                console.log(req.url);                                             ... log the req.url...
+                                if (someConditionIsTrue(req)) {                                   ... if the condition is true...
+                                    return res.json({msg: 'someMessage'});                        ... return this response.
+                                }
+                                else {                                                            ... if not ...
+                                    next();                                                       ... call next to trigger next middleware function
+                                }
+                            }
+
+                        ___________________________________________________________________________
+
+    STEP 2: Install the middleware function using app.use()
+    ========================================================                        
+    •   Then we use "app.use()" to install a middleware function in our request processing pipeline and use it.
+    •   Essentially, app.use() is called to add middleware to the entire app and the middleware called will run 
+        for all requests to this app, even non-existent endpoints.     
+
+                        _________________________________________________
+
+
+                            const = myMiddlewareFunction = function(req, res, next)  {
+                                console.log(req.url);                                            
+                                if (someConditionIsTrue(req)) {                                   
+                                    return res.json({msg: 'someMessage'});                        
+                                }
+                                else {                                                           
+                                    next();                                                       
+                                }
+                            }
+
+                            app.use(myMiddlewareFunction);                                         <== app.use installs the middleware function for use.
+
+                        _________________________________________________
+
+
+    FINAL STEP: The middleware has been added successfully!
+    =======================================================                       
+
+                    __________________________________________
+
+                        const express = require('express');                               
+                        const app = express();                                             
+
+                        const myMiddlewareFunc = (req, res, next) => {                     <== 1. create a middleware function.
+                                console.log(req.url);                                             ... log the req.url...
+                                if (someConditionIsTrue(req)) {                                   ... if the condition is true...
+                                    return res.json({msg: 'someMessage'});                        ... return this response.
+                                }
+                                else {                                                            ... if not ...
+                                    next();                                                       ... call next to trigger next middleware function
+                                }
+                                }
+
+                                app.use(myMiddlewareFunc);                                <==== 2. app.use(myMiddlewareFunc) adds the above middleware to the entire app.
+
+                                app.get('/api/foo', (req, res) => {                         <== Route 1 (with request to /api/foo... the response will be a JSON object {foo:"bar"})
+                                return res.json({foo: 'bar'});
+                                });
+
+                                app.get('/api/bar', (req, res) => {                         <== Route 2 (with request to /api/bar... the response will be a JSON object {bar:"foo"})
+                                return res.json({bar: 'foo'});
+                                })
+
+                                app.listen(8080);                                           
+
+                        __________________________________________
+              
 
 
 
@@ -101,9 +236,9 @@ How does middleware work?
     •   We use "app.use()" to install middleware function in our request processing pipeline.
     •   And within the body of the function at the end, we call "next()" to pass control to the next function
         in the middleware pipeline.
-        o   If we dont terminate the request/response cycle with next(), the request will
-            end up hanging (i.e. in postman, a GET request will continue "Loading..." without any response) 
-            because we did not pass control to another middleware function to terminate the req/res cycle.  
+    •   If we dont terminate the request/response cycle with next(), the request will
+        end up hanging (i.e. in postman, a GET request will continue "Loading..." without any response) 
+        because we did not pass control to another middleware function to terminate the req/res cycle.  
     
 
                                 route handler        "next" refers to the next middleware function in the pipeline
@@ -125,11 +260,6 @@ How does middleware work?
                         app.use(function(req, res, next) {              
                             console.log("Authenticating...")
                         });                                          <== console will then print "Authenticating..."
-
-
-
-
-
 
 */
 
@@ -165,6 +295,13 @@ How does middleware work?
 
                         app.use(logger);                              <== logger passed to the app.use() function.
 */
+
+
+
+
+
+
+
 
 
 
@@ -249,4 +386,69 @@ How does middleware work?
                         [nodemon] starting `node index.js`
                         Listening on port 3000...
                         GET /api/courses 200 95 - 2.022 ms           <== logged GET request by morgan in "tiny" format.
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+///////////////////////////OLD MIDDLEWARE FUNCTION Q//////////////////////////////////////////////////////////////////////
+    // •   We use "app.use()" to install a middleware function in our request processing pipeline.
+    // •   Additionally, within the body of the function at the end, we call "next()" to pass control to the next function
+    //     in the middleware pipeline.
+    //         o   If we dont terminate the request/response cycle with next(), the request will
+    //             end up hanging (i.e. in postman, a GET request will continue "Loading..." without any response) 
+    //             because we did not pass control to another middleware function to terminate the req/res cycle.  
+
+    //                                      response object
+    //                                             |
+    //                             route handler   |    "next" refers to the next middleware function in the pipeline
+    //                                       \     |    /
+    //                     app.use( function(req, res, next) {
+    //                         console.log("Logging");             <= code to be executed, which will show "Logging..." in the console.
+    //                         next();
+    //                     });      \
+    //                               Pass control to the next middleware function in the pipeline.
+
+
+    // •   And if we add ANOTHER middleware function, we will see the consecutive execution that occurs in the request processing pipeline:                   
+                    
+    //                 ____________________________________________
+    
+    //                     app.use( function(req, res, next) {              
+    //                         console.log("Logging...")
+    //                     });                                          <== console will print "Logging..."
+
+    //                     app.use( function(req, res, next) {              
+    //                         console.log("Authenticating...")
+    //                     });                                          <== console will then print "Authenticating..."
+    //                 ______________________________________________    
+                        
+
+
 */
