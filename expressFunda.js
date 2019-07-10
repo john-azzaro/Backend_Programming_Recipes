@@ -4,20 +4,19 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 
-//     1. What is a web server?
-//        + How does the HTTP Protocol request-reponse cycle work?
+//      1. What is a web server and what are the two important jobs a webserver should do?
+//        
 
-//     1. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
-//     2. What is a GET request?
-//     3. What is a PUT request?
-//     4. What is a DELETE request?
-//     5. What is a POST request?
+//      2. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
 
-//      2. Why should you use a framework like express?
+//      3. What types of HTTP requests can we send to a server?
+//        + What is a GET request?
+//        + What is a PUT request?
+//        + What is a DELETE request?
+//        + What is a POST request?
 
-
+//      2. Why should you use a framework (like express)?
 //      1. What is express?
-
 //      4. How do you install express?
 
 
@@ -44,32 +43,38 @@
 
 
 /* 
-What is a web server?
-/////////////////////
-    •   Although a web server can refer to either the hardware (i.e. the computer) or the software (i.e. application) 
-        that helps deliver content that can be accessed through the internet, the role of a web server it to respond 
-        to HTTP requests from clients with HTTP responses.     
+1. What is a web server and what are the two important jobs a webserver should do?
+//////////////////////////////////////////////////////////////////////////////////
+==SHORT ANSWER==
+    •   The role of a web server it to respond to HTTP requests from clients with HTTP responses.   
+
+    •   A web server should perform 2 important jobs:
+            1.  The server must appropriatley route the request to the correct request handler. For example, requests 
+                to /current-weather might be handled by a getCurrentWeather function.
+            2.  The request handler needs to know how to translate the information fromt he request into an appropriate 
+                response it can send back.
 */
 
+
+
 /* 
-12. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
+2. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
 ////////////////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   An HTTP request asks the server to return a resource available at a particular place.
-        o   Specifically, at the host specified in the requets heades, plus the path specified in the inital line.
-    •   Web servers and clients speak http to each other   
-            1.   The client makes a REQUEST to an HTTP server by opening a connection to the server and sending a request message.
-            2.   Then, the server sends a RESPONSE to the request in the form of an HTML file with headers and a body.
+    •   An HTTP request asks the server to return a resource available at a particular place, specifically at the host specified 
+        in the requets headers, plus the path specified in the inital line.
 
-==EXTENDED ANSWERS==
-    •   Servers and clients communicate via HTTP Protocol.
-            o   Resources like HTML which are sent from the server to your browser are generated when you request it.
-    •   The client sends a REQUEST to the HTTP server.
-            o	The program on the web server looks at this request and creates an HTML page specifically for that request.
-    •   The server RESPONDS to the request with an HTML file with headers and a body.           
+    •   In an HTTP request-response cycle, servers and clients communicate via HTTP Protocol and resources like HTML which are sent 
+        from the server to your browser are generated when you request it
+
+==EXAMPLE==
+        1.  The client makes a REQUEST to an HTTP server by opening a connection to the server and sending a request message.
+            o   The program on the web server looks at this request and creates an HTML page specifically for that request.
+        2.  The server sends a RESPONSE to the request in the form of an HTML file with headers and a body.         
             o   The pages that come from that request are in .html files that are either static (unaltered from the server) 
-                or dynamic (created as they are requested).
- 
+                or dynamic (created as they are requested).         
+
+
 
     How does the HTTP Protocol request-reponse cycle work?
     ======================================================
@@ -101,17 +106,23 @@ What is a web server?
                 Content-Type: text/html: charset=UTF-8                                 // media type of resource
 
                 <html><body><header><h1>Hello world!</h1></header></body></html>
+
 */
 
-
-
 /*
-What is a GET request?
-///////////////////////
+What types of HTTP requests can we send to a server?
+///////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   GET is used to read or retrieve resources.
+    •   There are 4 types of HTTP requests we can send to a server:
 
-==EXTENDED ANSWER==
+            1. GET, which is used to read or retrieve resources.
+            2. PUT, which is used to replace an existing resource.
+            3. DELETE, which is used to delete resources.
+            4. POST, which is used to create new resources.
+
+
+    What is a GET request?
+    =======================  
     •   In a GET request, you send a request for data and you receive a response with that data.
             o   For example, if you send am HTTP GET request for customers, you will get an array of objects of those customers.
 
@@ -129,17 +140,11 @@ What is a GET request?
                      GET REQUEST                           RESPONSE
                 ____________________                _______________________
                 Get /api/customers/1   =========>     { id: 1, name:'joe'}
-*/
 
+                
 
-
-/*                
-What is a PUT request?
-///////////////////////
-==SHORT ANSWER==
-    •   PUT is used to replace an existing resource.
-
-==EXTENDED ANSWER==
+    What is a PUT request?
+    =======================
     •   In a PUT request, we want to update existing data. 
     •   To update the data via a put request, you would send an HTTP PUT request to the specific customer endpoint AND the data to update with.
     •   The server then responds to the PUT request with the updated values.
@@ -148,33 +153,21 @@ What is a PUT request?
                 ____________________                ________________________
                 GET /api/customers/1   =========>     { id: 1, name:'alan'}
                 { id: 1, name:'alan'}
-*/
 
 
 
-/*
-What is a DELETE request?
-////////////////////////// 
-==SHORT ANSWER==    
-    •  DELETE is used to delete resources.
-
-==EXTENDED ANSWER==
+    What is a DELETE request?
+    ==========================   
     •  In a DELETE request, you simply want to delete the id.
 
                     PUT REQUEST                                RESPONSE
                 ____________________                     ________________________
                 DELETE /api/customers/1   =========>     
- */ 
-   
- 
 
- /*
- What is a POST request?
- ///////////////////////
- ==SHORT ANSWER==
-    •   POST is used to create new resources.
 
-==EXTENDED ANSWER==
+
+    What is a POST request?
+    =========================
     •   In a POST request, we are adding something to a database.
     
                     POST REQUEST                                RESPONSE
@@ -186,20 +179,22 @@ What is a DELETE request?
 
 
 
+
 /* 
-2. Why should you use a framework like express?
-///////////////////////////////////////////////
+7. Why should you use a framework (like express)?
+/////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   While using the core http module is doable, it is not maintainable for building complex applications because 
-        there are many things we would need to hard code (e.g. if statements).  A framework give the application a proper structure 
-        so we can create more routes while also keeping the application maintainable.                                   
+        there are many things we would need to hard code (e.g. if statements).  
+    •   Using a framework (like express) gives the application a proper structure so we can create more routes while also keeping the 
+        application maintainable.                                   
 
-==EXTENDED ANSWER==  
+==EXAMPLE==  
     •   Below is an example of a simple webserver that listens on port 3000 and responds to requests for
         various endpoint urls.
-    •   However, this approach is neither ideal or maintainable for building complex application because there are many
-        things we would need to hard code (e.g. if statements).
-    •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
+            o   However, this approach is neither ideal or maintainable for building complex application because there are many
+                things we would need to hard code (e.g. if statements).
+            o   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
 
          ______________inefficent way__________________
 
@@ -227,13 +222,10 @@ What is a DELETE request?
 /* 
 1. What is express?
 ///////////////////
-    •   Express is a minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
+    •   Express is a lightweight, minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
     •   Express gives you built in features and function to more easily use Node for web development, such as easier ways to route requests.
     •   Express provides a request and response object for representing and interacting with HTTP requests and reponses.
 */
-
-
-
 
 
 
