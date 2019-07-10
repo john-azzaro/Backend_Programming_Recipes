@@ -3,42 +3,25 @@
 //     Express Fundamentals
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-
 //      1. What is a web server and what are the two important jobs a webserver should do?
+//
 //      2. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
 //         + How does the HTTP Protocol request-reponse cycle work?
+//
 //      3. What types of HTTP requests can we send to a server?
 //         + What is a GET request?
 //         + What is a PUT request?
 //         + What is a DELETE request?
-//         + What is a POST request?
-//      
+//         + What is a POST request?   
+//
 //      4. What is a URL and what are it's components (i.e. routes)?
-//      4. What is a route?
-//         
-
+//      5. What is a route?    
+//
 //      5. Why should you use a web application framework (like express)?
 //      6. What is express?
 //      7. How do you install express?
-
-
-
-
-
-
-
-
-
-//      5. How do you create a basic web server with express (w/ app example)?
-//        +  How do you create an express server?
-//        +  How do you create a route?    
-//        +  How do you listen on a given port for requests?         
-//        +  How do you add another route to your server?
-
-
 //
 //      X.  What is REST?
-//
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information about Express fundamentals from study, research, tutorials, 

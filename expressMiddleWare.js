@@ -3,7 +3,8 @@
 //    Express Middleware
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//     1. 
+//     1. What is middleware?
+//     2. What is the request processing pipeline?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express Middleware from study, research, tutorials, mentor
@@ -17,57 +18,86 @@
 
 
 /* 
-15. What is middleware?
+1. What is middleware?
 ///////////////////////
 ==SHORT ANSWER==
-    •   Middleware (or middleware function), which is a core concept in express, which takes a request object and either returns 
-        a reponse to the client or passes control to another middleware function.   
+    •   Middleware is the organizing principle of Express applications.
+    •   Middleware (or middleware function) takes a request object and either returns a reponse to the client 
+        or passes control to another middleware function. 
 
 ==EXTENDED ANSWER==
     •   One example of a middleware function is the route handlers we use for GET, PUT, POST, and DELETE.
-    •   In express, every route handler function is technically a middleware function because it takes a request object and 
-        returns a response to the client.
+            o   In express, every route handler function is technically a middleware function because it takes a request object and 
+                returns a response to the client.
 
-                        app.get('/api/courses', function(req, res) {            <= the route handler function is middleware bc it terminates the req/res cycle.
+                    _____________________________________________________
+
+                        app.get('/api/courses', function(req, res) {              <= the route handler function is middleware bc it terminates the req/res cycle.
                             res.send(courses);
                         });
+                    _____________________________________________________
 
     •   Another form of middleware is like the code below.
-        o   This middleware function reads the request and if there is a json object in the body of the request, it will parse the body
-            of the request into a json object and then set the req.body property.                   
+            o   This middleware function reads the request and if there is a json object in the body of the request, it will parse the body
+                of the request into a json object and then set the req.body property.                   
 
-                        app.use(express.json());       <== when you call express.json, that method returns a middleware function. 
+                    ________________________________
+
+                        app.use(express.json());           <== when you call express.json, that method returns a middleware function. 
+
+                    ________________________________    
+*/
 
 
-    What is the request processing pipeline?
-    ========================================
-    •   In a request processing pipeline, we can have one or more middleware function.
-    •   Each middleware function either terminates the request/reponse cycle by returning a reponse object OR
-        pass control to another middleware function. 
-    •   Express has a few built-in middleware function, but you can also create custom middleware functions that you can put at
+
+/* 
+2. What is the request processing pipeline?
+///////////////////////////////////////////
+==SHORT ANSWER==
+    •   In a request processing pipeline, we can have one or more middleware functions where a middleware function either terminates 
+        the request/reponse cycle by returning a reponse object OR passes control to another middleware function.                    
+
+==ANALOGY==
+    •   Think of middleware as a bucket brigade, passing request from one person to the next.  
+    
+==EXTENDED ANSWER==
+    •   Express has a few built-in middleware functions, but you can also create custom middleware functions that you can put at
         the front of request processing pipeline so that every request recieved on our server will go through a middleware function.
-    •   With custom middleware functions, you can perform "cross-cutting" concerns, like logging, authentication, authorization, etc.
-    •   In fact, you could say that an express app is nothing more than a bunch of middleware functions. 
+            o   With custom middleware functions, you can perform "cross-cutting" concerns, like logging, authentication, authorization, etc.
+            o   In fact, you could say that an express app is nothing more than a bunch of middleware functions. 
         
-                For example, the following has 2 middleware functions:  
+            o   For example, the following has 2 middleware functions:  
 
-                                        This is a middleware function that parses request body into
+                                        2. This is a middleware function that parses request body into
                                         a json object. However, this does not terminate the req/res
-                                        cycle.
-                                         /
+                      1                 cycle.                           4
+                       \                 /                              /  
                          REQUEST ==> [json()] ==> [route()] ==> RESPONSE
                                                         \
-                                                        So control passes to the second middleware function, which is a route
+                                                        3. So control passes to the second middleware function, which is a route
                                                         handler.  In the route handler, we have the request object with the body
                                                         property populated, where we perform some operation and then terminate the 
                                                         req/res cycle by returning a response to the client.
 */
 
 
+
 /* 
-16. How do you define a custom middleware function in a seperate module?
-////////////////////////////////////////////////////////////////////
-    •   To use a  middleware function, we import and install using app.use().
+How does middleware work?
+//////////////////////////
+
+
+
+
+
+
+
+
+
+==SHORT ANSWER==
+•   To use a middleware function, we import and install using app.use() and 
+
+==EXTENDED ANSWER==
     •   We use "app.use()" to install middleware function in our request processing pipeline.
     •   And within the body of the function at the end, we call "next()" to pass control to the next function
         in the middleware pipeline.
@@ -97,8 +127,17 @@
                         });                                          <== console will then print "Authenticating..."
 
 
-==PRACTICAL EXAMPLE==
-    •  Assuming you have two files, a main index.js and a middleware module file:
+
+
+
+
+*/
+
+
+
+/* 
+3. How do you use a custom middleware function in a seperate module?
+/////////////////////////////////////////////////////////////////////////
     
     STEP 1: Create a new module(i.e. file) to place your middleware:
     ===============================================================
@@ -126,6 +165,11 @@
 
                         app.use(logger);                              <== logger passed to the app.use() function.
 */
+
+
+
+
+
 
 
 /* 
