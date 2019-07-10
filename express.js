@@ -103,90 +103,90 @@
             o   HTTP methods include GET(getting data), POST(posting data), DELETE(deleting data), and PUT (updating data) 
 */
 
-/* 
-1. What is express?
-///////////////////
-    •   Express is a minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
-    •   Express gives you built in features and function to more easily use Node for web development, such as easier ways to route requests.
-    •   Express provides a request and response object for representing and interacting with HTTP requests and reponses.
-*/
+// /* 
+// 1. What is express?
+// ///////////////////
+//     •   Express is a minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
+//     •   Express gives you built in features and function to more easily use Node for web development, such as easier ways to route requests.
+//     •   Express provides a request and response object for representing and interacting with HTTP requests and reponses.
+// */
 
 
-/* 
-2. Why should you use a framework like express?
-///////////////////////////////////////////////
-==SHORT ANSWER==
-    •   While using the core http module is doable, it is not maintainable for building complex applications because 
-        there are many things we would need to hard code (e.g. if statements).  A framework give the application a proper structure 
-        so we can create more routes while also keeping the application maintainable.                                   
+// /* 
+// 2. Why should you use a framework like express?
+// ///////////////////////////////////////////////
+// ==SHORT ANSWER==
+//     •   While using the core http module is doable, it is not maintainable for building complex applications because 
+//         there are many things we would need to hard code (e.g. if statements).  A framework give the application a proper structure 
+//         so we can create more routes while also keeping the application maintainable.                                   
 
-==EXTENDED ANSWER==  
-    •   Below is an example of a simple webserver that listens on port 3000 and responds to requests for
-        various endpoint urls.
-    •   However, this approach is neither ideal or maintainable for building complex application because there are many
-        things we would need to hard code (e.g. if statements).
-    •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
+// ==EXTENDED ANSWER==  
+//     •   Below is an example of a simple webserver that listens on port 3000 and responds to requests for
+//         various endpoint urls.
+//     •   However, this approach is neither ideal or maintainable for building complex application because there are many
+//         things we would need to hard code (e.g. if statements).
+//     •   Instead, we can use EXPRESS, which is a light-weight framework for building web applications.
 
-         ______________inefficent way__________________
+//          ______________inefficent way__________________
 
-            const http = require('http');                              <== First, we load the http core module and store it in a constant named "http".
+//             const http = require('http');                              <== First, we load the http core module and store it in a constant named "http".
 
-            const server = http.createServer((req, res) => {           <== With the http module, we create a "server" with a callback function with two parameters...
-                if (req.url === '/') {                                 <== IF the incoming request url route is '/', then...
-                    res.write('Hello world!');                         <== ... the response will write "Hello world!"...
-                    res.end();                                         <== ... then end the response.
-                }
-                if (req.url === '/api/courses') {                      <==  IF the request url route is '/api/courses', then...
-                    res.write(JSON.stringify([1, 2, 3,]));             <== ... we respond to the client by writing an arrary of objects using JSON...
-                    res.end();                                         <== ... then end the response.
-                }
-            })
+//             const server = http.createServer((req, res) => {           <== With the http module, we create a "server" with a callback function with two parameters...
+//                 if (req.url === '/') {                                 <== IF the incoming request url route is '/', then...
+//                     res.write('Hello world!');                         <== ... the response will write "Hello world!"...
+//                     res.end();                                         <== ... then end the response.
+//                 }
+//                 if (req.url === '/api/courses') {                      <==  IF the request url route is '/api/courses', then...
+//                     res.write(JSON.stringify([1, 2, 3,]));             <== ... we respond to the client by writing an arrary of objects using JSON...
+//                     res.end();                                         <== ... then end the response.
+//                 }
+//             })
 
-            server.listen(3000);                                       <== For the server that we created above, listen on port 3000.
-            console.log('Listening on port 3000...')                   <== ... and log that the server is active on port 3000.
+//             server.listen(3000);                                       <== For the server that we created above, listen on port 3000.
+//             console.log('Listening on port 3000...')                   <== ... and log that the server is active on port 3000.
 
-         ______________________________________________
-*/
-
-
-
+//          ______________________________________________
+// */
 
 
 
 
-/* 
-4. How do you install express?
-//////////////////////////////
-    •   To install express, simply move into the project folder, write "npm init --yes" and then install express by writing "npm install express"
+
+
+
+// /* 
+// 4. How do you install express?
+// //////////////////////////////
+//     •   To install express, simply move into the project folder, write "npm init --yes" and then install express by writing "npm install express"
       
-    STEP 1: Initialize NPM (with the defaults instead of askng questions)
-    ====================================================================
-        $ npm init --yes
-            Wrote to C:\Users\Admin\Desktop\express-demo\package.json:
+//     STEP 1: Initialize NPM (with the defaults instead of askng questions)
+//     ====================================================================
+//         $ npm init --yes
+//             Wrote to C:\Users\Admin\Desktop\express-demo\package.json:
 
-            {
-            "name": "express-demo",
-            "version": "1.0.0",
-            "description": "",
-            "main": "index.js",
-            "scripts": {
-                "test": "echo \"Error: no test specified\" && exit 1"
-            },
-            "keywords": [],
-            "author": "",
-            "license": "ISC"
-            }
+//             {
+//             "name": "express-demo",
+//             "version": "1.0.0",
+//             "description": "",
+//             "main": "index.js",
+//             "scripts": {
+//                 "test": "echo \"Error: no test specified\" && exit 1"
+//             },
+//             "keywords": [],
+//             "author": "",
+//             "license": "ISC"
+//             }
 
-    STEP 2: Install express
-    =======================
-        $ npm install express
-            npm notice created a lockfile as package-lock.json. You should commit this file.
-            npm WARN express-demo@1.0.0 No description
-            npm WARN express-demo@1.0.0 No repository field.
+//     STEP 2: Install express
+//     =======================
+//         $ npm install express
+//             npm notice created a lockfile as package-lock.json. You should commit this file.
+//             npm WARN express-demo@1.0.0 No description
+//             npm WARN express-demo@1.0.0 No repository field.
 
-            + express@4.17.1
-            added 50 packages in 2.191s
-*/
+//             + express@4.17.1
+//             added 50 packages in 2.191s
+// */
 
 
 
@@ -481,13 +481,6 @@
 
 
 
-/* 
-How do request and response objects work in express?
-////////////////////////////////////////////////////
-
-
-
-*/
 
 
 

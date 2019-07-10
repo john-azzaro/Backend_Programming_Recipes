@@ -5,19 +5,17 @@
 //
 
 //      1. What is a web server and what are the two important jobs a webserver should do?
-//        
-
 //      2. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
-
+//        + How does the HTTP Protocol request-reponse cycle work?
 //      3. What types of HTTP requests can we send to a server?
 //        + What is a GET request?
 //        + What is a PUT request?
 //        + What is a DELETE request?
 //        + What is a POST request?
 
-//      2. Why should you use a framework (like express)?
-//      1. What is express?
-//      4. How do you install express?
+//      4. Why should you use a web application framework (like express)?
+//      5. What is express?
+//      6. How do you install express?
 
 
 
@@ -110,8 +108,8 @@
 */
 
 /*
-What types of HTTP requests can we send to a server?
-///////////////////////////////////////////////////
+3. What types of HTTP requests can we send to a server?
+////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   There are 4 types of HTTP requests we can send to a server:
 
@@ -178,11 +176,27 @@ What types of HTTP requests can we send to a server?
 
 
 
+/* 
+What is a route?
+////////////////
+==SHORT ANSWER==
+    •   A "route" determines the way an application responds to a client request to a particular endpoint.
+    
+==EXAMPLE==
+ 
+    http://localhost:3000/courses     <== if a GET request is made to this URL, then the repsonse would be a list of courses.
+    http://localhost:3000/users       <== if a GET request is made to this URL, then the reponse would be a list of users.
+    http://localhost:3000/prices      <== if a GET request is made to this URL, then the reponse would be a list of prices.
+
+*/
+
+
+
 
 
 /* 
-7. Why should you use a framework (like express)?
-/////////////////////////////////////////////////
+4. Why should you use a web application framework (like express)?
+//////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   While using the core http module is doable, it is not maintainable for building complex applications because 
         there are many things we would need to hard code (e.g. if statements).  
@@ -222,9 +236,11 @@ What types of HTTP requests can we send to a server?
 /* 
 1. What is express?
 ///////////////////
+    •   Express is a Node.js web application framework designed for building single-page, multi-page, and hybrid web applications.
     •   Express is a lightweight, minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
     •   Express gives you built in features and function to more easily use Node for web development, such as easier ways to route requests.
     •   Express provides a request and response object for representing and interacting with HTTP requests and reponses.
+    •   Express is part of the MERN software stack (MongoDB, Express, React, Node)
 */
 
 
@@ -232,7 +248,8 @@ What types of HTTP requests can we send to a server?
 /* 
 3. How do you install express?
 //////////////////////////////
-    •   To install express, simply move into the project folder, write "npm init --yes" and then install express by writing "npm install express"
+    •   To install express, move into the project folder, initialize npm (i.e. "npm init --yes") and then simply install 
+        express by writing "npm install express"
       
     STEP 1: Initialize NPM (with the defaults instead of filling in questions)
     ==========================================================================
@@ -262,6 +279,8 @@ What types of HTTP requests can we send to a server?
             + express@4.17.1
             added 50 packages in 2.191s
 */
+
+
 
 
 
@@ -422,5 +441,6 @@ Additional resources
 https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html -- request/response example
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Introduction -- interesting MDN intor to server side programming
 https://www.codecademy.com/articles/http-requests -- HTTP requests
-
+https://www.guru99.com/node-js-express.html -- intro to framework
+https://medium.com/datadriveninvestor/most-popular-technology-stack-to-choose-from-full-stack-vs-mean-stack-vs-mern-stack-in-2019-d12c0a17439a --MERN stack, agile, etc.
 */
