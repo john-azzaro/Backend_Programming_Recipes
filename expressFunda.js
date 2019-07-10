@@ -6,16 +6,20 @@
 
 //      1. What is a web server and what are the two important jobs a webserver should do?
 //      2. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
-//        + How does the HTTP Protocol request-reponse cycle work?
+//         + How does the HTTP Protocol request-reponse cycle work?
 //      3. What types of HTTP requests can we send to a server?
-//        + What is a GET request?
-//        + What is a PUT request?
-//        + What is a DELETE request?
-//        + What is a POST request?
+//         + What is a GET request?
+//         + What is a PUT request?
+//         + What is a DELETE request?
+//         + What is a POST request?
+//      
+//      4. What is a URL and what are it's components (i.e. routes)?
+//      4. What is a route?
+//         
 
-//      4. Why should you use a web application framework (like express)?
-//      5. What is express?
-//      6. How do you install express?
+//      5. Why should you use a web application framework (like express)?
+//      6. What is express?
+//      7. How do you install express?
 
 
 
@@ -30,6 +34,11 @@
 //        +  How do you create a route?    
 //        +  How do you listen on a given port for requests?         
 //        +  How do you add another route to your server?
+
+
+//
+//      X.  What is REST?
+//
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information about Express fundamentals from study, research, tutorials, 
@@ -82,8 +91,9 @@
                 • http://www.myWebsite.com/index.html
                 
 
-        2. First, in order to load the page the client sends a request to the HTTP server to open a connection to the server for an HTML file
-           in the "public" folder where all our static assets live.
+
+        2. REQUEST:  First, in order to load the page the client sends a request to the HTTP server to open a connection to the server for an HTML file
+           in the "public" folder where all our static assets live. This request method (and path) are used to request the right request handler.
 
                         
                 GET /public/index.html HTTP/1.1                       // Request method using GET (retrieve data) at this endpoint (in a public folder).
@@ -94,7 +104,7 @@
                 User-Agent: Mozilla/4.0                               // Allows network protocol peers to identify the application type, OS, etc.
 
 
-        3. Second, the server will send a response to the request consisting of headers and a body
+        3. RESPONSE: Second, the response object from the server will send a response to the request consisting of headers and a body
 
                 HTTP/1.1 200 OK
                 X-Powered-By: Express                                                  // note: should be disabled for security reason.
@@ -104,19 +114,21 @@
                 Content-Type: text/html: charset=UTF-8                                 // media type of resource
 
                 <html><body><header><h1>Hello world!</h1></header></body></html>
-
 */
+
+
 
 /*
 3. What types of HTTP requests can we send to a server?
 ////////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   There are 4 types of HTTP requests we can send to a server:
+    •   There are many types of HTTP requests we can send to a server, but the most common are:
 
             1. GET, which is used to read or retrieve resources.
             2. PUT, which is used to replace an existing resource.
             3. DELETE, which is used to delete resources.
             4. POST, which is used to create new resources.
+            5. PATCH, which is used to update part of an existing resource.
 
 
     What is a GET request?
@@ -172,13 +184,39 @@
                 ____________________                  ___________________________
                 POST /api/customers       =========>    { id: 3, name:'charlie'}
                 { name:'charlie'}
+
+                                        
+    What is a PATCH request?
+    =========================
+    •   In a PATCH request, we are updating an exiting resource that exists in the database.
+
+                    PATCH REQUEST                                RESPONSE
+                 ____________________                    ___________________________
+                 PATCH /api/customers       =========>    { id: 4, name:'Teddy'}
+                { id: 4, name:'Teddy'}
 */
 
 
 
 /* 
-What is a route?
-////////////////
+4. What is a URL and what are it's components?
+///////////////////////////////////////////
+    •   A URL (uniform resource locator), is a reference to a web resource that specifies its location.
+    •   A URL can contain the following:
+
+
+           protcol                     Top-level domain     file path (route)                   fragment (hash)
+               \                              |                 |                                   /
+                https://www.myexamplewebsite.com:8080/resource/path/file.html?name=value&foo-bar#anchor
+                         |                        |                                   |
+                     sub-domain                  port                            query string
+*/
+
+
+
+/* 
+5. What is a route?
+///////////////////
 ==SHORT ANSWER==
     •   A "route" determines the way an application responds to a client request to a particular endpoint.
     
@@ -193,9 +231,8 @@ What is a route?
 
 
 
-
 /* 
-4. Why should you use a web application framework (like express)?
+5. Why should you use a web application framework (like express)?
 //////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   While using the core http module is doable, it is not maintainable for building complex applications because 
@@ -234,7 +271,7 @@ What is a route?
 
 
 /* 
-1. What is express?
+6. What is express?
 ///////////////////
     •   Express is a Node.js web application framework designed for building single-page, multi-page, and hybrid web applications.
     •   Express is a lightweight, minmalist framework for Node.js that simplifies the creation of modern server-side web applications in Node.
@@ -246,7 +283,7 @@ What is a route?
 
 
 /* 
-3. How do you install express?
+7. How do you install express?
 //////////////////////////////
     •   To install express, move into the project folder, initialize npm (i.e. "npm init --yes") and then simply install 
         express by writing "npm install express"
@@ -295,13 +332,16 @@ What is a route?
 
 
 
+/* THIS SECTION BELOW MIGHT GET PUT IN "express.js" FILE TO KEEP IT SHORT*/
+
+
 
 
 
 
 
 /* 
-5. How do you create a basic web server with express?
+X. How do you create a basic web server with express?
 //////////////////////////////////////////////////////
 
     Setup project:
@@ -435,6 +475,118 @@ What is a route?
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+6. What is Nodemon and what does it do?
+///////////////////////////////////////
+    •   Nodemon (short for Node Monitor) is an npm package that we install that allows us to update our node program
+        without having to start and restart our server every time we make a change in out program.
+
+    How do you install nodemon?
+    ===========================
+    •   To install nodemon, you simple write "npm install -g nodemon"
+        o   What will happen is is you will install the npm package "nodemon" but globally so it will be available from now on.
+
+    How do you use nodemon in Gitbash?
+    ==================================
+    •   When you use nodemon, you simply type "nodemon" and then the application you want to listen in on.
+
+                    $ nodemon index.js                                   <== uses nodemon with index.js.
+                        [nodemon] 1.19.1
+                        [nodemon] to restart at any time, enter `rs`
+                        [nodemon] watching: *.*                          <== nodemon watches everything in the folder.
+                        [nodemon] starting `node index.js`
+                        listening on port 3000...                        <== listening in on port 3000, which will show "Hello world!"
+
+
+    •   Then, when you update your program (i.e. the response is "Howdy world!"), nodemon will automatically restart.
+
+                    $ nodemon index.js
+                        [nodemon] 1.19.1
+                        [nodemon] to restart at any time, enter `rs`
+                        [nodemon] watching: *.*   
+                        [nodemon] starting `node index.js`
+                        listening on port 3000...
+                        [nodemon] restarting due to changes...           <== nodemon restarts after the change...
+                        [nodemon] starting `node index.js`
+                        listening on port 3000...                        <== and again listens on port 3000, and when requested will show "Howdy world!"
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+1. What is REST?  (relocate??)
+///////////////////////////////
+==SHORT ANSWER==
+    •   REST stands for REpresentational State Transfer.
+    •   REST is an architectural style that defines a set of standard conventions for creating HTTP services for providing
+        access (i.e. exposing) resources such as creating a resource (POST), updating it (PUT), reading it (GET), and 
+        deleting it (DELETE).
+
+
+==EXTENDED ANSWER==
+    •   REST is a convention for what is used to build HTTP services.
+
+    •   Almost all applications follow a "client/server" relationship.
+        o   The "client" is the front-end, which is our application.
+        o   The "server" is the back-end, which is where the front-end talks goes to in order to get data.
+
+    •   The communication between the client and the server occurs through "HTTP Protocol".
+        o   The server "exposes" a bunch of services that are accessible via HTTP protocol.
+        o   The client calls those services by sending an HTTP request.  
+        o   HTTP protocol principles provide support for CRUD operations.
+        o   CRUD stands for Create, Read, Update, and Delete.
+
+
+==EXAMPLE==
+    •   Suppose you have a client app that manages a list of customers.
+        o   The service is exposed in an endpoint like https://website.com/api/customers where "/customers" refers 
+            to a list of customers.
+
+        o   In the REST world, the "/customers" part of the endpoint is called the "resource".
+            o   RESOURCES can be exposed (e.g. customers, user data, etc.) at verious endpoints.
+            o   All the operations surrounding the "customers" like creating a customer, deleting a customer, updating, etc. would be done
+            by sending an HTTP request to the customers endpoint.
+
+        o   The type of HTTP request determines the type of operation. 
+            o   Every HTTP request has a verb(method) that determines its type or intention.
+            o   HTTP methods include GET(getting data), POST(posting data), DELETE(deleting data), and PUT (updating data) 
+*/
+
+
+
+
+
+
+
 /*
 Additional resources
 =====================
@@ -444,3 +596,5 @@ https://www.codecademy.com/articles/http-requests -- HTTP requests
 https://www.guru99.com/node-js-express.html -- intro to framework
 https://medium.com/datadriveninvestor/most-popular-technology-stack-to-choose-from-full-stack-vs-mean-stack-vs-mern-stack-in-2019-d12c0a17439a --MERN stack, agile, etc.
 */
+
+
