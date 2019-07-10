@@ -255,11 +255,9 @@ Additional resources
 https://mdn.mozillademos.org/files/13839/Web%20Application%20with%20HTML%20and%20Steps.png  --  infromative diagram for server cycle.
 https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-side/  --  client vs server side article
 https://www.nginx.com/resources/glossary/web-server/ -- about web servers.
-https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html -- request/response example
 https://expressjs.com/en/advanced/best-practice-security.html -- disable x-powered-by note
 https://www.seguetech.com/client-server-side-code/ -- client vs server side scripting, good AJAX and jQuery summary
-https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Introduction -- interesting MDN intor to server side programming
-https://www.codecademy.com/articles/http-requests -- HTTP requests
+
 
 
 */

@@ -3,11 +3,11 @@
 //     Request and Response Fundamentals
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//     12. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
-//     13. What is a GET request?
-//     14. What is a PUT request?
-//     15. What is a DELETE request?
-//     16. What is a POST request?
+//     1. What is an HTTP request and how does the HTTP Protocol request-response cycle work?
+//     2. What is a GET request?
+//     3. What is a PUT request?
+//     4. What is a DELETE request?
+//     5. What is a POST request?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information of request and response objects from study, research, tutorials, 
@@ -150,4 +150,20 @@ What is a DELETE request?
                 ____________________                  ___________________________
                 POST /api/customers       =========>    { id: 3, name:'charlie'}
                 { name:'charlie'}
+*/
+
+
+
+
+
+
+
+
+/*
+Additional resources
+=====================
+https://www.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html -- request/response example
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Introduction -- interesting MDN intor to server side programming
+https://www.codecademy.com/articles/http-requests -- HTTP requests
+
 */
