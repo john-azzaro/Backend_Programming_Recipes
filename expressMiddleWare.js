@@ -5,6 +5,11 @@
 //
 //     1. What is middleware?
 //     2. What is the request processing pipeline?
+//     3. How do you add middleware to your express app and what must middleware do?
+//     4. What types of middleware can you use for express apps?
+//     5. How do you use built-in middleware?
+//     6. What is third-party middleware?
+//     7. How do you use a custom middleware function in a seperate module?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express Middleware from study, research, tutorials, mentor
@@ -83,17 +88,22 @@
 
 
 /* 
-How do you add middleware to your express app?
-//////////////////////////////////////////////
+3. How do you add middleware to your express app and what must middleware do?
+//////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •  
+    •  To add middleware to your express app, you need to first create a middleware function with a request object, response object, and next() 
+       to move onto the next middleware function AND install that middleware in the pipeline with "app.use"
+    •   IMPORTANT: Middleware MUST do one of two things: either return a response or call next() otherwise the app will hang.
 
 
-==BASIC EXAMPLE==
-    
-                            app.use( function(req, res, next) {              
+==BASIC EXAMPLE==  
+                        _________________________________________________
+
+                            app.use( function(req, res, next) {              <== installs anonymous middleware function with req, res, and next.
                                 console.log("Logging...")
-                            });                                          <== console will print "Logging..."
+                                next()
+                            });                                         
+                        _________________________________________________
 
 
 ==PRACTICAL EXAMPLE==
@@ -198,7 +208,7 @@ How do you add middleware to your express app?
                         const express = require('express');                               
                         const app = express();                                             
 
-                        const myMiddlewareFunc = (req, res, next) => {                     <== 1. create a middleware function.
+                        const myMiddlewareFunc = (req, res, next) => {                      <== 1. create a middleware function.
                                 console.log(req.url);                                             ... log the req.url...
                                 if (someConditionIsTrue(req)) {                                   ... if the condition is true...
                                     return res.json({msg: 'someMessage'});                        ... return this response.
@@ -208,13 +218,13 @@ How do you add middleware to your express app?
                                 }
                                 }
 
-                                app.use(myMiddlewareFunc);                                <==== 2. app.use(myMiddlewareFunc) adds the above middleware to the entire app.
+                                app.use(myMiddlewareFunc);                                  <== 2. app.use(myMiddlewareFunc) adds the above middleware to the entire app.
 
-                                app.get('/api/foo', (req, res) => {                         <== Route 1 (with request to /api/foo... the response will be a JSON object {foo:"bar"})
+                                app.get('/api/foo', (req, res) => {                         <== 0. Route 1 (with request to /api/foo... the response will be a JSON object {foo:"bar"})
                                 return res.json({foo: 'bar'});
                                 });
 
-                                app.get('/api/bar', (req, res) => {                         <== Route 2 (with request to /api/bar... the response will be a JSON object {bar:"foo"})
+                                app.get('/api/bar', (req, res) => {                         <== 0. Route 2 (with request to /api/bar... the response will be a JSON object {bar:"foo"})
                                 return res.json({bar: 'foo'});
                                 })
 
@@ -222,95 +232,29 @@ How do you add middleware to your express app?
 
                         __________________________________________
               
-
-
-
-
-
-
-
-==SHORT ANSWER==
-•   To use a middleware function, we import and install using app.use() and 
-
-==EXTENDED ANSWER==
-    •   We use "app.use()" to install middleware function in our request processing pipeline.
-    •   And within the body of the function at the end, we call "next()" to pass control to the next function
-        in the middleware pipeline.
-    •   If we dont terminate the request/response cycle with next(), the request will
-        end up hanging (i.e. in postman, a GET request will continue "Loading..." without any response) 
-        because we did not pass control to another middleware function to terminate the req/res cycle.  
-    
-
-                                route handler        "next" refers to the next middleware function in the pipeline
-                                            \        /
-                        app.use(function(req, res, next) {
-                            console.log("Logging");             <= code to be executed, which will show "Logging..." in the console.
-                            next();
-                        });      \
-                                  Pass control to the next middleware function in the pipeline.
-
-
-    •   And if we add ANOTHER middleware function, we will see the consecutive execution that occurs in the request processing pipeline:                   
-                    
-    
-                        app.use(function(req, res, next) {              
-                            console.log("Logging...")
-                        });                                          <== console will print "Logging..."
-
-                        app.use(function(req, res, next) {              
-                            console.log("Authenticating...")
-                        });                                          <== console will then print "Authenticating..."
-
 */
 
 
 
 /* 
-3. How do you use a custom middleware function in a seperate module?
-/////////////////////////////////////////////////////////////////////////
+4. What types of middleware can you use for express apps?
+//////////////////////////////////////////////////////////
+    •   There are 3 types of middleware we can use in express apps:
     
-    STEP 1: Create a new module(i.e. file) to place your middleware:
-    ===============================================================
-    
-                        function logger(req, res, next) {                <== middleware to be exported
-                            console.log("Logging...")
-                        };
+            1. Built-in middleware
+                o   express.static, express.json, etc. 
+            2. Third-party middleware
+                o   morgan, etc.
+            3. Custom middleware
+                o   myMiddlewareFunc, etc.
 
-    STEP 2: Export the module sing module.exports.logger:
-    =====================================================
-                        
-                        function logger(req, res, next) {              
-                            console.log("Logging...")
-                        };
-
-                        module.exports = logger;                         <== module exporting a single function, specifically logger.
-
-    STEP 3: In your main file (i.e. index.js), we first load the new module:
-    ========================================================================
-
-                        const logger = require('./logger');             <= load the logger module (in the current folder) and store as a constant.
-
-    STEP 4: Then you install the new logger module by using app.use():
-    ==================================================================
-
-                        app.use(logger);                              <== logger passed to the app.use() function.
 */
 
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* 
-17. How do you use built-in middleware?
+5. How do you use built-in middleware?
 //////////////////////////////////////
     •   For example, the "express.json()" is a built in middleware function that parses the body of the request and
         if there is a json object, it will populate the "req.body" property.
@@ -342,14 +286,16 @@ How do you add middleware to your express app?
 
 
 /* 
-18. What is third-party middleware?
+6. What is third-party middleware?
 ////////////////////////////////////
-    •  Third party middlewareadds functionality to express apps.
+    •  Third party middleware adds functionality to express apps.
     •  Third party middleware should be using sparingly as the more middleware you use, it will slow down your
        request porcessing for your application.
+    •  Third-party middleware that you will need is often already written, and can be found with a quicksearch or even
+       popular third-party middleware in the express documentation. 
     •  There are a few useful third-party middleware function you may want to use in your projects:
         o  For example, "helmet" secures your Express apps by setting various HTTP headers 
-        o  Another is "morgan", which logs http requests (i.e. will log a message with each request sent to the server)              
+        o  Another is "morgan", which logs http requests (i.e. will log a message with each request sent to the server).              
     
     •  For a complete list of thrid-party middleware, see documentation https://expressjs.com/en/resources/middleware.html                   
 
@@ -388,6 +334,38 @@ How do you add middleware to your express app?
                         GET /api/courses 200 95 - 2.022 ms           <== logged GET request by morgan in "tiny" format.
 */
 
+
+
+/* 
+7. How do you use a custom middleware function in a seperate module?
+/////////////////////////////////////////////////////////////////////////
+    
+    STEP 1: Create a new module(i.e. file) to place your middleware:
+    ===============================================================
+    
+                        function logger(req, res, next) {                <== middleware to be exported
+                            console.log("Logging...")
+                        };
+
+    STEP 2: Export the module sing module.exports.logger:
+    =====================================================
+                        
+                        function logger(req, res, next) {              
+                            console.log("Logging...")
+                        };
+
+                        module.exports = logger;                         <== module exporting a single function, specifically logger.
+
+    STEP 3: In your main file (i.e. index.js), we first load the new module:
+    ========================================================================
+
+                        const logger = require('./logger');             <= load the logger module (in the current folder) and store as a constant.
+
+    STEP 4: Then you install the new logger module by using app.use():
+    ==================================================================
+
+                        app.use(logger);                              <== logger passed to the app.use() function.
+*/
 
 
 
