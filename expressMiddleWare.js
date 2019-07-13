@@ -397,20 +397,54 @@ EXAMPLE 2: Request Logger middleware function:
 
                         _________________________________________________
 
-    STEP 1: Starting with a basic express app
-    ==========================================
+    STEP 1: Create middleware function
+    ==================================
     •   Create your custom request logger middleware function.
 
                         _________________________________________________
 
-                                const express = require('express');                              <== load express and store as "express".
-                                const app = express();                                           <== execute express and store as "app".  
+                                const express = require('express');                              
+                                const app = express();                                           
 
-                                app.get('/api/foo', function(req, res) {                         <== Route 1 
+                                function requestLogger(req, res, next) {                                                                  <== create your custom middleware function.
+                                    const now = new Date();
+                                    console.log(`${now.toLocalStorageString()} ${now.toLocalTimeString()} ${req.method} ${req.url}`);     <== logs date, time, request method.
+                                    next();                                                                                               <== hands control over to next middleware function.
+                                }
+
+                                app.get('/api/foo', function(req, res) {                         
                                 return res.json({foo: 'bar'});
                                 });
 
-                                app.get('/api/bar', function(req, res)  {                        <== Route 2 
+                                app.get('/api/bar', function(req, res)  {                        
+                                return res.json({bar: 'foo'});
+                                })
+
+                                app.listen(8080);                                 
+
+                        _________________________________________________
+
+
+   STEP 2: Add middleware function to the entire app with "app.use"
+    ===============================================================
+                        _________________________________________________
+
+                                const express = require('express');                              
+                                const app = express();                                           
+
+                                function requestLogger(req, res, next) {                                                                 
+                                    const now = new Date();
+                                    console.log(`${now.toLocalStorageString()} ${now.toLocalTimeString()} ${req.method} ${req.url}`);     
+                                    next();                                                                                              
+                                }
+
+                                app.use(requestLogger);                                       <== Add middleware to add so this middleware will run for all requests to this app.
+
+                                app.get('/api/foo', function(req, res) {                         
+                                return res.json({foo: 'bar'});
+                                });
+
+                                app.get('/api/bar', function(req, res)  {                        
                                 return res.json({bar: 'foo'});
                                 })
 
