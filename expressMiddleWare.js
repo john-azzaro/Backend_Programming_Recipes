@@ -29,6 +29,7 @@
     •   Middleware is the organizing principle of Express applications.
     •   Middleware (or middleware function) takes a request object and either returns a reponse to the client 
         or passes control to another middleware function (i.e. the request processing pipeline). 
+    •   Middleware encourages you to write modular, resuable, and functional code.    
 
 ==EXTENDED ANSWER==
     •   One example of a middleware function is the route handlers we use for GET, PUT, POST, and DELETE.
@@ -339,7 +340,10 @@
 /* 
 7. How do you use a custom middleware function in a seperate module?
 /////////////////////////////////////////////////////////////////////////
-    
+
+EXAMPLE 1: Middleware that logs "Logging..."
+=============================================
+
     STEP 1: Create a new module(i.e. file) to place your middleware:
     ===============================================================
     
@@ -365,9 +369,56 @@
     ==================================================================
 
                         app.use(logger);                              <== logger passed to the app.use() function.
+
+
+EXAMPLE 2: Request Logger middleware function:
+==============================================
+
+    STEP 0: Starting with a basic express app
+    ==========================================
+    •   Suppose we had a basic express app with two routes:
+            1.  (with request to /api/bar... the response will be a JSON object {bar:"foo"})
+            2.  (with request to /api/bar... the response will be a JSON object {bar:"foo"})                   
+
+                        _________________________________________________
+
+                                const express = require('express');                              <== load express and store as "express".
+                                const app = express();                                           <== execute express and store as "app".  
+
+                                app.get('/api/foo', function(req, res) {                         <== Route 1 
+                                return res.json({foo: 'bar'});
+                                });
+
+                                app.get('/api/bar', function(req, res)  {                        <== Route 2 
+                                return res.json({bar: 'foo'});
+                                })
+
+                                app.listen(8080);                                 
+
+                        _________________________________________________
+
+    STEP 1: Starting with a basic express app
+    ==========================================
+    •   Create your custom request logger middleware function.
+
+                        _________________________________________________
+
+                                const express = require('express');                              <== load express and store as "express".
+                                const app = express();                                           <== execute express and store as "app".  
+
+                                app.get('/api/foo', function(req, res) {                         <== Route 1 
+                                return res.json({foo: 'bar'});
+                                });
+
+                                app.get('/api/bar', function(req, res)  {                        <== Route 2 
+                                return res.json({bar: 'foo'});
+                                })
+
+                                app.listen(8080);                                 
+
+                        _________________________________________________
+
 */
-
-
 
 
 
