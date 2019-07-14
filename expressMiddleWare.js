@@ -456,6 +456,29 @@ EXAMPLE 2: Request Logger middleware function:
 
 
 
+/* 
+Can you use middleware to modify a request object?
+///////////////////////////////////////////////////
+    •   Middleware CAN be used to modify the request object in addition to adding multiple peices of middleware to an app.                            
+*/
+
+
+
+/* 
+What is Cross Origin Resource sharing (CORS)?
+/////////////////////////////////////////////
+==SHORT ANSWER==
+    •   Cross Origin Resource sharing (CORS) allows browsers to make requests to a server on a domain other than the one the 
+        HTML page is hosted on.  
+
+==EXAMPLE==
+    •   Suppose you visit an HTML page: https://www.myexamplesite.com.
+        o   You first get back the index.html file from myexamplesite.com.
+        o   That HTML file links to a CSS style sheet hosed on the same domain as well
+*/
+
+
+
 
 
 
