@@ -470,11 +470,48 @@ What is Cross Origin Resource sharing (CORS)?
 ==SHORT ANSWER==
     •   Cross Origin Resource sharing (CORS) allows browsers to make requests to a server on a domain other than the one the 
         HTML page is hosted on.  
+    •   However, because browsers prohibit requests for corss-origin resources from inside a script, a modern solution to CORS
+        is to configure response headers to allow scripts hosted on other domains to make requests to your app.
 
 ==EXAMPLE==
     •   Suppose you visit an HTML page: https://www.myexamplesite.com.
-        o   You first get back the index.html file from myexamplesite.com.
-        o   That HTML file links to a CSS style sheet hosed on the same domain as well
+        o   You first get back the index.html file from https://myexamplesite.com.
+            o   That HTML file links to two files:
+                o   a CSS style sheet hosted on the same domain as well (i.e. https://myexamplesite.com/styles/index.css ).
+                o   A JavaScript file hosted on the same domain (i.e. https://myexamplesite.com/index.js ).
+        o   In your index.js file, you have a call to an API at another domain (i.e. https://myOTHERexamplesite.com/api/myotherresource.js ).
+        
+        o   Relative to https://myexamplesite.com, which is the domain serving the HTML file, https://myOTHERexamplesite.com is CROSS ORIGIN.
+            o   This means that myOTHERexamplesite is server by the different domain myexamplesite.
+
+==EXTENDED ANSWER==
+    •   CORS will essentially let you serve a resource from another domain.
+    •   However, as a security precaution, browsers prohibit requests from inside the a script.
+    •   To avoid this, you can configure response headers to allow scripts hosted on other domains to make requests to your app.
+    
+
+
+    How do you configure response headers to allow scripts hosted on other domains to make requests to your app?
+    =============================================================================================================
+
+        STEP 0: Tell the browser which domains are ALLOWED to make requests for the resource and what METHODS they can use.
+        ===================================================================================================================
+        •   For example, we need the response headers to have the following key/value pairs.
+
+                    'Access-Control-Allow-Origin', '*'                           <== Indicates which origin can access the resource, which can be limited to one or all (i.e. *).
+                    'Access-Control-Allow-Headers', 'Content-Type'               <== Indicates which header can be used in the acutal request
+                    'Access-Control-Allow-', 'GET, POST, PUT, PATCH, DELETE'     <== Indicates which HTTP methods are enbaled for CORS rquests
+
+        •   When the browser makes a cross-origin AJAX request and gets back a response with these headers, it will NOT block the request.
+
+
+        STEP 1: To implement CORS in an express app, create a middleware function with the headers above:
+        ==================================================================================================
+        •  The following middleware function  
+    
+        
+
+
 */
 
 
