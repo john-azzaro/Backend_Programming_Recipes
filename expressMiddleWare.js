@@ -539,28 +539,44 @@ What is Cross Origin Resource Sharing (CORS)?
 
                         _________________________________________________
 
-                        const redirectsMap = {                 
-                            "/old-url-1": "/new-url-1",
-                            "/old-url-2": "/new-url-2",
-                            "/old-url-3": "/new-url-1",
-                            "/old-url-4": "/new-url-2"
+                        const express = require('express');
+                        const app = express();
+
+                        const redirectsMap = {                                                              <== object containing old routes and redirects.
+                        "/old-url-1": "/new-url-1",
+                        "/old-url-2": "/new-url-2",
+                        "/old-url-3": "/new-url-1",
+                        "/old-url-4": "/new-url-2"
                         };
 
-                        function handleRedirects(req, res, next) {
-                            if (Object.keys(redirectsMap).find((entry) => entry === req.path)) {
-                                console.log(`Redirecting ${req.path} to ${redirectsMap[req.path]}`);
-                                res.redirect(301, redirectsMap[req.path]);
-                            } else {
-                                next();
-                            }
+
+                        function handleRedirects(req, res, next) {                                           <== Redirect middleware.
+                        if (Object.keys(redirectsMap).find((entry) => entry === req.path)) {
+                            console.log(`Redirecting ${req.path} to ${redirectsMap[req.path]}`);
+                            res.redirect(301, redirectsMap[req.path]);
+                        } else {
+                            next();
                         }
+                        }
+                        
+                        app.use(handleRedirects);                                                             <== use handleRedirects middleware.
+
+                        app.get("/", (req, res) => res.sendFile(`${__dirname}/views/index.html` ));           <== GET request that says when user makes request to root url, return HTML file at views/index.html.
+                        app.get("/new-url-1", (req, res) => res.send("new-url-1"));                           <== GET request that says when request made to /new-url-1, retun text saying "new-url-1"
+                        app.get("/new-url-2", (req, res) => res.send("new-url-2"));                           <== GET request that says when request made to /new-url-2, retun text saying "new-url-2"
+
+                        app.listen(process.env.PORT || 8080, () => console.log(
+                        `Your app is listening on port ${process.env.PORT || 8080}`));
+
 
                         _________________________________________________
 
 
     STEP 1: Create an object that holds properties for old and new URL addresses:
     =============================================================================
-    •   This is essentially a list of old urls being reidrected to new addresses.       
+    •   This is essentially a list of old urls being reidrected to new addresses.
+        o   The old urls are the keys
+        o   The return route the keys should be redirected to are the values.      
 
                         _________________________________________________
 
@@ -576,20 +592,25 @@ What is Cross Origin Resource Sharing (CORS)?
 
     STEP 2: Create a handleRedirects function:
     ==========================================
-    •   This function will look for the current path and
+    •   This function will look for the current request path inside redirectsMap
+        o   If it finds a path, it will:
+            1. log that a redirect occurs
+            2. Calls "res.redirect" and passes a 301 message (redirect) and redirects to the value for the original path inside redirectsMap.
+            3. If if the request path is NOT in redirectsMap, calls next to move on to the next middleware function.
                         _________________________________________________
 
+                        function handleRedirects(req, res, next) {
+                            if (Object.keys(redirectsMap).find((entry) => entry === req.path)) {          <== For each key in redirectsMap, find whether the entry is equal to the request path.
+                                console.log(`Redirecting ${req.path} to ${redirectsMap[req.path]}`);
+                                res.redirect(301, redirectsMap[req.path]);                                <== if the key matches the old path (i.e. ".old-url-1"), call res.redirect and pass 301 message and redirect to the VALUE.
+                            } else {
+                                next();                                                                   <== and if there is no request path redirect in redirectsMap, move on to NEXT middleware function.
+                            }
+                        }
                         _________________________________________________
 
 
 
-
-
-    STEP 2: Create a handleRedirects function:
-    ==========================================
-                        _________________________________________________
-
-                        _________________________________________________
 
 
 
