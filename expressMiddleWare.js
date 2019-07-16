@@ -616,14 +616,17 @@ What is Cross Origin Resource Sharing (CORS)?
 /* 
 What is a middleware stack?
 ////////////////////////////
+==SHORT ANSWER==    
     •   A middleware stack is a collection of middleware functions that often implemented BEFORE requests are
         matched to an endpoint.
 
+==EXAMPLE==
                         [CLIENT]
-                            |
+                            |                <== Request from client
                         [REQUEST]
                             |
-                    _______PORT_______          This is the "middleware stack" that a request would pass through before being matched with an endpoint.  
+                    _______PORT_______           
+                            |                   This is the "middleware stack" that a request would pass through before being matched with an endpoint. 
                             |                _ /
                         [Logging]             |--- Custome middleware like "Logging" used on all requests made to a server     
                      [static server]          |--- Built-in middlware like "static server"
@@ -631,16 +634,27 @@ What is a middleware stack?
                     [handleRedirects]         |--- Custom middleware like "handleRedirects"
                       [cookieParser]         _|--- Third-party middleware
                             |
+                            |
                     [Endpoint matching]
+                            |
                             |
                      ___________________
                             |
                         [RESPONSE]
-                            |
+                            |               <== Response to client
                          [CLIENT]    
+*/
+
+
+/* 
+How do you modularize middleware?
+/////////////////////////////////
 
 
 */
+
+
+
 
 
 
