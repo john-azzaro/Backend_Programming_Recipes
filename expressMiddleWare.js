@@ -10,6 +10,10 @@
 //     5. How do you use built-in middleware?
 //     6. What is third-party middleware?
 //     7. How do you use a custom middleware function in a seperate module?
+//     8. Can you modify a request object using middleware?
+//     9. What is Cross Origin Resource Sharing (CORS)?
+//        + How do you configure response headers to allow scripts hosted on other domains to make requests to your app?
+//    10. How do you handle redirects using middleware?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express Middleware from study, research, tutorials, mentor
@@ -144,8 +148,8 @@
             3. A "next" function.          
                         ___________________________________________________________________________
 
-                                                                         1    2     3
-                                                                         |    |     |
+                                                                       1    2     3
+                                                                       |    |     |
                                 const myMiddlewareFunction = function(req, res, next)  {         <== 1. create a middleware function.
                                     // code here           
                                     next();
@@ -457,15 +461,15 @@ EXAMPLE 2: Request Logger middleware function:
 
 
 /* 
-Can you use middleware to modify a request object?
-///////////////////////////////////////////////////
+Can you modify a request object using middleware?
+/////////////////////////////////////////////////
     •   Middleware CAN be used to modify the request object in addition to adding multiple peices of middleware to an app.                            
 */
 
 
 
 /* 
-What is Cross Origin Resource sharing (CORS)?
+What is Cross Origin Resource Sharing (CORS)?
 /////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Cross Origin Resource sharing (CORS) allows browsers to make requests to a server on a domain other than the one the 
@@ -517,13 +521,83 @@ What is Cross Origin Resource sharing (CORS)?
                         'Access-Control-Allow-Headers', 'Content-Type'               
                         'Access-Control-Allow-', 'GET, POST, PUT, PATCH, DELETE'     
                      })            
-        
-
-
 */
 
 
 
+/* How do you handle redirects using middleware?
+////////////////////////////////////////////////
+==SHORT ANSWER==    
+    •   URL redirects is a common server-side maintenance issue for outdated URL's that you want your app to redirect to new ones.
+
+==EXAMPLE==
+    •   For example, suppose you have a "Christmas Sale" (seasonal) to an evergreen page named "Sales and Clearence".
+    •   Custom middleware would help us hanle redirection when the Christmas sale is over and we need to go back to Sales and Clearence.
+
+==PRACTICAL EXAMPLE==
+    •   Below is a highly maintainable way to manage URL direction:                 
+
+                        _________________________________________________
+
+                        const redirectsMap = {                 
+                            "/old-url-1": "/new-url-1",
+                            "/old-url-2": "/new-url-2",
+                            "/old-url-3": "/new-url-1",
+                            "/old-url-4": "/new-url-2"
+                        };
+
+                        function handleRedirects(req, res, next) {
+                            if (Object.keys(redirectsMap).find((entry) => entry === req.path)) {
+                                console.log(`Redirecting ${req.path} to ${redirectsMap[req.path]}`);
+                                res.redirect(301, redirectsMap[req.path]);
+                            } else {
+                                next();
+                            }
+                        }
+
+                        _________________________________________________
+
+
+    STEP 1: Create an object that holds properties for old and new URL addresses:
+    =============================================================================
+    •   This is essentially a list of old urls being reidrected to new addresses.       
+
+                        _________________________________________________
+
+                        const redirectsMap = {                   
+                            "/old-url-1": "/new-url-1",                        <== old urls is the key and the new url is the value.
+                            "/old-url-2": "/new-url-2",
+                            "/old-url-3": "/new-url-1",
+                            "/old-url-4": "/new-url-2"
+                        };
+
+                        _________________________________________________
+
+
+    STEP 2: Create a handleRedirects function:
+    ==========================================
+    •   This function will look for the current path and
+                        _________________________________________________
+
+                        _________________________________________________
+
+
+
+
+
+    STEP 2: Create a handleRedirects function:
+    ==========================================
+                        _________________________________________________
+
+                        _________________________________________________
+
+
+
+
+
+
+
+*/
 
 
 
