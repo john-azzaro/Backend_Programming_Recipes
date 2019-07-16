@@ -488,6 +488,9 @@ What is Cross Origin Resource sharing (CORS)?
     •   CORS will essentially let you serve a resource from another domain.
     •   However, as a security precaution, browsers prohibit requests from inside the a script.
     •   To avoid this, you can configure response headers to allow scripts hosted on other domains to make requests to your app.
+    •   The simple solution to CORS (below) will help with simple use cases.
+    •   However, you should switch to pre-built CORS middleware in the future when your application becomes more complex to support
+        a wider range of HTTP methods, browsers, and configurations.
     
 
 
@@ -507,8 +510,13 @@ What is Cross Origin Resource sharing (CORS)?
 
         STEP 1: To implement CORS in an express app, create a middleware function with the headers above:
         ==================================================================================================
-        •  The following middleware function  
-    
+        •  The following middleware function configures the response headers to allow CORS and make your API acessible by client-side code on other domains.
+
+                     app.use(function(req, res, next) {
+                        'Access-Control-Allow-Origin', '*'                          
+                        'Access-Control-Allow-Headers', 'Content-Type'               
+                        'Access-Control-Allow-', 'GET, POST, PUT, PATCH, DELETE'     
+                     })            
         
 
 
