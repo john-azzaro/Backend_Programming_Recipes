@@ -9,11 +9,14 @@
 //     4. What types of middleware can you use for express apps?
 //     5. How do you use built-in middleware?
 //     6. What is third-party middleware?
-//     7. How do you use a custom middleware function in a seperate module?
-//     8. Can you modify a request object using middleware?
-//     9. What is Cross Origin Resource Sharing (CORS)?
+//     7. Can you modify a request object using middleware?
+//     8. What is Cross Origin Resource Sharing (CORS)?
 //        + How do you configure response headers to allow scripts hosted on other domains to make requests to your app?
-//    10. How do you handle redirects using middleware?
+//     9. How do you handle redirects using middleware?
+//    10. What is a middleware stack?
+//    11. What is modularization and how do you use a custom middleware function in a seperate module?
+//        + How do you use middleware in a seperate module using module.exports?
+//        + How do you use middleware in a seperate module using destructuring and why is this favorable?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express Middleware from study, research, tutorials, mentor
@@ -341,136 +344,18 @@
 
 
 
-/* 
-7. How do you use a custom middleware function in a seperate module?
-/////////////////////////////////////////////////////////////////////////
-
-EXAMPLE 1: Middleware that logs "Logging..."
-=============================================
-
-    STEP 1: Create a new module(i.e. file) to place your middleware:
-    ===============================================================
-    
-                        function logger(req, res, next) {                <== middleware to be exported
-                            console.log("Logging...")
-                        };
-
-    STEP 2: Export the module sing module.exports.logger:
-    =====================================================
-                        
-                        function logger(req, res, next) {              
-                            console.log("Logging...")
-                        };
-
-                        module.exports = logger;                         <== module exporting a single function, specifically logger.
-
-    STEP 3: In your main file (i.e. index.js), we first load the new module:
-    ========================================================================
-
-                        const logger = require('./logger');             <= load the logger module (in the current folder) and store as a constant.
-
-    STEP 4: Then you install the new logger module by using app.use():
-    ==================================================================
-
-                        app.use(logger);                              <== logger passed to the app.use() function.
-
-
-EXAMPLE 2: Request Logger middleware function:
-==============================================
-
-    STEP 0: Starting with a basic express app
-    ==========================================
-    •   Suppose we had a basic express app with two routes:
-            1.  (with request to /api/bar... the response will be a JSON object {bar:"foo"})
-            2.  (with request to /api/bar... the response will be a JSON object {bar:"foo"})                   
-
-                        _________________________________________________
-
-                                const express = require('express');                              <== load express and store as "express".
-                                const app = express();                                           <== execute express and store as "app".  
-
-                                app.get('/api/foo', function(req, res) {                         <== Route 1 
-                                return res.json({foo: 'bar'});
-                                });
-
-                                app.get('/api/bar', function(req, res)  {                        <== Route 2 
-                                return res.json({bar: 'foo'});
-                                })
-
-                                app.listen(8080);                                 
-
-                        _________________________________________________
-
-    STEP 1: Create middleware function
-    ==================================
-    •   Create your custom request logger middleware function.
-
-                        _________________________________________________
-
-                                const express = require('express');                              
-                                const app = express();                                           
-
-                                function requestLogger(req, res, next) {                                                                  <== create your custom middleware function.
-                                    const now = new Date();
-                                    console.log(`${now.toLocalStorageString()} ${now.toLocalTimeString()} ${req.method} ${req.url}`);     <== logs date, time, request method.
-                                    next();                                                                                               <== hands control over to next middleware function.
-                                }
-
-                                app.get('/api/foo', function(req, res) {                         
-                                return res.json({foo: 'bar'});
-                                });
-
-                                app.get('/api/bar', function(req, res)  {                        
-                                return res.json({bar: 'foo'});
-                                })
-
-                                app.listen(8080);                                 
-
-                        _________________________________________________
-
-
-   STEP 2: Add middleware function to the entire app with "app.use"
-    ===============================================================
-                        _________________________________________________
-
-                                const express = require('express');                              
-                                const app = express();                                           
-
-                                function requestLogger(req, res, next) {                                                                 
-                                    const now = new Date();
-                                    console.log(`${now.toLocalStorageString()} ${now.toLocalTimeString()} ${req.method} ${req.url}`);     
-                                    next();                                                                                              
-                                }
-
-                                app.use(requestLogger);                                       <== Add middleware to add so this middleware will run for all requests to this app.
-
-                                app.get('/api/foo', function(req, res) {                         
-                                return res.json({foo: 'bar'});
-                                });
-
-                                app.get('/api/bar', function(req, res)  {                        
-                                return res.json({bar: 'foo'});
-                                })
-
-                                app.listen(8080);                                 
-
-                        _________________________________________________
-
-*/
-
-
 
 /* 
-Can you modify a request object using middleware?
-/////////////////////////////////////////////////
+7. Can you modify a request object using middleware?
+/////////////////////////////////////////////////////
     •   Middleware CAN be used to modify the request object in addition to adding multiple peices of middleware to an app.                            
 */
 
 
 
 /* 
-What is Cross Origin Resource Sharing (CORS)?
-/////////////////////////////////////////////
+8. What is Cross Origin Resource Sharing (CORS)?
+/////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Cross Origin Resource sharing (CORS) allows browsers to make requests to a server on a domain other than the one the 
         HTML page is hosted on.  
@@ -525,8 +410,9 @@ What is Cross Origin Resource Sharing (CORS)?
 
 
 
-/* How do you handle redirects using middleware?
-////////////////////////////////////////////////
+/* 
+9. How do you handle redirects using middleware?
+///////////////////////////////////////////////////
 ==SHORT ANSWER==    
     •   URL redirects is a common server-side maintenance issue for outdated URL's that you want your app to redirect to new ones.
 
@@ -614,8 +500,8 @@ What is Cross Origin Resource Sharing (CORS)?
 
 
 /* 
-What is a middleware stack?
-////////////////////////////
+10. What is a middleware stack?
+///////////////////////////////
 ==SHORT ANSWER==    
     •   A middleware stack is a collection of middleware functions that often implemented BEFORE requests are
         matched to an endpoint.
@@ -646,9 +532,194 @@ What is a middleware stack?
 */
 
 
+
+
 /* 
-How do you modularize middleware?
-/////////////////////////////////
+11. What is modularization and how do you use a custom middleware function in a seperate module?
+///////////////////////////////////////////////////////////////////////////////////////////////
+==SHORT ANSWER==
+    •   Modularization is splitting the application into different modules so your code is more manageable.
+
+    •   To import a local app module with module.exports, you simply:
+            1. Create a sperate file (i.e. module)...
+            2. Export that module using module.exports...
+            3. In the main file you wish to import that module into, load the file and stores as a variable...
+            4. Use app.use() to install the middleware in your express app!
+
+==PRACTICAL EXAMPLES==
+
+
+How do you use middleware in a seperate module using module.exports?
+====================================================================                           
+
+    EXAMPLE 1: Middleware that logs "Logging..."
+    =============================================`
+        
+        STEP 1: Create a new module(i.e. file) to place your middleware:
+        ===============================================================
+                        _________________________________________________
+        
+                            function logger(req, res, next) {                <== middleware to be exported
+                                console.log("Logging...")
+                            };
+                        _________________________________________________
+
+
+        STEP 2: Export the module sing module.exports.logger:
+        =====================================================
+                         _________________________________________________
+                           
+                            function logger(req, res, next) {              
+                                console.log("Logging...")
+                            };
+
+                            module.exports = logger;                         <== module exporting a single function, specifically logger.
+                        _________________________________________________
+
+
+        STEP 3: In your main file (i.e. index.js), we first load the new module:
+        ========================================================================
+                        _________________________________________________
+
+                            const logger = require('./logger');             <= load the logger module (in the current folder) and store as a constant.
+                        _________________________________________________
+
+
+        STEP 4: Then you install the new logger module by using app.use():
+        ==================================================================
+                        _________________________________________________
+
+                            app.use(logger);                              <== logger passed to the app.use() function.
+                        _________________________________________________
+
+
+    EXAMPLE 2: Request Logger middleware function:
+    ==============================================
+
+    STEP 0: Starting with a basic express app
+    ==========================================
+    •   Suppose we had a basic express app with two routes:
+            1.  (with request to /api/bar... the response will be a JSON object {bar:"foo"})
+            2.  (with request to /api/bar... the response will be a JSON object {bar:"foo"})                   
+
+                        _________________________________________________
+
+                                const express = require('express');                              <== load express and store as "express".
+                                const app = express();                                           <== execute express and store as "app".  
+
+                                app.get('/api/foo', function(req, res) {                         <== Route 1 
+                                return res.json({foo: 'bar'});
+                                });
+
+                                app.get('/api/bar', function(req, res)  {                        <== Route 2 
+                                return res.json({bar: 'foo'});
+                                })
+
+                                app.listen(8080);                                 
+
+                        _________________________________________________
+
+    STEP 1: Create middleware function
+    ==================================
+    •   Create your custom request logger middleware function.
+
+                        _________________________________________________
+
+                                const express = require('express');                              
+                                const app = express();                                           
+
+                                function requestLogger(req, res, next) {                                                                  <== create your custom middleware function.
+                                    const now = new Date();
+                                    console.log(`${now.toLocalStorageString()} ${now.toLocalTimeString()} ${req.method} ${req.url}`);     <== logs date, time, request method.
+                                    next();                                                                                               <== hands control over to next middleware function.
+                                }
+
+                                app.get('/api/foo', function(req, res) {                         
+                                return res.json({foo: 'bar'});
+                                });
+
+                                app.get('/api/bar', function(req, res)  {                        
+                                return res.json({bar: 'foo'});
+                                })
+
+                                app.listen(8080);                                 
+
+                        _________________________________________________
+
+
+   STEP 2: Add middleware function to the entire app with "app.use"
+    ===============================================================
+                        _________________________________________________
+
+                                const express = require('express');                              
+                                const app = express();                                           
+
+                                function requestLogger(req, res, next) {                                                                 
+                                    const now = new Date();
+                                    console.log(`${now.toLocalStorageString()} ${now.toLocalTimeString()} ${req.method} ${req.url}`);     
+                                    next();                                                                                              
+                                }
+
+                                app.use(requestLogger);                                       <== Add middleware to add so this middleware will run for all requests to this app.
+
+                                app.get('/api/foo', function(req, res) {                         
+                                return res.json({foo: 'bar'});
+                                });
+
+                                app.get('/api/bar', function(req, res)  {                        
+                                return res.json({bar: 'foo'});
+                                })
+
+                                app.listen(8080);                                 
+
+                        _________________________________________________
+
+
+
+How do you use middleware in a seperate module using destructuring and why is this favorable?
+=============================================================================================
+        
+    Example 1: Middleware that handles redirects:
+    =============================================
+        
+        STEP 1: Create a new module(i.e. file) to place your middleware and export the middleware with :
+        ===============================================================
+                        _________________________________________________
+
+                        const redirectsMap = require('../redirectsMap');                                   <== this imports redirectMaps to this module.
+
+
+                        function handleRedirects(req, res, next) {                                          <== the handleRedirect function
+                            if (Object.keys(redirectsMap).find((entry) => entry === req.path)) {
+                                console.log(`Redirecting ${req.path} to ${redirectsMap[req.path]}`);
+                                res.redirect(301, redirectsMap[req.path]);
+                            }
+                            else {
+                                next(); 
+                            }
+                        };
+
+
+                        module.exports = {handleRedirects};                                                  <== use module.exports and export DESTRUCTURE the handleRedirects middleware function
+
+                        _________________________________________________
+
+
+        STEP 2: Import the new module (i.e. handleRedirects) to the main file:
+        ======================================================================
+        
+                        _________________________________________________
+
+                        const {handleRedirects} = require('./middlewares/redirects');              <== Imports handleRedirects from /middlewares/redirects
+                        _________________________________________________        
+
+
+        STEP 3: Install handleRedirects for use in your express app:
+        ============================================================
+                        _________________________________________________
+
+                        app.use(handleRedirects);
+                        _________________________________________________        
 
 
 */
