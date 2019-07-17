@@ -8,7 +8,11 @@
 //     3. How do you add middleware to your express app and what must middleware do?
 //     4. What types of middleware can you use for express apps?
 //     5. How do you use built-in middleware?
+//        + What is the urlencoded() method and what does it do?
+//        + What is the "static" method and what does it do?
 //     6. What is third-party middleware?
+//        + How do you install third party middleware?
+//        + What is Morgan and how do you install it?
 //     7. Can you modify a request object using middleware?
 //     8. What is Cross Origin Resource Sharing (CORS)?
 //        + How do you configure response headers to allow scripts hosted on other domains to make requests to your app?
@@ -16,7 +20,7 @@
 //    10. What is a middleware stack?
 //    11. What is modularization and how do you use a custom middleware function in a seperate module?
 //        + How do you use middleware in a seperate module using module.exports?
-//        + How do you use middleware in a seperate module using destructuring and why is this favorable?
+//        + How do you use middleware in a seperate module using an object?
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //     1. Useful overview of information on Express Middleware from study, research, tutorials, mentor
@@ -309,6 +313,16 @@
 
     How do you install thrid-party middleware?
     ==========================================
+
+    What is Morgan and how do you install it?
+    =========================================
+    •   Morgan is a logger that records what happens on a server.
+    •   Every server-side app your write should feature some logging, which at least logs HTTP requests made to the server.
+    •   Logging gives us insight into requests being made to our apps, and can help us understand when errors occur.
+    •   Logs are a stream of messages about events in our app and can be sent to live logging view (e.g. glitch), third party
+        logging services like logentries, or saved ona file in the server.                            
+
+
     •   In this example, we'll install morgan, which logs http requests.
         
         STEP 1: First, install the third-party middleware (helmet) with npm:
@@ -326,12 +340,14 @@
         
                         app.use(morgan());
 
-        OPTIONAL BASED ON SPECIFIC MIDDLEWARE: Morgan has various options for formats (see documentation), such as "tiny":
-        ================================================================================================================== 
+        OPTIONAL BASED ON SPECIFIC MIDDLEWARE: Morgan has various options for formats (see documentation)
+        ================================================================================================== 
+        •   for example, 'tiny' will be a small snippet of the get request.
+        •   for example, 'common' can also provide details about your request.   
 
-                        app.use(morgan('tiny'));
+                app.use(morgan('tiny'));
 
-                o   The result will be that when you send a GET request to the server, morgan will log the http request:
+                    o   The result will be that when you send a GET request to the server, morgan will log the http request:
 
                         $ nodemon index.js
                         [nodemon] 1.19.1
@@ -340,6 +356,25 @@
                         [nodemon] starting `node index.js`
                         Listening on port 3000...
                         GET /api/courses 200 95 - 2.022 ms           <== logged GET request by morgan in "tiny" format.
+
+                app.use(morgan('common'));
+
+                    o   The result will be:
+
+                    172.17.01 - - [06/07/2019:16:56:52 +0000]  "GET / HTTP/1.1" 200 2
+
+                        172.17.01                      - IP of the agent making the request
+                        [06/07/2019:16:56:52 +0000]    - date and time of the request
+                        GET                            - method of request
+                        /                              - the URL (the server root is /)
+                        HTTP/1.1                       - HTTP version
+                        200                            - repsonse status code sent back to the client.
+                        2                              - length of the content sent back (2 stands for two character in "ok")
+
+        •   You can also create custom formats for log entries by supplying a string:
+
+                app.use(morgan(':date[iso] :method :url :response-time'));
+                
 */
 
 
@@ -539,6 +574,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ==SHORT ANSWER==
     •   Modularization is splitting the application into different modules so your code is more manageable.
+    •   You can import/export modules using 2 methods:
+            1. Export directly.
+            2. Export with an object using destructuring      
+
+    •   Both work with the same result, but when you export with an object, you dont need to look at the file
+        you are importing from to remember what kind of export it uses.
 
     •   To import a local app module with module.exports, you simply:
             1. Create a sperate file (i.e. module)...
@@ -676,8 +717,8 @@ How do you use middleware in a seperate module using module.exports?
 
 
 
-How do you use middleware in a seperate module using destructuring and why is this favorable?
-=============================================================================================
+How do you use middleware in a seperate module using an object?
+=================================================================
         
     Example 1: Middleware that handles redirects:
     =============================================
@@ -700,7 +741,7 @@ How do you use middleware in a seperate module using destructuring and why is th
                         };
 
 
-                        module.exports = {handleRedirects};                                                  <== use module.exports and export DESTRUCTURE the handleRedirects middleware function
+                        module.exports = {handleRedirects};                                            <== use module.exports and export DESTRUCTURE the handleRedirects middleware function
 
                         _________________________________________________
 
@@ -710,7 +751,7 @@ How do you use middleware in a seperate module using destructuring and why is th
         
                         _________________________________________________
 
-                        const {handleRedirects} = require('./middlewares/redirects');              <== Imports handleRedirects from /middlewares/redirects
+                        const {handleRedirects} = require('./middlewares/redirects');              <== Imports the object "handleRedirects" from ./middlewares/redirects
                         _________________________________________________        
 
 
@@ -721,8 +762,9 @@ How do you use middleware in a seperate module using destructuring and why is th
                         app.use(handleRedirects);
                         _________________________________________________        
 
-
 */
+
+
 
 
 
