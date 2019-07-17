@@ -378,6 +378,62 @@
 */
 
 
+/* 
+6. What is custom middleware?
+////////////////////////////
+==SHORT ANSWER==
+•   Custom middlware are functions that your (the developer) write and install into your express app.
+•   Custom middleware can be anythign from CORS to handling redirects to logging errors (outlines below).
+    
+==PRACTICAL EXAMPLE==
+
+    Example 1: Logging Errors custom middleware.
+    ============================================
+    •   Morgan helps us understand wha kind of requests are being made ot our app, but not a lot of information about errors.
+        o   For example, morgan would show 500 status code (error) but no record of what triggered it.
+
+    •   One possible solution is to insert a try/catch into each of our middleware functions:
+        o    This is "defensive programming" that is useful in places where you think the middleware might fail.
+          
+                        __________________________________________
+
+                        function myMiddlewareFunction() {
+                            // do some stuff
+                            try {
+                                console.log('SUCCESS: `myMiddlewareFunction` did what it was supposed to do. ').
+                            }
+                            catch(e) {
+                                console.log('FAILURE: `myMiddlewareFunction` failed', e.stack);
+                            }
+                        }
+                        __________________________________________
+
+    •   However, the try/catch only works for function that it has been inserted into.
+    •   What about the exception that you do not anticipate?
+        o   To ensure that we log details about the error that happens when a user makes a request to our app, you can use 
+            an express catch-all error handling middleware function.
+        o   In the function below, if any of the routes defined in the app trigger an uncaught error, the error will be logged by logErrors
+        o   So in som many words, logErrors will only run in the case of an uncaught error occuring.
+            o   Note that this middleware function contains an extra parameter, err.
+            o   the err parameter will be the error object that bubbled up to the middleware layer.  
+            o   This is known as a "error-first callback" and is a convention in Node.  
+                          
+
+                        __________________________________________
+
+                        function logErrors(err, req, res, next) {
+                            console.log(err);                                                <== Log the error...
+                            return res.status(500).json({error: 'Something went wrong'})     <== ... send an HTTP status of 500 back to the user with a message saying what happened.
+                        }
+
+                        app.use(logErrors);
+
+                        __________________________________________
+
+
+
+*/
+
 
 
 /* 
@@ -385,7 +441,6 @@
 /////////////////////////////////////////////////////
     •   Middleware CAN be used to modify the request object in addition to adding multiple peices of middleware to an app.                            
 */
-
 
 
 /* 
@@ -453,7 +508,7 @@
 
 ==EXAMPLE==
     •   For example, suppose you have a "Christmas Sale" (seasonal) to an evergreen page named "Sales and Clearence".
-    •   Custom middleware would help us hanle redirection when the Christmas sale is over and we need to go back to Sales and Clearence.
+    •   Custom middleware would help us handle redirection when the Christmas sale is over and we need to go back to Sales and Clearence.
 
 ==PRACTICAL EXAMPLE==
     •   Below is a highly maintainable way to manage URL direction:                 
@@ -549,7 +604,7 @@
                     _______PORT_______           
                             |                   This is the "middleware stack" that a request would pass through before being matched with an endpoint. 
                             |                _ /
-                        [Logging]             |--- Custome middleware like "Logging" used on all requests made to a server     
+                        [Logging]             |--- Custom middleware like "Logging" used on all requests made to a server     
                      [static server]          |--- Built-in middlware like "static server"
                          [CORS]               |--- Custom middleware like "CORS"
                     [handleRedirects]         |--- Custom middleware like "handleRedirects"
