@@ -190,6 +190,10 @@
 */
 
 
+
+
+
+
 /* 
 2. What is Nodemon and what does it do?
 ///////////////////////////////////////
@@ -261,10 +265,10 @@
                                                                 
 ==EXAMPLE==                                                                       
                                                                                         We want to assign a port to our application or else use an arbitrary port.
-                    const port = process.env.PORT || 3000;                        <==   process = "process" is a global object.      
-                    app.listen(port, function() {                                       .env    = a property of of the process global object, which is short for enviroment variable.
-                        console.log(`Listening on port ${port}...`);                    .PORT   = The name of the enviroment variable.
-                    });                                                                 || 3000 = If the above is not set, then we use port 3000.
+                    const port = process.env.PORT || 3000;                        <==       process = "process" is a global object.      
+                    app.listen(port, function() {                                           .env    = a property of of the process global object, which is short for enviroment variable.
+                        console.log(`Listening on port ${port}...`);                        .PORT   = The name of the enviroment variable.
+                    });                                                                     || 3000 = If the above is not set, then we use port 3000.
 
                                                                                         o  IF there is an enviorment variable call "PORT", then use that as the port for the web server.
                                                                                         o  IF NOT, then use 3000 as the port for the webserver           
@@ -291,7 +295,7 @@
     
     How do you set an enviroment variable (assign a port to your application?
     =========================================================================
-    •   To set an enviroment variable, write "export" + the enviroment variable and set its value to whatever you want (i.e. PORT=5000)             
+    •   To set an enviroment variable, write "export" + the enviroment variable in gitbash and set its value to whatever you want (i.e. PORT=5000)             
             o   When you run the application, it will show the new port it is listening in on (i.e. 5000).
 
                     export PORT=5000
@@ -619,8 +623,8 @@ STEP 3: Push the object to the course object and return that object in the body 
    •    As a security concern, you should never trust what the client sends you.
    •    Input validation helps endures that the POST submission is valid and if not, will return an error. 
    •    Validation logic shoudl come at the beginning of your route handler.
-   •    The example            
 
+==EXAMPLE==
 
     How do you add simple validation logic?
     =======================================

@@ -21,6 +21,20 @@
 //     1. Useful overview of information on Server side programming (in JavaScript) from study, research, tutorials, 
 //        mentor meetings, peer discussions, and good ole' fashioned curiosity.  I've put the document in Question
 //        and Answer format for improved readability.
+//
+//     2. Recipe outline:
+//          1. fundamServSideProg    --  Fundamentals of Server Side Programming (basic introduction and context to server side programming)
+//          2. node                  --  Node basics (introduction to Node foundation)
+//          3. nodeModules           --  Creating and working with Node modules (useful primer before expressMiddleware)
+//          4. expressFunda          --  Express fundamentals (basic introduction to req/res concepts and basic installation)
+//          5. express               --  Express is more developed Q/A that provides more specificity from express fundamentals topics.
+//          6. expressMiddleware     --  Express Middleware shows how to create and work with middleware functions.
+//          7. npm                   --  NPM covers installation, initial project setup, etc. before getting into development environment.
+//          8. expDevEnv             --  Express Development Environment covers project setup, npm, gitignore, deployment to heroku, etc.
+//        
+//          X. asyncProNode         -- Asynchronous Programming in Node introduces more advanced backend tools and concepts.
+//          X. mongoDB              -- MongoDB shows the basics of how to use the MongoDB nosql database.
+//
 // 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
