@@ -370,6 +370,38 @@ What is heroku and how do you use it?
     ========================================
     •   Heroku will generate a random project name for you and setup a random subdomain (i.e. http://example-app.herokuapp.com)
 
+                        ______________________________________________
+                         
+                         heroku create
+                        ______________________________________________    
+
+
+    STEP 3: Push your project to Heroku:
+    ====================================
+    •   When you are ready to push your project to Heroku, simply write ""git push heroku master".
+    
+                        ______________________________________________
+                         
+                         git push heroku master
+                        ______________________________________________
+                         
+    •   Additionally, make sure you have a dyno, which is Heroku's name for a self-contained linux container that can run 
+        application processes.
+        o   Remember that Heroku gives you one free dyno a month.
+
+                        ______________________________________________
+                         
+                        heroku ps:scale web=1
+                        ______________________________________________
+
+
+    STEP 4: Launch your Heroku app:
+    ===============================
+
+                        ______________________________________________
+                         
+                        heroku open
+                        ______________________________________________
 
 
 */
