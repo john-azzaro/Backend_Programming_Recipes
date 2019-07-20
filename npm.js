@@ -47,6 +47,9 @@
 ==SHORT ANSWER==
     •   Node Package Manager, or NPM, is a command line tool (such as using Gitbash) that installs, updates, 
         or uninstalls Node.js packages in your application.
+    •   NPM is a JavaScript package manager used for managing software dependencies, publishing, packages so others can use 
+        them, and running applications (i.e. "npm start" to run an app).
+
 
 ==EXAMPLE==
     •   When you write "npm install underscore", you are using Node Package Manager (NPM) to install the 
