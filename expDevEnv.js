@@ -295,40 +295,7 @@ How do you create an express application?
     •   You could also create a .gitignore file in your text editor and list "node_modules" as well.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -368,6 +335,66 @@ How do you create an express application?
                         listening on port 3000...                        <== and again listens on port 3000, and when requested will show "Howdy world!"
 
 */
+
+
+
+/* 
+What is heroku and how do you use it?
+/////////////////////////////////////
+==SHORT ANSWER==
+   •   Heroku is a container-based cloud platform as a service (PaaS) that developers use to deploy, manage, and scale modern apps.                       
+
+==PRACTICAL EXAMPLE==
+
+    STEP 1: Login to Heroku using command prompt:
+    ============================================
+    •   Assuming you are already registered with an account with Heroku, open Command Prompt and type "cmd" then "heroku login"
+
+                         ______________________________________________
+                         
+                         cmd
+                         heroku login
+                         ______________________________________________    
+
+    •   The result will show:
+    
+                         ______________________________________________
+                         
+                         heroku: Press any key to open up the browser to login or q to exit:
+                         Logging in... done
+                         Logged in as johnsmith@yahoo.com
+                         ______________________________________________      
+
+
+    STEP 2: Run "heroku create" in gitbash:
+    ========================================
+    •   Heroku will generate a random project name for you and setup a random subdomain (i.e. http://example-app.herokuapp.com)
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
