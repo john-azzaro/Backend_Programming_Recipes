@@ -184,7 +184,6 @@ How do you create an express application?
       
 
         •   The result of will look like this:
-        •   Also, note that you now have a "package.json" file in your project folder.
 
                         ______________________________________________
 
@@ -228,6 +227,11 @@ How do you create an express application?
                         ______________________________________________
 
 
+    •   In your project folder, you will now see a "package.json" file.
+                        
+                        package.json
+
+
 
     STEP 3: Install Express with "npm install express":
     ===================================================
@@ -236,12 +240,59 @@ How do you create an express application?
 
                         ______________________________________________
 
-
-
+                        npm install express
                         ______________________________________________
 
+    •   The result will look something like this:
+    
+                        ______________________________________________
+
+                        $ npm install express
+                        npm notice created a lockfile as package-lock.json. You should commit this file.
+                        npm WARN learn-npm@1.0.0 No description
+                        npm WARN learn-npm@1.0.0 No repository field.
+
+                        + express@4.17.1
+                        added 50 packages in 1.486s
+                        ______________________________________________
+
+    •   In your project folder, you will see the following:
+    
+                        node_modules/   package.json   package-lock.json
+
+            o   Note how many dependencies are contained in node_modules by running "ls node_modules":
+
+                        accepts/              cookie-signature/  etag/          inherits/           mime-types/      qs/            setprototypeof/
+                        array-flatten/        debug/             express/       ipaddr.js/          ms/              range-parser/  statuses/
+                        body-parser/          depd/              finalhandler/  media-typer/        negotiator/      raw-body/      toidentifier/
+                        bytes/                destroy/           forwarded/     merge-descriptors/  on-finished/     safe-buffer/   type-is/
+                        content-disposition/  ee-first/          fresh/         methods/            parseurl/        safer-buffer/  unpipe/
+                        content-type/         encodeurl/         http-errors/   mime/               path-to-regexp/  send/          utils-merge/
+                        cookie/               escape-html/       iconv-lite/    mime-db/            proxy-addr/      serve-static/  vary/
+
+            o   Because installed so many different packages (50) is because express itself has many dependencies which have many 
+                dependencies themselves.
+            o   
 
 
+    STEP 4: Create a ".gitignore" file at the root of the project in gitbash:
+    ========================================================================
+    •   With npm, you can specify a list of dependencies  and commit that list of dependencies to a repository WITHOUT commiting the 
+        dependencies themselves.
+    •   So when a collaborator installs a project, they download the repo and THEN run "npm install" themselves to install the
+        dependencies locally.
+
+    •   To create a .gitigore, first make sure you are in your root project folder (i.e. learn-npm). Then:
+                         ______________________________________________
+                         
+                         git init
+                         echo "node_modules" > .gitignore
+                         git add .gitignore
+                         git add package.json
+                         git commit -m 'initial commit'
+                         ______________________________________________                       
+
+    •   You could also create a .gitignore file in your text editor and list "node_modules" as well.
 
 
 
