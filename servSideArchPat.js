@@ -2,9 +2,12 @@
 // TOPIC /////////////////////////////////////////////////////////////////////////////////////////////////////
 //     Server-Side Architectural Patterns
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      1. What is REST?
-//      2. What is the primary concern of a REST API?
-//      3. What are the four generic operations that most REST API's support?
+//      
+//      1. What is a server-side architectural pattern?
+//      2. What two things does a client-facing server-side application require?
+//      3. What is REST?
+//      4. What is the primary concern of a REST API?
+//      5. What are the four generic operations that most REST API's support?
 //         + What does the acronym CRUD stand for?
 //      
 //      
@@ -17,9 +20,29 @@
 
 
 
+
 /* 
-1. What is REST? 
-///////////////////////////////
+1. What is a server-side architectural pattern?
+////////////////////////////////////////////////
+==SHORT ANSWER==    
+    •   A server-side architectural pattern is a a common pattern we use many, if not most, of the time.   
+*/
+
+
+
+/* 
+2. What two things does a client-facing server-side application require?
+//////////////////////////////////////////////////////////////////////////
+==SHORT ANSWER==    
+    •   A client-facing app requires two things:
+        1. A way to RETRIEVE intial HTML, CSS, and JavaScript to run the app.
+        2. API endpoints that expose needed resources.
+*/
+
+
+/* 
+3. What is REST? 
+/////////////////
 ==SHORT ANSWER==
     •   REST stands for REpresentational State Transfer.
     •   REST is an architectural style and set of principles that defines a set of standard conventions for creating 
@@ -57,22 +80,24 @@
 */
 
 
+
 /* 
-What is the primary concern of a REST API?
-//////////////////////////////////////////
+4. What is the primary concern of a REST API?
+/////////////////////////////////////////////
 ==SHORT ANSWER==
     •   The primary concern of a REST API is to communicate the state of resources.
 
 ==EXAMPLE==
-    •   A REST API resource could be anything from a to-do list, a blog post, set of blog posts, representation of a user, etc.
+    •   For example, a REST API resource could be anything from a to-do list, a blog post, set of blog posts, representation of a user, etc.
+    •   Thus, a REST API needs to convey those resources, such as CRUD operations.
 */
 
 
 
 /* 
-
-What are the four generic operations that most REST API's support?
-///////////////////////////////////////////////////////////////////
+5. What are the four generic operations that most REST API's support?
+//////////////////////////////////////////////////////////////////////
+==SHORT ANSWER==      
     •   There are four generic operations that REST API's support, such as:
         o   CREATING resources.
         o   READING (i.e. retrieving) resources.
@@ -81,26 +106,30 @@ What are the four generic operations that most REST API's support?
 
     What does the acronym CRUD stand for?
     =====================================
-     •  CRUD stands for "Create, Update, Update, Delete" and is frequently used when developers talk about CRUD 
+    •   CRUD stands for "Create, Update, Update, Delete" and is frequently used when developers talk about CRUD 
         operations or CRUD applications.
-
 */
-
-
 
 
 
 
 /* 
-What is a server-side architectural pattern?
-////////////////////////////////////////////
-    •   A server-side architectural pattern is a a common pattern
+How does a RESTful API expose resources?
+/////////////////////////////////////////
+==SHORT ANSWER==
+    •   A RESTful API exposes resources through URLS. 
+        o   However, we do NOT use URLS to create an endpoint, but instead use HTTP methods to indicate the 
+            appropriate actions, like: get, post, put, delete.
 
+==EXAMPLE==
+    •   For example, if you have a single endpoint (i.e. https://mywebsite.com/users), the "/users" is for exposing user resources.
+        o   when the client makes a request to the "/users" endpoint, the API would return a list of users!
 
-
-
-
-
-
+    •   In another example, suppose the client makes a request to https://mywebsite.com/users/my-id. 
+        o   When the client makes a request to the "/users/my-id", the API will return a single object with user corresponding to that id.
 */
+
+
+
+
 
