@@ -33,9 +33,10 @@
 //          6. expressMiddleware     --  Express Middleware shows how to create and work with middleware functions.
 
 //          8. expDevEnv             --  Express Development Environment covers project setup, npm, gitignore, deployment to heroku, etc.
+//          9. ServSiArchPat         --  Server-Side Architectural Patterns
 //        
-//          X. asyncProNode         -- Asynchronous Programming in Node introduces more advanced backend tools and concepts.
-//          X. mongoDB              -- MongoDB shows the basics of how to use the MongoDB nosql database.
+//          X. asyncProNode          -- Asynchronous Programming in Node introduces more advanced backend tools and concepts.
+//          X. mongoDB               -- MongoDB shows the basics of how to use the MongoDB nosql database.
 //
 // 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
