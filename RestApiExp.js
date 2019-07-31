@@ -16,9 +16,6 @@
 
 
 
-
-
-
 /* 
 1. What is REST?  
 ///////////////////////////////
@@ -52,6 +49,14 @@
 */
 
 
+/* 
+What are the central principles of REST?
+////////////////////////////////////////
+
+*/
+
+
+
 
 /* 
 What are the four generic operations that most REST API's support?
@@ -72,3 +77,37 @@ What are the four generic operations that most REST API's support?
     •   This is where the "CRUD" acronym comes from (create, read, update, delete). 
 */
 
+
+/* 
+How does a RESTful API expose resources?
+/////////////////////////////////////////
+==SHORT ANSWER==
+    •   A RESTful API exposes resources through URL's (i.e. endpoints).
+
+==EXAMPLE==
+    •   Suppose you have a single endpoint "/books" that is used for exposing a list of books on your website.
+    •   When a client makes a GET request to "/books", the API will return that list of books to them.
+*/
+
+
+/* 
+How would you create an endpoint in a REST API?
+////////////////////////////////////////////////
+==SHORT ANSWER==
+    •   To create an endpoint in a REST API, the endpoint is essentially a noun (i.e. a thing) and HTTP methods are verbs 
+        that indicate the appropriate actions.  
+
+==EXAMPLE==
+    •   
+
+
+
+*/
+
+
+
+
+
+/* 
+https://restfulapi.net/ -- REST philosophy
+*/
