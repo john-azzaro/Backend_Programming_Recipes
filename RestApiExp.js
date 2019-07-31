@@ -52,7 +52,11 @@
 /* 
 What are the central principles of REST?
 ////////////////////////////////////////
-
+==SHORT ANSWER==
+    •   An API can be considered a REST API if it hasd the following features:
+        1. The client handles the front end, the server handles the back end and both can be replaced independently of each other.
+        2. The API is "stateless", meaning NO client data is stored on the server between the requests... session state is stored on the client side.
+        3. The API is "cacheable", meaning the clinet can store the response to improve performance.
 */
 
 
