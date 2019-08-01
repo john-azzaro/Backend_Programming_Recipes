@@ -98,14 +98,8 @@ How does a RESTful API expose resources?
 How would you create an endpoint in a REST API?
 ////////////////////////////////////////////////
 ==SHORT ANSWER==
-    •   To create an endpoint in a REST API, the endpoint is essentially a noun (i.e. a thing) and HTTP methods are verbs 
+    •   To create an endpoint in a REST API, HTTP methods that we would commonly use are verbs (i.e. GET, POST, PUT, DELETE). 
         that indicate the appropriate actions.  
-
-==EXAMPLE==
-    •   
-
-
-
 */
 
 
