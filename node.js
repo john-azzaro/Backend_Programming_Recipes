@@ -55,7 +55,7 @@
 ==SHORT ANSWER==
     •   Node.js is mainly used to create web servers. However, Node can be used to create different types of 
         applications like web applications, chat applications and REST API servers.  
-
+,
 ==EXTENDED ANSWERS==
     •   Node allow us to work with the back-end.
             o   Computers execute machine code instructions, but machine code is difficult for humans to work with.
@@ -160,7 +160,7 @@
             o   In Node, the ASYNCHRONOUS waiter is a thread allocated to handle a request from MULTIPLE tables.
                     o   A single thread (waiter) can be used to handle multiple requests (or in the examples case tables).
 
-                                    [single thread]
+                                 [single thread]
                                 /               \
                         [Request]                 [Response]
 

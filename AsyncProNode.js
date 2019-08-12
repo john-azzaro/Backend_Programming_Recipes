@@ -792,4 +792,5 @@ What is async and await?
 
 /* 
 http://callbackhell.com/ -- callbacks, callback hell
+https://trello.com/c/5TzQwzMJ/80-what-is-asynchronous-programming-and-why-is-it-important-in-javascript  -- asynchronous programming
 */
