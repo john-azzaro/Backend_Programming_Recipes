@@ -103,7 +103,20 @@ How does Mocha work?
 
     STEP 3: Create a "test" folder:
     ===============================
-        •   
+        •   This "test" folder will contain all the tests we wish to perform.
+        •   Note that for every file you create inside your "test" files, it should always:
+                1.  begin with "test-"
+                2.  use "-" between words
+                3.  Be all lowercase
+
+        •   For example:
+            ----------------------
+             test
+                test-is-equal
+                test-is-even
+                test-is-odd           
+            ----------------------
+
 
 
 
