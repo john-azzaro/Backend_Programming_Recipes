@@ -10,3 +10,15 @@
 //        in Question and Answer format for improved readability.
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/* 
+What is a software test?
+////////////////////////
+    •   A software test is a routine that runs another peice of code (i.e. the subject under test) and determines 
+        whether or not the tested code conformed to expectations.
+*/
+
+/* 
+Why do you run software tests?
+//////////////////////////////
+*/
