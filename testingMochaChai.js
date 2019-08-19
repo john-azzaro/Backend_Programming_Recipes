@@ -35,12 +35,27 @@
 /* 
 3. What is Mocha?
 /////////////////
-    •   Mocha is a test framwork.
+    •   Mocha is a test framework.
     •   Mocha provides a command line argument that can be run (e.g. mocha) that will look for an execute tests.
     •   Mocha provides syntax for describing features and specifications..
 */
 
 /* 
+How do you install Mocha?
+//////////////////////////
+    •   Assuming you have a project folder, cd into that project folder, and run "npm init", install mocha
+        by running:
+        --------------------------------------
+        npm install mocha --save-dev 
+        -------------------------------------- 
+    
+
+
+*/
+
+/* 
 How does Mocha work?
 /////////////////////
+    •   
+
 */
