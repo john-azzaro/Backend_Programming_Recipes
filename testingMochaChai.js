@@ -48,14 +48,55 @@ How do you install Mocha?
         --------------------------------------
         npm install mocha --save-dev 
         -------------------------------------- 
-    
-
-
+    *   When you run this, it will install mocha in the devDependencies array for development environments, which 
+        will NOT be installed in production.
+        --------------------------------------------------
+        {
+            "name": "mocha-chai-demo-2",
+            "version": "1.0.0",
+            "description": "",
+            "main": "index.js",
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1"
+            },
+            "keywords": [],
+            "author": "",
+            "license": "ISC",
+            "devDependencies": {                                        <== mocha installed in devDependencies.
+                "mocha": "^6.2.0"
+            }
+        }
+        --------------------------------------------------
 */
 
 /* 
 How does Mocha work?
 /////////////////////
     •   
+    STEP 1: Install Mocha:
+    =======================   
+        •   Inside your project folder, assuming you have already run "npm init", install mocha to your
+            development environment.
+        --------------------------------------------------
+        npm install mocha --save-dev
+        --------------------------------------------------    
 
+
+    STEP 2: Have (or create) a JavaScript file for code you want to test:
+    =====================================================================
+        Have a JavaScript file you want to place code (they we will test).
+        •   In the case of this example, we'll create a file called "isEqual.js" with the following code:
+        ---------------------------------------------------
+        module.exports = function(a,b) {return a === b}
+        ---------------------------------------------------
+
+
+    STEP 3: Create a "test" folder:
+    ===============================
+
+
+
+
+
+    
 */
