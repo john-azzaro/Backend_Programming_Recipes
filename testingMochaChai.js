@@ -82,9 +82,19 @@ How does Mocha work?
         --------------------------------------------------    
 
 
+    STEP 2: In your package.json file, add a "test" property to the "scripts" object:
+    =================================================================================
+        •   By default, you will see other code but you can remove that and add this or add the line below below 
+            it which will allow you to run your mocha tests in Gitbash with a single command.
+        --------------------------------------------------
+        "scripts": {
+            "test":"mocha --exit"
+        }
+        --------------------------------------------------
+
+
     STEP 2: Have (or create) a JavaScript file for code you want to test:
-    =====================================================================
-        Have a JavaScript file you want to place code (they we will test).
+    =====================================================================.
         •   In the case of this example, we'll create a file called "isEqual.js" with the following code:
         ---------------------------------------------------
         module.exports = function(a,b) {return a === b}
@@ -93,6 +103,7 @@ How does Mocha work?
 
     STEP 3: Create a "test" folder:
     ===============================
+        •   
 
 
 
