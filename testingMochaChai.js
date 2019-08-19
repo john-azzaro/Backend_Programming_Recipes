@@ -39,3 +39,8 @@
     •   Mocha provides a command line argument that can be run (e.g. mocha) that will look for an execute tests.
     •   Mocha provides syntax for describing features and specifications..
 */
+
+/* 
+How does Mocha work?
+/////////////////////
+*/
