@@ -133,11 +133,27 @@ How do you make a basic Mocha test?
         ----------------------------------------------------
 
 
-    STEP 7: Next, write your test by using "describe":
-    ==================================================
-        •      
+    STEP 7: Use "describe" to group your tests:
+    ============================================
+        •   "describe" is used to decalre the entity to be tested, and a callback function sets up the test.
+        •   "describe" is for grouping, which can be used to nest as deep as you need.  
+
+        grouping for test     file to test       callback function 
+                        \          |             /
+                        describe('isEqual', function() {
+                            ...
+                        });
+
+        ------------------------------------------------------
+        
+        describe('isEqual', function() {
+            ...
+        });
+
+        ------------------------------------------------------   
 
 
+     STEP 8: 
 
 
 
