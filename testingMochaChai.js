@@ -132,7 +132,10 @@ How do you make a basic Mocha test?
 
         ----------------------------------------------------
 
-    STEP 7: Next, 
+
+    STEP 7: Next, write your test by using "describe":
+    ==================================================
+        •      
 
 
 
@@ -142,4 +145,11 @@ How do you make a basic Mocha test?
 
 
     
+*/
+
+
+/* 
+Additional resources
+===================
+https://samwize.com/2014/02/08/a-guide-to-mochas-describe-it-and-setup-hooks/  -- mocha summary
 */
