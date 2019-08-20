@@ -70,9 +70,9 @@ How do you install Mocha?
 */
 
 /* 
-How does Mocha work?
-/////////////////////
-    •   
+How do you make a basic Mocha test?
+///////////////////////////////////
+
     STEP 1: Install Mocha:
     =======================   
         •   Inside your project folder, assuming you have already run "npm init", install mocha to your
@@ -93,7 +93,7 @@ How does Mocha work?
         --------------------------------------------------
 
 
-    STEP 2: Have (or create) a JavaScript file for code you want to test:
+    STEP 3: Have (or create) a JavaScript file for code you want to test:
     =====================================================================.
         •   In the case of this example, we'll create a file called "isEqual.js" with the following code:
         ---------------------------------------------------
@@ -101,9 +101,14 @@ How does Mocha work?
         ---------------------------------------------------
 
 
-    STEP 3: Create a "test" folder:
+    STEP 4: Create a "test" folder:
     ===============================
         •   This "test" folder will contain all the tests we wish to perform.
+
+
+    STEP 5: Create a test file:
+    ===========================
+        •   Test files will test individual files in your project folder.
         •   Note that for every file you create inside your "test" files, it should always:
                 1.  begin with "test-"
                 2.  use "-" between words
@@ -116,6 +121,20 @@ How does Mocha work?
                 test-is-even
                 test-is-odd           
             ----------------------
+
+
+    STEP 6: Inside your test file, first load the JavaScript file you want to test:
+    ================================================================================
+        •   In this example, we load the JavaScript file "isEqual".
+        ----------------------------------------------------
+
+        const isEqual = require('../isEqual');
+
+        ----------------------------------------------------
+
+    STEP 7: Next, 
+
+
 
 
 
