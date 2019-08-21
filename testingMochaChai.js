@@ -156,7 +156,12 @@ How do you make a basic Mocha test?
     STEP 8: Inside "describe", use "it" to indicate the behavior to test:
     =====================================================================
         •   "it" is the test case.
-
+        •   Inside "it", there are two arguments.
+            1.  The string value of the argument being tested.
+            2.  A callback function that provides the test for the behavior.
+        
+        •   In the example below, we only have the string value so we can test to see if everything is hooked up
+            correctly.
         ------------------------------------------------------
         
         describe('isEqual', function() {
@@ -181,17 +186,29 @@ How do you make a basic Mocha test?
         > mocha-demo-2@1.0.0 test C:\Users\Admin\Desktop\mocha-demo             <== mocha-demo (i.e. the test folder)...
         > mocha --exit                                                          <== ... runs mocha --exit (i.e. the script for "test")
 
-        isEqual                                                             
-            - should give right answers for equal and unequal inputs
+        isEqual                                                                 <== name of the function being tested...
+            - should give right answers for equal and unequal inputs            <== first argument is a string value indicating the bahavior to be tested in that block.
 
         0 passing (9ms)
-        1 pending                                                            
+        1 pending                                                               <== Test is pending because we have not supplied a callback function.
 
-        ----------------------------------------------------------------------
-
-
-    
+        ---------------------------------------------------------------------- 
 */
+
+
+/* 
+What is chai?
+//////////////
+    •   
+
+
+
+*/
+
+
+
+
+
 
 /* 
 Additional resources
