@@ -153,16 +153,45 @@ How do you make a basic Mocha test?
         ------------------------------------------------------   
 
 
-     STEP 8: 
+    STEP 8: Inside "describe", use "it" to indicate the behavior to test:
+    =====================================================================
+        •   "it" is the test case.
+
+        ------------------------------------------------------
+        
+        describe('isEqual', function() {
+            it('should give right answers for equal and unequal inputs')
+        });
+
+        ------------------------------------------------------  
 
 
+    STEP 9: Run initial test from gitbash:
+    ======================================
+        •   Always a good idea to make sure everything is hooked up correctly.
+        •   To run a test, run "npm test" (remember, we added a script called "test" that runs "mocha --exit" ).
+        ------------------------------
+        npm test 
+        ------------------------------ 
 
+        •   If everything was setup successfully, you should see the following:
+        ----------------------------------------------------------------------
+        $ npm test                                                              <== when you run "npm test"...
 
+        > mocha-demo-2@1.0.0 test C:\Users\Admin\Desktop\mocha-demo             <== mocha-demo (i.e. the test folder)...
+        > mocha --exit                                                          <== ... runs mocha --exit (i.e. the script for "test")
+
+        isEqual                                                             
+            - should give right answers for equal and unequal inputs
+
+        0 passing (9ms)
+        1 pending                                                            
+
+        ----------------------------------------------------------------------
 
 
     
 */
-
 
 /* 
 Additional resources
