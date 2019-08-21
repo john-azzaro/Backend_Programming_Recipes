@@ -233,7 +233,22 @@ What is chai?
     •   Chai is an assertion library that is often used alongside Mocha.
     •   Chai provides functions and methods that can help compare the output of certain tests with its expected value
     •   Chai provides a clean syntax that is almost comparable to english.
+*/
 
+
+/* 
+How do you use Chai (with Mocha)?
+//////////////////////////////////
+    
+    STEP 1: In gitbash, install the "chai" dependency in your project folder:
+    =========================================================================
+        •   Remember to save the chai package to the dev dependencies with --save-dev.
+        ---------------------------------------------
+        npm install chai --save-dev
+        ---------------------------------------------
+
+    STEP 2:  
+    ========================================
 
 
 */
