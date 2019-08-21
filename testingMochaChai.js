@@ -247,8 +247,13 @@ How do you use Chai (with Mocha)?
         npm install chai --save-dev
         ---------------------------------------------
 
-    STEP 2:  
+    STEP 2: In your test file, require chai:
     ========================================
+        ----------------------------------------------
+        const expect = require('chai');
+        ----------------------------------------------
+
+    STEP 3: Pass the expect interface
 
 
 */
