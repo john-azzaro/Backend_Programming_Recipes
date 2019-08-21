@@ -250,6 +250,7 @@ How do you use Chai (with Mocha)?
     •   This example uses the previous "isEqual" example to implement chai and it is assumed that you have already
         loaded mocha and the previous steps. 
 
+
     STEP 1: In gitbash, install the "chai" dependency in your project folder:
     =========================================================================
         •   Remember to save the chai package to the dev dependencies with --save-dev.
@@ -257,22 +258,26 @@ How do you use Chai (with Mocha)?
         npm install chai --save-dev
         ---------------------------------------------
 
+
     STEP 2: Require chai in your test file:
     ========================================
         ----------------------------------------------
         const expect = require('chai');
         ----------------------------------------------
 
-    STEP 3: Inside "it", 
-        ------------------------------------------------------
+
+    STEP 3: Inside "it", add "expect" with the code to test:
+    =========================================================
+        •   Here we expect that if you test "isEqual" with the arguments 1 and 1, it will be true (i.e. to-be-true)
+            since 1 === 1.
+        ----------------------------------------------------------------
         
         describe('isEqual', function() {
             it('should give right answers for equal and unequal inputs')
-            ...
-            ...
+                expect(isEqual(1,1,).to.be.true);                         <== chai test
         });
 
-        ------------------------------------------------------  
+        ----------------------------------------------------------------  
 
 */
 
