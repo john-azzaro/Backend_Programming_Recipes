@@ -273,11 +273,31 @@ How do you use Chai (with Mocha)?
         ----------------------------------------------------------------
         
         describe('isEqual', function() {
-            it('should give right answers for equal and unequal inputs')
-                expect(isEqual(1,1,).to.be.true);                         <== chai test with a expect-style assertion.
-        });
+            it('should give right answers for equal and unequal inputs', function(){
+            expect(isEqual(1, 1)).to.be.true;
+            });
+          }
+        );
 
         ----------------------------------------------------------------  
+
+    STEP 4: Run "npm test" to view a successful test!
+    ==================================================
+        -------------------------------------------------------------------------------------
+
+        $ npm test
+
+        > mocha-chai@1.0.0 test C:\Users\Admin\Desktop\mocha-chai
+        > mocha --exit
+
+        isEqual
+            √ should give right answers for equal and unequal inputs
+
+        1 passing (10ms)
+
+        -------------------------------------------------------------------------------------
+
+
 */
 
 /* 
