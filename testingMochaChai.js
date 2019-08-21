@@ -274,11 +274,19 @@ How do you use Chai (with Mocha)?
         
         describe('isEqual', function() {
             it('should give right answers for equal and unequal inputs')
-                expect(isEqual(1,1,).to.be.true);                         <== chai test
+                expect(isEqual(1,1,).to.be.true);                         <== chai test with a expect-style assertion.
         });
 
         ----------------------------------------------------------------  
+*/
 
+/* 
+What are expect-style assertions?
+/////////////////////////////////
+    •   "Expect-style assertions" refer to the presence of the "expect" function where "expect" serves as the 
+         starting point for chaining other keywords together.
+    •   To see a concise list, see: https://www.chaijs.com/api/bdd/ or https://devhints.io/chai .
+             
 */
 
 
