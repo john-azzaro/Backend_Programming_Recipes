@@ -66,7 +66,7 @@ What is a test suite and test case?
     •   A "test case" is a signle description about the desired behavior of a code that either passes or fails.
     •   Test suites are bached underneath "describe" keywords.
     •   Test cases are batched underneath "it" keywords.
-    
+
 */
 
 /* 
@@ -230,7 +230,9 @@ How do you make a basic Mocha test?
 /* 
 What is chai?
 //////////////
-    •   chai
+    •   Chai is an assertion library that is often used alongside Mocha.
+    •   Chai provides functions and methods that can help compare the output of certain tests with its expected value
+    •   Chai provides a clean syntax that is almost comparable to english.
 
 
 
