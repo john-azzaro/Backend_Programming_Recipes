@@ -164,18 +164,22 @@ How do you make a basic Mocha test?
 
     STEP 7: Use "describe" to group your tests:
     ============================================
-        •   "describe" is used to decalre the entity to be tested, and a callback function sets up the test.
-        •   "describe" is for grouping, which can be used to nest as deep as you need.  
+        •   "describe" is for grouping, which can be used to nest as deep as you need.     
+        •   "describe" takes a string and a callback.
+            •   The string is used to decalre the entity to be tested=.
+            •   The callback function sets up the test. 
 
         grouping for test     file to test       callback function 
                         \          |             /
                         describe('isEqual', function() {
-                            ...
+
                         });
 
         ------------------------------------------------------
         
         describe('isEqual', function() {
+            ...
+            ...
             ...
         });
 
@@ -195,9 +199,13 @@ How do you make a basic Mocha test?
         
         describe('isEqual', function() {
             it('should give right answers for equal and unequal inputs')
+            ...
+            ...
         });
 
         ------------------------------------------------------  
+         •   Note at this point that "it" also takes a string and a callback, but this uses "expect" from the chai 
+             framework/assertion library (see next questions on chai).
 
 
     STEP 9: Run initial test from gitbash:
@@ -239,7 +247,9 @@ What is chai?
 /* 
 How do you use Chai (with Mocha)?
 //////////////////////////////////
-    
+    •   This example uses the previous "isEqual" example to implement chai and it is assumed that you have already
+        loaded mocha and the previous steps. 
+
     STEP 1: In gitbash, install the "chai" dependency in your project folder:
     =========================================================================
         •   Remember to save the chai package to the dev dependencies with --save-dev.
@@ -247,14 +257,22 @@ How do you use Chai (with Mocha)?
         npm install chai --save-dev
         ---------------------------------------------
 
-    STEP 2: In your test file, require chai:
+    STEP 2: Require chai in your test file:
     ========================================
         ----------------------------------------------
         const expect = require('chai');
         ----------------------------------------------
 
-    STEP 3: Pass the expect interface
+    STEP 3: Inside "it", 
+        ------------------------------------------------------
+        
+        describe('isEqual', function() {
+            it('should give right answers for equal and unequal inputs')
+            ...
+            ...
+        });
 
+        ------------------------------------------------------  
 
 */
 
@@ -268,4 +286,7 @@ Additional resources
 ===================
 https://samwize.com/2014/02/08/a-guide-to-mochas-describe-it-and-setup-hooks/  -- mocha summary
 https://www.codecademy.com/articles/bapi-testing-intro  -- testing
+https://devhints.io/chai  -- chai devhints
+https://dev.to/mcarpenter/testing-w-mocha-and-chai-39b7 -- chai
+
 */
