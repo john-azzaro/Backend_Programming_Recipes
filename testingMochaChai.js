@@ -30,14 +30,43 @@
         2.  Well-written tests server as documentation for code collaborators.
             •   For example, tests can illustrate the way we expect the code to be used, and what should have if given 
                 specific inputs.    
+            •   In other words, tests are a common way to document the core functionality of code to make sure that any
+                new features do NOT introduce breaking changes.    
 */
+
+/* 
+What is a unit test?
+////////////////////
+    •   Unit testing means testing the bahavior of code in small, independant units.
+    •   "Units" are designed to be the smallest of meaningful chuncks of independently testable code.
+    •   This is in comparison to "integration testing", where modules are are tested in a group.
+
+
+
+*/
+
 
 /* 
 3. What is Mocha?
 /////////////////
     •   Mocha is a test framework.
+    •   Mocha's testing framework provides functions that are executed according to a specific order and logs the 
+        result in the terminal window.
     •   Mocha provides a command line argument that can be run (e.g. mocha) that will look for an execute tests.
-    •   Mocha provides syntax for describing features and specifications..
+    •   Mocha provides syntax for describing features and specifications.
+    •   With Mocha, you will regualarly use keywords like "describe" and "it", which provide structure to the tests
+        by batching them into test suites and test cases.
+*/
+
+
+/* 
+What is a test suite and test case?
+////////////////////////////////////
+    •   A "test suite" is a collection of tests all realting to a single functionality or behavior.
+    •   A "test case" is a signle description about the desired behavior of a code that either passes or fails.
+    •   Test suites are bached underneath "describe" keywords.
+    •   Test cases are batched underneath "it" keywords.
+    
 */
 
 /* 
@@ -175,11 +204,13 @@ How do you make a basic Mocha test?
     ======================================
         •   Always a good idea to make sure everything is hooked up correctly.
         •   To run a test, run "npm test" (remember, we added a script called "test" that runs "mocha --exit" ).
+
         ------------------------------
         npm test 
         ------------------------------ 
 
         •   If everything was setup successfully, you should see the following:
+
         ----------------------------------------------------------------------
         $ npm test                                                              <== when you run "npm test"...
 
@@ -199,7 +230,7 @@ How do you make a basic Mocha test?
 /* 
 What is chai?
 //////////////
-    •   
+    •   chai
 
 
 
@@ -214,4 +245,5 @@ What is chai?
 Additional resources
 ===================
 https://samwize.com/2014/02/08/a-guide-to-mochas-describe-it-and-setup-hooks/  -- mocha summary
+https://www.codecademy.com/articles/bapi-testing-intro  -- testing
 */
