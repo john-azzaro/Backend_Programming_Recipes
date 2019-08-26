@@ -13,7 +13,7 @@
 //      9. How do you use Chai (with Mocha)?
 //      10. What are expect-style assertions?
 //      11. What should your test strategy be like?
-//      
+//      12. What are integration tests?
 //      
 //      
 //
@@ -333,6 +333,11 @@
 */
 
 
+
+/* 
+12. What are integration tests?
+///////////////////////////////
+*/
 
 
 
