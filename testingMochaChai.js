@@ -4,7 +4,18 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //      1. What is a software test?
 //      2. Why do you run software tests?
-//      3.
+//      3. What is a unit test?
+//      4. What is Mocha?
+//      5. What is a test suite and test case?
+//      6. How do you install Mocha?
+//      7. How do you make a basic Mocha test?
+//      8. What is chai?
+//      9. How do you use Chai (with Mocha)?
+//      10. What are expect-style assertions?
+//      11. What should your test strategy be like?
+//      
+//      
+//      
 //
 // NOTES ////////////////////////////////////////////////////////////////////////////////////////////////////
 //        1. Useful overview of information on server-side testing with Mocha and Chai from study, research,
@@ -35,8 +46,8 @@
 */
 
 /* 
-What is a unit test?
-////////////////////
+3. What is a unit test?
+///////////////////////
     •   Unit testing means testing the bahavior of code in small, independant units.
     •   "Units" are designed to be the smallest of meaningful chuncks of independently testable code.
     •   This is in comparison to "integration testing", where modules are are tested in a group.
@@ -47,7 +58,7 @@ What is a unit test?
 
 
 /* 
-3. What is Mocha?
+4. What is Mocha?
 /////////////////
     •   Mocha is a test framework.
     •   Mocha's testing framework provides functions that are executed according to a specific order and logs the 
@@ -60,8 +71,8 @@ What is a unit test?
 
 
 /* 
-What is a test suite and test case?
-////////////////////////////////////
+5. What is a test suite and test case?
+///////////////////////////////////////
     •   A "test suite" is a collection of tests all realting to a single functionality or behavior.
     •   A "test case" is a signle description about the desired behavior of a code that either passes or fails.
     •   Test suites are bached underneath "describe" keywords.
@@ -70,8 +81,8 @@ What is a test suite and test case?
 */
 
 /* 
-How do you install Mocha?
-//////////////////////////
+6. How do you install Mocha?
+/////////////////////////////
     •   Assuming you have a project folder, cd into that project folder, and run "npm init", install mocha
         by running:
         --------------------------------------
@@ -99,8 +110,8 @@ How do you install Mocha?
 */
 
 /* 
-How do you make a basic Mocha test?
-///////////////////////////////////
+7. How do you make a basic Mocha test?
+//////////////////////////////////////
 
     STEP 1: Install Mocha:
     =======================   
@@ -236,8 +247,8 @@ How do you make a basic Mocha test?
 
 
 /* 
-What is chai?
-//////////////
+8. What is chai?
+/////////////////
     •   Chai is an assertion library that is often used alongside Mocha.
     •   Chai provides functions and methods that can help compare the output of certain tests with its expected value
     •   Chai provides a clean syntax that is almost comparable to english.
@@ -245,8 +256,8 @@ What is chai?
 
 
 /* 
-How do you use Chai (with Mocha)?
-//////////////////////////////////
+9. How do you use Chai (with Mocha)?
+/////////////////////////////////////
     •   This example uses the previous "isEqual" example to implement chai and it is assumed that you have already
         loaded mocha and the previous steps. 
 
@@ -306,8 +317,8 @@ How do you use Chai (with Mocha)?
 
 
 /* 
-What are expect-style assertions?
-/////////////////////////////////
+10. What are expect-style assertions?
+/////////////////////////////////////
     •   "Expect-style assertions" refer to the presence of the "expect" function where "expect" serves as the 
          starting point for chaining other keywords together.
     •   To see a concise list, see: https://www.chaijs.com/api/bdd/ or https://devhints.io/chai .           
@@ -315,8 +326,8 @@ What are expect-style assertions?
 
 
 /* 
-What should your test strategy be like?
-///////////////////////////////////////
+11. What should your test strategy be like?
+///////////////////////////////////////////
     •   Test at a minimum normal case using a wide range of inputs.
     •   Then, think of important edge cases.
 */
