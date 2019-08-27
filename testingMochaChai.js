@@ -364,5 +364,6 @@ https://www.codecademy.com/articles/bapi-testing-intro  -- testing
 https://devhints.io/chai  -- chai devhints
 https://dev.to/mcarpenter/testing-w-mocha-and-chai-39b7 -- chai
 https://stackabuse.com/testing-node-js-code-with-mocha-and-chai/  -- chai testing
+https://www.codementor.io/olatundegaruba/integration-testing-supertest-mocha-chai-6zbh6sefz -- integration testing
 
 */
