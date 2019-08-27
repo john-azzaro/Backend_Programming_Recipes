@@ -358,8 +358,8 @@
     
     STEP 1: In Gitbash, install chai-http to your dev-dependencies:
     ===============================================================
-        •    First, you need to intsall chai-http to your development enviroment.
-        •   Unlike regular chai, chai-http
+        •   First, you need to intsall chai-http to your development enviroment.
+        •   Chai-http 
     ----------------------------------------------------
     npm install chai-http --save-dev
     ----------------------------------------------------
@@ -385,4 +385,6 @@ https://stackabuse.com/testing-node-js-code-with-mocha-and-chai/  -- chai testin
 https://www.codementor.io/olatundegaruba/integration-testing-supertest-mocha-chai-6zbh6sefz -- integration testing
 https://www.chaijs.com/plugins/chai-http/ -- chai http
 https://www.npmjs.com/package/chai-http  -- chai docs
+https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai -- chai http article
+
 */
