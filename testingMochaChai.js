@@ -337,6 +337,10 @@
 /* 
 12. What are integration tests?
 ///////////////////////////////
+    •   An integration test targets the HTTP layer and tests (and documents) how clients will inteact with your API.
+    •   For example, suppose you write API endpoints for user management (exposed at the /users endpoint).
+    •   Once you make a GET request to /users, the list should include a list of all current users.
+    •   If a POST request is made to /users (with the right values), the new user should be created and persisted.         
 */
 
 
