@@ -343,10 +343,28 @@
     •   If a POST request is made to /users (with the right values), the new user should be created and persisted.         
 */
 
+
+/* 
+13. What is chai-http?
+/////////////////////// 
+    •   chai-http allows for integration testing with Chai assertions, and features
+*/
+
+
+
 /* 
 13. How do you create a basic integration test for a GET Request?
 /////////////////////////////////////////////////////////////////
-    •   
+    
+    STEP 1: In Gitbash, install chai-http to your dev-dependencies:
+    ===============================================================
+        •    First, you need to intsall chai-http to your development enviroment.
+        •   Unlike regular chai, chai-http
+    ----------------------------------------------------
+    npm install chai-http --save-dev
+    ----------------------------------------------------
+         
+
 
 */
 
@@ -365,5 +383,6 @@ https://devhints.io/chai  -- chai devhints
 https://dev.to/mcarpenter/testing-w-mocha-and-chai-39b7 -- chai
 https://stackabuse.com/testing-node-js-code-with-mocha-and-chai/  -- chai testing
 https://www.codementor.io/olatundegaruba/integration-testing-supertest-mocha-chai-6zbh6sefz -- integration testing
-
+https://www.chaijs.com/plugins/chai-http/ -- chai http
+https://www.npmjs.com/package/chai-http  -- chai docs
 */
