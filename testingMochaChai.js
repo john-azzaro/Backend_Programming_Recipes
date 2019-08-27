@@ -343,6 +343,13 @@
     •   If a POST request is made to /users (with the right values), the new user should be created and persisted.         
 */
 
+/* 
+13. How do you create a basic integration test for a GET Request?
+/////////////////////////////////////////////////////////////////
+    •   
+
+*/
+
 
 
 
