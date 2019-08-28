@@ -398,10 +398,27 @@
         •   When you import server.js using the destructuring assignment, you create variables to use in your test.
 
     --------------------------------------------------------------
+    const chai = require('chai');
+    const chaiHttp = require('chai-http');
 
+    const {app, runServer, closeServer} = require('../server');    <== creates "app", "runServer", and "closeServer" variables to use in the test.
 
-
+    chai.use(chaiHttp);                                        
     --------------------------------------------------------------
+
+
+    STEP 5: Set-up your test suite:
+    ===============================
+        •   Use "describe" to group your tests.  In the case of this test, we'll test "Users".
+    ----------------------------------------------------------------
+    describe('Users', function() {
+        ...
+    }); 
+    ---------------------------------------------------------------- 
+
+    
+    STEP 6: Add "before" and "after" function BEFORE tests:
+    ========================================================
 
 
 */
