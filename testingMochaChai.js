@@ -410,11 +410,11 @@
     STEP 5: Set-up your test suite:
     ===============================
         •   Use "describe" to group your tests.  In the case of this test, we'll test "Users".
-    ----------------------------------------------------------------
+    --------------------------------------
     describe('Users', function() {
         ...
     }); 
-    ---------------------------------------------------------------- 
+    --------------------------------------
 
 
     STEP 6: Add "before" and "after" function BEFORE any tests:
