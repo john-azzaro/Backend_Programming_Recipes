@@ -347,23 +347,38 @@
 /* 
 13. What is chai-http?
 /////////////////////// 
-    •   chai-http allows for integration testing with Chai assertions, and features
+    •   Chai-http provides assertions related to HTTP requests.
+    •   In other words, chai-http is for making actual HTTP requests and then testing the responses.
 */
 
 
 
 /* 
-13. How do you create a basic integration test for a GET Request?
+14. How do you create a basic integration test for a GET Request?
 /////////////////////////////////////////////////////////////////
     
     STEP 1: In Gitbash, install chai-http to your dev-dependencies:
     ===============================================================
         •   First, you need to intsall chai-http to your development enviroment.
-        •   Chai-http 
     ----------------------------------------------------
     npm install chai-http --save-dev
     ----------------------------------------------------
          
+
+    STEP 2: In your test file, require chai-http: 
+    =============================================
+        •   Requiring chai and chai-http allows us to make requests to the app.
+        •   By loading chai, we can use the assertion library for mocha.
+        •   By loading chai-http, we can use methods like "chai.request()" to make arbitrary requests to our server, 
+            and then assert about the results of the requests.
+    ---------------------------------------------------------
+    const chai = require('chai');
+    const chaiHttp = require('chai-http');
+    ---------------------------------------------------------   
+
+
+    STEP 3: requi
+
 
 
 */
@@ -386,5 +401,6 @@ https://www.codementor.io/olatundegaruba/integration-testing-supertest-mocha-cha
 https://www.chaijs.com/plugins/chai-http/ -- chai http
 https://www.npmjs.com/package/chai-http  -- chai docs
 https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai -- chai http article
+https://mherman.org/blog/testing-node-js-with-mocha-and-chai/  --  testing with mocha and chai, chai-http
 
 */
