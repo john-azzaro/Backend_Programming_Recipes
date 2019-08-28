@@ -360,8 +360,11 @@
     STEP 1: In Gitbash, install chai-http to your dev-dependencies:
     ===============================================================
         •   First, you need to intsall chai-http to your development enviroment.
+
     ----------------------------------------------------
+    
     npm install chai-http --save-dev
+    
     ----------------------------------------------------
          
 
@@ -371,14 +374,34 @@
         •   By loading chai, we can use the assertion library for mocha.
         •   By loading chai-http, we can use methods like "chai.request()" to make arbitrary requests to our server, 
             and then assert about the results of the requests.
-    ---------------------------------------------------------
+
+    --------------------------------------------------------- 
     const chai = require('chai');
     const chaiHttp = require('chai-http');
     ---------------------------------------------------------   
 
 
-    STEP 3: requi
+    STEP 3: Use chai with chai-http every time there is a request:
+    ==============================================================
+        •   This middleware function will be executed every time the app receives a request.
 
+    -----------------------------------------------------------
+    const chai = require('chai');
+    const chaiHttp = require('chai-http');
+    
+    chai.use(chaiHttp);                                        <== runs  every time there there is a request to the app.
+    -----------------------------------------------------------
+
+
+    STEP 4: Import server.js using destructuring:
+    =============================================
+        •   When you import server.js using the destructuring assignment, you create variables to use in your test.
+
+    --------------------------------------------------------------
+
+
+
+    --------------------------------------------------------------
 
 
 */
