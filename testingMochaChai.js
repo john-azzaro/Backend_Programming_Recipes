@@ -416,9 +416,24 @@
     }); 
     ---------------------------------------------------------------- 
 
-    
-    STEP 6: Add "before" and "after" function BEFORE tests:
-    ========================================================
+
+    STEP 6: Add "before" and "after" function BEFORE any tests:
+    ===========================================================
+        •   Before any of your tests run, activate the server.
+        •   The "runServer" function in the example below returns a promise, which is returned with "return runServer".
+        •   After the tests run (in case there are other test modules to run), close the server.
+    -----------------------------------------------
+    describe('Users', function() {
+
+        before(function() {                           <== before with callback to run the server.
+            return runServer();
+        });
+        after(function() {                            <== after with the callback to close the server.
+            return closeServer();
+        });
+
+    });
+    ------------------------------------------------
 
 
 */
