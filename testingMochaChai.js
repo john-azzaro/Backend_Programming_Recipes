@@ -419,9 +419,9 @@
 
     STEP 6: Add "before" and "after" function BEFORE any tests:
     ===========================================================
-        •   Before any of your tests run, activate the server.
-        •   The "runServer" function in the example below returns a promise, which is returned with "return runServer".
-        •   After the tests run (in case there are other test modules to run), close the server.
+        •   Before any of your tests run, you use the "before" hook to run the server.
+        •   The "runServer" function in the example asynchronously starts the server and returns a promise, which is returned with "return runServer".
+        •   After the tests run (in case there are other test modules to run), you use the "after" hook to close the server.
     -----------------------------------------------
 
     describe('Users', function() {
@@ -434,8 +434,29 @@
         });
 
     });
-    
+
     ------------------------------------------------
+
+
+    STEP 7: Add an "it" function to do a unit test:
+    ===============================================
+        •   Remember, "it" takes two arguments: a string (which describes the test) and a callback function.
+    ------------------------------------------------------------------------------
+
+    describe('Users', function() {
+
+        before(function() {                           
+            return runServer();
+        });
+        after(function() {                            
+            return closeServer();
+        });
+        it('should list users when the client sends a GET request', function() {      <== unit test
+
+        });
+    });
+
+    ------------------------------------------------------------------------------
 
 
 */
