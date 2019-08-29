@@ -420,8 +420,11 @@
     STEP 6: Add "before" and "after" function BEFORE any tests:
     ===========================================================
         •   Before any of your tests run, you use the "before" hook to run the server.
-        •   The "runServer" function in the example asynchronously starts the server and returns a promise, which is returned with "return runServer".
+        •   The "runServer" function in the example asynchronously starts the server and returns a promise, which is returned 
+            with "return runServer".
         •   After the tests run (in case there are other test modules to run), you use the "after" hook to close the server.
+        •   NOTE: If there are other test modules that run after this one, you will want to do the same thing in those tests 
+            as well because if the server is already running, it will error out.
     -----------------------------------------------
 
     describe('Users', function() {
@@ -459,6 +462,43 @@
     ------------------------------------------------------------------------------
 
 
+    STEP 8: Inside the test case, write your test:
+    ==============================================
+        •   First, pass app to request (i.e. chai.request(app) ) which will automatically open server for 
+            incoming requests and then chain additional methods to create the request.
+        •   "chai.request.get" is an asynchronous operation.
+        •   When using Mocha, you need to return an ES6 promise so you just return the chained 'chai.request.get' object.
+
+    ------------------------------------------------------------------------------
+
+    describe('Users', function() {
+
+        before(function() {                           
+            return runServer();
+        });
+        after(function() {                            
+            return closeServer();
+        });
+        it('should list users when the client sends a GET request', function() { 
+            return chai.request(app)                                                 <== First, pass app to request which will automatically open server for incoming requests...
+                .get('/users')                                                       <== Then, stipulate the route type (i.e. GET) and the endpoint...
+                .then(function(res) {                                                <== ... then test the status code and show that the data you get back from this test has a particualr schema.
+                    expect(res).to.have.status(200);                                 <== Expect the response from a request to /users to yield a 200 status code...
+                    expect(res).to.be.json;                                          <== Expect the response from a request to /users to be a json object...
+                    expect(res)                                                  <== Expect the response
+                    expect(res)                                                  <== Expect the response
+                    expect(res)                                                  <== Expect the response
+                });
+        });
+    });
+
+    ------------------------------------------------------------------------------
+
+
+
+
+
+
 */
 
 
@@ -480,5 +520,6 @@ https://www.chaijs.com/plugins/chai-http/ -- chai http
 https://www.npmjs.com/package/chai-http  -- chai docs
 https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai -- chai http article
 https://mherman.org/blog/testing-node-js-with-mocha-and-chai/  --  testing with mocha and chai, chai-http
+https://github.com/chaijs/chai-http -- integration testing chai.request
 
 */
