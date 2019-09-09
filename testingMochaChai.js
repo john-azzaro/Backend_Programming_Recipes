@@ -374,10 +374,12 @@
         •   By loading chai, we can use the assertion library for mocha.
         •   By loading chai-http, we can use methods like "chai.request()" to make arbitrary requests to our server, 
             and then assert about the results of the requests.
+        •   Additionally, you want to declare a variable for expect from chai import.
 
     --------------------------------------------------------- 
     const chai = require('chai');
     const chaiHttp = require('chai-http');
+    const expect = chai.expect;
     ---------------------------------------------------------   
 
 
