@@ -506,7 +506,7 @@
 
 /* What is continuous integration?
 //////////////////////////////////
-    •   Continuous integration is a development practice where developers integrate code into a shared repository  frequently.  rach integration
+    •   Continuous integration is a development practice where developers integrate code into a shared repository  frequently.  Each integration
         can then be verified by an automated build and automated tests.  
     •   Integrated testing has a key benefit of detecting errros quickly and locating them more easily
     •   CI has become a best practice for software development and is guided by a set of key principles, such as version control, build automation, and automated testing.  
@@ -516,6 +516,12 @@
 
 */
 
+/* What is Travis.CI
+////////////////////
+    •   Travis CI is a hosted continuous integration platform that is free for open source projects on github.
+    •   
+
+*/
 
 
 
