@@ -501,9 +501,18 @@
     ------------------------------------------------------------------------------
 
 
+*/
 
 
-
+/* What is continuous integration?
+//////////////////////////////////
+    •   Continuous integration is a development practice where developers integrate code into a shared repository  frequently.  rach integration
+        can then be verified by an automated build and automated tests.  
+    •   Integrated testing has a key benefit of detecting errros quickly and locating them more easily
+    •   CI has become a best practice for software development and is guided by a set of key principles, such as version control, build automation, and automated testing.  
+    •   CI is the practice of integrating changes from different developers in a team into a mainline as early as possible, making sure the code individual developers work
+        on doesnt divert too much.  When you combine with automated testing, CI can enable your code to be dependable.
+    •   For more information on CI, continuous deployment (CD), and continuous delivery, read this link: https://codeship.com/continuous-integration-essentials
 
 */
 
@@ -527,5 +536,7 @@ https://www.npmjs.com/package/chai-http  -- chai docs
 https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai -- chai http article
 https://mherman.org/blog/testing-node-js-with-mocha-and-chai/  --  testing with mocha and chai, chai-http
 https://github.com/chaijs/chai-http -- integration testing chai.request
+https://codeship.com/continuous-integration-essentials  -- continuous integration outline
+https://code.tutsplus.com/tutorials/travis-ci-what-why-how--net-34771 -- cont integration outline
 
 */
