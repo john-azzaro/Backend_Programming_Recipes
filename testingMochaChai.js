@@ -546,5 +546,5 @@ https://mherman.org/blog/testing-node-js-with-mocha-and-chai/  --  testing with 
 https://github.com/chaijs/chai-http -- integration testing chai.request
 https://codeship.com/continuous-integration-essentials  -- continuous integration outline
 https://code.tutsplus.com/tutorials/travis-ci-what-why-how--net-34771 -- cont integration outline
-
+https://medium.com/@selvarajchinnasamyks/how-to-write-an-integration-test-for-node-js-application-4a2f4140665f  -- integration testing
 */
