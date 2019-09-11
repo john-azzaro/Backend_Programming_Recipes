@@ -519,7 +519,9 @@
 /* What is Travis.CI
 ////////////////////
     •   Travis CI is a hosted continuous integration platform that is free for open source projects on github.
-    •   
+    •   Travis CI is a free hosted continuous integration platform that is used to build and test open source project hosted on github.  With the service, you can signup, 
+        link to a repository, build, and test apps.  Although there are other CI tools, such as Jenkins (which will be covered in a future study), Travis CI is very easy to use 
+        in conjunction with a Github account.
 
 */
 
