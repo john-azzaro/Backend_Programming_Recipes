@@ -910,4 +910,5 @@
 /* 
 https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/
 https://stackoverflow.com/questions/50448272/avoid-current-url-string-parser-is-deprecated-warning-by-setting-usenewurlpars -- workaround for mongodb connection
+https://docs.mongodb.com/manual/core/databases-and-collections/  -- database and collections
 */
