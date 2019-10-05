@@ -138,7 +138,10 @@
 /* 
 3. What is mongoose and how do you install it?
 ///////////////////////////////////////////////
-    •   Mongoose is a simple API to work with a MongoDB database. 
+    •   Mongoose is a simple API to work with a MongoDB database.
+    •   MOngoose is an Object Data Modeling (ODM) library for MongoDB and Node.js.
+    •   Mongoose manages relationships betwene data, provides schema validation, and is used to translate betwene objects in code and represetn those
+        objects in MongoDB. 
 
     STEP 1: Make sure you have your project folder run "npm init":
     ===============================================================
@@ -912,4 +915,5 @@ https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593
 https://stackoverflow.com/questions/50448272/avoid-current-url-string-parser-is-deprecated-warning-by-setting-usenewurlpars -- workaround for mongodb connection
 https://docs.mongodb.com/manual/core/databases-and-collections/  -- database and collections
 https://intellipaat.com/blog/what-is-mongodb/  -- mongodb overview
+https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/ -- mongoose
 */
