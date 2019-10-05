@@ -142,6 +142,8 @@
     •   MOngoose is an Object Data Modeling (ODM) library for MongoDB and Node.js.
     •   Mongoose manages relationships betwene data, provides schema validation, and is used to translate betwene objects in code and represetn those
         objects in MongoDB. 
+    •   Mongoose is an Object Document Mapper (ODM) that makes MongoDB easier to translate documents in a MongoDB database to objects in a program.
+    •   There are alternatives to Mongoose such as Doctrine, MongoLink, and Mandango.
 
     STEP 1: Make sure you have your project folder run "npm init":
     ===============================================================
@@ -916,4 +918,5 @@ https://stackoverflow.com/questions/50448272/avoid-current-url-string-parser-is-
 https://docs.mongodb.com/manual/core/databases-and-collections/  -- database and collections
 https://intellipaat.com/blog/what-is-mongodb/  -- mongodb overview
 https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/ -- mongoose
+https://medium.com/chingu/an-overview-of-mongodb-mongoose-b980858a8994  --- mongo and mongoose
 */
