@@ -10,6 +10,7 @@
 //      3. What is mongoose and how do you install it?
 //      4. How do you connect with MongoDB?
 //      5. What is MongoDB compass and what does it do?
+//      X. What is an example of the flow of saving a user to a mongoDB database?
 //      6. What is a schema and how do you create one?
 //         + How do you create a schema?
 //         + What types can you use when creating a schema?
@@ -144,6 +145,7 @@
         objects in MongoDB. 
     •   Mongoose is an Object Document Mapper (ODM) that makes MongoDB easier to translate documents in a MongoDB database to objects in a program.
     •   There are alternatives to Mongoose such as Doctrine, MongoLink, and Mandango.
+    •   Mongoose creates an easy to use object reference when interacting with MongoDB.
 
     STEP 1: Make sure you have your project folder run "npm init":
     ===============================================================
@@ -247,6 +249,19 @@
 
 */
 
+
+/* 
+What is an example of the flow of saving a user to a mongoDB database?
+///////////////////////////////////////////////////////////////////////
+1. Connect to your database.
+2. Create a schema of a person
+3. Register that model to mongoose.
+4. Create a new instance of Person with the new data.
+5. Then call save method to save the data to the database.
+
+
+
+*/
 
 
 
