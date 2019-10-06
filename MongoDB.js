@@ -934,4 +934,5 @@ https://docs.mongodb.com/manual/core/databases-and-collections/  -- database and
 https://intellipaat.com/blog/what-is-mongodb/  -- mongodb overview
 https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/ -- mongoose
 https://medium.com/chingu/an-overview-of-mongodb-mongoose-b980858a8994  --- mongo and mongoose
+https://blog.cloudboost.io/everything-you-need-to-know-about-mongoose-63fcf8564d52  --- mongoose
 */
