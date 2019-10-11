@@ -185,7 +185,11 @@
     STEP 3: Pass a connection string that references the mongo database we have installed on the computer FOR LOCAL DEVELOPMENT:
     ============================================================================================================================
         •   Note that when the application is deployed to the production enviroment, you use a different connection string. 
-        •   Also note that the database "playground" will be created          
+        •   Also note that the database "playground" will be created 
+        •   When you connect to a database, you call mongoose with the .connect method (i.e. ``` mongoose.connect()```). Then, you want 
+            to pass a connection string that references the mongoDB database.  In the example below, you have the localhost to conenct to
+            your local machine for.  However, note that when the application is deployed to a production enviroment, you will be using a 
+            different connection string.  Also note that if the *sandbox* database is not there, it will be created.         
 
                     const mongoose = require('mongoose');
 
