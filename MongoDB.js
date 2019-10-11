@@ -211,6 +211,9 @@
                         .catch( (err) => console.log('Could not connect to MongoDB...', err))
 
 
+    Note that although the method is sufficient, for a more detailed connection method with more feature, please see the mongoose study repository:
+
+
 */
 
 
@@ -253,11 +256,11 @@
 /* 
 What is an example of the flow of saving a user to a mongoDB database?
 ///////////////////////////////////////////////////////////////////////
-1. Connect to your database.
-2. Create a schema of a person
-3. Register that model to mongoose.
-4. Create a new instance of Person with the new data.
-5. Then call save method to save the data to the database.
+    1. Connect to your database.
+    2. Create a schema of a person
+    3. Register that model to mongoose.
+    4. Create a new instance of Person with the new data.
+    5. Then call save method to save the data to the database.
 
 
 
