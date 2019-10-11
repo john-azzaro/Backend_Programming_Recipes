@@ -198,6 +198,9 @@
 
     STEP 4: The ".connect" method FRST returns a PROMISE that when the promise is fulfilled, log "Connected to MongoDB..."
     ======================================================================================================================
+        •   In addition to this connection, we need a way to check whether or not we are connected to our database.  To do this, you need to 
+            chain a ```.then()```, which will be a promise that, when fulfilled, will log "connected to MongoDB...".  And if there is an error 
+            connecting to the database, use a ``` .catch()``` to log an error message and the error.
 
                     const mongoose = require('mongoose');
 
