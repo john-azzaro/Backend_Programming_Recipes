@@ -218,7 +218,8 @@
                         .catch( (err) => console.log('Could not connect to MongoDB...', err))
 
 
-    Note that although the method is sufficient, for a more detailed connection method with more feature, please see the mongoose study repository:
+    Note that although the method is sufficient, for a more detailed connection method with more feature, please see the mongoose study repository for
+    a more detailed runServer and Close server option.
 
 
 */
