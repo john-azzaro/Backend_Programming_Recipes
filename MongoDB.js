@@ -280,8 +280,7 @@ What is an example of the flow of saving a user to a mongoDB database?
 6. What is a schema and how do you create one?
 ///////////////////////////////////////////////
 ==SHORT ANSWER==
-   •   A "schema" is used to define the shape (i.e. layout of properties) of documents within a collection in MongoDB.
-   •   To create a schema, you                  
+   •   A "schema" is used to define the shape (i.e. layout of properties) of documents within a collection in MongoDB.                
 
 ==EXTENDED ANSWER==
    •   A schema is used to define the properties we have in a collection's document.  
